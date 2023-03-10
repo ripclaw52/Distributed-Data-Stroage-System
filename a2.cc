@@ -1,6 +1,4 @@
-#include "sysio.h"
-#include "ser.h"
-#include "serf.h"
+#include<header.hpp>
 
 char CHOICE;
 char reason[20];
