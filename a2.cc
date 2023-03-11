@@ -2,12 +2,61 @@
 
 char CHOICE;
 char reason[20];
+int sfd = -1;
 
 fsm receiver{
 
 }
 
 fsm root{
+
+	state initialize_node:
+		phys_cc1350(0, MAX_PKT_LEN);
+		/* 	void tcv_plug (int id, tcvplug_t *plugin)
+
+			"The first argument is the numerical plugin identifier whose purpose is to uniquely identify
+			all plugins configured by the praxis, e.g., for reference with tcv_open. The second
+			argument points to a data structure describing the plugin."
+
+			NOTE: the semantics of openeing a session rely on the plugin. Here we have have the simplest
+				  plugin type defined (the null plug). The configuraiton of tcv_open rely on this plugin as well. 
+				  the null plugin offers only a single session per physical interface. This session is explicitly 
+				  setup (opened) through tcv_open().
+
+			See docs section 3 pg11/20 for the struct of this plugin
+		*/
+		tcv_plug (0, &plug_null);
+
+		/* int tcv_open (word state, int phid, int plid, ...)
+
+		   The tcv_open calling process can be blocked, and thus the first argument is the state to return to
+		   ro re-try the operation. Passing the state argument of WNONE states the process is never blocked
+		   but returns its status. If the returned value is -2, then it is blocked.
+
+		   The other two fixed parameters for which we are passing 0 and 0 represent the physical module and the plugin
+		   that will be responsible for handling the session. Above we set the plugin identifier to 0 in tcv_plug().
+
+		   tcv_open will return returns an int defining the session (it resembles a unix file descriptor hence
+		   the abbreviation "sfd"). A return of -1 means an Error has occured.
+
+		   NOTE: the maxmium number of sessions that can be open at any time is default 8. We can redfine this in
+		   options.h by setting TCV_MAX_DESC to something higher.
+		*/
+		sfd = tcv_open (WNONE, 0, 0);
+
+		if (sfd < 0) {
+			diag("Cannot open tcv interface");
+			halt();
+		};
+
+		/* int tcv_control (int fd, int option, address value)
+
+		  This function is referenced only twice in the docs. To my understainding, it determines if the
+		  sfd is interpreted as a plugin id or a physical module. 
+		
+		*/
+		tcv_control(sfd, PHYSOPT_ON, NULL);
+
 	state menu:
 		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
 
