@@ -9,7 +9,7 @@ fsm receiver{
 }
 
 fsm root{
-
+	
 	state initialize_node:
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
