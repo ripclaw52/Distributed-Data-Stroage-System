@@ -62,24 +62,42 @@ fsm root{
 
 	state get_choice:
 		ser_inf(get_choice, "%c", &CHOICE);
-		if(CHOICE == 'G' || CHOICE == 'g'){
-			proceed get_new_group_id;
-		} else if(CHOICE == 'N' || CHOICE == 'n'){
-			proceed get_new_node_id;
-		} else if(CHOICE == 'F' || CHOICE == 'f'){
-			proceed find_proto;
-		} else if(CHOICE == 'C' || CHOICE == 'c'){
-			proceed create_proto;
-		} else if(CHOICE == 'D' || CHOICE == 'd'){
-			proceed delete_proto;
-		} else if(CHOICE == 'R' || CHOICE == 'r'){
-			proceed retrieve_proto;
-		} else if(CHOICE == 'S' || CHOICE == 's'){
-			proceed display_db;
-		} else if(CHOICE == 'E' || CHOICE == 'e'){
-			proceed del_local;
-		} else{
-			proceed menu;
+		switch(CHOICE) {
+			case 'g':
+			case 'G':
+				proceed get_new_group_id;
+				break;
+			case 'n':
+			case 'N':
+				proceed get_new_node_id;
+				break;
+			case 'f':
+			case 'F':
+				proceed find_proto;
+				break;
+			case 'c':
+			case 'C':
+				proceed create_proto;
+				break;
+			case 'd':
+			case 'D':
+				proceed delete_proto;
+				break;
+			case 'r':
+			case 'R':
+				proceed retrieve_proto;
+				break;
+			case 's':
+			case 'S':
+				proceed display_db;
+				break;
+			case 'e':
+			case 'E':
+				proceed del_local;
+				break;
+			default:
+				proceed menu;
+				break;
 		}
 
 	state get_new_group_id:
