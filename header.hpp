@@ -5,23 +5,40 @@
 #include "phys_cc1350.h"
 #include "plug_null.h"
 
-#define MAX_PKT_LEN 250 
-#define NUMBER_OF_ENTRIES 40
-#define MAXIMUM_DB_ENTRY_LENGTH 20
+#define MAX_PKT_LEN 250
+#define NUMB_OF_ENT 40
+#define MAX_DB_ENT_LEN 20
 //#define SFD -1 session descriptor
 
-
-struct node {
-
-    byte ID;
-    int GID;
-    char DataBase[NUMBER_OF_ENTRIES][MAXIMUM_DB_ENTRY_LENGTH];
-    // ID (1 byte) + GID (2 bytes) + timestamp
-    char metadata[NUMBER_OF_ENTRIES][]
-
+// Base struct for records in the database
+struct record{
+	byte owner_id;
+	char rec[MAX_DB_ENT_LEN];
+	int timesstamp;
 };
 
+// This is an array of records
+struct data{
+	record item_array[NUM_OF_ENT];
+};
 
+// This is the struct for individual nodes. All nodes will have this basic
+// design of ID, group id and database.
+struct node {
+    byte ID;
+    char GID[2];		// This is 2 bytes an int is 4 bytes
+    data DataBase;
+};
 
-
-
+// Specifically this is the response message but can be used as default
+// template for all messages as it has all the variables for every message.
+struct msg{
+	char GID[2];
+	byte type;
+	byte req_num;
+	byte sender_id;
+	byte receiver_id;
+	byte status;
+	byte padding;
+	char record[20];
+};
