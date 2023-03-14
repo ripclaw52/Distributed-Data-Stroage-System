@@ -5,6 +5,15 @@ char reason[20];
 char neighbouring_nodes[MAX_NEIGBOURS][MAX_NEIGHBOURS_BYTES];
 int sfd = -1;
 
+// Clear neighbour array of node
+void clearArray(const char (*array)[MAX_NEIGBOURS][MAX_NEIGHBOURS_BYTES]) {
+	for (int i=0; i<MAX_NEIGBOURS; i++) {
+		for (int j=0; j<MAX_NEIGHBOURS_BYTES; j++) {
+			(*array)[i][j] = '\0';
+		}
+	}
+}
+
 fsm receiver{
 
 }
