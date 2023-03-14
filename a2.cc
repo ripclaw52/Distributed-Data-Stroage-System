@@ -2,6 +2,7 @@
 
 char CHOICE;
 char reason[20];
+char neighbouring_nodes[MAX_NEIGBOURS][MAX_NEIGHBOURS_BYTES];
 int sfd = -1;
 
 fsm receiver{
