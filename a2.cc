@@ -2,17 +2,10 @@
 
 char CHOICE;
 char reason[20];
-char neighbouring_nodes[MAX_NEIGBOURS][MAX_NEIGHBOURS_BYTES];
+uint8_t neighboring_nodes[NNODE_GROUP_SIZE];
 int sfd = -1;
 
-// Clear neighbour array of node
-void clearArray(const char (*array)[MAX_NEIGBOURS][MAX_NEIGHBOURS_BYTES]) {
-	for (int i=0; i<MAX_NEIGBOURS; i++) {
-		for (int j=0; j<MAX_NEIGHBOURS_BYTES; j++) {
-			(*array)[i][j] = '\0';
-		}
-	}
-}
+
 
 fsm receiver{
 
@@ -138,6 +131,22 @@ fsm root{
 		proceed get_new_node_id;
 
 	state find_proto:
+
+	state reset_neighboring_array:
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			neighboring_nodes[i] = 0;
+		}
+
+	state display_neighboring_array:
+		ser_out(display_neighboring_array, "\r\n Neighbors: ");
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			if (neighboring_nodes[i] == 0) {
+				break;
+			} else {
+				ser_outf(display_neighboring_array, "%d ", neighboring_nodes[i]);
+			}
+		}
+		ser_out(display_neighboring_array, "\r\n");
 
 	state create_proto:
 
