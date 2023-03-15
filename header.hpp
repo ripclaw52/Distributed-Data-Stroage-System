@@ -8,6 +8,8 @@
 #define MAX_PKT_LEN 250
 #define NUMB_OF_ENT 40
 #define MAX_DB_ENT_LEN 20
+
+#define NNODE_GROUP_SIZE 26
 //#define SFD -1 session descriptor
 
 // Base struct for records in the database

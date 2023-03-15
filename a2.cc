@@ -2,14 +2,17 @@
 
 char CHOICE;
 char reason[20];
+uint8_t neighboring_nodes[NNODE_GROUP_SIZE];
 int sfd = -1;
+
+
 
 fsm receiver{
 
 }
 
 fsm root{
-
+	
 	state initialize_node:
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -128,6 +131,22 @@ fsm root{
 		proceed get_new_node_id;
 
 	state find_proto:
+
+	state reset_neighboring_array:
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			neighboring_nodes[i] = 0;
+		}
+
+	state display_neighboring_array:
+		ser_out(display_neighboring_array, "\r\n Neighbors: ");
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			if (neighboring_nodes[i] == 0) {
+				break;
+			} else {
+				ser_outf(display_neighboring_array, "%d ", neighboring_nodes[i]);
+			}
+		}
+		ser_out(display_neighboring_array, "\r\n");
 
 	state create_proto:
 
