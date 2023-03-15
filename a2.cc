@@ -129,6 +129,22 @@ fsm root{
 
 	state find_proto:
 
+	state reset_neighboring_array:
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			neighboring_nodes[i] = 0;
+		}
+
+	state display_neighboring_array:
+		ser_out(display_neighboring_array, "\r\n Neighbors: ");
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			if (neighboring_nodes[i] == 0) {
+				break;
+			} else {
+				ser_outf(display_neighboring_array, "%d ", neighboring_nodes[i]);
+			}
+		}
+		ser_out(display_neighboring_array, "\r\n");
+
 	state create_proto:
 
 	state delete_proto:
