@@ -2,15 +2,52 @@
 
 char CHOICE;
 char reason[20];
+uint8_t neighboring_nodes[NNODE_GROUP_SIZE];
 int sfd = -1;
 
-fsm receiver{
+struct node * node_db = NULL;
 
+
+fsm receiver(struct msg* message) {
+	address packet;
+
+	state receiving:
+		packet = tcv_rnp(receiving, sfd);
+	state ok:
+		struct msg* payload = (struct msg*)(packet+1);
+		if (payload->GID == message->GID) {
+			switch(message->type) {
+				case 0:
+					break;
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				default:
+					break;
+			}
+		}
+		tcv_endp(packet);
+
+		proceed receiving;
 }
 
-fsm root{
+fsm root {
+	struct msg *payload;
 
 	state initialize_node:
+		// initialize node database
+		node_db = (struct node *)umalloc(sizeof(struct node));
+
+		payload = (struct msg *)umalloc(sizeof(struct msg));
+		// initial values of payload
+
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
 
@@ -56,6 +93,8 @@ fsm root{
 		
 		*/
 		tcv_control(sfd, PHYSOPT_ON, NULL);
+
+		runfsm receiver(payload);
 
 	state menu:
 		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
@@ -128,6 +167,22 @@ fsm root{
 		proceed get_new_node_id;
 
 	state find_proto:
+
+	state reset_neighboring_array:
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			neighboring_nodes[i] = 0;
+		}
+
+	state display_neighboring_array:
+		ser_out(display_neighboring_array, "\r\n Neighbors: ");
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			if (neighboring_nodes[i] == 0) {
+				break;
+			} else {
+				ser_outf(display_neighboring_array, "%d ", neighboring_nodes[i]);
+			}
+		}
+		ser_out(display_neighboring_array, "\r\n");
 
 	state create_proto:
 
