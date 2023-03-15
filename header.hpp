@@ -30,6 +30,8 @@ struct node {
     byte ID;
     char GID[2];		// This is 2 bytes an int is 4 bytes
     data DataBase;
+	int c_db; 			// count of database entries
+	uint8_t nnodes[NNODE_GROUP_SIZE];
 };
 
 // Specifically this is the response message but can be used as default
@@ -44,3 +46,5 @@ struct msg{
 	byte padding;
 	char record[20];
 };
+
+void reset_array(struct node node_array);
