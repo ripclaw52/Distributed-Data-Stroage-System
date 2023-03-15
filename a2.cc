@@ -2,12 +2,28 @@
 
 char CHOICE;
 char reason[20];
-uint8_t neighboring_nodes[NNODE_GROUP_SIZE];
 int sfd = -1;
 
 struct node * node_db = NULL;
 
+// sends packet information to other nodes
+fsm sender(struct msg* message) {
+	address packet;
 
+	state sending:
+		packet = tcv_wnp(sending, sfd, sizeof(struct msg)+4);
+		packet[0] = 0;
+
+		tcv_endp(packet);
+	
+	state CONFIRM_message:
+		// Display message was sent
+		ser_out(CONFIRM_message, "Message sent\r\n");
+		// Exit out of fsm
+		finish;
+}
+
+// receives packet information from wireless connected nodes
 fsm receiver(struct msg* message) {
 	address packet;
 
@@ -16,17 +32,23 @@ fsm receiver(struct msg* message) {
 	state ok:
 		struct msg* payload = (struct msg*)(packet+1);
 		if (payload->GID == message->GID) {
-			switch(message->type) {
+			switch(payload->type) {
+				// Discovery Request
 				case 0:
 					break;
+				// Discovery Response
 				case 1:
 					break;
+				// Create Record Message
 				case 2:
 					break;
+				// Delete Record Message
 				case 3:
 					break;
+				// Retrieve Record Message
 				case 4:
 					break;
+				// Response Message
 				case 5:
 					break;
 				default:
@@ -168,18 +190,13 @@ fsm root {
 
 	state find_proto:
 
-	state reset_neighboring_array:
-		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
-			neighboring_nodes[i] = 0;
-		}
-
 	state display_neighboring_array:
 		ser_out(display_neighboring_array, "\r\n Neighbors: ");
 		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
-			if (neighboring_nodes[i] == 0) {
+			if (payload->nnodes[i] == 0) {
 				break;
 			} else {
-				ser_outf(display_neighboring_array, "%d ", neighboring_nodes[i]);
+				ser_outf(display_neighboring_array, "%d ", payload->nnodes[i]);
 			}
 		}
 		ser_out(display_neighboring_array, "\r\n");
