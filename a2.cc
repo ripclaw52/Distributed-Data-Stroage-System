@@ -42,11 +42,13 @@ fsm receiver(struct Node* db_node) {
 		//struct MessageHeader* message_header = (struct MessageHeader*)(incoming_packet+1);
 
 		/* Grab and store the header components */
-		uint16_t received_gid 		 = message->gid;
+		uint16_t received_gid		 = message->gid;
 		uint8_t received_type 		 = message->type;
 		uint8_t received_req_num 	 = message->req_num;
 		uint8_t received_sender_id 	 = message->sender_id;
 		uint8_t received_receiver_id = message->receiver_id;
+
+		uint8_t received_status		 = message->status;
 
 		/*DEBUGGING PURPOSES*/
 		DEBUG_PRINT("RECEIVED GID: %d\n", received_gid);
@@ -54,6 +56,8 @@ fsm receiver(struct Node* db_node) {
 		DEBUG_PRINT("RECEIVED REQ NUM: %d\n", received_req_num);
 		DEBUG_PRINT("RECEIVED SID: %d\n", received_sender_id);
 		DEBUG_PRINT("RECEIVED RID: %d\n", received_receiver_id);
+
+		DEBUG_PRINT("RECEIVED STATUS: %d\n", received_status);
 
 		if (received_type < 0 || received_type > 5) {
 			DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", received_type);
@@ -64,7 +68,7 @@ fsm receiver(struct Node* db_node) {
 		} else if (received_sender_id > 25 || received_sender_id < 0) {
 			DEBUG_PRINT("ERROR: sender_id [%d] is not within the valid id range", received_sender_id);
 			proceed error;
-		} else{
+		} else {
 
 			switch(received_type) {
 				// Discovery Request
@@ -105,6 +109,30 @@ fsm receiver(struct Node* db_node) {
 					break;
 				// Response Message
 				case 5:
+					switch(received_status) {
+						// operation performed succesfully
+						case 0x01:
+							// Use the request number to check what type of message was sent
+							// condition for:
+							//		create
+							//		delete
+							//		retrieve
+							break;
+						// record can't be added to full database
+						case 0x02:
+							proceed response_2;
+							break;
+						// record can't be deleted from empty database
+						case 0x03:
+							proceed response_3;
+							break;
+						// record can't be retrieved from empty database
+						case 0x04:
+							proceed response_4;
+							break;
+						default:
+							break;
+					}
 					break;
 				default:
 					break;
@@ -115,7 +143,29 @@ fsm receiver(struct Node* db_node) {
 		tcv_endp(incoming_packet);
 
 		proceed receiving;
-
+	
+	// Succeeded in performing requested action
+	state response_1_cre:
+		ser_out(response_1_cre, "\r\n Data Saved");
+		proceed receiving;
+	state response_1_del:
+		ser_out(response_1_del, "\r\n Record Deleted");
+		proceed receiving;
+	state response_1_ret:
+		ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+		proceed receiving;
+	
+	// Failed to perform requestws action
+	state response_2:
+		ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
+		proceed receiving;
+	state response_3:
+		ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
+		proceed receiving;
+	state reponse_4:
+		ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
+		proceed receiving;
+	
 	state error:
 		DEBUG_PRINT("ERROR: someting went wrong when receiving the packet");
 		// handle error

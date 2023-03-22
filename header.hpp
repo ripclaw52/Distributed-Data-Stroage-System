@@ -56,7 +56,7 @@ struct Node {
     uint16_t gid;						// I changed this from char GID[2] to uint16_t GID
     data data_base;
 	uint8_t db_entry_count; 			// count of database entries
-	//uint8_t nnodes[NNODE_GROUP_SIZE]; what is this for?
+	uint8_t nnodes[NNODE_GROUP_SIZE]; 	// Array containing neighbouring nodes ids
 };
 
 /* No matter what message we get (or send), we know this will populate the header from 
