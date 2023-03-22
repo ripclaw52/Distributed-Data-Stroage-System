@@ -7,7 +7,7 @@ This function will initialize an empty node strucutre, provided a pointer to tha
 bool init_node(struct Node* node){
     node->id  = 0;                  // default id value 0
     node->gid = 0;                  // default gid value 0
-    node->db_entry_count = 0;       // default entry count 0
+    node->index = 0;                // default entry count 0
     node->data_base;                // default empty array THIS WILL LIKELY NEED TO BE AMENDED
    
     /* check that each item is set to what we want it intialized to e.g., !node->id, we set it to 0, so this should 
@@ -32,6 +32,6 @@ bool set_node_gid(struct Node* node, uint16_t gid){
 
 // NOTE: count can be a uint8_t because it goes to 255 and the count will never exceed 40
 bool set_node_db_entry_count(struct Node* node, uint8_t count){
-    node->db_entry_count = count; 
-    return node->db_entry_count == count;
+    node->index = count; 
+    return node->index == count;
 };
