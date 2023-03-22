@@ -90,6 +90,6 @@ bool set_node_id(struct node* node, uint8_t id);
 bool set_node_gid(struct node* node, uint16_t gid);
 bool set_node_db_entry_count(struct node* node, uint8_t count);
 
-#endif
+//void reset_array(struct node* node);
 
-//void reset_array(struct node node_array);
+#endif
