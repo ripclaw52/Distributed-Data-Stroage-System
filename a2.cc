@@ -4,7 +4,10 @@ char CHOICE;
 char reason[20];
 int sfd = -1;
 
-struct node * node_db = NULL;
+//struct node * node_db = NULL; im pretty certain you are setting a pointer to null here?
+
+struct Node db_node; // globally defined struct, represents the node.
+struct MessageHeader message_header;
 
 // sends packet information to other nodes
 fsm sender(struct msg* message) {
@@ -12,7 +15,7 @@ fsm sender(struct msg* message) {
 
 	state sending:
 		packet = tcv_wnp(sending, sfd, sizeof(struct msg)+4);
-		packet[0] = 0;
+		packet[0] = NETWORK_ID;
 
 		tcv_endp(packet);
 	
@@ -24,17 +27,73 @@ fsm sender(struct msg* message) {
 }
 
 // receives packet information from wireless connected nodes
-fsm receiver(struct msg* message) {
-	address packet;
+fsm receiver(struct Node* db_node) {
+	
+	address incoming_packet;
 
 	state receiving:
-		packet = tcv_rnp(receiving, sfd);
+		// Get the next packet queued for input at the session (sfd)
+		incoming_packet = tcv_rnp(receiving, sfd);
 	state ok:
-		struct msg* payload = (struct msg*)(packet+1);
-		if (payload->GID == message->GID) {
-			switch(payload->type) {
+		
+		//struct MessageHeader* message_header;
+		struct Message* message;
+		int bytes_read = tcv_read(incoming_packet+1, message, 6);
+		//struct MessageHeader* message_header = (struct MessageHeader*)(incoming_packet+1);
+
+		/* Grab and store the header components */
+		uint16_t received_gid		 = message->gid;
+		uint8_t received_type 		 = message->type;
+		uint8_t received_req_num 	 = message->req_num;
+		uint8_t received_sender_id 	 = message->sender_id;
+		uint8_t received_receiver_id = message->receiver_id;
+
+		uint8_t received_status		 = message->status;
+
+		/*DEBUGGING PURPOSES*/
+		DEBUG_PRINT("RECEIVED GID: %d\n", received_gid);
+		DEBUG_PRINT("RECEIVED TYPE: %d\n", received_type);
+		DEBUG_PRINT("RECEIVED REQ NUM: %d\n", received_req_num);
+		DEBUG_PRINT("RECEIVED SID: %d\n", received_sender_id);
+		DEBUG_PRINT("RECEIVED RID: %d\n", received_receiver_id);
+
+		DEBUG_PRINT("RECEIVED STATUS: %d\n", received_status);
+
+		if (received_type < 0 || received_type > 5) {
+			DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", received_type);
+			proceed error;
+		} else if (received_receiver_id != db_node->id) {
+			DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", received_type);
+			proceed error;
+		} else if (received_sender_id > 25 || received_sender_id < 0) {
+			DEBUG_PRINT("ERROR: sender_id [%d] is not within the valid id range", received_sender_id);
+			proceed error;
+		} else {
+
+			switch(received_type) {
 				// Discovery Request
 				case 0:
+
+					/*
+					Our node has received a discovery request, we need to send back to the sending node
+					a discovery response. The discovery response message includes the following fields.
+					
+					o Group ID [2 bytes]: The sender node group ID
+					o Type [1 byte]: Always set to ONE
+					o Request Number [1 byte]: This field should be equal to the request number received in the corresponding Discovery request message
+					o Sender ID [1 byte]: The originator node ID for this message
+					o Receiver ID [1 byte]: The ID of the node that originally sent the Discovery Request
+					
+					Because this is one of the scenarios where the packets are the same we can send back the packet with any required modifications
+					*/
+					message->gid         = node_db->gid;			// return this nodes gid in the message gid
+					message->type        = (uint8_t) 1; 			// change the type to 1 for discovery response.
+					message->req_num     = received_req_num;	
+					message->sender_id   = node_db->id;	    		// change the sender_id to this nodes id.
+					message->receiver_id = received_sender_id;		// the ID of the requester
+
+					// perform sending operation
+					
 					break;
 				// Discovery Response
 				case 1:
@@ -50,24 +109,80 @@ fsm receiver(struct msg* message) {
 					break;
 				// Response Message
 				case 5:
+					switch(received_status) {
+						// operation performed succesfully
+						case 0x01:
+							// Use the request number to check what type of message was sent
+							// condition for:
+							//		create
+							//		delete
+							//		retrieve
+							break;
+						// record can't be added to full database
+						case 0x02:
+							proceed response_2;
+							break;
+						// record can't be deleted from empty database
+						case 0x03:
+							proceed response_3;
+							break;
+						// record can't be retrieved from empty database
+						case 0x04:
+							proceed response_4;
+							break;
+						default:
+							break;
+					}
 					break;
 				default:
 					break;
-			}
+				}
+
 		}
-		tcv_endp(packet);
+		
+		tcv_endp(incoming_packet);
 
 		proceed receiving;
+	
+	// Succeeded in performing requested action
+	state response_1_cre:
+		ser_out(response_1_cre, "\r\n Data Saved");
+		proceed receiving;
+	state response_1_del:
+		ser_out(response_1_del, "\r\n Record Deleted");
+		proceed receiving;
+	state response_1_ret:
+		ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+		proceed receiving;
+	
+	// Failed to perform requestws action
+	state response_2:
+		ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
+		proceed receiving;
+	state response_3:
+		ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
+		proceed receiving;
+	state reponse_4:
+		ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
+		proceed receiving;
+	
+	state error:
+		DEBUG_PRINT("ERROR: someting went wrong when receiving the packet");
+		// handle error
 }
 
 fsm root {
-	struct msg *payload;
+	struct Message* message;
 
 	state initialize_node:
-		// initialize node database
-		node_db = (struct node *)umalloc(sizeof(struct node));
+		// cast node_db to struct node * and malloc to it the size of a struct node 
+		node_db = (struct Node *)umalloc(sizeof(struct Node));
 
-		payload = (struct msg *)umalloc(sizeof(struct msg));
+		message = (struct Message *message)umalloc(sizeof(struct Message));
+
+		// cast message_header to struct MessageHeader * and malloc to it the size of a MessageHeader struct
+		message_header = (struct MessageHeader *)umalloc(sizeof(struct MessageHeader));
+
 		// initial values of payload
 
 		phys_cc1350(0, MAX_PKT_LEN);
@@ -116,7 +231,7 @@ fsm root {
 		*/
 		tcv_control(sfd, PHYSOPT_ON, NULL);
 
-		runfsm receiver(payload);
+		runfsm receiver(db_node);
 
 	state menu:
 		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
