@@ -1,15 +1,13 @@
 #ifndef DISCOVERY_REQUESTS_H_
 #define DISCOVERY_REQUESTS_H_
 #include <cstdint>
-/*
+#include <stdlib.h>
 #include "sysio.h"
 #include "ser.h"
 #include "serf.h"
 #include "tcv.h"
 #include "phys_cc1350.h"
 #include "plug_null.h"
-*/
-
 
 #include "discovery_requests.hpp"
 
@@ -90,6 +88,7 @@ bool set_node_id(struct node* node, uint8_t id);
 bool set_node_gid(struct node* node, uint16_t gid);
 bool set_node_db_entry_count(struct node* node, uint8_t count);
 
-#endif
+void reset_array(struct node* node);
+uint8_t generate_request_num(void);
 
-//void reset_array(struct node node_array);
+#endif
