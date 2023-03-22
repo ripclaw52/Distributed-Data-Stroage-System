@@ -6,3 +6,8 @@ void reset_array(struct Node* node) {
 		node->nnodes[i] = 0;
 	}
 }
+
+// Generate random value between 0-255
+uint8_t generate_request_num(void){
+    return (uint8_t) (rand() % 255);
+}

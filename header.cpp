@@ -20,7 +20,6 @@ bool init_node(struct Node* node){
     return false;
 };
 
-
 bool set_node_id(struct Node* node, uint8_t id){
     node->id = id; 
     return node->id == id;
@@ -36,7 +35,3 @@ bool set_node_db_entry_count(struct Node* node, uint8_t count){
     node->db_entry_count = count; 
     return node->db_entry_count == count;
 };
-
-
-
-
