@@ -291,6 +291,8 @@ fsm receiver(struct Node* node_db) {
 	state error:
 		DEBUG_PRINT("ERROR: someting went wrong when receiving the packet");
 		// handle error
+		// retry?
+		proceed receiving;
 }
 
 fsm root {
@@ -303,7 +305,7 @@ fsm root {
 
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node 
-		//node_db = (struct Node *)umalloc(sizeof(struct Node));
+		node_db = (struct Node *)umalloc(sizeof(struct Node));
 
 		message = (struct Message *message)umalloc(sizeof(struct Message));
 
@@ -410,43 +412,58 @@ fsm root {
 		ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
 	state new_node_id:
-		ser_inf(new_node_id, "%d", NODE_ID_VAR);
-		/*HERE WE WILL HAVE TO CHECK TO ENSURE THAT THIS ID NUMBER
-		IS UNIQUE FOR THE NODE GROUP AS WELL AS THE BELOW
-		if(NODE_ID_VAR in database){
-			reason = "ID is in use";
-			proceed invalid_node_id;
-		}*/
-		if(NODE_ID_VAR < 1 || NODE_ID_VAR > 25){
+		ser_inf(new_node_id, "%d", node_db->id);
+		
+		// Check to see if the number given is within range.
+		if(node_db->id < 1 || node_db->id > 25){
 			reason = "Out of Range";
 			proceed invalid_node_id;
 		}
+		
+		// Check to see if the number give is unique
+		for(int i = 0; i < 25; i++){
+			if(node_db->id == node_db->nnodes[i]){
+				reason = "ID is in use";
+				proceed invalid_node_id;
+			}
+		}
+		proceed menu;
 
 	state invalid_node_id:
-		ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", NODE_ID_VAR, reason);
+		ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", node_db->id, reason);
 		proceed get_new_node_id;
 
 	state find_proto:
-
+		trigger(&fin);
+/* DON"T THINK WE NEED THE BELOW, it will also break the code due to payload not being declaired.
 	state display_neighboring_array:
 		ser_out(display_neighboring_array, "\r\n Neighbors: ");
 		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
 			if (payload->nnodes[i] == 0) {
 				break;
 			} else {
-				ser_outf(display_neighboring_array, "%d ", payload->nnodes[i]);
+				ser_outf(display_neighboring_array, "%d, ", payload->nnodes[i]);
 			}
 		}
 		ser_out(display_neighboring_array, "\r\n");
+*/
 
 	state create_proto:
-
+		
 	state delete_proto:
-
+		
 	state retrieve_proto:
-
+		
 	state display_db:
+		ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
+		
+	state loop_through_data:
+		for(int i = 0; i <= node_db->data_base.item_count; i++){
+			ser_outf(loop_through_data, "\r\n%d\t\t%d\t%d%t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+		}
+		proceed menu;
 
 	state del_local:
-
+		delete_all(node_db);
+		proceed menu;
 }

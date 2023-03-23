@@ -14,7 +14,7 @@
 #define NUMB_OF_ENT 40
 #define MAX_DB_ENT_LEN 20
 #define NETWORK_ID 0
-#define NNODE_GROUP_SIZE 25
+#define NNODE_GROUP_SIZE 25 // NOTE: Should this be 24 because 1 - 25 inclusive?
 /*BECAUSE THIS IS DEFINED THE BELOW IS TRUE*/
 #define DEBUG_MODE
 
@@ -130,16 +130,17 @@ struct ResponseMessage{
 };
 
 /*NODE METHODS*/
-bool init_node(struct node* node);
-bool set_node_id(struct node* node, uint8_t id);
-bool set_node_gid(struct node* node, uint16_t gid);
+bool init_node(struct Node *node);
+bool set_node_id(struct Node *node, uint8_t id);
+bool set_node_gid(struct Node *node, uint16_t gid);
 bool set_node_db_entry_count(struct node* node, uint8_t count);
 
 bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 bool delete_record(struct Node *node, uint8_t index);
 char* retrieve_record(struct Node *node, uint8_t index);
 
-void reset_array(struct node* node);
+void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
+bool delete_all(struct Node *node);
 
 #endif

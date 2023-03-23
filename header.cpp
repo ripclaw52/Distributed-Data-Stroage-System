@@ -38,7 +38,7 @@ bool set_node_db_entry_count(struct Node* node, uint8_t count){
 
 
 // reset neighbouring node array
-void reset_array(struct Node* node) {
+void reset_array(struct Node *node) {
 	for (int i=0; i<NNODE_GROUP_SIZE; i++) {
 		node->nnodes[i] = 0;
 	}
@@ -52,6 +52,9 @@ uint8_t generate_request_num(void){
 // returns false when full, true when it succesfully inserts record...
 bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
 
+    // Variable to keep the index so we can check after the for loop to see if it worked
+    int num;
+
     // if the item count is 40, our database for this node is full...
     if (node->data_base.item_count == NUMB_OF_ENT){
         return false;
@@ -60,38 +63,68 @@ bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
         // 0 till we find the first null entry.
         for (int i = 0; i < NUMB_OF_ENT; i++){
             if (node->data_base.item_array[i].data_entry == '\0'){
+            	num = i;
                 strncpy(node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry)); 
-                node->data_base.item_array.owner_id = owner_id;
-                // TODO: get time stamp...
-                node->data_base.item_array.timestamp = 0;
+                node->data_base.item_array[i].owner_id = owner_id;
+                // TODO: get time stamp... Have to ask what kind of time stamp he is looking for.
+                node->data_base.item_array[i].timestamp = 0;
                 node->data_base.item_count += 1;
+                break; // NOTE: This may be required so we do not fill the entries with one insert.
             };
         };
     };
     
-    //TODO: add check that the operation was succesful 
+    //TODO: add check that the operation was succesful DONE
+    if(node->data_base.item_array[num].data_entry == '\0'){
+    	return false;    
+    }
     return true;   
 };
 
 // returns false when 0 items in db or the index is already null, otherwise true after deletion
 bool delete_record(struct Node *node, uint8_t index){
-
+    
     // empty database, or empty index, can't delete record
     if (node->data_base.item_count == 0 || node->data_base.item_array[index].data_entry == '\0'){
         return false;
     } else{
-        // NOTE: This may complain
+        // NOTE: This may complain NOTE: it shouldn't now missing index for the timestamp.
         node->data_base.item_array[index].data_entry = '\0';
-        node->data_base.item_array.timestamp = NULL;
+        node->data_base.item_array[index].timestamp = 0;
         node->data_base.item_count -= 1;
     };
     
-    //TODO: add check that the operation was succesful 
+    //TODO: add check that the operation was succesful DONE
+    if(node->data_base.item_array[index].data_entry != '\0'){
+    	return false;
+    } 
     return true;
 };
 
+// Get record
 char* retrieve_record(struct Node *node, uint8_t index){
 
+    // Did the check to see if index was valid in main.cc file
     return node->data_base.item_array[index].data_entry;
 
 };
+
+// Delete all records on the node
+bool delete_all(struct Node *node){
+    
+    // empty database, or empty index, can't delete record
+    if (node->data_base.item_count == 0 || node->data_base.item_array[0].data_entry == '\0'){
+        return true;
+    } else{
+        for(int i = 0; i <= node->data_base.item_count; i++){
+            node->data_base.item_array[i].data_entry = '\0';
+            node->data_base.item_array[i].timestamp = 0;
+        }
+    };
+    node->data_base.item_count = 0;
+    // Check to see that it worked
+    if(node->data_base.item_array[0].data_entry != '\0'){
+    	return false;
+    }
+    return true;
+}
