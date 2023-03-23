@@ -8,14 +8,13 @@
 #include "tcv.h"
 #include "phys_cc1350.h"
 #include "plug_null.h"
-
 #include "discovery_requests.hpp"
 
 #define MAX_PKT_LEN 250
 #define NUMB_OF_ENT 40
 #define MAX_DB_ENT_LEN 20
 #define NETWORK_ID 0
-#define NNODE_GROUP_SIZE 26 //NOTE: shouldn't this be 25? (0-25)
+#define NNODE_GROUP_SIZE 25
 /*BECAUSE THIS IS DEFINED THE BELOW IS TRUE*/
 #define DEBUG_MODE
 
@@ -58,58 +57,59 @@ struct data{
 };
 
 // TODO: when a user "logs in", none of these node values are set, we will likely want to provide default values.
+// NOTE FOR ABOVE: There are no pre initialized values in the assignment specs, also do not know if how assigning the node id would work as it need to be unique and if we hard code an init value it will not be unique.
 // This is the struct for individual nodes. All nodes will have this basic
 // design of ID, group id and database.
 struct Node {
-    uint8_t id;							
-    uint16_t gid;						
-    data data_base;
-	uint8_t nnodes[NNODE_GROUP_SIZE]; 	// Array containing neighbouring nodes ids
-	uint8_t index;						// we need to keep track of what index we are at in this list
+	uint8_t id;					// Individual Node ID (1-byte)							
+	uint16_t gid;					// The Nodes group ID (2-bytes)
+	data data_base;				// The database each node will have to fill
+	uint8_t nnodes[NNODE_GROUP_SIZE]; 		// Array containing neighbouring nodes ids
+	uint8_t index;					// We need to keep track of what index we are at in this list
 };
 
 struct DiscoveryRequestMessage{
-    uint16_t gid;                 						// Sender Node Group ID (2-bytes)
-	uint8_t  type = DISCOVERY_REQUEST;                	// Always set to zero for requests and one for responses
-    uint8_t  request_number;      						// Request Number (node generated random number)
-    uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
-    uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving) 
+	uint16_t gid;                			// Sender Node Group ID (2-bytes)
+	uint8_t  type = DISCOVERY_REQUEST;            // Always set to zero for requests and one for responses
+	uint8_t  request_number;      		// Request Number (node generated random number)
+	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
+	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving) 
 };
 
 struct DiscoveryResponseMessage{
-    uint16_t gid;                 						// Sender Node Group ID (2-bytes)
-    uint8_t  type = DISCOVERY_RESPONSE;                 // Always set to zero for requests and one for responses
-    uint8_t  request_number;      						// Request Number (node generated random number)
-    uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
-    uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving) 
+	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
+	uint8_t  type = DISCOVERY_RESPONSE;           // Always set to zero for requests and one for responses
+	uint8_t  request_number;      		// Request Number (node generated random number)
+	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
+	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving) 
 };
 
 struct CreateRecordMessage{
-	uint16_t gid;                 						// Sender Node Group ID (2-bytes)
-    uint8_t  type = CREATE_RECORD;          			// Always set to zero for requests and one for responses
-	uint8_t  request_number;							// Request Number (node generated random number)
-	uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
-    uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving)
-	char record[MAX_DB_ENT_LEN]; 						// Payload
+	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
+	uint8_t  type = CREATE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  request_number;			// Request Number (node generated random number)
+	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
+	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
+	char record[MAX_DB_ENT_LEN]; 			// Payload
 };
 
 struct DeleteRecordMessage{
-	uint16_t gid;                 						// Sender Node Group ID (2-bytes)
-    uint8_t  type = DELETE_RECORD;          			// Always set to zero for requests and one for responses
-	uint8_t  request_number;							// Request Number (node generated random number)
-	uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
-    uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving)
+	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
+	uint8_t  type = DELETE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  request_number;			// Request Number (node generated random number)
+	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
+	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
 	uint8_t record_index;
 	uint8_t padding;
 };
 
 
 struct RetrieveRecordMessage{
-	uint16_t gid;                 						// Sender Node Group ID (2-bytes)
-    uint8_t  type = RETRIEVE_RECORD;          			// Always set to zero for requests and one for responses
-	uint8_t  request_number;							// Request Number (node generated random number)
-	uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
-    uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving)
+	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
+	uint8_t  type = RETRIEVE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  request_number;			// Request Number (node generated random number)
+	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
+	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
 	uint8_t  record_index;
 	uint8_t padding;
 };
