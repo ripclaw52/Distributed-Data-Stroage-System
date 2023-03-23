@@ -40,7 +40,7 @@ enum Status {
 	SUCCESS,
 	DB_FULL,
 	DELETE_ERROR,
-	DB_EMPTY
+	RETRIEVE_ERROR
 };
 
 
@@ -54,7 +54,7 @@ struct record{
 // This is an array of records
 struct data{
 	record item_array[NUMB_OF_ENT];
-	uint8_t index;
+	uint8_t item_count;
 };
 
 // TODO: when a user "logs in", none of these node values are set, we will likely want to provide default values.
@@ -99,6 +99,7 @@ struct DeleteRecordMessage{
 	uint8_t  request_number;							// Request Number (node generated random number)
 	uint8_t  sender_id;           						// Senders ID (the ID of the node that is sending)
     uint8_t  receiver_id;         						// Receiver ID (the ID of the node that is receiving)
+	uint8_t record_index;
 	uint8_t padding;
 };
 
@@ -133,6 +134,10 @@ bool init_node(struct node* node);
 bool set_node_id(struct node* node, uint8_t id);
 bool set_node_gid(struct node* node, uint16_t gid);
 bool set_node_db_entry_count(struct node* node, uint8_t count);
+
+bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
+bool delete_record(struct Node *node, uint8_t index);
+char* retrieve_record(struct Node *node, uint8_t index);
 
 void reset_array(struct node* node);
 uint8_t generate_request_num(void);
