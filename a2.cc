@@ -6,11 +6,30 @@ int sfd = -1;
 
 //struct node * node_db = NULL; im pretty certain you are setting a pointer to null here?
 
-struct Node db_node; // globally defined struct, represents the node.
-struct MessageHeader message_header;
+struct Node node_db; // globally defined struct, represents the node.
+
+
+struct ResponseMessage assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char record[20]){
+	struct ResponseMessage response_message;
+
+	response_message.gid = gid;
+	response_message.request_number = request_number;
+	response_message.sender_id = sender_id;
+	response_message.receiver_id = receiver_id;
+	response_message.status = status;
+	if (padding != NULL){
+		response_message.padding = padding;
+	};
+	if sizeof(record) > 0{
+		response_message.record = record;
+	};
+
+	return response_message;
+
+};
 
 // sends packet information to other nodes
-fsm sender(struct msg* message) {
+fsm sender(const void *message) {
 	address packet;
 
 	state sending:
@@ -27,7 +46,7 @@ fsm sender(struct msg* message) {
 }
 
 // receives packet information from wireless connected nodes
-fsm receiver(struct Node* db_node) {
+fsm receiver(struct Node* node_db) {
 	
 	address incoming_packet;
 
@@ -36,113 +55,215 @@ fsm receiver(struct Node* db_node) {
 		incoming_packet = tcv_rnp(receiving, sfd);
 	state ok:
 		
-		//struct MessageHeader* message_header;
-		struct Message* message;
-		int bytes_read = tcv_read(incoming_packet+1, message, 6);
-		//struct MessageHeader* message_header = (struct MessageHeader*)(incoming_packet+1);
+		uint8_t type;
+		uint8_t bytes_read = tcv_read(incoming_packet+3, type, 1);
 
-		/* Grab and store the header components */
-		uint16_t received_gid		 = message->gid;
-		uint8_t received_type 		 = message->type;
-		uint8_t received_req_num 	 = message->req_num;
-		uint8_t received_sender_id 	 = message->sender_id;
-		uint8_t received_receiver_id = message->receiver_id;
-
-		uint8_t received_status		 = message->status;
-
-		/*DEBUGGING PURPOSES*/
-		DEBUG_PRINT("RECEIVED GID: %d\n", received_gid);
-		DEBUG_PRINT("RECEIVED TYPE: %d\n", received_type);
-		DEBUG_PRINT("RECEIVED REQ NUM: %d\n", received_req_num);
-		DEBUG_PRINT("RECEIVED SID: %d\n", received_sender_id);
-		DEBUG_PRINT("RECEIVED RID: %d\n", received_receiver_id);
-
-		DEBUG_PRINT("RECEIVED STATUS: %d\n", received_status);
-
-		if (received_type < 0 || received_type > 5) {
-			DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", received_type);
+		if (bytes_read != 1){
 			proceed error;
-		} else if (received_receiver_id != db_node->id) {
-			DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", received_type);
-			proceed error;
-		} else if (received_sender_id > 25 || received_sender_id < 0) {
-			DEBUG_PRINT("ERROR: sender_id [%d] is not within the valid id range", received_sender_id);
-			proceed error;
-		} else {
+		};
+		// in each switch case where we send a response using call (), we may be able to remove the return state...
+		switch (type){
+			
+			/*
+			Our node has received a discovery request, we need to send back to the sending node
+			a discovery response. The discovery response message includes the following fields.
+			
+			o Group ID [2 bytes]: The sender node group ID
+			o Type [1 byte]: Always set to ONE
+			o Request Number [1 byte]: This field should be equal to the request number received in the corresponding Discovery request message
+			o Sender ID [1 byte]: The originator node ID for this message
+			o Receiver ID [1 byte]: The ID of the node that originally sent the Discovery Request
+			
+			Because this is one of the scenarios where the packets are the same we can send back the packet with any required modifications
+			*/
+			case DISCOVERY_REQUEST:
+				// respondng with this
+				struct DiscoveryResponseMessage* discovery_response_message;
+				// receiving this
+				struct DiscoveryRequestMessage* discovery_request_message = (struct DiscoveryRequesteMessage*)(incoming_packet+1);
 
-			switch(received_type) {
-				// Discovery Request
-				case 0:
+				/*DEBUGGING*/
+				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_request_message->type);
+				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_request_message->request_number);
+				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_request_message->sender_id);
+				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_request_message->receiver_id);
 
-					/*
-					Our node has received a discovery request, we need to send back to the sending node
-					a discovery response. The discovery response message includes the following fields.
-					
-					o Group ID [2 bytes]: The sender node group ID
-					o Type [1 byte]: Always set to ONE
-					o Request Number [1 byte]: This field should be equal to the request number received in the corresponding Discovery request message
-					o Sender ID [1 byte]: The originator node ID for this message
-					o Receiver ID [1 byte]: The ID of the node that originally sent the Discovery Request
-					
-					Because this is one of the scenarios where the packets are the same we can send back the packet with any required modifications
-					*/
-					message->gid         = node_db->gid;			// return this nodes gid in the message gid
-					message->type        = (uint8_t) 1; 			// change the type to 1 for discovery response.
-					message->req_num     = received_req_num;	
-					message->sender_id   = node_db->id;	    		// change the sender_id to this nodes id.
-					message->receiver_id = received_sender_id;		// the ID of the requester
+				// if the group_ids match
+				if (discovery_request_message->gid == node_db->gid){
+					discovery_response_message->gid = discovery_request_message->gid;
+					discovery_response_message->request_number = discovery_request_message->request_number;
+					discovery_response_message->sender_id = node_db->id;
+					discovery_response_message->receiver_id = discovery_request_message->sender_id;
+					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
+					call sender(discovery_response_message, return_from_sender);
+				} 
 
-					// perform sending operation
-					
-					break;
-				// Discovery Response
-				case 1:
-					break;
-				// Create Record Message
-				case 2:
-					break;
-				// Delete Record Message
-				case 3:
-					break;
-				// Retrieve Record Message
-				case 4:
-					break;
-				// Response Message
-				case 5:
-					switch(received_status) {
-						// operation performed succesfully
-						case 0x01:
-							// Use the request number to check what type of message was sent
-							// condition for:
-							//		create
-							//		delete
-							//		retrieve
-							break;
-						// record can't be added to full database
-						case 0x02:
-							proceed response_2;
-							break;
-						// record can't be deleted from empty database
-						case 0x03:
-							proceed response_3;
-							break;
-						// record can't be retrieved from empty database
-						case 0x04:
-							proceed response_4;
-							break;
-						default:
-							break;
-					}
-					break;
-				default:
+				break;
+			
+			/*
+			Our node has received a discovery response message, meaning it has sent a discovry request.
+
+			We need to populate the node neighbour array with the appropriate values. I beleive we want it
+			to be filled with the node_ids of those who have the same group id.
+
+			Based on the specifications, there is no response when this kind of message is received.
+			*/
+			case DISCOVERY_RESPONSE:
+				// receiving this, no response.
+				struct DiscoveryResponseMessage* discovery_response_message = (struct DiscoveryResponseMessage*)(incoming_packet+1);
+
+				/*DEBUGGING*/
+				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_response_message->gid);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_response_message->type);
+				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_response_message->request_number);
+				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_response_message->sender_id);
+				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_response_message->receiver_id);
+
+				node_db->nnodes[node_db->index] = node_db->gid == discovery_response_message->gid && discovery_response_message->sender_id < NNODE_GROUP_SIZE && discovery_response_message->sender_id > 0 ? discovery_response_message->sender_id : node_db->nnodes[node_db->index];
+				
+				//node_db->index = node_db->nnodes[node_db->index] == discovery_response_message->sender_id ? node_db->index+1 : node_db->index;
+				// increment the index if the insertion succeeded.
+				if (node_db->nnodes[node_db->index] == discovery_response_message->sender_id){
+					node_db->index+=1;
+				};
+				
+				break;
+			/*
+			Our node has received a create record message. This means the sender node wishes to create and store
+			a record in our node (the receiver).
+			*/
+			case CREATE_RECORD:
+				struct ResponseMessage response_message;
+				struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
+				bool neighbour_check = false;
+				uint8_t status;
+
+				/*DEBUGGING*/
+				DEBUG_PRINT("RECEIVED GID: %d\n", create_record_message->gid);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", create_record_message->type);
+				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", create_record_message->request_number);
+				DEBUG_PRINT("RECEIVED SID: %d\n", create_record_message->sender_id);
+				DEBUG_PRINT("RECEIVED RID: %d\n", create_record_message->receiver_id);
+				DEBUG_PRINT("RECEIVED RECORD: %s\n", create_record_message->record);
+
+				// if the message is not for this node, it is ignored.
+				if (create_record_message->receiver_id != node_db->id || create_record_message->gid != node_db->id){
 					break;
 				}
 
-		}
-		
-		tcv_endp(incoming_packet);
+				// check the record size, attempt to insert it...if the user send something invalid, we will just ignore this message and break
+				if (sizeof(create_record_message->record) <= MAX_DB_ENT_LEN && sizeof(create_record_message->record) > 0) {
+					// pointer to node, the record to be inserted, the owner of the record (the sender)
+					if (insert_record(node_db, create_record_message->record, create_record_message->sender_id)){
+						status = (uint8_t) SUCCESS
+					} else{
+						status = (uint8_t) DB_FULL;
+					};
 
-		proceed receiving;
+					response_message = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, NULL, {});
+					call sender(&response_message, return_from_sender);
+
+				};
+				
+				break;
+
+			case DELETE_RECORD:
+				struct ResponseMessage response_message;
+				struct DeleteRecordMessage *delete_record_message = (struct DeleteRecordMessage*)(incoming_packet+1);
+
+				// if the message is not intended for this node, ignore it.
+				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db.id){
+					break;
+				};
+
+				// if a valid index is provided
+				if (delete_record_message->record_index >=0 && delete_record_message->record_index <= 40){
+					
+					// attempt to delete the record at the provided, valid, index.
+					if (delete_record(node_db, delete_record_message->record_index)){
+						status = (uint8_t) SUCCESS;
+					} else{
+						status = (uint8_t) DELETE_ERROR;
+					};
+
+					response_message = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, NULL, {});
+					call sender(&response_message, return_from_sender);
+
+				};
+
+				break;
+
+			// NOTE: this case will likely still require work
+			case RETRIEVE_RECORD:
+				struct ResponseMessage* response_message;
+				struct RetrieveRecordMessage *retreive_record_message = (struct RetrieveRecordMessage*)(incoming_packet+1);
+				char retrieved_record[20];
+
+				// if the message is not intended for this node, ignore it.
+				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db.id){
+					break;
+				};
+
+				// validate index
+				if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
+					retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
+					if (retrieved_record == '\0'){
+						status = (uint8_t) RETRIEVE_ERROR;
+						response_message = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, NULL, {});
+
+					} else {
+						status = (uint8_t) SUCCESS;
+						response_message = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, NULL, retrieved_record);
+
+					};
+					call sender(&response_message, return_from_sender);
+
+				};
+
+				break;
+
+			case RESPONSE:
+				struct ResponseMessage* response_message = (struct ResponseMessage*)(incoming_packet+1);
+
+				// if the message is not intended for this node, ignore it.
+				if (response_message->gid != node_db->gid || response_message->receiver_id != node_db.id){
+					break;
+				};
+
+				switch(response_message->status){
+					
+					case OTHER_ERROR:
+						break;
+					case SUCCESS:
+						break;
+					case DB_FULL:
+						proceed response_2;
+						break;
+					case DELETE_ERROR:
+						proceed response_3;
+						break;
+					case RETRIEVE_ERROR:
+						proceed response_4;
+						break;
+					default;
+						break;
+
+				};
+
+				break;
+
+			// if the type provided is > 5 || < 0
+			default:
+				DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", type);
+				break;
+
+		};
+
+
+	tcv_endp(incoming_packet);
+
+	//proceed receiving;
 	
 	// Succeeded in performing requested action
 	state response_1_cre:
@@ -165,25 +286,27 @@ fsm receiver(struct Node* db_node) {
 	state reponse_4:
 		ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
 		proceed receiving;
-	
+
+	// likely want to respond with error message
 	state error:
 		DEBUG_PRINT("ERROR: someting went wrong when receiving the packet");
 		// handle error
 }
 
 fsm root {
+	/*
+	#ifdef DEBUG_MODE
+    if we need to set parameters specifically for debug mode, we can do it here.
+	#endif
+	*/
 	struct Message* message;
 
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node 
-		node_db = (struct Node *)umalloc(sizeof(struct Node));
+		//node_db = (struct Node *)umalloc(sizeof(struct Node));
 
 		message = (struct Message *message)umalloc(sizeof(struct Message));
 
-		// cast message_header to struct MessageHeader * and malloc to it the size of a MessageHeader struct
-		message_header = (struct MessageHeader *)umalloc(sizeof(struct MessageHeader));
-
-		// initial values of payload
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -231,7 +354,7 @@ fsm root {
 		*/
 		tcv_control(sfd, PHYSOPT_ON, NULL);
 
-		runfsm receiver(db_node);
+		runfsm receiver(node_db);
 
 	state menu:
 		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
