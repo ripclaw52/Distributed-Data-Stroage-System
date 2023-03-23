@@ -152,29 +152,6 @@ fsm receiver(struct Node* node_db) {
 					break;
 				}
 
-				/*
-				// do a check to see if this sending node is a verified neighbour...
-				// that is, the node exists in our neighbours list, meaning they are within our group.
-				for (int i = 0; i <= node_db->index; i++){
-					if (node_db->nnodes[i] != create_record_message->sender_id){
-						continue;
-					} else {
-						neighbour_check = true;
-						break;
-					};	
-				};
-				// NOTE: im not sure this is how we want to do this...
-				// if they don't pass this check then we should break, this may be subject to change.
-				// this assumes that every user must do a broadcast first to discover local users they are allowed to
-				// communicate with.
-				if (!neighbour_check){
-					break;
-				};
-				*/
-
-				//status = node_db->data_base.index != NUMB_OF_ENT ? (uint8_t) SUCCESS : (uint8_t) DB_FULL;
-
-				
 				// check the record size, attempt to insert it...if the user send something invalid, we will just ignore this message and break
 				if (sizeof(create_record_message->record) <= MAX_DB_ENT_LEN && sizeof(create_record_message->record) > 0) {
 					// pointer to node, the record to be inserted, the owner of the record (the sender)
