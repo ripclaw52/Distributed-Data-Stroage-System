@@ -69,7 +69,7 @@ struct Node {
 
 struct DiscoveryRequestMessage{
 	uint16_t gid;                			// Sender Node Group ID (2-bytes)
-	uint8_t  type = DISCOVERY_REQUEST;            // Always set to zero for requests and one for responses
+	uint8_t  tpe = DISCOVERY_REQUEST;            // Always set to zero for requests and one for responses
 	uint8_t  request_number;      		// Request Number (node generated random number)
 	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
 	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving) 
@@ -77,7 +77,7 @@ struct DiscoveryRequestMessage{
 
 struct DiscoveryResponseMessage{
 	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
-	uint8_t  type = DISCOVERY_RESPONSE;           // Always set to zero for requests and one for responses
+	uint8_t  tpe = DISCOVERY_RESPONSE;           // Always set to zero for requests and one for responses
 	uint8_t  request_number;      		// Request Number (node generated random number)
 	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
 	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving) 
@@ -85,7 +85,7 @@ struct DiscoveryResponseMessage{
 
 struct CreateRecordMessage{
 	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
-	uint8_t  type = CREATE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  tpe = CREATE_RECORD;          	// Always set to zero for requests and one for responses
 	uint8_t  request_number;			// Request Number (node generated random number)
 	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
 	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
@@ -94,7 +94,7 @@ struct CreateRecordMessage{
 
 struct DeleteRecordMessage{
 	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
-	uint8_t  type = DELETE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  tpe = DELETE_RECORD;          	// Always set to zero for requests and one for responses
 	uint8_t  request_number;			// Request Number (node generated random number)
 	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
 	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
@@ -105,7 +105,7 @@ struct DeleteRecordMessage{
 
 struct RetrieveRecordMessage{
 	uint16_t gid;                 		// Sender Node Group ID (2-bytes)
-	uint8_t  type = RETRIEVE_RECORD;          	// Always set to zero for requests and one for responses
+	uint8_t  tpe = RETRIEVE_RECORD;          	// Always set to zero for requests and one for responses
 	uint8_t  request_number;			// Request Number (node generated random number)
 	uint8_t  sender_id;           		// Senders ID (the ID of the node that is sending)
 	uint8_t  receiver_id;         		// Receiver ID (the ID of the node that is receiving)
@@ -119,7 +119,7 @@ struct RetrieveRecordMessage{
 // NOTE not every message is going to require every type here,
 struct ResponseMessage{
 	uint16_t gid; 
-	uint8_t type = RESPONSE;
+	uint8_t tpe = RESPONSE;
 	uint8_t request_number;
 	uint8_t sender_id;
 	uint8_t receiver_id;
