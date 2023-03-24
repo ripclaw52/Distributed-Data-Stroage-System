@@ -7,7 +7,6 @@
 #include "tcv.h"
 #include "phys_cc1350.h"
 #include "plug_null.h"
-#include "discovery_requests.hpp"
 
 #define MAX_PKT_LEN 250
 #define NUMB_OF_ENT 40
