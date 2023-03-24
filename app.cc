@@ -9,20 +9,20 @@ int sfd = -1;
 struct Node node_db; // globally defined struct, represents the node.
 
 
-struct ResponseMessage assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char record[20]){
-	struct ResponseMessage response_message;
+struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
+	struct ResponseMessage *response_message;
 
-	response_message.gid = gid;
-	response_message.tpe = RESPONSE;
-	response_message.request_number = request_number;
-	response_message.sender_id = sender_id;
-	response_message.receiver_id = receiver_id;
-	response_message.status = status;
+	response_message->gid = gid;
+	response_message->tpe = RESPONSE;
+	response_message->request_number = request_number;
+	response_message->sender_id = sender_id;
+	response_message->receiver_id = receiver_id;
+	response_message->status = status;
 	if (!padding){
-		response_message.padding = padding;
+		response_message->padding = padding;
 	};
-	if (sizeof(record) > 0){
-		response_message.record = record;
+	if (rec != NULL){
+		strncpy(response_message->record, rec, 20);
 	};
 
 	return response_message;
@@ -31,10 +31,11 @@ struct ResponseMessage assemble_response_message(uint16_t gid, uint8_t request_n
 
 // sends packet information to other nodes
 fsm sender(const void *message) {
+
 	address packet;
 
 	state sending:
-		packet = tcv_wnp(sending, sfd, sizeof(struct msg)+4);
+		packet = tcv_wnp(sending, sfd, 4); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = NETWORK_ID;
 
 		tcv_endp(packet);
@@ -50,6 +51,7 @@ fsm sender(const void *message) {
 fsm receiver(struct Node* node_db) {
 	
 	address incoming_packet;
+	char array[20];
 
 	state receiving:
 		// Get the next packet queued for input at the session (sfd)
@@ -77,11 +79,11 @@ fsm receiver(struct Node* node_db) {
 			
 			Because this is one of the scenarios where the packets are the same we can send back the packet with any required modifications
 			*/
-			case DISCOVERY_REQUEST:
+			case DISCOVERY_REQUEST: ;
 				// respondng with this
 				struct DiscoveryResponseMessage *discovery_response_message;
 				// receiving this
-				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequesteMessage*)(incoming_packet+1);
+				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
 				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
@@ -98,7 +100,7 @@ fsm receiver(struct Node* node_db) {
 					discovery_response_message->sender_id = node_db->id;
 					discovery_response_message->receiver_id = discovery_request_message->sender_id;
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
-					call sender(discovery_response_message, return_from_sender);
+					call sender(discovery_response_message, done_case);
 				} 
 
 				break;
@@ -111,22 +113,22 @@ fsm receiver(struct Node* node_db) {
 
 			Based on the specifications, there is no response when this kind of message is received.
 			*/
-			case DISCOVERY_RESPONSE:
+			case DISCOVERY_RESPONSE: ;
 				// receiving this, no response.
-				struct DiscoveryResponseMessage* discovery_response_message = (struct DiscoveryResponseMessage*)(incoming_packet+1);
+				struct DiscoveryResponseMessage* discovery_response_message_1 = (struct DiscoveryResponseMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
-				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_response_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_response_message->tpe);
-				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_response_message->request_number);
-				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_response_message->sender_id);
-				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_response_message->receiver_id);
+				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_response_message_1->gid);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_response_message_1->tpe);
+				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_response_message_1->request_number);
+				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_response_message_1->sender_id);
+				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_response_message_1->receiver_id);
 
-				node_db->nnodes[node_db->index] = node_db->gid == discovery_response_message->gid && discovery_response_message->sender_id < NNODE_GROUP_SIZE && discovery_response_message->sender_id > 0 ? discovery_response_message->sender_id : node_db->nnodes[node_db->index];
+				node_db->nnodes[node_db->index] = node_db->gid == discovery_response_message_1->gid && discovery_response_message_1->sender_id < NNODE_GROUP_SIZE && discovery_response_message_1->sender_id > 0 ? discovery_response_message_1->sender_id : node_db->nnodes[node_db->index];
 				
 				//node_db->index = node_db->nnodes[node_db->index] == discovery_response_message->sender_id ? node_db->index+1 : node_db->index;
 				// increment the index if the insertion succeeded.
-				if (node_db->nnodes[node_db->index] == discovery_response_message->sender_id){
+				if (node_db->nnodes[node_db->index] == discovery_response_message_1->sender_id){
 					node_db->index+=1;
 				};
 				
@@ -135,8 +137,8 @@ fsm receiver(struct Node* node_db) {
 			Our node has received a create record message. This means the sender node wishes to create and store
 			a record in our node (the receiver).
 			*/
-			case CREATE_RECORD:
-				struct ResponseMessage response_message;
+			case CREATE_RECORD: ;
+				struct ResponseMessage *response_message_5;
 				struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
 				bool neighbour_check = false;
 				uint8_t status;
@@ -158,24 +160,24 @@ fsm receiver(struct Node* node_db) {
 				if (sizeof(create_record_message->record) <= MAX_DB_ENT_LEN && sizeof(create_record_message->record) > 0) {
 					// pointer to node, the record to be inserted, the owner of the record (the sender)
 					if (insert_record(node_db, create_record_message->record, create_record_message->sender_id)){
-						status = (uint8_t) SUCCESS
+						status = (uint8_t) SUCCESS;
 					} else{
 						status = (uint8_t) DB_FULL;
 					};
 
-					response_message = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, {});
-					call sender(&response_message, return_from_sender);
+					response_message_5 = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, array);
+					call sender(response_message_5, done_case);
 
 				};
 				
 				break;
 
-			case DELETE_RECORD:
-				struct ResponseMessage response_message;
+			case DELETE_RECORD: ;
+				struct ResponseMessage *response_message_4;
 				struct DeleteRecordMessage *delete_record_message = (struct DeleteRecordMessage*)(incoming_packet+1);
 
 				// if the message is not intended for this node, ignore it.
-				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db.id){
+				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db->id){
 					break;
 				};
 
@@ -189,51 +191,50 @@ fsm receiver(struct Node* node_db) {
 						status = (uint8_t) DELETE_ERROR;
 					};
 
-					response_message = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, {});
-					call sender(&response_message, return_from_sender);
+					response_message_4 = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, array);
+					call sender(response_message_4, done_case);
 
 				};
 
 				break;
 
 			// NOTE: this case will likely still require work
-			case RETRIEVE_RECORD:
-				struct ResponseMessage* response_message;
+			case RETRIEVE_RECORD: ;
+				struct ResponseMessage *response_message_2;
 				struct RetrieveRecordMessage *retreive_record_message = (struct RetrieveRecordMessage*)(incoming_packet+1);
-				char retrieved_record[20];
+				struct record retrieved_record;
 
 				// if the message is not intended for this node, ignore it.
-				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db.id){
+				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db->id){
 					break;
 				};
 
 				// validate index
 				if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
 					retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
-					if (retrieved_record == '\0'){
+					if (retrieved_record.data_entry == NULL){
 						status = (uint8_t) RETRIEVE_ERROR;
-						response_message = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, NULL, {});
+						response_message_2 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
 
 					} else {
 						status = (uint8_t) SUCCESS;
-						response_message = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, NULL, retrieved_record);
+						response_message_2 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
 
 					};
-					call sender(&response_message, return_from_sender);
-
+					call sender(response_message_2, done_case);
 				};
 
 				break;
 
-			case RESPONSE:
-				struct ResponseMessage* response_message = (struct ResponseMessage*)(incoming_packet+1);
+			case RESPONSE: ;
+				struct ResponseMessage* response_message_3 = (struct ResponseMessage*)(incoming_packet+1);
 
 				// if the message is not intended for this node, ignore it.
-				if (response_message->gid != node_db->gid || response_message->receiver_id != node_db.id){
+				if (response_message_3->gid != node_db->gid || response_message_3->receiver_id != node_db->id){
 					break;
 				};
 
-				switch(response_message->status){
+				switch(response_message_3->status){
 					
 					case OTHER_ERROR:
 						break;
@@ -248,7 +249,7 @@ fsm receiver(struct Node* node_db) {
 					case RETRIEVE_ERROR:
 						proceed response_4;
 						break;
-					default;
+					default:
 						break;
 
 				};
@@ -261,9 +262,9 @@ fsm receiver(struct Node* node_db) {
 				break;
 
 		};
+	state done_case:
 
-
-	tcv_endp(incoming_packet);
+		tcv_endp(incoming_packet);
 
 	//proceed receiving;
 	
@@ -275,18 +276,18 @@ fsm receiver(struct Node* node_db) {
 		ser_out(response_1_del, "\r\n Record Deleted");
 		proceed receiving;
 	state response_1_ret:
-		ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+		//ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
 		proceed receiving;
 	
 	// Failed to perform requestws action
 	state response_2:
-		ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
+		//ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
 		proceed receiving;
 	state response_3:
-		ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
+		//ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
 		proceed receiving;
 	state response_4:
-		ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
+		//ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
 		proceed receiving;
 
 	// likely want to respond with error message
@@ -295,6 +296,7 @@ fsm receiver(struct Node* node_db) {
 		// handle error
 		// retry?
 		proceed receiving;
+		
 }
 
 fsm root {
@@ -303,14 +305,10 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
-	struct Message* message;
 
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node 
 		node_db = (struct Node *)umalloc(sizeof(struct Node));
-
-		message = (struct Message *message)umalloc(sizeof(struct Message));
-
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)

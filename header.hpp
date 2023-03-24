@@ -135,7 +135,7 @@ bool set_node_db_entry_count(struct Node *node, uint8_t count);
 
 bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 bool delete_record(struct Node *node, uint8_t index);
-char* retrieve_record(struct Node *node, uint8_t index);
+struct record retrieve_record(struct Node *node, uint8_t index);
 
 void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
