@@ -101,10 +101,10 @@ bool delete_record(struct Node *node, uint8_t index){
 };
 
 // Get record
-char* retrieve_record(struct Node *node, uint8_t index){
+struct record retrieve_record(struct Node *node, uint8_t index){
 
     // Did the check to see if index was valid in main.cc file
-    return node->data_base.item_array[index].data_entry;
+    return node->data_base.item_array[index];
 
 };
 
