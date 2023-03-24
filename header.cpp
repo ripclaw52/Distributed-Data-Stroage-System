@@ -1,5 +1,4 @@
 #include "header.hpp"
-#include <cstdint>
 
 /*
 This function will initialize an empty node strucutre, provided a pointer to that strucutre

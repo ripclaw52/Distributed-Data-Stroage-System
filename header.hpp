@@ -1,6 +1,5 @@
 #ifndef DISCOVERY_REQUESTS_H_
 #define DISCOVERY_REQUESTS_H_
-#include <cstdint>
 #include <stdlib.h>
 #include "sysio.h"
 #include "ser.h"
@@ -52,7 +51,7 @@ struct record{
 
 // This is an array of records
 struct data{
-	record item_array[NUMB_OF_ENT];
+	struct record item_array[NUMB_OF_ENT];
 	uint8_t item_count;
 };
 
@@ -63,7 +62,7 @@ struct data{
 struct Node {
 	uint8_t id;					// Individual Node ID (1-byte)							
 	uint16_t gid;					// The Nodes group ID (2-bytes)
-	data data_base;				// The database each node will have to fill
+	struct data data_base;				// The database each node will have to fill
 	uint8_t nnodes[NNODE_GROUP_SIZE]; 		// Array containing neighbouring nodes ids
 	uint8_t index;					// We need to keep track of what index we are at in this list
 };
@@ -133,7 +132,7 @@ struct ResponseMessage{
 bool init_node(struct Node *node);
 bool set_node_id(struct Node *node, uint8_t id);
 bool set_node_gid(struct Node *node, uint16_t gid);
-bool set_node_db_entry_count(struct node* node, uint8_t count);
+bool set_node_db_entry_count(struct Node *node, uint8_t count);
 
 bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 bool delete_record(struct Node *node, uint8_t index);

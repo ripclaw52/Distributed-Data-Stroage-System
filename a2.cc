@@ -59,7 +59,7 @@ fsm receiver(struct Node* node_db) {
 		uint8_t bytes_read = tcv_read(incoming_packet+3, type, 1);
 
 		if (bytes_read != 1){
-			proceed error;
+			//proceed error; //NOTE: NO ERROR STATE
 		};
 		// in each switch case where we send a response using call (), we may be able to remove the return state...
 		switch (type){
@@ -283,7 +283,7 @@ fsm receiver(struct Node* node_db) {
 	state response_3:
 		ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
 		proceed receiving;
-	state reponse_4:
+	state response_4:
 		ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
 		proceed receiving;
 
