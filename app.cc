@@ -13,6 +13,7 @@ struct ResponseMessage assemble_response_message(uint16_t gid, uint8_t request_n
 	struct ResponseMessage response_message;
 
 	response_message.gid = gid;
+	response_message.tpe = RESPONSE;
 	response_message.request_number = request_number;
 	response_message.sender_id = sender_id;
 	response_message.receiver_id = receiver_id;
@@ -92,6 +93,7 @@ fsm receiver(struct Node* node_db) {
 				// if the group_ids match
 				if (discovery_request_message->gid == node_db->gid){
 					discovery_response_message->gid = discovery_request_message->gid;
+					discovery_response_message->tpe = DISCOVERY_RESPONSE;
 					discovery_response_message->request_number = discovery_request_message->request_number;
 					discovery_response_message->sender_id = node_db->id;
 					discovery_response_message->receiver_id = discovery_request_message->sender_id;
