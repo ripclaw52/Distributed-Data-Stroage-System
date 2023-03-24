@@ -18,10 +18,10 @@ struct ResponseMessage assemble_response_message(uint16_t gid, uint8_t request_n
 	response_message.sender_id = sender_id;
 	response_message.receiver_id = receiver_id;
 	response_message.status = status;
-	if (padding != NULL){
+	if (!padding){
 		response_message.padding = padding;
 	};
-	if sizeof(record) > 0{
+	if (sizeof(record) > 0){
 		response_message.record = record;
 	};
 
@@ -57,7 +57,7 @@ fsm receiver(struct Node* node_db) {
 	state ok:
 		
 		uint8_t tpe;
-		uint8_t bytes_read = tcv_read(incoming_packet+3, tpe, 1);
+		uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1); // NOTE: might still be broked'd
 
 		if (bytes_read != 1){
 			//proceed error; //NOTE: NO ERROR STATE
@@ -79,9 +79,9 @@ fsm receiver(struct Node* node_db) {
 			*/
 			case DISCOVERY_REQUEST:
 				// respondng with this
-				struct DiscoveryResponseMessage* discovery_response_message;
+				struct DiscoveryResponseMessage *discovery_response_message;
 				// receiving this
-				struct DiscoveryRequestMessage* discovery_request_message = (struct DiscoveryRequesteMessage*)(incoming_packet+1);
+				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequesteMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
 				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
@@ -163,7 +163,7 @@ fsm receiver(struct Node* node_db) {
 						status = (uint8_t) DB_FULL;
 					};
 
-					response_message = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, NULL, {});
+					response_message = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, {});
 					call sender(&response_message, return_from_sender);
 
 				};
@@ -189,7 +189,7 @@ fsm receiver(struct Node* node_db) {
 						status = (uint8_t) DELETE_ERROR;
 					};
 
-					response_message = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, NULL, {});
+					response_message = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, {});
 					call sender(&response_message, return_from_sender);
 
 				};
