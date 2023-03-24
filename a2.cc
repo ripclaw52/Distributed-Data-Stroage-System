@@ -55,14 +55,14 @@ fsm receiver(struct Node* node_db) {
 		incoming_packet = tcv_rnp(receiving, sfd);
 	state ok:
 		
-		uint8_t type;
-		uint8_t bytes_read = tcv_read(incoming_packet+3, type, 1);
+		uint8_t tpe;
+		uint8_t bytes_read = tcv_read(incoming_packet+3, tpe, 1);
 
 		if (bytes_read != 1){
 			//proceed error; //NOTE: NO ERROR STATE
 		};
 		// in each switch case where we send a response using call (), we may be able to remove the return state...
-		switch (type){
+		switch (tpe){
 			
 			/*
 			Our node has received a discovery request, we need to send back to the sending node
@@ -84,7 +84,7 @@ fsm receiver(struct Node* node_db) {
 
 				/*DEBUGGING*/
 				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_request_message->type);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_request_message->tpe);
 				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_request_message->request_number);
 				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_request_message->sender_id);
 				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_request_message->receiver_id);
@@ -115,7 +115,7 @@ fsm receiver(struct Node* node_db) {
 
 				/*DEBUGGING*/
 				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_response_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_response_message->type);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_response_message->tpe);
 				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_response_message->request_number);
 				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_response_message->sender_id);
 				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_response_message->receiver_id);
@@ -141,7 +141,7 @@ fsm receiver(struct Node* node_db) {
 
 				/*DEBUGGING*/
 				DEBUG_PRINT("RECEIVED GID: %d\n", create_record_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", create_record_message->type);
+				DEBUG_PRINT("RECEIVED TYPE: %d\n", create_record_message->tpe);
 				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", create_record_message->request_number);
 				DEBUG_PRINT("RECEIVED SID: %d\n", create_record_message->sender_id);
 				DEBUG_PRINT("RECEIVED RID: %d\n", create_record_message->receiver_id);
@@ -255,7 +255,7 @@ fsm receiver(struct Node* node_db) {
 
 			// if the type provided is > 5 || < 0
 			default:
-				DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", type);
+				DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", tpe);
 				break;
 
 		};
