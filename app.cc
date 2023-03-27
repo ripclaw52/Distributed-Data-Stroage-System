@@ -69,46 +69,39 @@ fsm sender(const void *message) {
 	int packet_size;
 
 	packet_size = get_message_size(message);
-	
+
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = NETWORK_ID;
 		byte * p = (byte *)(packet+1);
 
-		/*
-		 * Sending specific message structure into packet
-		 */
+		*p = message->gid;p++;
+		*p = message->tpe;p++;
+		*p = message->request_number;p++;
+		*p = message->sender_id;p++;
+		*p = message->receiver_id;p++;
+		
 		switch(message->tpe) {
-			// Discovery Request
-			case DISCOVERY_REQUEST: ;
-				// format packet for discovery request message
-				*p = ;p++;
-				break;
-
-			// Discovery Response
-			case DISCOVERY_RESPONSE: ;
-				// format packet for discovery response message
-				*p = ;p++;
-				break;
-
 			// Create Record
-			case CREATE_RECORD: ;
+			case CREATE_RECORD:
 				// format packet for create record message
+				strcpy(p, message->record);
 				break;
 
-			// Delete Record
-			case DELETE_RECORD: ;
-				// format packet for delete record message
-				break;
-
-			// Retrieve Record
-			case RETRIEVE_RECORD: ;
-				// format packet for retrieve record message
+			// Delete Record & Retrieve Record
+			case DELETE_RECORD:
+			case RETRIEVE_RECORD:
+				// format packet for delete or retrieve record message
+				*p = message->record_index;p++;
+				*p = message->padding;
 				break;
 
 			// Response 
-			case RESPONSE: ;
+			case RESPONSE:
 				// format packet for response message
+				*p = message->status;p++;
+				*p = message->padding;p++;
+				strcpy(p, message->record);
 				break;
 
 			// Type is not matching with any other value
