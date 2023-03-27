@@ -29,11 +29,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 
 };
 
-// sends packet information to other nodes
-fsm sender(const void *message) {
-	address packet;
+// Gets the message size
+int get_message_size(const void *message) {
 	int packet_size;
-
 	/*
 	 * Calculate needed size of sending packet
 	 */
@@ -58,13 +56,24 @@ fsm sender(const void *message) {
 
 		// Type is not valid. exit from loop
 		default:
+			packet_size = 0;
 			// EXIT SENDER FSM
 			break;
-		}
+	}
+	return packet_size;
+}
 
+// sends packet information to other nodes
+fsm sender(const void *message) {
+	address packet;
+	int packet_size;
+
+	packet_size = get_message_size(message);
+	
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = NETWORK_ID;
+		byte * p = (byte *)(packet+1);
 
 		/*
 		 * Sending specific message structure into packet
@@ -73,11 +82,13 @@ fsm sender(const void *message) {
 			// Discovery Request
 			case DISCOVERY_REQUEST: ;
 				// format packet for discovery request message
+				*p = ;p++;
 				break;
 
 			// Discovery Response
 			case DISCOVERY_RESPONSE: ;
 				// format packet for discovery response message
+				*p = ;p++;
 				break;
 
 			// Create Record
