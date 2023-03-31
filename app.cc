@@ -486,9 +486,16 @@ fsm root {
 		ser_inf(new_group_id, "%d", NEW_NODE_GID);
 		
 		// Return bool condition, so check for failure
-		set_node_gid(node_db, NEW_NODE_GID);
+		if (!set_node_gid(node_db, NEW_NODE_GID)){
+			reason = "GID did not get set";
+			proceed invalid_node_gid;
+		}
 
 		proceed menu;
+	
+	state invalid_node_gid:
+		ser_outf(invalid_node_gid, "\r\nGID#: %d is an invalid choice. Reason: %s.", node_db->gid, reason);
+		proceed get_new_group_id;
 
 	state get_new_node_id:
 		ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
