@@ -74,13 +74,13 @@ fsm sender(const void *message) {
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = NETWORK_ID;
 		byte * p = (byte *)(packet+1);
-
+		// Base packet information
 		*p = message->gid;p++;
 		*p = message->tpe;p++;
 		*p = message->request_number;p++;
 		*p = message->sender_id;p++;
 		*p = message->receiver_id;p++;
-		
+		// Specific packet information based on message type
 		switch(message->tpe) {
 			// Create Record
 			case CREATE_RECORD:
@@ -104,9 +104,9 @@ fsm sender(const void *message) {
 				strcpy(p, message->record);
 				break;
 
-			// Type is not matching with any other value
+			// Type is not response or create/delete/retrieve records
 			default:
-				// packet being sent is not of a valid type
+				// Packet is a discovery request/response
 				break;
 		}
 
@@ -377,10 +377,16 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
+	struct Node *node_db;
 
 	state initialize_node:
-		// cast node_db to struct node * and malloc to it the size of a struct node 
+		// cast node_db to struct node * and malloc to it the size of a struct node
+		// setup node structure
 		node_db = (struct Node *)umalloc(sizeof(struct Node));
+		// Initial values
+		node_db->id = 1;
+		node_db->gid = 1;
+		node_db->index = 0;
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -431,7 +437,7 @@ fsm root {
 		runfsm receiver(node_db);
 
 	state menu:
-		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
+		ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_db->gid, node_db->id, node_db->index, NUMB_OF_ENT);
 
 	state get_choice:
 		ser_inf(get_choice, "%c", &CHOICE);
@@ -477,7 +483,7 @@ fsm root {
 		ser_out(get_new_group_id, "Please provide a new group ID#: ");
 
 	state new_group_id:
-		ser_inf(new_group_id, "%d", NODE_GROUP_ID_VAR);
+		ser_inf(new_group_id, "%d", node_db->gid);
 		proceed menu;
 
 	state get_new_node_id:
