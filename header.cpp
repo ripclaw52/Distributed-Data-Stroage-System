@@ -80,6 +80,23 @@ bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
     return true;   
 };
 
+
+bool clear_node_neighbour_array(struct Node *node){
+
+    if (!sizeof(node->nnodes)){
+        return true;
+    } else{
+        for (int i = 0; i < NNODE_GROUP_SIZE; i++){
+            node->nnodes[i] = '\0'; // set to null byte
+        };
+        return true;
+    };
+
+    return false;
+
+};
+
+
 // returns false when 0 items in db or the index is already null, otherwise true after deletion
 bool delete_record(struct Node *node, uint8_t index){
     
