@@ -531,14 +531,14 @@ fsm root {
 		proceed get_new_node_id;
 
 	state find_proto:
-		struct DiscoveryRequestMessage *DREQUEST_packet;
-		DREQUEST_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
+		struct DiscoveryRequestMessage *DREQ_packet;
+		DREQ_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
-		DREQUEST_packet->gid = node_db->gid;
-		DREQUEST_packet->tpe = MessageType.DISCOVERY_REQUEST;
-		DREQUEST_packet->request_number = generate_request_num();
-		DREQUEST_packet->sender_id = node_db->id;
-		DREQUEST_packet->receiver_id=0;
+		DREQ_packet->gid = node_db->gid;
+		DREQ_packet->tpe = MessageType.DISCOVERY_REQUEST;
+		DREQ_packet->request_number = generate_request_num();
+		DREQ_packet->sender_id = node_db->id;
+		DREQ_packet->receiver_id=0;
 
 		trigger(&fin);
 /* DON"T THINK WE NEED THE BELOW, it will also break the code due to payload not being declaired.
