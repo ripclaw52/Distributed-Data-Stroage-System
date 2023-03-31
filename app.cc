@@ -6,7 +6,6 @@ int sfd = -1;
 
 //struct node * node_db = NULL; im pretty certain you are setting a pointer to null here?
 
-struct Node *node_db; // globally defined struct, represents the node.
 
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
@@ -377,15 +376,11 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
-	//struct Node *node_db;
 
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
 		// setup node structure
 		node_db = (struct Node *)umalloc(sizeof(struct Node));
-
-		// Bool condition, check for failure
-		init_node(node_db);
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -501,8 +496,6 @@ fsm root {
 		ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
 	state new_node_id:
-		uint8_t NEW_NODE_ID;
-		ser_inf(new_node_id, "%d", NEW_NODE_ID);
 		
 		// Check to see if the number given is within range.
 		if(node_db->id < 1 || node_db->id > 25){
@@ -517,13 +510,6 @@ fsm root {
 				proceed invalid_node_id;
 			}
 		}
-
-		// Bool condition, check for failure
-		if (!set_node_id(node_db, NEW_NODE_ID)) {
-			reason = "ID did not get set";
-			proceed invalid_node_id;
-		}
-		
 		proceed menu;
 
 	state invalid_node_id:
