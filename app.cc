@@ -458,6 +458,7 @@ fsm root {
 			case 'C':
 				proceed create_proto;
 				break;
+				
 			case 'd':
 			case 'D':
 				proceed delete_proto;
