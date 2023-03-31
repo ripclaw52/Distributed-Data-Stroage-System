@@ -6,6 +6,7 @@ int sfd = -1;
 
 //struct node * node_db = NULL; im pretty certain you are setting a pointer to null here?
 
+struct Node node_db; // globally defined struct, represents the node.
 
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
@@ -376,11 +377,16 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
+	struct Node *node_db;
 
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
 		// setup node structure
 		node_db = (struct Node *)umalloc(sizeof(struct Node));
+		// Initial values
+		node_db->id = 1;
+		node_db->gid = 1;
+		node_db->index = 0;
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -477,6 +483,7 @@ fsm root {
 		ser_out(get_new_group_id, "Please provide a new group ID#: ");
 
 	state new_group_id:
+<<<<<<< HEAD
 		uint16_t NEW_NODE_GID;
 		ser_inf(new_group_id, "%d", NEW_NODE_GID);
 		
@@ -486,6 +493,9 @@ fsm root {
 			proceed invalid_node_gid;
 		}
 
+=======
+		ser_inf(new_group_id, "%d", node_db->gid);
+>>>>>>> parent of 8c33917 (Merge pull request #15 from ripclaw52/main)
 		proceed menu;
 	
 	state invalid_node_gid:
@@ -496,6 +506,7 @@ fsm root {
 		ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
 	state new_node_id:
+		ser_inf(new_node_id, "%d", node_db->id);
 		
 		// Check to see if the number given is within range.
 		if(node_db->id < 1 || node_db->id > 25){
@@ -517,6 +528,7 @@ fsm root {
 		proceed get_new_node_id;
 
 	state find_proto:
+<<<<<<< HEAD
 		struct DiscoveryRequestMessage *DREQ_packet;
 		DREQ_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
@@ -526,6 +538,8 @@ fsm root {
 		DREQ_packet->sender_id = node_db->id;
 		DREQ_packet->receiver_id=0;
 
+=======
+>>>>>>> parent of 8c33917 (Merge pull request #15 from ripclaw52/main)
 		trigger(&fin);
 /* DON"T THINK WE NEED THE BELOW, it will also break the code due to payload not being declaired.
 	state display_neighboring_array:
