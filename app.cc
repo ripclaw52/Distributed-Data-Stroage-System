@@ -405,8 +405,7 @@ fsm root {
 	int discovery_wait_flag = 0;
 	char user_provided_record[20];
 	uint8_t user_provided_index;
-	
-	uint8_t user provided_receiver_id;
+	uint8_t user_provided_receiver_id;
 
 	
 	state initialize_node:
@@ -574,10 +573,10 @@ fsm root {
 	
 	*/
 	state clear_neighbour_array:
-		if (!clear_neighbour_array(&node_db)){
-				strncpy(reason, "Error Clearing Node Array", 50);
-				proceed error;
-			};
+		if (!clear_node_neighbour_array(&node_db)){
+			strncpy(reason, "Error Clearing Node Array", 50);
+			proceed error;
+		};
 
 	state find_proto_start:
 
