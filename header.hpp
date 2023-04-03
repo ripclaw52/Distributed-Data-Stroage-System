@@ -1,6 +1,7 @@
 #ifndef DISCOVERY_REQUESTS_H_
 #define DISCOVERY_REQUESTS_H_
 #include <stdlib.h>
+#include <string.h>
 #include "sysio.h"
 #include "ser.h"
 #include "serf.h"
