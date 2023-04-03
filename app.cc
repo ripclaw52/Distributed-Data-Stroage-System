@@ -609,8 +609,8 @@ fsm root {
 		}
 	
 	state display_neighbour_nodes:
-		//ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
-		ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
+		ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
 		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
 			if (node_db->nnodes[i]=='\0') break;
 			ser_outf(display_neigbour_nodes, "%d, ", node_db->nnodes[i]);
