@@ -124,7 +124,7 @@ fsm sender(const void *message) {
 
 // receives packet information from wireless connected nodes
 fsm receiver(struct Node* node_db) {
-	
+	struct ResponseMessage* response_message_5;
 	
 	address incoming_packet;
 	char array[20];
@@ -303,7 +303,7 @@ fsm receiver(struct Node* node_db) {
 				break;
 
 			case RESPONSE: ;
-				struct ResponseMessage* response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
+				response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
 
 				// if the message is not intended for this node, ignore it.
 				if (response_message_5->gid != node_db->gid || response_message_5->receiver_id != node_db->id){
@@ -367,18 +367,18 @@ fsm receiver(struct Node* node_db) {
 		ser_out(response_1_delete, "\r\n Record Deleted");
 		proceed receiving;
 	state response_1_retrieve:
-		//ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+		ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", response_message_5->sender_id, response_message_5->record);
 		proceed receiving;
 	
 	// Failed to perform requests action
 	state response_2:
-		//ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
+		ser_outf(response_2, "\r\n The record can't be saved on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_3:
-		//ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
+		ser_outf(response_3, "\r\n The record does not exists on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_4:
-		//ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
+		ser_outf(response_4, "\r\n The record does not exist on node %d", response_message_5->sender_id);
 		proceed receiving;
 
 	// likely want to respond with error message
