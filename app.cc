@@ -7,6 +7,8 @@ int sfd = -1;
 // Stores the random request numner and the type of message send
 int response_checker[2];
 
+word response_flag=0;
+
 struct Node *node_db; // globally defined struct, represents the node.
 
 
@@ -124,7 +126,7 @@ fsm sender(const void *message) {
 
 // receives packet information from wireless connected nodes
 fsm receiver(struct Node* node_db) {
-	
+	struct ResponseMessage* response_message_5;
 	
 	address incoming_packet;
 	char array[20];
@@ -303,12 +305,17 @@ fsm receiver(struct Node* node_db) {
 				break;
 
 			case RESPONSE: ;
-				struct ResponseMessage* response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
+				response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
 
 				// if the message is not intended for this node, ignore it.
 				if (response_message_5->gid != node_db->gid || response_message_5->receiver_id != node_db->id){
 					break;
 				};
+
+				if(!response_flag){
+					response_flag=1;
+					trigger(&response_flag);
+				}
 
 				switch(response_message_5->status){
 					
@@ -367,18 +374,18 @@ fsm receiver(struct Node* node_db) {
 		ser_out(response_1_delete, "\r\n Record Deleted");
 		proceed receiving;
 	state response_1_retrieve:
-		//ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+		ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", response_message_5->sender_id, response_message_5->record);
 		proceed receiving;
 	
 	// Failed to perform requests action
 	state response_2:
-		//ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
+		ser_outf(response_2, "\r\n The record can't be saved on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_3:
-		//ser_outf(response_3, "\r\n The record does not exists on node %d", message->sender_id);
+		ser_outf(response_3, "\r\n The record does not exists on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_4:
-		//ser_outf(response_4, "\r\n The record does not exist on node %d", message->sender_id);
+		ser_outf(response_4, "\r\n The record does not exist on node %d", response_message_5->sender_id);
 		proceed receiving;
 
 	// likely want to respond with error message
@@ -400,6 +407,7 @@ fsm root {
 	uint8_t user_provided_receiver_id;
 	uint8_t user_provided_index;
 	char user_provided_record[20];
+	uint8_t discovery_wait_flag=0;
 	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
@@ -473,7 +481,7 @@ fsm root {
 				break;
 			case 'f':
 			case 'F':
-				proceed find_proto;
+				proceed clear_neighbour_array;
 				break;
 			case 'c':
 			case 'C':
@@ -564,13 +572,14 @@ fsm root {
 		   
 	  Then prints the list of neighbours
 	
-	*/ 
-	state find_proto:
-
+	*/
+	state clear_neighbour_array:
 		if (!clear_node_neighbour_array(&node_db)){
-			strncpy(reason, "Error Clearing Node Array", 50);
-			proceed error;
-		};
+				strncpy(reason, "Error Clearing Node Array", 50);
+				proceed error;
+			};
+
+	state find_proto_start:
 
 		struct DiscoveryRequestMessage *request_packet;
 		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
@@ -585,6 +594,28 @@ fsm root {
 		// delay() ?
 		// what should the trigger listen for?
 		//trigger(&fin);
+		call sender(request_packet, wait_discovery);
+	
+	state wait_discovery:
+		if (discovery_wait_flag == 0){
+			discovery_wait_flag=1;
+			delay(3000, find_proto_start);
+			release;
+		}
+		if (discovery_wait_flag == 1){
+			discovery_wait_flag=0;
+			delay(3000, display_neighbour_nodes);
+			release;
+		}
+	
+	state display_neighbour_nodes:
+		ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
+		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
+			if (node_db->nnodes[i]=='\0') break;
+			ser_outf(display_neigbour_nodes, "%d, ", node_db->nnodes[i]);
+		}
+		proceed menu;
 
 	/*
 		the user has provided 'c' or 'C' command, indicating they wish to perform the create protocol.
@@ -743,9 +774,14 @@ fsm root {
 		proceed menu;
 
 	state wait:
-		delay(3000);
+		delay(3000, timeout);
+		when(&response_flag, menu);
+		release;
+	
+	state timeout:
+		ser_out(timeout, "\r\nFailed to reach the destination");
 		proceed menu;
-
+	
 	// NOTE: to prevent unwanted behaviour, we will likely want to clear the array in here
 	state error:
 		ser_outf(invalid_node_id, "\r\nError: %s", reason);
