@@ -33,7 +33,7 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 };
 
 // Gets the message size
-int get_message_size(const void *message) {
+int get_message_size(struct ResponseMessage *message) {
 	int packet_size;
 	/*
 	 * Calculate needed size of sending packet
@@ -67,16 +67,15 @@ int get_message_size(const void *message) {
 }
 
 // sends packet information to other nodes
-fsm sender(const void *message) {
+fsm sender(struct ResponseMessage *message) {
 	address packet;
-	int packet_size;
 
-	packet_size = get_message_size(message);
+	int packet_size = get_message_size(message);
 
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = NETWORK_ID;
-		byte * p = (byte *)(packet+1);
+		char * p = (char *)(packet+1);
 		// Base packet information
 		*p = message->gid;p++;
 		*p = message->tpe;p++;
@@ -574,7 +573,7 @@ fsm root {
 	
 	*/
 	state clear_neighbour_array:
-		if (!clear_node_neighbour_array(&node_db)){
+		if (!clear_neighbour_array(&node_db)){
 				strncpy(reason, "Error Clearing Node Array", 50);
 				proceed error;
 			};
@@ -585,7 +584,7 @@ fsm root {
 		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
 		request_packet->gid = node_db->gid;
-		request_packet->tpe = MessageType::DISCOVERY_REQUEST;
+		request_packet->tpe = DISCOVERY_REQUEST;
 		request_packet->request_number = generate_request_num();
 		request_packet->sender_id = node_db->id;
 		request_packet->receiver_id=0;
@@ -613,7 +612,7 @@ fsm root {
 		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
 		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
 			if (node_db->nnodes[i]=='\0') break;
-			ser_outf(display_neigbour_nodes, "%d, ", node_db->nnodes[i]);
+			ser_outf(display_neighbour_nodes, "%d, ", node_db->nnodes[i]);
 		}
 		proceed menu;
 
@@ -631,10 +630,10 @@ fsm root {
 		ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
 	state get_id_for_create:
-		ser_in(get_id_for_create, user_provided_receiver_id, 1);
+		ser_in(get_id_for_create, "%d", user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
-			strncpy(reason, "Error: improper ID", 50)
+			strncpy(reason, "Error: improper ID", 50);
 			proceed error;
 		};
 
@@ -647,18 +646,18 @@ fsm root {
 
 	state init_create_record_message:
 
-		struct CreateRecordMessage create_message;
+		struct CreateRecordMessage *create_message;
 		create_message = (struct CreateRecordMessage*)umalloc(sizeof(struct CreateRecordMessage));
-		create_message.gid = node_db->gid;
-		create_message.tpe = MessageType::CREATE_RECORD;
-		create_message.request_number = generate_request_num();
-		create_message.sender_id = node_db->id;
-		create_message.receiver_id = user_provided_receiver_id;
-		strncpy(create_message.record, user_provided_record, 20);
+		create_message->gid = node_db->gid;
+		create_message->tpe = CREATE_RECORD;
+		create_message->request_number = generate_request_num();
+		create_message->sender_id = node_db->id;
+		create_message->receiver_id = user_provided_receiver_id;
+		strncpy(create_message->record, user_provided_record, 20);
 		
 		// Store create message type & request number for response message parsing
-		response_checker[0] = create_message.request_number;
-		response_checker[1] = create_message.tpe;
+		response_checker[0] = create_message->request_number;
+		response_checker[1] = create_message->tpe;
 
 		call sender(&create_message, wait);
 		// trigger?
@@ -675,10 +674,10 @@ fsm root {
 		ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_delete:
-		ser_in(get_id_for_delete, user_provided_receiver_id, 1);
+		ser_inf(get_id_for_delete, "%d", user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
-			strncpy(reason, "Error: improper node ID", 50)
+			strncpy(reason, "Error: improper node ID", 50);
 			proceed error;
 		};
 
@@ -686,7 +685,7 @@ fsm root {
 		ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_delete:
-		ser_in(get_index_for_delete, user_provided_index, 1);
+		ser_inf(get_index_for_delete, "%d", user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -695,19 +694,19 @@ fsm root {
 
 	state init_delete_record_message:
 
-		struct DeleteRecordMessage delete_record;
-		delete_record = (struct DeleteRecordMessage*)umalloc(sizeof(struct DeleteRecordMessage));
-		delete_record.gid = node_db->gid;
-		delete_record.tpe = MessageType::DELETE_RECORD;
-		delete_record.request_number = generate_request_num();
-		delete_record.sender_id = node_db->id;
-		delete_record.receiver_id = user_provided_receiver_id;
-		delete_record.record_index = user_provided_index;
+		struct DeleteRecordMessage *delete_record;
+		delete_record = (struct DeleteRecordMessage *)umalloc(sizeof(struct DeleteRecordMessage));
+		delete_record->gid = node_db->gid;
+		delete_record->tpe = DELETE_RECORD;
+		delete_record->request_number = generate_request_num();
+		delete_record->sender_id = node_db->id;
+		delete_record->receiver_id = user_provided_receiver_id;
+		delete_record->record_index = user_provided_index;
 		// NOTE: something to do with padding here?
 
 		// Store delete record message type & request number for response message parsing
-		response_checker[0] = delete_record.request_number;
-		response_checker[1] = delete_record.tpe;
+		response_checker[0] = delete_record->request_number;
+		response_checker[1] = delete_record->tpe;
 
 		call sender(&delete_record, wait);
 		// NOTE: trigger not added, not sure where it is explcitly needed
@@ -724,10 +723,10 @@ fsm root {
 		ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_retrieve:
-		ser_in(get_id_for_retrieve, user_provided_receiver_id, 1);
+		ser_inf(get_id_for_retrieve, "%d", user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
-			strncpy(reason, "Error: improper node ID", 50)
+			strncpy(reason, "Error: improper node ID", 50);
 			proceed error;
 		};
 
@@ -735,7 +734,7 @@ fsm root {
 		ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_retrieve:
-		ser_in(get_index_for_retrieve, user_provided_index, 1);
+		ser_inf(get_index_for_retrieve, "%d", user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -744,21 +743,21 @@ fsm root {
 
 	state retrieve_proto:
 
-		struct RetrieveRecordMessage retrieve_record;
-		retrieve_record = (struct RetrieveRecordMessage*)umalloc(sizeof(struct RetrieveRecordMessage));
-		retrieve_record.gid = node_db->gid;
-		retrieve_record.tpe = MessageType::RETRIEVE_RECORD;
-		retrieve_record.request_number = generate_request_num();
-		retrieve_record.sender_id = node_db->id;
-		retrieve_record.receiver_id = user_provided_receiver_id;
-		retrieve_record.record_index = user_provided_index;
+		struct RetrieveRecordMessage *retrieve_record;
+		retrieve_record = (struct RetrieveRecordMessage *)umalloc(sizeof(struct RetrieveRecordMessage));
+		retrieve_record->gid = node_db->gid;
+		retrieve_record->tpe = RETRIEVE_RECORD;
+		retrieve_record->request_number = generate_request_num();
+		retrieve_record->sender_id = node_db->id;
+		retrieve_record->receiver_id = user_provided_receiver_id;
+		retrieve_record->record_index = user_provided_index;
 		// NOTE: something to do with padding here?
 
 		// Store retrieve record message type & request number for response message parsing
-		response_checker[0] = retrieve_record.request_number;
-		response_checker[1] = retrieve_record.tpe;
+		response_checker[0] = retrieve_record->request_number;
+		response_checker[1] = retrieve_record->tpe;
 		
-		call sender(&retrieve_record, wait)
+		call sender(&retrieve_record, wait);
 		
 	state display_db:
 		ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");

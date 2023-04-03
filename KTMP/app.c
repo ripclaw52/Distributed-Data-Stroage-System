@@ -793,6 +793,46 @@ extern long double strtold (const char *restrict, char **restrict);
 
 
 
+# 27 "/usr/include/newlib/string.h"
+
+
+void * memchr (const void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void * memcpy (void *restrict, const void *restrict, size_t);
+void * memmove (void *, const void *, size_t);
+void * memset (void *, int, size_t);
+char *strcat (char *restrict, const char *restrict);
+char *strchr (const char *, int);
+int strcmp (const char *, const char *);
+int strcoll (const char *, const char *);
+char *strcpy (char *restrict, const char *restrict);
+size_t strcspn (const char *, const char *);
+char *strerror (int);
+size_t strlen (const char *);
+char *strncat (char *restrict, const char *restrict, size_t);
+int strncmp (const char *, const char *, size_t);
+char *strncpy (char *restrict, const char *restrict, size_t);
+char *strpbrk (const char *, const char *);
+char *strrchr (const char *, int);
+size_t strspn (const char *, const char *);
+char *strstr (const char *, const char *);
+
+char *strtok (char *restrict, const char *restrict);
+
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+# 86 "/usr/include/newlib/string.h"
+char *_strdup_r (struct _reent *, const char *);
+
+
+
+char *_strndup_r (struct _reent *, const char *, size_t);
+# 112 "/usr/include/newlib/string.h"
+char * _strerror_r (struct _reent *, int, int, int *);
+# 134 "/usr/include/newlib/string.h"
+char *strsignal (int __signo);
+# 176 "/usr/include/newlib/string.h"
+
+
 # 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
 
 
@@ -6794,7 +6834,7 @@ void adddevfunc (devreqfun_t, int);
 void phys_cc1350 (int, int);
 # 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/VLibs/PlugNull/plug_null.h"
 extern const tcvplug_t plug_null;
-# 26 "./header.hpp"
+# 27 "./header.hpp"
 enum MessageType {
  DISCOVERY_REQUEST,
  DISCOVERY_RESPONSE,
@@ -6897,44 +6937,48 @@ struct ResponseMessage{
  uint8_t status;
  uint8_t padding;
  char record[20];
+ uint8_t record_index;
 };
 
 
 _Bool 
-# 131 "./header.hpp"
+# 133 "./header.hpp"
     init_node(struct Node *node);
 _Bool 
-# 132 "./header.hpp"
+# 134 "./header.hpp"
     set_node_id(struct Node *node, uint8_t id);
 _Bool 
-# 133 "./header.hpp"
+# 135 "./header.hpp"
     set_node_gid(struct Node *node, uint16_t gid);
 _Bool 
-# 134 "./header.hpp"
+# 136 "./header.hpp"
     set_node_db_entry_count(struct Node *node, uint8_t count);
 
 _Bool 
-# 136 "./header.hpp"
+# 138 "./header.hpp"
     insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 _Bool 
-# 137 "./header.hpp"
+# 139 "./header.hpp"
     delete_record(struct Node *node, uint8_t index);
 struct record retrieve_record(struct Node *node, uint8_t index);
 
 void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
 _Bool 
-# 142 "./header.hpp"
+# 144 "./header.hpp"
     delete_all(struct Node *node);
 # 2 "app.cc"
 
 char CHOICE;
-char reason[20];
+char reason[50];
 int sfd = -1;
 
 
+int response_checker[2];
 
-struct Node node_db;
+word response_flag=0;
+
+struct Node *node_db;
 
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
@@ -6950,9 +6994,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
   response_message->padding = padding;
  };
  if (rec != 
-# 24 "app.cc"
+# 27 "app.cc"
            ((void *)0)
-# 24 "app.cc"
+# 27 "app.cc"
                ){
   __pi_strncpy (response_message->record, rec, 20);
  };
@@ -6962,19 +7006,92 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 };
 
 
+int get_message_size(struct ResponseMessage *message) {
+ int packet_size;
+
+
+
+ switch(message->tpe) {
+
+  case DISCOVERY_REQUEST: packet_size = sizeof(struct DiscoveryRequestMessage); break;
+
+
+  case DISCOVERY_RESPONSE: packet_size = sizeof(struct DiscoveryResponseMessage); break;
+
+
+  case CREATE_RECORD: packet_size = sizeof(struct CreateRecordMessage); break;
+
+
+  case DELETE_RECORD: packet_size = sizeof(struct DeleteRecordMessage); break;
+
+
+  case RETRIEVE_RECORD: packet_size = sizeof(struct RetrieveRecordMessage); break;
+
+
+  case RESPONSE: packet_size = sizeof(struct ResponseMessage); break;
+
+
+  default:
+   packet_size = 0;
+
+   break;
+ }
+ return packet_size;
+}
+
+
 
 #define sending 0
 #define CONFIRM_message 1
-# 33 "app.cc"
-void sender (word __pi_st) { const void * message = (const void *)(__pi_curr->data); switch (__pi_st) { 
-# 33 "app.cc"
-
+# 70 "app.cc"
+void sender (word __pi_st) { struct ResponseMessage * message = (struct ResponseMessage *)(__pi_curr->data); switch (__pi_st) { 
+# 70 "app.cc"
 
  static address packet;
 
+ static int packet_size=get_message_size (message );
+
  case sending : __stlab_sending: {
-  packet = tcv_wnps (sending, sfd, 4, 0);
+  packet = tcv_wnps (sending, sfd, 4 + packet_size, 0);
   packet[0] = 0;
+  char * p = (char *)(packet+1);
+
+  *p = message->gid;p++;
+  *p = message->tpe;p++;
+  *p = message->request_number;p++;
+  *p = message->sender_id;p++;
+  *p = message->receiver_id;p++;
+
+  switch(message->tpe) {
+
+   case CREATE_RECORD:
+
+
+    __pi_strncpy (p, message->record, sizeof(message->record));
+    break;
+
+
+   case DELETE_RECORD:
+   case RETRIEVE_RECORD:
+
+    *p = message->record_index;p++;
+    *p = message->padding;
+    break;
+
+
+   case RESPONSE:
+
+    *p = message->status;p++;
+    *p = message->padding;p++;
+
+    __pi_strncpy (p, message->record, sizeof(message->record));
+    break;
+
+
+   default:
+
+    break;
+  }
 
   tcv_endp(packet);
 
@@ -6990,17 +7107,18 @@ break; } default: __pi_badstate (); } }
 #define receiving 0
 #define ok 1
 #define done_case 2
-#define response_1_cre 3
-#define response_1_del 4
-#define response_1_ret 5
+#define response_1_create 3
+#define response_1_delete 4
+#define response_1_retrieve 5
 #define response_2 6
 #define response_3 7
 #define response_4 8
 #define error 9
-# 51 "app.cc"
+# 127 "app.cc"
 void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr->data); switch (__pi_st) { 
-# 51 "app.cc"
+# 127 "app.cc"
 
+ static struct ResponseMessage *response_message_5;
 
  static address incoming_packet;
  static char array[20];
@@ -7033,7 +7151,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
    case DISCOVERY_REQUEST: ;
 
-    struct DiscoveryResponseMessage *discovery_response_message;
+    struct DiscoveryResponseMessage *response_message_0;
 
     struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
@@ -7046,13 +7164,13 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
 
     if (discovery_request_message->gid == node_db->gid){
-     discovery_response_message->gid = discovery_request_message->gid;
-     discovery_response_message->tpe = DISCOVERY_RESPONSE;
-     discovery_response_message->request_number = discovery_request_message->request_number;
-     discovery_response_message->sender_id = node_db->id;
-     discovery_response_message->receiver_id = discovery_request_message->sender_id;
+     response_message_0->gid = discovery_request_message->gid;
+     response_message_0->tpe = DISCOVERY_RESPONSE;
+     response_message_0->request_number = discovery_request_message->request_number;
+     response_message_0->sender_id = node_db->id;
+     response_message_0->receiver_id = discovery_request_message->sender_id;
 
-     do { if (__pi_join (__pi_fork (sender, (aword)(discovery_response_message )), done_case )) __pi_release (); } while (0);
+     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_0 )), done_case )) __pi_release (); } while (0);
     }
 
     break;
@@ -7067,20 +7185,20 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
    case DISCOVERY_RESPONSE: ;
 
-    struct DiscoveryResponseMessage* discovery_response_message_1 = (struct DiscoveryResponseMessage*)(incoming_packet+1);
+    struct DiscoveryResponseMessage* response_message_1 = (struct DiscoveryResponseMessage*)(incoming_packet+1);
 
 
-    diag("RECEIVED GID: %d\n", discovery_response_message_1->gid);
-    diag("RECEIVED TYPE: %d\n", discovery_response_message_1->tpe);
-    diag("RECEIVED REQ NUM: %d\n", discovery_response_message_1->request_number);
-    diag("RECEIVED SID: %d\n", discovery_response_message_1->sender_id);
-    diag("RECEIVED RID: %d\n", discovery_response_message_1->receiver_id);
+    diag("RECEIVED GID: %d\n", response_message_1->gid);
+    diag("RECEIVED TYPE: %d\n", response_message_1->tpe);
+    diag("RECEIVED REQ NUM: %d\n", response_message_1->request_number);
+    diag("RECEIVED SID: %d\n", response_message_1->sender_id);
+    diag("RECEIVED RID: %d\n", response_message_1->receiver_id);
 
-    node_db->nnodes[node_db->index] = node_db->gid == discovery_response_message_1->gid && discovery_response_message_1->sender_id < 25 && discovery_response_message_1->sender_id > 0 ? discovery_response_message_1->sender_id : node_db->nnodes[node_db->index];
+    node_db->nnodes[node_db->index] = node_db->gid == response_message_1->gid && response_message_1->sender_id < 25 && response_message_1->sender_id > 0 ? response_message_1->sender_id : node_db->nnodes[node_db->index];
 
 
 
-    if (node_db->nnodes[node_db->index] == discovery_response_message_1->sender_id){
+    if (node_db->nnodes[node_db->index] == response_message_1->sender_id){
      node_db->index+=1;
     };
 
@@ -7090,14 +7208,14 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
 
    case CREATE_RECORD: ;
-    struct ResponseMessage *response_message_5;
+    struct ResponseMessage *response_message_2;
     struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
    _Bool 
-# 143 "app.cc"
+# 220 "app.cc"
         neighbour_check = 
-# 143 "app.cc"
+# 220 "app.cc"
                           0
-# 143 "app.cc"
+# 220 "app.cc"
                                ;
     uint8_t status;
 
@@ -7112,7 +7230,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
     if (create_record_message->receiver_id != node_db->id || create_record_message->gid != node_db->id){
      break;
-    }
+    };
 
 
     if (sizeof(create_record_message->record) <= 20 && sizeof(create_record_message->record) > 0) {
@@ -7123,15 +7241,15 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
       status = (uint8_t) DB_FULL;
      };
 
-     response_message_5 = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, array);
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_5 )), done_case )) __pi_release (); } while (0);
+     response_message_2 = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, array);
+     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_2 )), done_case )) __pi_release (); } while (0);
 
     };
 
     break;
 
    case DELETE_RECORD: ;
-    struct ResponseMessage *response_message_4;
+    struct ResponseMessage *response_message_3;
     struct DeleteRecordMessage *delete_record_message = (struct DeleteRecordMessage*)(incoming_packet+1);
 
 
@@ -7149,8 +7267,8 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
       status = (uint8_t) DELETE_ERROR;
      };
 
-     response_message_4 = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, array);
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_4 )), done_case )) __pi_release (); } while (0);
+     response_message_3 = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, array);
+     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_3 )), done_case )) __pi_release (); } while (0);
 
     };
 
@@ -7158,7 +7276,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
 
    case RETRIEVE_RECORD: ;
-    struct ResponseMessage *response_message_2;
+    struct ResponseMessage *response_message_4;
     struct RetrieveRecordMessage *retreive_record_message = (struct RetrieveRecordMessage*)(incoming_packet+1);
     struct record retrieved_record;
 
@@ -7171,36 +7289,56 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
      retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
      if (retrieved_record.data_entry == 
-# 215 "app.cc"
+# 292 "app.cc"
                                        ((void *)0)
-# 215 "app.cc"
+# 292 "app.cc"
                                            ){
       status = (uint8_t) RETRIEVE_ERROR;
-      response_message_2 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
+      response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
 
      } else {
       status = (uint8_t) SUCCESS;
-      response_message_2 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
+      response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
 
      };
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_2 )), done_case )) __pi_release (); } while (0);
+     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_4 )), done_case )) __pi_release (); } while (0);
     };
 
     break;
 
    case RESPONSE: ;
-    struct ResponseMessage* response_message_3 = (struct ResponseMessage*)(incoming_packet+1);
+    response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
 
 
-    if (response_message_3->gid != node_db->gid || response_message_3->receiver_id != node_db->id){
+    if (response_message_5->gid != node_db->gid || response_message_5->receiver_id != node_db->id){
      break;
     };
 
-    switch(response_message_3->status){
+    if(!response_flag){
+     response_flag=1;
+     __pi_trigger ((aword)(&response_flag));
+    }
+
+    switch(response_message_5->status){
 
      case OTHER_ERROR:
       break;
      case SUCCESS:
+      if (response_checker[0] == response_message_5->request_number){
+       switch(response_checker[1]){
+        case CREATE_RECORD:
+         proceed (response_1_create);
+         break;
+        case DELETE_RECORD:
+         proceed (response_1_delete);
+         break;
+        case RETRIEVE_RECORD:
+         proceed (response_1_retrieve);
+         break;
+        default:
+         break;
+       }
+      }
       break;
      case DB_FULL:
       proceed (response_2);
@@ -7231,25 +7369,25 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
 
 
- } case response_1_cre : __stlab_response_1_cre: {
-  ser_out(response_1_cre, "\r\n Data Saved");
+ } case response_1_create : __stlab_response_1_create: {
+  ser_out(response_1_create, "\r\n Data Saved");
   proceed (receiving);
- } case response_1_del : __stlab_response_1_del: {
-  ser_out(response_1_del, "\r\n Record Deleted");
+ } case response_1_delete : __stlab_response_1_delete: {
+  ser_out(response_1_delete, "\r\n Record Deleted");
   proceed (receiving);
- } case response_1_ret : __stlab_response_1_ret: {
-
+ } case response_1_retrieve : __stlab_response_1_retrieve: {
+  ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", response_message_5->sender_id, response_message_5->record);
   proceed (receiving);
 
 
  } case response_2 : __stlab_response_2: {
-
+  ser_outf(response_2, "\r\n The record can't be saved on node %d", response_message_5->sender_id);
   proceed (receiving);
  } case response_3 : __stlab_response_3: {
-
+  ser_outf(response_3, "\r\n The record does not exists on node %d", response_message_5->sender_id);
   proceed (receiving);
  } case response_4 : __stlab_response_4: {
-
+  ser_outf(response_4, "\r\n The record does not exist on node %d", response_message_5->sender_id);
   proceed (receiving);
 
 
@@ -7263,14 +7401,14 @@ break; } default: __pi_badstate (); } }
 #undef receiving
 #undef ok
 #undef done_case
-#undef response_1_cre
-#undef response_1_del
-#undef response_1_ret
+#undef response_1_create
+#undef response_1_delete
+#undef response_1_retrieve
 #undef response_2
 #undef response_3
 #undef response_4
 #undef error
-# 300 "app.cc"
+# 397 "app.cc"
 
 
 
@@ -7282,26 +7420,53 @@ break; } default: __pi_badstate (); } }
 #define get_new_node_id 5
 #define new_node_id 6
 #define invalid_node_id 7
-#define find_proto 8
-#define create_proto 9
-#define delete_proto 10
-#define retrieve_proto 11
-#define display_db 12
-#define loop_through_data 13
-#define del_local 14
-# 302 "app.cc"
+#define clear_neighbour_array 8
+#define find_proto_start 9
+#define wait_discovery 10
+#define display_neighbour_nodes 11
+#define create_proto_start 12
+#define get_id_for_create 13
+#define ask_for_record_to_create 14
+#define get_record_to_create 15
+#define init_create_record_message 16
+#define start_delete_proto 17
+#define get_id_for_delete 18
+#define ask_for_record_index 19
+#define get_index_for_delete 20
+#define init_delete_record_message 21
+#define start_retrieve_proto 22
+#define get_id_for_retrieve 23
+#define ask_for_record_retrieve_index 24
+#define get_index_for_retrieve 25
+#define retrieve_proto 26
+#define display_db 27
+#define loop_through_data 28
+#define del_local 29
+#define wait 30
+#define timeout 31
+#define error 32
+# 399 "app.cc"
 void root (word __pi_st) { switch (__pi_st) { 
-# 302 "app.cc"
+# 399 "app.cc"
 
 
 
 
 
 
+
+ static uint8_t user_provided_receiver_id;
+ static uint8_t user_provided_index;
+ static char user_provided_record[20];
+ static uint8_t discovery_wait_flag=0 ;
 
  case initialize_node : __stlab_initialize_node: {
 
+
   node_db = (struct Node *)((address)__pi_malloc (sizeof(struct Node)));
+
+
+  init_node(node_db);
 
   phys_cc1350(0, 250);
 
@@ -7348,15 +7513,15 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 357 "app.cc"
+# 463 "app.cc"
                               ((void *)0)
-# 357 "app.cc"
+# 463 "app.cc"
                                   );
 
   __pi_fork (receiver, (aword)(node_db ));
 
  } case menu : __stlab_menu: {
-  ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_group_id, node_id, num_of_rec, max_num_rec);
+  ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_db->gid, node_db->id, node_db->index, 40);
 
  } case get_choice : __stlab_get_choice: {
   ser_inf(get_choice, "%c", &CHOICE);
@@ -7371,15 +7536,16 @@ void root (word __pi_st) { switch (__pi_st) {
     break;
    case 'f':
    case 'F':
-    proceed (find_proto);
+    proceed (clear_neighbour_array);
     break;
    case 'c':
    case 'C':
-    proceed (create_proto);
+    proceed (create_proto_start);
     break;
+
    case 'd':
    case 'D':
-    proceed (delete_proto);
+    proceed (start_delete_proto);
     break;
    case 'r':
    case 'R':
@@ -7401,37 +7567,56 @@ void root (word __pi_st) { switch (__pi_st) {
  } case get_new_group_id : __stlab_get_new_group_id: {
   ser_out(get_new_group_id, "Please provide a new group ID#: ");
 
+
  } case new_group_id : __stlab_new_group_id: {
-  ser_inf(new_group_id, "%d", NODE_GROUP_ID_VAR);
+  uint16_t NEW_NODE_GID;
+  ser_inf(new_group_id, "%d", NEW_NODE_GID);
+
+  diag("setting node group ID");
+
+  if (!set_node_gid(node_db, NEW_NODE_GID)){
+   diag("setting node group ID failed");
+   __pi_strncpy (reason, "Error setting node ID", 50);
+   proceed (invalid_node_id);
+  };
+
   proceed (menu);
 
  } case get_new_node_id : __stlab_get_new_node_id: {
   ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
  } case new_node_id : __stlab_new_node_id: {
-  ser_inf(new_node_id, "%d", node_db->id);
+  uint8_t NEW_NODE_ID;
+  ser_inf(new_node_id, "%d", NEW_NODE_ID);
 
 
   if(node_db->id < 1 || node_db->id > 25){
-   reason = "Out of Range";
+   __pi_strncpy (reason, "Out of Range", 50);
    proceed (invalid_node_id);
-  }
+  };
 
 
   for(int i = 0; i < 25; i++){
    if(node_db->id == node_db->nnodes[i]){
-    reason = "ID is in use";
+    __pi_strncpy (reason, "ID is already in use", 50);
     proceed (invalid_node_id);
-   }
-  }
+   };
+  };
+
+
+  if (!set_node_id(node_db, NEW_NODE_ID)) {
+   __pi_strncpy (reason, "Error setting node ID", 50);
+   proceed (invalid_node_id);
+  };
+
   proceed (menu);
 
+
  } case invalid_node_id : __stlab_invalid_node_id: {
+
   ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", node_db->id, reason);
   proceed (get_new_node_id);
 
- } case find_proto : __stlab_find_proto: {
-  __pi_trigger ((aword)(&fin));
 
 
 
@@ -7443,13 +7628,192 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
 
+ } case clear_neighbour_array : __stlab_clear_neighbour_array: {
+  if (!clear_neighbour_array(&node_db)){
+    __pi_strncpy (reason, "Error Clearing Node Array", 50);
+    proceed (error);
+   };
+
+ } case find_proto_start : __stlab_find_proto_start: {
+
+  struct DiscoveryRequestMessage *request_packet;
+  request_packet = (struct DiscoveryRequestMessage*)((address)__pi_malloc (sizeof(struct DiscoveryRequestMessage)));
+
+  request_packet->gid = node_db->gid;
+  request_packet->tpe = DISCOVERY_REQUEST;
+  request_packet->request_number = generate_request_num();
+  request_packet->sender_id = node_db->id;
+  request_packet->receiver_id=0;
 
 
- } case create_proto : __stlab_create_proto: {
 
- } case delete_proto : __stlab_delete_proto: {
+
+
+  do { if (__pi_join (__pi_fork (sender, (aword)(request_packet )), wait_discovery )) __pi_release (); } while (0);
+
+ } case wait_discovery : __stlab_wait_discovery: {
+  if (discovery_wait_flag == 0){
+   discovery_wait_flag=1;
+   delay(3000, find_proto_start);
+   __pi_release ();
+  }
+  if (discovery_wait_flag == 1){
+   discovery_wait_flag=0;
+   delay(3000, display_neighbour_nodes);
+   __pi_release ();
+  }
+
+ } case display_neighbour_nodes : __stlab_display_neighbour_nodes: {
+  ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+
+  for (int i=0; i<=25; i++){
+   if (node_db->nnodes[i]=='\0') break;
+   ser_outf(display_neighbour_nodes, "%d, ", node_db->nnodes[i]);
+  }
+  proceed (menu);
+
+
+
+
+
+
+
+
+
+
+
+ } case create_proto_start : __stlab_create_proto_start: {
+  ser_out(create_proto_start, "Please provide a node ID (0-25): ");
+
+ } case get_id_for_create : __stlab_get_id_for_create: {
+  ser_in(get_id_for_create, "%d", user_provided_receiver_id);
+
+  if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+   __pi_strncpy (reason, "Error: improper ID", 50);
+   proceed (error);
+  };
+
+ } case ask_for_record_to_create : __stlab_ask_for_record_to_create: {
+  ser_out(ask_for_record_to_create, "Please provide a record (length <= 20): ");
+
+ } case get_record_to_create : __stlab_get_record_to_create: {
+  ser_in(get_record_to_create, user_provided_record, 20);
+
+
+ } case init_create_record_message : __stlab_init_create_record_message: {
+
+  struct CreateRecordMessage *create_message;
+  create_message = (struct CreateRecordMessage*)((address)__pi_malloc (sizeof(struct CreateRecordMessage)));
+  create_message->gid = node_db->gid;
+  create_message->tpe = CREATE_RECORD;
+  create_message->request_number = generate_request_num();
+  create_message->sender_id = node_db->id;
+  create_message->receiver_id = user_provided_receiver_id;
+  __pi_strncpy (create_message->record, user_provided_record, 20);
+
+
+  response_checker[0] = create_message->request_number;
+  response_checker[1] = create_message->tpe;
+
+  do { if (__pi_join (__pi_fork (sender, (aword)(& create_message )), wait )) __pi_release (); } while (0);
+
+
+
+
+
+
+
+
+
+
+ } case start_delete_proto : __stlab_start_delete_proto: {
+  ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
+
+ } case get_id_for_delete : __stlab_get_id_for_delete: {
+  ser_inf(get_id_for_delete, "%d", user_provided_receiver_id);
+
+  if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+   __pi_strncpy (reason, "Error: improper node ID", 50);
+   proceed (error);
+  };
+
+ } case ask_for_record_index : __stlab_ask_for_record_index: {
+  ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
+
+ } case get_index_for_delete : __stlab_get_index_for_delete: {
+  ser_inf(get_index_for_delete, "%d", user_provided_index);
+
+  if (user_provided_index < 0 || user_provided_index > 40){
+   __pi_strncpy (reason, "Error: invalid index", 50);
+   proceed (error);
+  };
+
+ } case init_delete_record_message : __stlab_init_delete_record_message: {
+
+  struct DeleteRecordMessage *delete_record;
+  delete_record = (struct DeleteRecordMessage *)((address)__pi_malloc (sizeof(struct DeleteRecordMessage)));
+  delete_record->gid = node_db->gid;
+  delete_record->tpe = DELETE_RECORD;
+  delete_record->request_number = generate_request_num();
+  delete_record->sender_id = node_db->id;
+  delete_record->receiver_id = user_provided_receiver_id;
+  delete_record->record_index = user_provided_index;
+
+
+
+  response_checker[0] = delete_record->request_number;
+  response_checker[1] = delete_record->tpe;
+
+  do { if (__pi_join (__pi_fork (sender, (aword)(& delete_record )), wait )) __pi_release (); } while (0);
+
+
+
+
+
+
+
+
+
+
+ } case start_retrieve_proto : __stlab_start_retrieve_proto: {
+  ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
+
+ } case get_id_for_retrieve : __stlab_get_id_for_retrieve: {
+  ser_inf(get_id_for_retrieve, "%d", user_provided_receiver_id);
+
+  if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+   __pi_strncpy (reason, "Error: improper node ID", 50);
+   proceed (error);
+  };
+
+ } case ask_for_record_retrieve_index : __stlab_ask_for_record_retrieve_index: {
+  ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
+
+ } case get_index_for_retrieve : __stlab_get_index_for_retrieve: {
+  ser_inf(get_index_for_retrieve, "%d", user_provided_index);
+
+  if (user_provided_index < 0 || user_provided_index > 40){
+   __pi_strncpy (reason, "Error: invalid index", 50);
+   proceed (error);
+  };
 
  } case retrieve_proto : __stlab_retrieve_proto: {
+
+  struct RetrieveRecordMessage *retrieve_record;
+  retrieve_record = (struct RetrieveRecordMessage *)((address)__pi_malloc (sizeof(struct RetrieveRecordMessage)));
+  retrieve_record->gid = node_db->gid;
+  retrieve_record->tpe = RETRIEVE_RECORD;
+  retrieve_record->request_number = generate_request_num();
+  retrieve_record->sender_id = node_db->id;
+  retrieve_record->receiver_id = user_provided_receiver_id;
+  retrieve_record->record_index = user_provided_index;
+
+
+
+  response_checker[0] = retrieve_record->request_number;
+  response_checker[1] = retrieve_record->tpe;
+
+  do { if (__pi_join (__pi_fork (sender, (aword)(& retrieve_record )), wait )) __pi_release (); } while (0);
 
  } case display_db : __stlab_display_db: {
   ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
@@ -7463,6 +7827,20 @@ void root (word __pi_st) { switch (__pi_st) {
  } case del_local : __stlab_del_local: {
   delete_all(node_db);
   proceed (menu);
+
+ } case wait : __stlab_wait: {
+  delay(3000, timeout);
+  __pi_wait ((aword)(&response_flag),menu);
+  __pi_release ();
+
+ } case timeout : __stlab_timeout: {
+  ser_out(timeout, "\r\nFailed to reach the destination");
+  proceed (menu);
+
+
+ } case error : __stlab_error: {
+  ser_outf(invalid_node_id, "\r\nError: %s", reason);
+  proceed (menu);
 break; } default: __pi_badstate (); } }
 #undef initialize_node
 #undef menu
@@ -7472,12 +7850,30 @@ break; } default: __pi_badstate (); } }
 #undef get_new_node_id
 #undef new_node_id
 #undef invalid_node_id
-#undef find_proto
-#undef create_proto
-#undef delete_proto
+#undef clear_neighbour_array
+#undef find_proto_start
+#undef wait_discovery
+#undef display_neighbour_nodes
+#undef create_proto_start
+#undef get_id_for_create
+#undef ask_for_record_to_create
+#undef get_record_to_create
+#undef init_create_record_message
+#undef start_delete_proto
+#undef get_id_for_delete
+#undef ask_for_record_index
+#undef get_index_for_delete
+#undef init_delete_record_message
+#undef start_retrieve_proto
+#undef get_id_for_retrieve
+#undef ask_for_record_retrieve_index
+#undef get_index_for_retrieve
 #undef retrieve_proto
 #undef display_db
 #undef loop_through_data
 #undef del_local
-# 469 "app.cc"
+#undef wait
+#undef timeout
+#undef error
+# 788 "app.cc"
 

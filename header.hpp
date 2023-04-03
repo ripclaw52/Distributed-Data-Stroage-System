@@ -126,6 +126,7 @@ struct ResponseMessage{
 	uint8_t status;
 	uint8_t padding;
 	char record[20];
+	uint8_t  record_index;// NOTE: PLACEHOLDER AS THE OTHER DIDN'T WORK
 };
 
 /*NODE METHODS*/
