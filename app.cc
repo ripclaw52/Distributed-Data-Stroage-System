@@ -743,9 +743,13 @@ fsm root {
 		proceed menu;
 
 	state wait:
-		delay(3000);
+		delay(3000, timeout);
+		release;
+	
+	state timeout:
+		ser_out(timeout, "\r\nFailed to reach the destination");
 		proceed menu;
-
+	
 	// NOTE: to prevent unwanted behaviour, we will likely want to clear the array in here
 	state error:
 		ser_outf(invalid_node_id, "\r\nError: %s", reason);
