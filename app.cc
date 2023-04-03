@@ -70,7 +70,7 @@ int get_message_size(struct ResponseMessage *message) {
 fsm sender(struct ResponseMessage *message) {
 	address packet;
 
-	int packet_size = get_message_size(message);
+	int packet_size = sizeof(struct ResponseMessage); //get_message_size(message);
 
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
@@ -402,11 +402,10 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
-	//struct Node *node_db;
 	uint8_t user_provided_receiver_id;
 	uint8_t user_provided_index;
 	char user_provided_record[20];
-	uint8_t discovery_wait_flag=0;
+	uint8_t discovery_wait_flag = 0;
 	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
