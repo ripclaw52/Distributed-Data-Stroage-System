@@ -7049,7 +7049,7 @@ void sender (word __pi_st) { struct ResponseMessage * message = (struct Response
 
  static address packet;
 
- static int packet_size=get_message_size (message );
+ static int packet_size=sizeof (struct ResponseMessage );
 
  case sending : __stlab_sending: {
   packet = tcv_wnps (sending, sfd, 4 + packet_size, 0);
@@ -7454,7 +7454,6 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
 
-
  static uint8_t user_provided_receiver_id;
  static uint8_t user_provided_index;
  static char user_provided_record[20];
@@ -7513,9 +7512,9 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 463 "app.cc"
+# 462 "app.cc"
                               ((void *)0)
-# 463 "app.cc"
+# 462 "app.cc"
                                   );
 
   __pi_fork (receiver, (aword)(node_db ));
@@ -7875,5 +7874,5 @@ break; } default: __pi_badstate (); } }
 #undef wait
 #undef timeout
 #undef error
-# 788 "app.cc"
+# 787 "app.cc"
 
