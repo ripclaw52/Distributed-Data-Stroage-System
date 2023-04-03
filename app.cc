@@ -407,6 +407,8 @@ fsm root {
 	uint8_t user_provided_index;
 	uint8_t user_provided_receiver_id;
 
+	// small change
+
 	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
