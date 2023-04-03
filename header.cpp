@@ -66,7 +66,7 @@ bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
                 strncpy(node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry)); 
                 node->data_base.item_array[i].owner_id = owner_id;
                 // TODO: get time stamp... Have to ask what kind of time stamp he is looking for.
-                node->data_base.item_array[i].timestamp = 0;
+                node->data_base.item_array[i].timestamp = seconds();
                 node->data_base.item_count += 1;
                 break; // NOTE: This may be required so we do not fill the entries with one insert.
             };
@@ -95,7 +95,6 @@ bool clear_node_neighbour_array(struct Node *node){
     return false;
 
 };
-
 
 // returns false when 0 items in db or the index is already null, otherwise true after deletion
 bool delete_record(struct Node *node, uint8_t index){
