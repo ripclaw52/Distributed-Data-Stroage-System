@@ -1,12 +1,13 @@
 #include<header.hpp>
 
 char CHOICE;
-char reason[20];
+char reason[50];
 int sfd = -1;
 
-//struct node * node_db = NULL; im pretty certain you are setting a pointer to null here?
+// Stores the random request numner and the type of message send
+int response_checker[2];
 
-struct Node node_db; // globally defined struct, represents the node.
+struct Node *node_db; // globally defined struct, represents the node.
 
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
@@ -85,7 +86,8 @@ fsm sender(const void *message) {
 			// Create Record
 			case CREATE_RECORD:
 				// format packet for create record message
-				strcpy(p, message->record);
+				// the sizeof may not work depending on how we are defining record, we will see when we test
+				strncpy(p, message->record, sizeof(message->record));
 				break;
 
 			// Delete Record & Retrieve Record
@@ -101,7 +103,8 @@ fsm sender(const void *message) {
 				// format packet for response message
 				*p = message->status;p++;
 				*p = message->padding;p++;
-				strcpy(p, message->record);
+				
+				strncpy(p, message->record, sizeof(message->record));
 				break;
 
 			// Type is not response or create/delete/retrieve records
@@ -121,6 +124,7 @@ fsm sender(const void *message) {
 
 // receives packet information from wireless connected nodes
 fsm receiver(struct Node* node_db) {
+	
 	
 	address incoming_packet;
 	char array[20];
@@ -226,7 +230,7 @@ fsm receiver(struct Node* node_db) {
 				// if the message is not for this node, it is ignored.
 				if (create_record_message->receiver_id != node_db->id || create_record_message->gid != node_db->id){
 					break;
-				}
+				};
 
 				// check the record size, attempt to insert it...if the user send something invalid, we will just ignore this message and break
 				if (sizeof(create_record_message->record) <= MAX_DB_ENT_LEN && sizeof(create_record_message->record) > 0) {
@@ -311,6 +315,21 @@ fsm receiver(struct Node* node_db) {
 					case OTHER_ERROR:
 						break;
 					case SUCCESS:
+						if (response_checker[0] == response_message_5->request_number){
+							switch(response_checker[1]){
+								case CREATE_RECORD:
+									proceed response_1_create;
+									break;
+								case DELETE_RECORD:
+									proceed response_1_delete;
+									break;
+								case RETRIEVE_RECORD:
+									proceed response_1_retrieve;
+									break;
+								default:
+									break;
+							}
+						}
 						break;
 					case DB_FULL:
 						proceed response_2;
@@ -341,17 +360,17 @@ fsm receiver(struct Node* node_db) {
 	//proceed receiving;
 	
 	// Succeeded in performing requested action
-	state response_1_cre:
-		ser_out(response_1_cre, "\r\n Data Saved");
+	state response_1_create:
+		ser_out(response_1_create, "\r\n Data Saved");
 		proceed receiving;
-	state response_1_del:
-		ser_out(response_1_del, "\r\n Record Deleted");
+	state response_1_delete:
+		ser_out(response_1_delete, "\r\n Record Deleted");
 		proceed receiving;
-	state response_1_ret:
-		//ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+	state response_1_retrieve:
+		//ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", message->sender_id, message->record);
 		proceed receiving;
 	
-	// Failed to perform requestws action
+	// Failed to perform requests action
 	state response_2:
 		//ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
 		proceed receiving;
@@ -377,16 +396,18 @@ fsm root {
     if we need to set parameters specifically for debug mode, we can do it here.
 	#endif
 	*/
-	struct Node *node_db;
-
+	//struct Node *node_db;
+	uint8_t user_provided_receiver_id;
+	uint8_t user_provided_index;
+	char user_provided_record[20];
+	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
 		// setup node structure
 		node_db = (struct Node *)umalloc(sizeof(struct Node));
-		// Initial values
-		node_db->id = 1;
-		node_db->gid = 1;
-		node_db->index = 0;
+
+		// Bool condition, check for failure
+		init_node(node_db);
 
 		phys_cc1350(0, MAX_PKT_LEN);
 		/* 	void tcv_plug (int id, tcvplug_t *plugin)
@@ -456,12 +477,12 @@ fsm root {
 				break;
 			case 'c':
 			case 'C':
-				proceed create_proto;
+				proceed create_proto_start;
 				break;
 				
 			case 'd':
 			case 'D':
-				proceed delete_proto;
+				proceed start_delete_proto;
 				break;
 			case 'r':
 			case 'R':
@@ -483,83 +504,230 @@ fsm root {
 	state get_new_group_id:
 		ser_out(get_new_group_id, "Please provide a new group ID#: ");
 
+	/*NOTE: Do we need to add new checks here? what are the limitations on group IDs*/
 	state new_group_id:
-<<<<<<< HEAD
 		uint16_t NEW_NODE_GID;
-		ser_inf(new_group_id, "%d", NEW_NODE_GID);
+		ser_inf(new_group_id, "%d", NEW_NODE_GID); // NOTE: is this syntax correct?
 		
-		// Return bool condition, so check for failure
-		if (!set_node_gid(node_db, NEW_NODE_GID)){
-			reason = "GID did not get set";
-			proceed invalid_node_gid;
-		}
+		DEBUG_PRINT("setting node group ID");
 
-=======
-		ser_inf(new_group_id, "%d", node_db->gid);
->>>>>>> parent of 8c33917 (Merge pull request #15 from ripclaw52/main)
+		if (!set_node_gid(node_db, NEW_NODE_GID)){
+			DEBUG_PRINT("setting node group ID failed");
+			strncpy(reason, "Error setting node ID", 50);
+			proceed invalid_node_id;
+		};
+
 		proceed menu;
-	
-	state invalid_node_gid:
-		ser_outf(invalid_node_gid, "\r\nGID#: %d is an invalid choice. Reason: %s.", node_db->gid, reason);
-		proceed get_new_group_id;
 
 	state get_new_node_id:
 		ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
 	state new_node_id:
-		ser_inf(new_node_id, "%d", node_db->id);
+		uint8_t NEW_NODE_ID;
+		ser_inf(new_node_id, "%d", NEW_NODE_ID);
 		
 		// Check to see if the number given is within range.
 		if(node_db->id < 1 || node_db->id > 25){
-			reason = "Out of Range";
+			strncpy(reason, "Out of Range", 50);
 			proceed invalid_node_id;
-		}
+		};
 		
 		// Check to see if the number give is unique
 		for(int i = 0; i < 25; i++){
 			if(node_db->id == node_db->nnodes[i]){
-				reason = "ID is in use";
+				strncpy(reason, "ID is already in use", 50);
 				proceed invalid_node_id;
-			}
-		}
+			};
+		};
+
+		// Bool condition, check for failure
+		if (!set_node_id(node_db, NEW_NODE_ID)) {
+			strncpy(reason, "Error setting node ID", 50);
+			proceed invalid_node_id;
+		};
+		
 		proceed menu;
 
+	// NOTE: to prevent unwanted behaviour, we will likely want to clear the array in here
 	state invalid_node_id:
+		// NOTE: node_db->id will not be set if they provide an invalid reason, so we can't do this like this
 		ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", node_db->id, reason);
 		proceed get_new_node_id;
 
+
+	/*The user has provided either an 'f' or an 'F', indicating they want to perform the find protocol.
+
+	  The node receiving this command will reset its list of reachable neighbours, then it repeats the following sequence two times:
+	  	1) send a discovery request
+		2) waits 3 seconds for a response. During the waiting period, the node should receive the incoming discovery 
+		   response and record their sender nodes IDs. 
+		   
+	  Then prints the list of neighbours
+	
+	*/ 
 	state find_proto:
-<<<<<<< HEAD
-		struct DiscoveryRequestMessage *DREQ_packet;
-		DREQ_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
-		DREQ_packet->gid = node_db->gid;
-		DREQ_packet->tpe = MessageType.DISCOVERY_REQUEST;
-		DREQ_packet->request_number = generate_request_num();
-		DREQ_packet->sender_id = node_db->id;
-		DREQ_packet->receiver_id=0;
+		if (!clear_node_neighbour_array(&node_db)){
+			strncpy(reason, "Error Clearing Node Array", 50);
+			proceed error;
+		};
 
-=======
->>>>>>> parent of 8c33917 (Merge pull request #15 from ripclaw52/main)
-		trigger(&fin);
-/* DON"T THINK WE NEED THE BELOW, it will also break the code due to payload not being declaired.
-	state display_neighboring_array:
-		ser_out(display_neighboring_array, "\r\n Neighbors: ");
-		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
-			if (payload->nnodes[i] == 0) {
-				break;
-			} else {
-				ser_outf(display_neighboring_array, "%d, ", payload->nnodes[i]);
-			}
-		}
-		ser_out(display_neighboring_array, "\r\n");
-*/
+		struct DiscoveryRequestMessage *request_packet;
+		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
-	state create_proto:
+		request_packet->gid = node_db->gid;
+		request_packet->tpe = MessageType::DISCOVERY_REQUEST;
+		request_packet->request_number = generate_request_num();
+		request_packet->sender_id = node_db->id;
+		request_packet->receiver_id=0;
+
+		// call sender?
+		// delay() ?
+		// what should the trigger listen for?
+		//trigger(&fin);
+
+	/*
+		the user has provided 'c' or 'C' command, indicating they wish to perform the create protocol.
+
+		1) the node will ask the user through UART to provide the destination node ID and the record string to be saved.
+		2) after receiving the previous information, the node sends the create record message to the destination node.
+		3) the node then waits to receive the response message with a maximum wating interval of 3 seconds
+		4) if no repsone is received, the node indicates this to the user through UART
+		5) if a response is received, the node sends through UART the appropriate response message
+	
+	*/
+	state create_proto_start:
+		ser_out(create_proto_start, "Please provide a node ID (0-25): ");
+
+	state get_id_for_create:
+		ser_in(get_id_for_create, user_provided_receiver_id, 1);
+
+		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+			strncpy(reason, "Error: improper ID", 50)
+			proceed error;
+		};
+
+	state ask_for_record_to_create:
+		ser_out(ask_for_record_to_create, "Please provide a record (length <= 20): ");
+
+	state get_record_to_create:
+		ser_in(get_record_to_create, user_provided_record, 20);
+		// NOTE: im not sure if we need to add checks here, this should stop them from entering anymore than 20 characters?
+
+	state init_create_record_message:
+
+		struct CreateRecordMessage create_message;
+		create_message = (struct CreateRecordMessage*)umalloc(sizeof(struct CreateRecordMessage));
+		create_message.gid = node_db->gid;
+		create_message.tpe = MessageType::CREATE_RECORD;
+		create_message.request_number = generate_request_num();
+		create_message.sender_id = node_db->id;
+		create_message.receiver_id = user_provided_receiver_id;
+		strncpy(create_message.record, user_provided_record, 20);
 		
-	state delete_proto:
-		
+		// Store create message type & request number for response message parsing
+		response_checker[0] = create_message.request_number;
+		response_checker[1] = create_message.tpe;
+
+		call sender(&create_message, wait);
+		// trigger?
+
+	/*
+		When a node receives the command ‘D’ or ‘d’: 
+		1.The node asks the user through the UART to provide the destination node ID and the record index to be deleted 
+		2.After receiving the previous information, the node sends a Delete Record Message to the destination node 
+		3.The node then waits to receive the response message with a maximum waiting interval of 3 seconds 
+		4.If no response is received, the node sends the following message through the UART “\r\nFailed to reach the destination”
+		5.
+	*/
+	state start_delete_proto:
+		ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
+
+	state get_id_for_delete:
+		ser_in(get_id_for_delete, user_provided_receiver_id, 1);
+
+		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+			strncpy(reason, "Error: improper node ID", 50)
+			proceed error;
+		};
+
+	state ask_for_record_index:
+		ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
+
+	state get_index_for_delete:
+		ser_in(get_index_for_delete, user_provided_index, 1);
+
+		if (user_provided_index < 0 || user_provided_index > 40){
+			strncpy(reason, "Error: invalid index", 50);
+			proceed error;
+		};
+
+	state init_delete_record_message:
+
+		struct DeleteRecordMessage delete_record;
+		delete_record = (struct DeleteRecordMessage*)umalloc(sizeof(struct DeleteRecordMessage));
+		delete_record.gid = node_db->gid;
+		delete_record.tpe = MessageType::DELETE_RECORD;
+		delete_record.request_number = generate_request_num();
+		delete_record.sender_id = node_db->id;
+		delete_record.receiver_id = user_provided_receiver_id;
+		delete_record.record_index = user_provided_index;
+		// NOTE: something to do with padding here?
+
+		// Store delete record message type & request number for response message parsing
+		response_checker[0] = delete_record.request_number;
+		response_checker[1] = delete_record.tpe;
+
+		call sender(&delete_record, wait);
+		// NOTE: trigger not added, not sure where it is explcitly needed
+
+	/*
+		When a node receives the command ‘R’ or ‘r’: 
+		1.The node asks the user through the UART to provide the destination node ID and the record index to be retrieved 
+		2.After receiving the previous information, the node sends a Retrieve Record Message to the destination node 
+		3.The node then waits to receive the response message with a maximum waiting interval of 3 seconds 
+		4.If no response is received, the node sends the following message through the UART “\r\nFailed to reach the destination”
+		5.
+	*/
+	state start_retrieve_proto:
+		ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
+
+	state get_id_for_retrieve:
+		ser_in(get_id_for_retrieve, user_provided_receiver_id, 1);
+
+		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+			strncpy(reason, "Error: improper node ID", 50)
+			proceed error;
+		};
+
+	state ask_for_record_retrieve_index:
+		ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
+
+	state get_index_for_retrieve:
+		ser_in(get_index_for_retrieve, user_provided_index, 1);
+
+		if (user_provided_index < 0 || user_provided_index > 40){
+			strncpy(reason, "Error: invalid index", 50);
+			proceed error;
+		};
+
 	state retrieve_proto:
+
+		struct RetrieveRecordMessage retrieve_record;
+		retrieve_record = (struct RetrieveRecordMessage*)umalloc(sizeof(struct RetrieveRecordMessage));
+		retrieve_record.gid = node_db->gid;
+		retrieve_record.tpe = MessageType::RETRIEVE_RECORD;
+		retrieve_record.request_number = generate_request_num();
+		retrieve_record.sender_id = node_db->id;
+		retrieve_record.receiver_id = user_provided_receiver_id;
+		retrieve_record.record_index = user_provided_index;
+		// NOTE: something to do with padding here?
+
+		// Store retrieve record message type & request number for response message parsing
+		response_checker[0] = retrieve_record.request_number;
+		response_checker[1] = retrieve_record.tpe;
+		
+		call sender(&retrieve_record, wait)
 		
 	state display_db:
 		ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
@@ -572,5 +740,14 @@ fsm root {
 
 	state del_local:
 		delete_all(node_db);
+		proceed menu;
+
+	state wait:
+		delay(3000);
+		proceed menu;
+
+	// NOTE: to prevent unwanted behaviour, we will likely want to clear the array in here
+	state error:
+		ser_outf(invalid_node_id, "\r\nError: %s", reason);
 		proceed menu;
 }
