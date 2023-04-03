@@ -4,6 +4,9 @@ char CHOICE;
 char reason[50];
 int sfd = -1;
 
+// Stores the random request numner and the type of message send
+int response_checker[2];
+
 struct Node *node_db; // globally defined struct, represents the node.
 
 
@@ -312,6 +315,21 @@ fsm receiver(struct Node* node_db) {
 					case OTHER_ERROR:
 						break;
 					case SUCCESS:
+						if (response_checker[0] == response_message_5->request_number){
+							switch(response_checker[1]){
+								case CREATE_RECORD:
+									proceed response_1_create;
+									break;
+								case DELETE_RECORD:
+									proceed response_1_delete;
+									break;
+								case RETRIEVE_RECORD:
+									proceed response_1_retrieve;
+									break;
+								default:
+									break;
+							}
+						}
 						break;
 					case DB_FULL:
 						proceed response_2;
@@ -342,17 +360,17 @@ fsm receiver(struct Node* node_db) {
 	//proceed receiving;
 	
 	// Succeeded in performing requested action
-	state response_1_cre:
-		ser_out(response_1_cre, "\r\n Data Saved");
+	state response_1_create:
+		ser_out(response_1_create, "\r\n Data Saved");
 		proceed receiving;
-	state response_1_del:
-		ser_out(response_1_del, "\r\n Record Deleted");
+	state response_1_delete:
+		ser_out(response_1_delete, "\r\n Record Deleted");
 		proceed receiving;
-	state response_1_ret:
-		//ser_outf(response_1_ret, "\r\n Record Received from %d: %s", message->sender_id, message->record);
+	state response_1_retrieve:
+		//ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", message->sender_id, message->record);
 		proceed receiving;
 	
-	// Failed to perform requestws action
+	// Failed to perform requests action
 	state response_2:
 		//ser_outf(response_2, "\r\n The record can't be saved on node %d", message->sender_id);
 		proceed receiving;
@@ -382,6 +400,7 @@ fsm root {
 	uint8_t user_provided_receiver_id;
 	uint8_t user_provided_index;
 	char user_provided_record[20];
+	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
 		// setup node structure
@@ -606,6 +625,9 @@ fsm root {
 		create_message.receiver_id = user_provided_receiver_id;
 		strncpy(create_message.record, user_provided_record, 20);
 		
+		// Store create message type & request number for response message parsing
+		response_checker[0] = create_message.request_number;
+		response_checker[1] = create_message.tpe;
 
 		call sender(&create_message, wait);
 		// trigger?
@@ -652,6 +674,10 @@ fsm root {
 		delete_record.record_index = user_provided_index;
 		// NOTE: something to do with padding here?
 
+		// Store delete record message type & request number for response message parsing
+		response_checker[0] = delete_record.request_number;
+		response_checker[1] = delete_record.tpe;
+
 		call sender(&delete_record, wait);
 		// NOTE: trigger not added, not sure where it is explcitly needed
 
@@ -696,6 +722,10 @@ fsm root {
 		retrieve_record.receiver_id = user_provided_receiver_id;
 		retrieve_record.record_index = user_provided_index;
 		// NOTE: something to do with padding here?
+
+		// Store retrieve record message type & request number for response message parsing
+		response_checker[0] = retrieve_record.request_number;
+		response_checker[1] = retrieve_record.tpe;
 		
 		call sender(&retrieve_record, wait)
 		
