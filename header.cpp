@@ -96,7 +96,6 @@ bool clear_node_neighbour_array(struct Node *node){
 
 };
 
-
 // returns false when 0 items in db or the index is already null, otherwise true after deletion
 bool delete_record(struct Node *node, uint8_t index){
     

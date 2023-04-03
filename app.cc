@@ -7,6 +7,8 @@ int sfd = -1;
 // Stores the random request numner and the type of message send
 int response_checker[2];
 
+word response_flag=0;
+
 struct Node *node_db; // globally defined struct, represents the node.
 
 
@@ -310,6 +312,11 @@ fsm receiver(struct Node* node_db) {
 					break;
 				};
 
+				if(!response_flag){
+					response_flag=1;
+					trigger(&response_flag);
+				}
+
 				switch(response_message_5->status){
 					
 					case OTHER_ERROR:
@@ -400,6 +407,7 @@ fsm root {
 	uint8_t user_provided_receiver_id;
 	uint8_t user_provided_index;
 	char user_provided_record[20];
+	uint8_t discovery_wait_flag=0;
 	
 	state initialize_node:
 		// cast node_db to struct node * and malloc to it the size of a struct node
@@ -473,7 +481,7 @@ fsm root {
 				break;
 			case 'f':
 			case 'F':
-				proceed find_proto;
+				proceed clear_neighbour_array;
 				break;
 			case 'c':
 			case 'C':
@@ -564,13 +572,14 @@ fsm root {
 		   
 	  Then prints the list of neighbours
 	
-	*/ 
-	state find_proto:
-
+	*/
+	state clear_neighbour_array:
 		if (!clear_node_neighbour_array(&node_db)){
-			strncpy(reason, "Error Clearing Node Array", 50);
-			proceed error;
-		};
+				strncpy(reason, "Error Clearing Node Array", 50);
+				proceed error;
+			};
+
+	state find_proto_start:
 
 		struct DiscoveryRequestMessage *request_packet;
 		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
@@ -585,6 +594,28 @@ fsm root {
 		// delay() ?
 		// what should the trigger listen for?
 		//trigger(&fin);
+		call sender(request_packet, wait_discovery);
+	
+	state wait_discovery:
+		if (discovery_wait_flag == 0){
+			discovery_wait_flag=1;
+			delay(3000, find_proto_start);
+			release;
+		}
+		if (discovery_wait_flag == 1){
+			discovery_wait_flag=0;
+			delay(3000, display_neighbour_nodes);
+			release;
+		}
+	
+	state display_neighbour_nodes:
+		//ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+		ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
+		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
+			if (node_db->nnodes[i]=='\0') break;
+			ser_outf(display_neigbour_nodes, "%d, ", node_db->nnodes[i]);
+		}
+		proceed menu;
 
 	/*
 		the user has provided 'c' or 'C' command, indicating they wish to perform the create protocol.
@@ -744,6 +775,7 @@ fsm root {
 
 	state wait:
 		delay(3000, timeout);
+		when(&response_flag, menu);
 		release;
 	
 	state timeout:
