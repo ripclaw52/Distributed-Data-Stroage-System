@@ -660,7 +660,7 @@ fsm root {
 	/*NOTE: Do we need to add new checks here? what are the limitations on group IDs*/
 	state new_group_id:
 		word NEW_NODE_GID;
-		ser_inf(new_group_id, "%s", NEW_NODE_GID); // NOTE: is this syntax correct?
+		ser_inf(new_group_id, "%s", &NEW_NODE_GID); // NOTE: is this syntax correct?
 		
 		DEBUG_PRINT("setting node group ID");
 
@@ -776,7 +776,7 @@ fsm root {
 		ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
 	state get_id_for_create:
-		ser_in(get_id_for_create, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
 			strncpy(reason, "Error: improper ID", 50);
@@ -820,7 +820,7 @@ fsm root {
 		ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_delete:
-		ser_inf(get_id_for_delete, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
 			strncpy(reason, "Error: improper node ID", 50);
@@ -831,7 +831,7 @@ fsm root {
 		ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_delete:
-		ser_inf(get_index_for_delete, "%d", user_provided_index);
+		ser_inf(get_index_for_delete, "%d", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -869,7 +869,7 @@ fsm root {
 		ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_retrieve:
-		ser_inf(get_id_for_retrieve, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_retrieve, "%d", &user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
 			strncpy(reason, "Error: improper node ID", 50);
@@ -880,7 +880,7 @@ fsm root {
 		ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_retrieve:
-		ser_inf(get_index_for_retrieve, "%d", user_provided_index);
+		ser_inf(get_index_for_retrieve, "%d", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
