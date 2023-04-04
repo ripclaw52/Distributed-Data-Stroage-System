@@ -20,6 +20,8 @@ bool init_node(struct Node* node){
     node->index = 0;                // default entry count 0
     node->data_base;                // default empty array THIS WILL LIKELY NEED TO BE AMENDED
     node->data_base.item_count = 0; // default no items in array
+
+	reset_array(node);
     
     /* check that each item is set to what we want it intialized to e.g., !node->id, we set it to 0, so this should 
        evaluate to 1.
@@ -32,7 +34,7 @@ bool init_node(struct Node* node){
 };
 
 bool set_node_id(struct Node* node, uint8_t id){
-    node->id = id; 
+    node->id = id;
     return node->id == id;
 };
 
@@ -99,7 +101,7 @@ bool clear_node_neighbour_array(struct Node *node){
         return true;
     } else{
         for (int i = 0; i < NNODE_GROUP_SIZE; i++){
-            node->nnodes[i] = '\0'; // set to null byte
+            node->nnodes[i] = 0; // set to null byte
         };
         return true;
     };
@@ -307,11 +309,11 @@ fsm receiver(struct Node* node_db) {
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
-				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_request_message->tpe);
-				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_request_message->request_number);
-				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_request_message->sender_id);
-				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_request_message->receiver_id);
+				DEBUG_PRINT("\r\nRECEIVED GID: %d", discovery_request_message->gid);
+				DEBUG_PRINT("\rRECEIVED TYPE: %d", discovery_request_message->tpe);
+				DEBUG_PRINT("\r\nRECEIVED REQ NUM: %d", discovery_request_message->request_number);
+				DEBUG_PRINT("\r\nRECEIVED SID: %d", discovery_request_message->sender_id);
+				DEBUG_PRINT("\r\nRECEIVED RID: %d", discovery_request_message->receiver_id);
 
 				// if the group_ids match
 				if (discovery_request_message->gid == node_db->gid){
@@ -320,6 +322,7 @@ fsm receiver(struct Node* node_db) {
 					response_message_0->request_number = discovery_request_message->request_number;
 					response_message_0->sender_id = node_db->id;
 					response_message_0->receiver_id = discovery_request_message->sender_id;
+					diag("\r\ngid:%u, tpe:%d, sen:%u, rec:%u", response_message_0->gid, response_message_0->tpe, response_message_0->sender_id, response_message_0->receiver_id);
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
 					call sender(response_message_0, done_case);
 				} 
@@ -504,31 +507,29 @@ fsm receiver(struct Node* node_db) {
 
 		};
 	state done_case:
-
 		tcv_endp(incoming_packet);
-
-	//proceed receiving;
+		proceed receiving;
 	
 	// Succeeded in performing requested action
 	state response_1_create:
-		ser_out(response_1_create, "\r\n Data Saved");
+		ser_out(response_1_create, "\r\nData Saved");
 		proceed receiving;
 	state response_1_delete:
-		ser_out(response_1_delete, "\r\n Record Deleted");
+		ser_out(response_1_delete, "\r\nRecord Deleted");
 		proceed receiving;
 	state response_1_retrieve:
-		ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", response_message_5->sender_id, response_message_5->record);
+		ser_outf(response_1_retrieve, "\r\nRecord Received from %d: %s", response_message_5->sender_id, response_message_5->record);
 		proceed receiving;
 	
 	// Failed to perform requests action
 	state response_2:
-		ser_outf(response_2, "\r\n The record can't be saved on node %d", response_message_5->sender_id);
+		ser_outf(response_2, "\r\nThe record can't be saved on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_3:
-		ser_outf(response_3, "\r\n The record does not exists on node %d", response_message_5->sender_id);
+		ser_outf(response_3, "\r\nThe record does not exists on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_4:
-		ser_outf(response_4, "\r\n The record does not exist on node %d", response_message_5->sender_id);
+		ser_outf(response_4, "\r\nThe record does not exist on node %d", response_message_5->sender_id);
 		proceed receiving;
 
 	// likely want to respond with error message
@@ -659,8 +660,8 @@ fsm root {
 
 	/*NOTE: Do we need to add new checks here? what are the limitations on group IDs*/
 	state new_group_id:
-		word NEW_NODE_GID;
-		ser_inf(new_group_id, "%s", NEW_NODE_GID); // NOTE: is this syntax correct?
+		uint16_t NEW_NODE_GID;
+		ser_inf(new_group_id, "%u", &NEW_NODE_GID); // NOTE: is this syntax correct?
 		
 		DEBUG_PRINT("setting node group ID");
 
@@ -677,26 +678,27 @@ fsm root {
 
 	state new_node_id:
 		uint8_t NEW_NODE_ID;
-		ser_inf(new_node_id, "%u", (unsigned int) NEW_NODE_ID);
+		ser_inf(new_node_id, "%u", &NEW_NODE_ID);
+
+		// Bool condition, check for failure
+		if (!set_node_id(node_db, NEW_NODE_ID)) {
+			strncpy(reason, "Error setting node ID", 50);
+			proceed invalid_node_id;
+		};
 		
 		// Check to see if the number given is within range.
-		if(node_db->id < 1 || node_db->id > 25){
+		if((node_db->id < 1) || (node_db->id > 25)){
 			strncpy(reason, "Out of Range", 50);
 			proceed invalid_node_id;
 		};
 		
 		// Check to see if the number give is unique
 		for(int i = 0; i < 25; i++){
+			ser_outf(new_node_id, "\r\n%u ", node_db->nnodes[i]);
 			if(node_db->id == node_db->nnodes[i]){
 				strncpy(reason, "ID is already in use", 50);
 				proceed invalid_node_id;
 			};
-		};
-
-		// Bool condition, check for failure
-		if (!set_node_id(node_db, NEW_NODE_ID)) {
-			strncpy(reason, "Error setting node ID", 50);
-			proceed invalid_node_id;
 		};
 		
 		proceed menu;
@@ -754,12 +756,13 @@ fsm root {
 		}
 	
 	state display_neighbour_nodes:
-		ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+		ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
 		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
-		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
-			if (node_db->nnodes[i]=='\0') break;
-			ser_outf(display_neighbour_nodes, "%u, ", (unsigned int) node_db->nnodes[i]);
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+			if (node_db->nnodes[i] == 0) break;
+			ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
 		}
+		ser_out(display_neighbour_nodes, "\r\n");
 		proceed menu;
 
 	/*
@@ -776,9 +779,9 @@ fsm root {
 		ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
 	state get_id_for_create:
-		ser_in(get_id_for_create, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
 
-		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper ID", 50);
 			proceed error;
 		};
@@ -820,9 +823,9 @@ fsm root {
 		ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_delete:
-		ser_inf(get_id_for_delete, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
 
-		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper node ID", 50);
 			proceed error;
 		};
@@ -831,7 +834,7 @@ fsm root {
 		ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_delete:
-		ser_inf(get_index_for_delete, "%d", user_provided_index);
+		ser_inf(get_index_for_delete, "%d", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -869,7 +872,7 @@ fsm root {
 		ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_retrieve:
-		ser_inf(get_id_for_retrieve, "%d", user_provided_receiver_id);
+		ser_inf(get_id_for_retrieve, "%d", &user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
 			strncpy(reason, "Error: improper node ID", 50);
@@ -880,7 +883,7 @@ fsm root {
 		ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_retrieve:
-		ser_inf(get_index_for_retrieve, "%d", user_provided_index);
+		ser_inf(get_index_for_retrieve, "%d", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -914,6 +917,7 @@ fsm root {
 				ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
 			}
 		}
+		ser_out(loop_through_data, "\r\n");
 		proceed menu;
 
 	state del_local:
