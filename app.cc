@@ -99,7 +99,7 @@ bool clear_node_neighbour_array(struct Node *node){
         return true;
     } else{
         for (int i = 0; i < NNODE_GROUP_SIZE; i++){
-            node->nnodes[i] = '\0'; // set to null byte
+            node->nnodes[i] = 0; // set to null byte
         };
         return true;
     };
@@ -307,11 +307,11 @@ fsm receiver(struct Node* node_db) {
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
-				DEBUG_PRINT("RECEIVED GID: %d\n", discovery_request_message->gid);
-				DEBUG_PRINT("RECEIVED TYPE: %d\n", discovery_request_message->tpe);
-				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", discovery_request_message->request_number);
-				DEBUG_PRINT("RECEIVED SID: %d\n", discovery_request_message->sender_id);
-				DEBUG_PRINT("RECEIVED RID: %d\n", discovery_request_message->receiver_id);
+				DEBUG_PRINT("\r\nRECEIVED GID: %d", discovery_request_message->gid);
+				DEBUG_PRINT("\rRECEIVED TYPE: %d", discovery_request_message->tpe);
+				DEBUG_PRINT("\r\nRECEIVED REQ NUM: %d", discovery_request_message->request_number);
+				DEBUG_PRINT("\r\nRECEIVED SID: %d", discovery_request_message->sender_id);
+				DEBUG_PRINT("\r\nRECEIVED RID: %d", discovery_request_message->receiver_id);
 
 				// if the group_ids match
 				if (discovery_request_message->gid == node_db->gid){
@@ -320,6 +320,7 @@ fsm receiver(struct Node* node_db) {
 					response_message_0->request_number = discovery_request_message->request_number;
 					response_message_0->sender_id = node_db->id;
 					response_message_0->receiver_id = discovery_request_message->sender_id;
+					diag("\r\ngid:%u, tpe:%d, sen:%u, rec:%u", response_message_0->gid, response_message_0->tpe, response_message_0->sender_id, response_message_0->receiver_id);
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
 					call sender(response_message_0, done_case);
 				} 
@@ -509,24 +510,24 @@ fsm receiver(struct Node* node_db) {
 	
 	// Succeeded in performing requested action
 	state response_1_create:
-		ser_out(response_1_create, "\r\n Data Saved");
+		ser_out(response_1_create, "\r\nData Saved");
 		proceed receiving;
 	state response_1_delete:
-		ser_out(response_1_delete, "\r\n Record Deleted");
+		ser_out(response_1_delete, "\r\nRecord Deleted");
 		proceed receiving;
 	state response_1_retrieve:
-		ser_outf(response_1_retrieve, "\r\n Record Received from %d: %s", response_message_5->sender_id, response_message_5->record);
+		ser_outf(response_1_retrieve, "\r\nRecord Received from %d: %s", response_message_5->sender_id, response_message_5->record);
 		proceed receiving;
 	
 	// Failed to perform requests action
 	state response_2:
-		ser_outf(response_2, "\r\n The record can't be saved on node %d", response_message_5->sender_id);
+		ser_outf(response_2, "\r\nThe record can't be saved on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_3:
-		ser_outf(response_3, "\r\n The record does not exists on node %d", response_message_5->sender_id);
+		ser_outf(response_3, "\r\nThe record does not exists on node %d", response_message_5->sender_id);
 		proceed receiving;
 	state response_4:
-		ser_outf(response_4, "\r\n The record does not exist on node %d", response_message_5->sender_id);
+		ser_outf(response_4, "\r\nThe record does not exist on node %d", response_message_5->sender_id);
 		proceed receiving;
 
 	// likely want to respond with error message
@@ -691,6 +692,7 @@ fsm root {
 		
 		// Check to see if the number give is unique
 		for(int i = 0; i < 25; i++){
+			ser_outf(new_node_id, "\r\n%u ", node_db->nnodes[i]);
 			if(node_db->id == node_db->nnodes[i]){
 				strncpy(reason, "ID is already in use", 50);
 				proceed invalid_node_id;
@@ -752,12 +754,13 @@ fsm root {
 		}
 	
 	state display_neighbour_nodes:
-		ser_out(display_neighbour_nodes, "\r\n Neighbors: ");
+		ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
 		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
-		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
-			if (node_db->nnodes[i]=='\0') break;
-			ser_outf(display_neighbour_nodes, "%u, ", (unsigned int) node_db->nnodes[i]);
+		for (int i=0; i<NNODE_GROUP_SIZE; i++){
+			if (node_db->nnodes[i] == 0) break;
+			ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
 		}
+		ser_out(display_neighbour_nodes, "\r\n");
 		proceed menu;
 
 	/*
@@ -912,6 +915,7 @@ fsm root {
 				ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
 			}
 		}
+		ser_out(loop_through_data, "\r\n");
 		proceed menu;
 
 	state del_local:
