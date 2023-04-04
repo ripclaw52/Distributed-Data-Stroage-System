@@ -32,7 +32,7 @@ bool init_node(struct Node* node){
 };
 
 bool set_node_id(struct Node* node, uint8_t id){
-    node->id = id; 
+    node->id = id;
     return node->id == id;
 };
 
@@ -504,10 +504,8 @@ fsm receiver(struct Node* node_db) {
 
 		};
 	state done_case:
-
 		tcv_endp(incoming_packet);
-
-	//proceed receiving;
+		proceed receiving;
 	
 	// Succeeded in performing requested action
 	state response_1_create:
@@ -659,8 +657,8 @@ fsm root {
 
 	/*NOTE: Do we need to add new checks here? what are the limitations on group IDs*/
 	state new_group_id:
-		word NEW_NODE_GID;
-		ser_inf(new_group_id, "%s", &NEW_NODE_GID); // NOTE: is this syntax correct?
+		uint16_t NEW_NODE_GID;
+		ser_inf(new_group_id, "%u", &NEW_NODE_GID); // NOTE: is this syntax correct?
 		
 		DEBUG_PRINT("setting node group ID");
 
@@ -677,10 +675,16 @@ fsm root {
 
 	state new_node_id:
 		uint8_t NEW_NODE_ID;
-		ser_inf(new_node_id, "%u", (unsigned int) NEW_NODE_ID);
+		ser_inf(new_node_id, "%u", &NEW_NODE_ID);
+
+		// Bool condition, check for failure
+		if (!set_node_id(node_db, NEW_NODE_ID)) {
+			strncpy(reason, "Error setting node ID", 50);
+			proceed invalid_node_id;
+		};
 		
 		// Check to see if the number given is within range.
-		if(node_db->id < 1 || node_db->id > 25){
+		if((node_db->id < 1) || (node_db->id > 25)){
 			strncpy(reason, "Out of Range", 50);
 			proceed invalid_node_id;
 		};
@@ -691,12 +695,6 @@ fsm root {
 				strncpy(reason, "ID is already in use", 50);
 				proceed invalid_node_id;
 			};
-		};
-
-		// Bool condition, check for failure
-		if (!set_node_id(node_db, NEW_NODE_ID)) {
-			strncpy(reason, "Error setting node ID", 50);
-			proceed invalid_node_id;
 		};
 		
 		proceed menu;
@@ -778,7 +776,7 @@ fsm root {
 	state get_id_for_create:
 		ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
 
-		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper ID", 50);
 			proceed error;
 		};
@@ -822,7 +820,7 @@ fsm root {
 	state get_id_for_delete:
 		ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
 
-		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper node ID", 50);
 			proceed error;
 		};
