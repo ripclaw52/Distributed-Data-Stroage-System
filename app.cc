@@ -20,6 +20,8 @@ bool init_node(struct Node* node){
     node->index = 0;                // default entry count 0
     node->data_base;                // default empty array THIS WILL LIKELY NEED TO BE AMENDED
     node->data_base.item_count = 0; // default no items in array
+
+	reset_array(node);
     
     /* check that each item is set to what we want it intialized to e.g., !node->id, we set it to 0, so this should 
        evaluate to 1.
@@ -756,7 +758,7 @@ fsm root {
 	state display_neighbour_nodes:
 		ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
 		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
-		for (int i=0; i<NNODE_GROUP_SIZE; i++){
+		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
 			if (node_db->nnodes[i] == 0) break;
 			ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
 		}

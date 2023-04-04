@@ -12,7 +12,7 @@ bool init_node(struct Node* node){
     /* check that each item is set to what we want it intialized to e.g., !node->id, we set it to 0, so this should 
        evaluate to 1.
     */
-    if ((!node->id) && (!node->gid) && (!node->db_entry_count) && (sizeof(node->data_base) == 0)){
+    if ((!node->id) && (!node->gid) && (!node->index) && (sizeof(node->data_base) == 0)){
         return true;
     } 
     DEBUG_PRINT("Error initializing node...\n");
