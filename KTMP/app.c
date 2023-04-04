@@ -1,6 +1,3 @@
-# 1 "./header.hpp"
-
-
 # 1 "/usr/include/newlib/sys/config.h"
 
 
@@ -6834,7 +6831,7 @@ void adddevfunc (devreqfun_t, int);
 void phys_cc1350 (int, int);
 # 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/VLibs/PlugNull/plug_null.h"
 extern const tcvplug_t plug_null;
-# 27 "./header.hpp"
+# 25 "./header.hpp"
 enum MessageType {
  DISCOVERY_REQUEST,
  DISCOVERY_RESPONSE,
@@ -6942,31 +6939,32 @@ struct ResponseMessage{
 
 
 _Bool 
-# 133 "./header.hpp"
+# 131 "./header.hpp"
     init_node(struct Node *node);
 _Bool 
-# 134 "./header.hpp"
+# 132 "./header.hpp"
     set_node_id(struct Node *node, uint8_t id);
 _Bool 
-# 135 "./header.hpp"
+# 133 "./header.hpp"
     set_node_gid(struct Node *node, uint16_t gid);
 _Bool 
-# 136 "./header.hpp"
+# 134 "./header.hpp"
     set_node_db_entry_count(struct Node *node, uint8_t count);
-
 _Bool 
-# 138 "./header.hpp"
+# 135 "./header.hpp"
+    clear_node_neighbour_array(struct Node *node);
+_Bool 
+# 136 "./header.hpp"
     insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 _Bool 
-# 139 "./header.hpp"
+# 137 "./header.hpp"
     delete_record(struct Node *node, uint8_t index);
+_Bool 
+# 138 "./header.hpp"
+    delete_all(struct Node *node);
 struct record retrieve_record(struct Node *node, uint8_t index);
-
 void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
-_Bool 
-# 144 "./header.hpp"
-    delete_all(struct Node *node);
 # 2 "app.cc"
 
 char CHOICE;
@@ -6981,6 +6979,246 @@ word response_flag=0;
 struct Node *node_db;
 
 
+
+
+_Bool 
+# 17 "app.cc"
+    init_node(struct Node* node){
+    node->id = 0;
+    node->gid = 0;
+    node->index = 0;
+    node->data_base;
+    node->data_base.item_count = 0;
+
+
+
+
+    if ((!node->id) && (!node->gid) && (!node->index) && (sizeof(node->data_base) == 0)){
+        return 
+# 28 "app.cc"
+              1
+# 28 "app.cc"
+                  ;
+    }
+    diag("Error initializing node...\n");
+    return 
+# 31 "app.cc"
+          0
+# 31 "app.cc"
+               ;
+};
+
+_Bool 
+# 34 "app.cc"
+    set_node_id(struct Node* node, uint8_t id){
+    node->id = id;
+    return node->id == id;
+};
+
+_Bool 
+# 39 "app.cc"
+    set_node_gid(struct Node* node, uint16_t gid){
+    node->gid = gid;
+    return node->gid == gid;
+};
+
+
+_Bool 
+# 45 "app.cc"
+    set_node_db_entry_count(struct Node* node, uint8_t count){
+    node->index = count;
+    return node->index == count;
+};
+
+
+
+void reset_array(struct Node *node) {
+ for (int i=0; i<25; i++) {
+  node->nnodes[i] = 0;
+ }
+}
+
+
+uint8_t generate_request_num(void){
+    return (uint8_t) (rand() % 255);
+}
+
+
+_Bool 
+# 64 "app.cc"
+    insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
+
+
+    int num;
+
+
+    if (node->data_base.item_count == 40){
+        return 
+# 71 "app.cc"
+              0
+# 71 "app.cc"
+                   ;
+    } else {
+
+
+        for (int i = 0; i < 40; i++){
+            if (node->data_base.item_array[i].data_entry == 
+# 76 "app.cc"
+                                                           ((void *)0)
+# 76 "app.cc"
+                                                               ){
+             num = i;
+                __pi_strncpy (node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry));
+                node->data_base.item_array[i].owner_id = owner_id;
+
+                node->data_base.item_array[i].timestamp = AONRTCSecGet ();
+                node->data_base.item_count += 1;
+                break;
+            };
+        };
+    };
+
+
+    if(node->data_base.item_array[num].data_entry == 
+# 89 "app.cc"
+                                                    ((void *)0)
+# 89 "app.cc"
+                                                        ){
+     return 
+# 90 "app.cc"
+           0
+# 90 "app.cc"
+                ;
+    }
+    return 
+# 92 "app.cc"
+          1
+# 92 "app.cc"
+              ;
+};
+
+
+_Bool 
+# 96 "app.cc"
+    clear_node_neighbour_array(struct Node *node){
+
+    if (!sizeof(node->nnodes)){
+        return 
+# 99 "app.cc"
+              1
+# 99 "app.cc"
+                  ;
+    } else{
+        for (int i = 0; i < 25; i++){
+            node->nnodes[i] = '\0';
+        };
+        return 
+# 104 "app.cc"
+              1
+# 104 "app.cc"
+                  ;
+    };
+
+    return 
+# 107 "app.cc"
+          0
+# 107 "app.cc"
+               ;
+
+};
+
+
+_Bool 
+# 112 "app.cc"
+    delete_record(struct Node *node, uint8_t index){
+
+
+    if (node->data_base.item_count == 0 || node->data_base.item_array[index].data_entry == 
+# 115 "app.cc"
+                                                                                          ((void *)0)
+# 115 "app.cc"
+                                                                                              ){
+        return 
+# 116 "app.cc"
+              0
+# 116 "app.cc"
+                   ;
+    } else{
+
+        node->data_base.item_array[index].data_entry[0] = '\0';
+        node->data_base.item_array[index].timestamp = 0;
+        node->data_base.item_count -= 1;
+    };
+
+
+    if(node->data_base.item_array[index].data_entry != 
+# 125 "app.cc"
+                                                      ((void *)0)
+# 125 "app.cc"
+                                                          ){
+     return 
+# 126 "app.cc"
+           0
+# 126 "app.cc"
+                ;
+    }
+    return 
+# 128 "app.cc"
+          1
+# 128 "app.cc"
+              ;
+};
+
+
+struct record retrieve_record(struct Node *node, uint8_t index){
+
+
+    return node->data_base.item_array[index];
+
+};
+
+
+_Bool 
+# 140 "app.cc"
+    delete_all(struct Node *node){
+
+
+    if (node->data_base.item_count == 0 || node->data_base.item_array[0].data_entry == 
+# 143 "app.cc"
+                                                                                      ((void *)0)
+# 143 "app.cc"
+                                                                                          ){
+        return 
+# 144 "app.cc"
+              1
+# 144 "app.cc"
+                  ;
+    } else{
+        for(int i = 0; i <= node->data_base.item_count; i++){
+            node->data_base.item_array[i].data_entry[0] = '\0';
+            node->data_base.item_array[i].timestamp = 0;
+        }
+    };
+    node->data_base.item_count = 0;
+
+    if(node->data_base.item_array[0].data_entry != 
+# 153 "app.cc"
+                                                  ((void *)0)
+# 153 "app.cc"
+                                                      ){
+     return 
+# 154 "app.cc"
+           0
+# 154 "app.cc"
+                ;
+    }
+    return 
+# 156 "app.cc"
+          1
+# 156 "app.cc"
+              ;
+}
+
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
  struct ResponseMessage *response_message;
 
@@ -6994,9 +7232,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
   response_message->padding = padding;
  };
  if (rec != 
-# 27 "app.cc"
+# 171 "app.cc"
            ((void *)0)
-# 27 "app.cc"
+# 171 "app.cc"
                ){
   __pi_strncpy (response_message->record, rec, 20);
  };
@@ -7043,9 +7281,9 @@ int get_message_size(struct ResponseMessage *message) {
 
 #define sending 0
 #define CONFIRM_message 1
-# 70 "app.cc"
+# 214 "app.cc"
 void sender (word __pi_st) { struct ResponseMessage * message = (struct ResponseMessage *)(__pi_curr->data); switch (__pi_st) { 
-# 70 "app.cc"
+# 214 "app.cc"
 
  static address packet;
 
@@ -7114,9 +7352,9 @@ break; } default: __pi_badstate (); } }
 #define response_3 7
 #define response_4 8
 #define error 9
-# 127 "app.cc"
+# 271 "app.cc"
 void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr->data); switch (__pi_st) { 
-# 127 "app.cc"
+# 271 "app.cc"
 
  static struct ResponseMessage *response_message_5;
 
@@ -7211,11 +7449,11 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     struct ResponseMessage *response_message_2;
     struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
    _Bool 
-# 220 "app.cc"
+# 364 "app.cc"
         neighbour_check = 
-# 220 "app.cc"
+# 364 "app.cc"
                           0
-# 220 "app.cc"
+# 364 "app.cc"
                                ;
     uint8_t status;
 
@@ -7289,9 +7527,9 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
      retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
      if (retrieved_record.data_entry == 
-# 292 "app.cc"
+# 436 "app.cc"
                                        ((void *)0)
-# 292 "app.cc"
+# 436 "app.cc"
                                            ){
       status = (uint8_t) RETRIEVE_ERROR;
       response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
@@ -7408,7 +7646,7 @@ break; } default: __pi_badstate (); } }
 #undef response_3
 #undef response_4
 #undef error
-# 397 "app.cc"
+# 541 "app.cc"
 
 
 
@@ -7445,9 +7683,9 @@ break; } default: __pi_badstate (); } }
 #define wait 30
 #define timeout 31
 #define error 32
-# 399 "app.cc"
+# 543 "app.cc"
 void root (word __pi_st) { switch (__pi_st) { 
-# 399 "app.cc"
+# 543 "app.cc"
 
 
 
@@ -7457,8 +7695,9 @@ void root (word __pi_st) { switch (__pi_st) {
  static int discovery_wait_flag=0 ;
  static char user_provided_record[20];
  static uint8_t user_provided_index;
+ static uint8_t user_provided_receiver_id;
 
- uint8_t user provided_receiver_id;
+
 
 
  case initialize_node : __stlab_initialize_node: {
@@ -7514,9 +7753,9 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 464 "app.cc"
+# 609 "app.cc"
                               ((void *)0)
-# 464 "app.cc"
+# 609 "app.cc"
                                   );
 
   __pi_fork (receiver, (aword)(node_db ));
@@ -7570,8 +7809,8 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
  } case new_group_id : __stlab_new_group_id: {
-  uint16_t NEW_NODE_GID;
-  ser_inf(new_group_id, "%d", NEW_NODE_GID);
+  word NEW_NODE_GID;
+  ser_inf(new_group_id, "%s", NEW_NODE_GID);
 
   diag("setting node group ID");
 
@@ -7588,7 +7827,7 @@ void root (word __pi_st) { switch (__pi_st) {
 
  } case new_node_id : __stlab_new_node_id: {
   uint8_t NEW_NODE_ID;
-  ser_inf(new_node_id, "%d", NEW_NODE_ID);
+  ser_inf(new_node_id, "%u", (unsigned int) NEW_NODE_ID);
 
 
   if(node_db->id < 1 || node_db->id > 25){
@@ -7615,7 +7854,7 @@ void root (word __pi_st) { switch (__pi_st) {
 
  } case invalid_node_id : __stlab_invalid_node_id: {
 
-  ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", node_db->id, reason);
+  ser_outf(invalid_node_id, "\r\nID#: %u, is an invalid choice. Reason: %s.", node_db->id, reason);
   proceed (get_new_node_id);
 
 
@@ -7630,10 +7869,10 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
  } case clear_neighbour_array : __stlab_clear_neighbour_array: {
-  if (!clear_neighbour_array(&node_db)){
-    __pi_strncpy (reason, "Error Clearing Node Array", 50);
-    proceed (error);
-   };
+  if (!clear_node_neighbour_array(node_db)){
+   __pi_strncpy (reason, "Error Clearing Node Array", 50);
+   proceed (error);
+  };
 
  } case find_proto_start : __stlab_find_proto_start: {
 
@@ -7669,7 +7908,7 @@ void root (word __pi_st) { switch (__pi_st) {
 
   for (int i=0; i<=25; i++){
    if (node_db->nnodes[i]=='\0') break;
-   ser_outf(display_neighbour_nodes, "%d, ", node_db->nnodes[i]);
+   ser_outf(display_neighbour_nodes, "%u, ", (unsigned int) node_db->nnodes[i]);
   }
   proceed (menu);
 
@@ -7820,8 +8059,10 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
 
  } case loop_through_data : __stlab_loop_through_data: {
-  for(int i = 0; i <= node_db->data_base.item_count; i++){
-   ser_outf(loop_through_data, "\r\n%d\t\t%d\t%d%t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+  if(node_db->data_base.item_count != 0){
+   for(int i = 0; i <= node_db->data_base.item_count; i++){
+    ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+   }
   }
   proceed (menu);
 
@@ -7876,5 +8117,5 @@ break; } default: __pi_badstate (); } }
 #undef wait
 #undef timeout
 #undef error
-# 789 "app.cc"
+# 936 "app.cc"
 

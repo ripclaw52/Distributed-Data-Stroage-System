@@ -1,0 +1,1791 @@
+Archive member included to satisfy reference by file (symbol)
+
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+                              KTMP/analog_sensor.o (SafeHapiAuxAdiSelect)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+                              KTMP/main.o (NOROM_AONBatMonTemperatureGetDegC)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+                              KTMP/main.o (NOROM_AONRTCCurrent64BitValueGet)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+                              KTMP/analog_sensor.o (NOROM_AUXADCDisable)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+                              KTMP/main.o (NOROM_CPUcpsid)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                              KTMP/rfprop.o (NOROM_OSCHF_TurnOnXosc)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                              KTMP/rfprop.o (NOROM_RFCDoorbellSendTo)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+                              KTMP/startup_gcc.o (NOROM_SetupTrimDevice)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                              /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o) (NOROM_SetupAfterColdResetWakeupFromShutDownCfg1)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+                              KTMP/main.o (NOROM_SysCtrlSetRechargeBeforePowerDown)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+                              /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o) (NOROM_ThisCodeIsBuiltForCC13xxHwRev20AndLater_HaltIfViolated)
+/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+                              /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o) (NOROM_DDI32RegWrite)
+/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+                              KTMP/rfprop.o (memcpy)
+/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+                              /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o) (memset)
+/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+                              KTMP/app.o (rand)
+/usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+                              /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o) (_impure_ptr)
+/usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+                              /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o) (__aeabi_lmul)
+
+Allocating common symbols
+Common symbol       size              file
+
+__pi_uart           0x8               KTMP/main.o
+system_event_count  0x4               KTMP/main.o
+entropy             0x4               KTMP/kernel.o
+response_checker    0x8               KTMP/app.o
+__pi_mintk          0x2               KTMP/kernel.o
+__pi_old            0x2               KTMP/kernel.o
+__pi_systat         0x8               KTMP/kernel.o
+reason              0x32              KTMP/app.o
+__pi_new            0x2               KTMP/kernel.o
+CHOICE              0x1               KTMP/app.o
+__pi_utims          0x10              KTMP/kernel.o
+__pi_curr           0x4               KTMP/kernel.o
+node_db             0x4               KTMP/app.o
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 KTMP/app.o
+ .data          0x0000000000000000        0x0 KTMP/app.o
+ .bss           0x0000000000000000        0x0 KTMP/app.o
+ .text.set_node_id
+                0x0000000000000000        0x6 KTMP/app.o
+ .text.set_node_gid
+                0x0000000000000000        0x6 KTMP/app.o
+ .text.set_node_db_entry_count
+                0x0000000000000000        0x8 KTMP/app.o
+ .text.reset_array
+                0x0000000000000000       0x14 KTMP/app.o
+ .text.insert_record
+                0x0000000000000000        0xc KTMP/app.o
+ .text.retrieve_record
+                0x0000000000000000       0x1e KTMP/app.o
+ .text.assemble_response_message
+                0x0000000000000000       0x12 KTMP/app.o
+ .text.get_message_size
+                0x0000000000000000       0x14 KTMP/app.o
+ .rodata.CSWTCH.128
+                0x0000000000000000        0x6 KTMP/app.o
+ .text          0x0000000000000000        0x0 KTMP/main.o
+ .data          0x0000000000000000        0x0 KTMP/main.o
+ .bss           0x0000000000000000        0x0 KTMP/main.o
+ .text.reset    0x0000000000000000       0x20 KTMP/main.o
+ .text.__pi_uart_getrate
+                0x0000000000000000        0xc KTMP/main.o
+ .text.__pi_stackfree
+                0x0000000000000000       0x28 KTMP/main.o
+ .text.__pi_batmon
+                0x0000000000000000       0x5c KTMP/main.o
+ .bss.where.5792
+                0x0000000000000000        0x1 KTMP/main.o
+ .text          0x0000000000000000        0x0 KTMP/kernel.o
+ .data          0x0000000000000000        0x0 KTMP/kernel.o
+ .bss           0x0000000000000000        0x0 KTMP/kernel.o
+ .rodata.pidver.str1.1
+                0x0000000000000000        0x4 KTMP/kernel.o
+ .text.pidver   0x0000000000000000       0x24 KTMP/kernel.o
+ .rodata.utimer_delete.str1.1
+                0x0000000000000000        0x5 KTMP/kernel.o
+ .text.utimer_delete
+                0x0000000000000000       0x4c KTMP/kernel.o
+ .text.__pi_ptrigger
+                0x0000000000000000       0x2c KTMP/kernel.o
+ .text.unwait   0x0000000000000000       0x14 KTMP/kernel.o
+ .text.dleft    0x0000000000000000       0x40 KTMP/kernel.o
+ .text.getcode  0x0000000000000000       0x18 KTMP/kernel.o
+ .text.crunning
+                0x0000000000000000       0x20 KTMP/kernel.o
+ .text.__pi_strcat
+                0x0000000000000000       0x10 KTMP/kernel.o
+ .text.__pi_strncat
+                0x0000000000000000        0x6 KTMP/kernel.o
+ .text.killall  0x0000000000000000       0x58 KTMP/kernel.o
+ .text.__pi_memfree
+                0x0000000000000000       0x30 KTMP/kernel.o
+ .text.__pi_maxfree
+                0x0000000000000000       0x38 KTMP/kernel.o
+ .rodata.host_id
+                0x0000000000000000        0x4 KTMP/kernel.o
+ .text          0x0000000000000000        0x0 KTMP/tcv.o
+ .data          0x0000000000000000        0x0 KTMP/tcv.o
+ .bss           0x0000000000000000        0x0 KTMP/tcv.o
+ .rodata.tcv_close.str1.1
+                0x0000000000000000        0xc KTMP/tcv.o
+ .text.tcv_close
+                0x0000000000000000       0x6c KTMP/tcv.o
+ .rodata.tcv_qsize.str1.1
+                0x0000000000000000        0xc KTMP/tcv.o
+ .text.tcv_qsize
+                0x0000000000000000       0x70 KTMP/tcv.o
+ .rodata.tcv_erase.str1.1
+                0x0000000000000000        0xc KTMP/tcv.o
+ .text.tcv_erase
+                0x0000000000000000       0x78 KTMP/tcv.o
+ .text.tcv_write
+                0x0000000000000000       0x38 KTMP/tcv.o
+ .text.tcv_drop
+                0x0000000000000000        0xa KTMP/tcv.o
+ .rodata.tcvp_assign.str1.1
+                0x0000000000000000        0x6 KTMP/tcv.o
+ .text.tcvp_assign
+                0x0000000000000000       0x40 KTMP/tcv.o
+ .rodata.tcvp_attach.str1.1
+                0x0000000000000000        0x6 KTMP/tcv.o
+ .text.tcvp_attach
+                0x0000000000000000       0x2c KTMP/tcv.o
+ .text.tcvp_clone
+                0x0000000000000000       0x3c KTMP/tcv.o
+ .text.tcvp_dispose
+                0x0000000000000000        0x6 KTMP/tcv.o
+ .rodata.tcvphy_erase.str1.1
+                0x0000000000000000        0x6 KTMP/tcv.o
+ .text.tcvphy_erase
+                0x0000000000000000       0x3c KTMP/tcv.o
+ .text          0x0000000000000000        0x0 KTMP/startup_gcc.o
+ .data          0x0000000000000000        0x0 KTMP/startup_gcc.o
+ .bss           0x0000000000000000        0x0 KTMP/startup_gcc.o
+ .text          0x0000000000000000        0x0 KTMP/ccfg.o
+ .data          0x0000000000000000        0x0 KTMP/ccfg.o
+ .bss           0x0000000000000000        0x0 KTMP/ccfg.o
+ .text          0x0000000000000000        0x0 KTMP/sensors.o
+ .data          0x0000000000000000        0x0 KTMP/sensors.o
+ .bss           0x0000000000000000        0x0 KTMP/sensors.o
+ .text.read_sensor
+                0x0000000000000000       0x34 KTMP/sensors.o
+ .rodata.wait_sensor.str1.1
+                0x0000000000000000        0xc KTMP/sensors.o
+ .text.wait_sensor
+                0x0000000000000000       0x38 KTMP/sensors.o
+ .rodata.sensor_list
+                0x0000000000000000       0x30 KTMP/sensors.o
+ .debug_info    0x0000000000000000      0x5cb KTMP/sensors.o
+ .debug_abbrev  0x0000000000000000      0x194 KTMP/sensors.o
+ .debug_loc     0x0000000000000000       0xdd KTMP/sensors.o
+ .debug_aranges
+                0x0000000000000000       0x28 KTMP/sensors.o
+ .debug_ranges  0x0000000000000000       0x18 KTMP/sensors.o
+ .debug_line    0x0000000000000000      0x1f5 KTMP/sensors.o
+ .debug_str     0x0000000000000000      0x40c KTMP/sensors.o
+ .comment       0x0000000000000000       0x5a KTMP/sensors.o
+ .debug_frame   0x0000000000000000       0x58 KTMP/sensors.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/sensors.o
+ .text          0x0000000000000000        0x0 KTMP/analog_sensor.o
+ .data          0x0000000000000000        0x0 KTMP/analog_sensor.o
+ .bss           0x0000000000000000        0x0 KTMP/analog_sensor.o
+ .text.analog_sensor_read
+                0x0000000000000000       0xbc KTMP/analog_sensor.o
+ .bss.praa_avg  0x0000000000000000        0x4 KTMP/analog_sensor.o
+ .bss.praa_count
+                0x0000000000000000        0x4 KTMP/analog_sensor.o
+ .debug_info    0x0000000000000000      0x805 KTMP/analog_sensor.o
+ .debug_abbrev  0x0000000000000000      0x20c KTMP/analog_sensor.o
+ .debug_loc     0x0000000000000000       0x86 KTMP/analog_sensor.o
+ .debug_aranges
+                0x0000000000000000       0x20 KTMP/analog_sensor.o
+ .debug_ranges  0x0000000000000000       0x10 KTMP/analog_sensor.o
+ .debug_line    0x0000000000000000      0x2d4 KTMP/analog_sensor.o
+ .debug_str     0x0000000000000000      0x6b0 KTMP/analog_sensor.o
+ .comment       0x0000000000000000       0x5a KTMP/analog_sensor.o
+ .debug_frame   0x0000000000000000       0x34 KTMP/analog_sensor.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/analog_sensor.o
+ .text          0x0000000000000000        0x0 KTMP/pin_sensor.o
+ .data          0x0000000000000000        0x0 KTMP/pin_sensor.o
+ .bss           0x0000000000000000        0x0 KTMP/pin_sensor.o
+ .text.pin_sensor_init
+                0x0000000000000000        0x2 KTMP/pin_sensor.o
+ .text.pin_sensor_read
+                0x0000000000000000       0x58 KTMP/pin_sensor.o
+ .text          0x0000000000000000        0x0 KTMP/pins_sys.o
+ .data          0x0000000000000000        0x0 KTMP/pins_sys.o
+ .bss           0x0000000000000000        0x0 KTMP/pins_sys.o
+ .text.__pi_pin_available
+                0x0000000000000000        0xa KTMP/pins_sys.o
+ .text.__pi_pin_adc_available
+                0x0000000000000000        0x4 KTMP/pins_sys.o
+ .text.__pi_pin_ivalue
+                0x0000000000000000       0x24 KTMP/pins_sys.o
+ .text.__pi_pin_ovalue
+                0x0000000000000000       0x24 KTMP/pins_sys.o
+ .text.__pi_pin_adc
+                0x0000000000000000        0x4 KTMP/pins_sys.o
+ .text.__pi_pin_output
+                0x0000000000000000       0x24 KTMP/pins_sys.o
+ .text.__pi_pin_set
+                0x0000000000000000       0x1c KTMP/pins_sys.o
+ .text.__pi_pin_clear
+                0x0000000000000000       0x1c KTMP/pins_sys.o
+ .text.__pi_pin_set_input
+                0x0000000000000000       0x1c KTMP/pins_sys.o
+ .text.__pi_pin_set_output
+                0x0000000000000000       0x1c KTMP/pins_sys.o
+ .text.__pi_pin_set_adc
+                0x0000000000000000        0x2 KTMP/pins_sys.o
+ .rodata.pinmap
+                0x0000000000000000       0x11 KTMP/pins_sys.o
+ .debug_info    0x0000000000000000      0x706 KTMP/pins_sys.o
+ .debug_abbrev  0x0000000000000000      0x23f KTMP/pins_sys.o
+ .debug_loc     0x0000000000000000       0x5f KTMP/pins_sys.o
+ .debug_aranges
+                0x0000000000000000       0x68 KTMP/pins_sys.o
+ .debug_ranges  0x0000000000000000       0xf8 KTMP/pins_sys.o
+ .debug_line    0x0000000000000000      0x3d5 KTMP/pins_sys.o
+ .debug_str     0x0000000000000000      0x4df KTMP/pins_sys.o
+ .comment       0x0000000000000000       0x5a KTMP/pins_sys.o
+ .debug_frame   0x0000000000000000       0xc0 KTMP/pins_sys.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/pins_sys.o
+ .text          0x0000000000000000        0x0 KTMP/buttons.o
+ .data          0x0000000000000000        0x0 KTMP/buttons.o
+ .bss           0x0000000000000000        0x0 KTMP/buttons.o
+ .text.__pi_buttons
+                0x0000000000000000       0xcc KTMP/buttons.o
+ .text.buttons_action
+                0x0000000000000000       0x38 KTMP/buttons.o
+ .bss.baction   0x0000000000000000        0x4 KTMP/buttons.o
+ .bss.pbutton   0x0000000000000000        0x2 KTMP/buttons.o
+ .text          0x0000000000000000        0x0 KTMP/storage_mx25r8035.o
+ .data          0x0000000000000000        0x0 KTMP/storage_mx25r8035.o
+ .bss           0x0000000000000000        0x0 KTMP/storage_mx25r8035.o
+ .text.ee_read  0x0000000000000000       0x64 KTMP/storage_mx25r8035.o
+ .text.ee_erase
+                0x0000000000000000      0x128 KTMP/storage_mx25r8035.o
+ .text.ee_write
+                0x0000000000000000       0xec KTMP/storage_mx25r8035.o
+ .text.ee_panic
+                0x0000000000000000        0x2 KTMP/storage_mx25r8035.o
+ .text.ee_sync  0x0000000000000000        0x4 KTMP/storage_mx25r8035.o
+ .text.ee_size  0x0000000000000000       0x14 KTMP/storage_mx25r8035.o
+ .text.ee_init_erase
+                0x0000000000000000       0x1a KTMP/storage_mx25r8035.o
+ .bss.cptr      0x0000000000000000        0x4 KTMP/storage_mx25r8035.o
+ .bss.curr      0x0000000000000000        0x4 KTMP/storage_mx25r8035.o
+ .bss.last      0x0000000000000000        0x4 KTMP/storage_mx25r8035.o
+ .bss.left      0x0000000000000000        0x2 KTMP/storage_mx25r8035.o
+ .text          0x0000000000000000        0x0 KTMP/ser_out.o
+ .data          0x0000000000000000        0x0 KTMP/ser_out.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_out.o
+ .text          0x0000000000000000        0x0 KTMP/ser_outb.o
+ .data          0x0000000000000000        0x0 KTMP/ser_outb.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_outb.o
+ .text.ser_outb
+                0x0000000000000000       0x3c KTMP/ser_outb.o
+ .debug_info    0x0000000000000000      0x400 KTMP/ser_outb.o
+ .debug_abbrev  0x0000000000000000      0x151 KTMP/ser_outb.o
+ .debug_loc     0x0000000000000000       0x70 KTMP/ser_outb.o
+ .debug_aranges
+                0x0000000000000000       0x20 KTMP/ser_outb.o
+ .debug_ranges  0x0000000000000000       0x10 KTMP/ser_outb.o
+ .debug_line    0x0000000000000000      0x172 KTMP/ser_outb.o
+ .debug_str     0x0000000000000000      0x393 KTMP/ser_outb.o
+ .comment       0x0000000000000000       0x5a KTMP/ser_outb.o
+ .debug_frame   0x0000000000000000       0x2c KTMP/ser_outb.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/ser_outb.o
+ .text          0x0000000000000000        0x0 KTMP/ser_in.o
+ .data          0x0000000000000000        0x0 KTMP/ser_in.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_in.o
+ .text          0x0000000000000000        0x0 KTMP/ser_select.o
+ .data          0x0000000000000000        0x0 KTMP/ser_select.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_select.o
+ .debug_info    0x0000000000000000      0x3a8 KTMP/ser_select.o
+ .debug_abbrev  0x0000000000000000      0x110 KTMP/ser_select.o
+ .debug_aranges
+                0x0000000000000000       0x18 KTMP/ser_select.o
+ .debug_line    0x0000000000000000       0xeb KTMP/ser_select.o
+ .debug_str     0x0000000000000000      0x387 KTMP/ser_select.o
+ .comment       0x0000000000000000       0x5a KTMP/ser_select.o
+ .ARM.attributes
+                0x0000000000000000       0x33 KTMP/ser_select.o
+ .text          0x0000000000000000        0x0 KTMP/form.o
+ .data          0x0000000000000000        0x0 KTMP/form.o
+ .bss           0x0000000000000000        0x0 KTMP/form.o
+ .text.form     0x0000000000000000       0x1a KTMP/form.o
+ .text.fsize    0x0000000000000000       0x1e KTMP/form.o
+ .debug_info    0x0000000000000000      0x468 KTMP/form.o
+ .debug_abbrev  0x0000000000000000      0x1a3 KTMP/form.o
+ .debug_loc     0x0000000000000000       0x13 KTMP/form.o
+ .debug_aranges
+                0x0000000000000000       0x28 KTMP/form.o
+ .debug_ranges  0x0000000000000000       0x18 KTMP/form.o
+ .debug_line    0x0000000000000000      0x19a KTMP/form.o
+ .debug_str     0x0000000000000000      0x3b2 KTMP/form.o
+ .comment       0x0000000000000000       0x5a KTMP/form.o
+ .debug_frame   0x0000000000000000       0x6c KTMP/form.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/form.o
+ .text          0x0000000000000000        0x0 KTMP/scan.o
+ .data          0x0000000000000000        0x0 KTMP/scan.o
+ .bss           0x0000000000000000        0x0 KTMP/scan.o
+ .text.scan     0x0000000000000000       0x1a KTMP/scan.o
+ .debug_info    0x0000000000000000      0x433 KTMP/scan.o
+ .debug_abbrev  0x0000000000000000      0x18a KTMP/scan.o
+ .debug_loc     0x0000000000000000       0x13 KTMP/scan.o
+ .debug_aranges
+                0x0000000000000000       0x20 KTMP/scan.o
+ .debug_ranges  0x0000000000000000       0x10 KTMP/scan.o
+ .debug_line    0x0000000000000000      0x16c KTMP/scan.o
+ .debug_str     0x0000000000000000      0x3ac KTMP/scan.o
+ .comment       0x0000000000000000       0x5a KTMP/scan.o
+ .debug_frame   0x0000000000000000       0x3c KTMP/scan.o
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/scan.o
+ .text          0x0000000000000000        0x0 KTMP/ser_outf.o
+ .data          0x0000000000000000        0x0 KTMP/ser_outf.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_outf.o
+ .text          0x0000000000000000        0x0 KTMP/ser_inf.o
+ .data          0x0000000000000000        0x0 KTMP/ser_inf.o
+ .bss           0x0000000000000000        0x0 KTMP/ser_inf.o
+ .text          0x0000000000000000        0x0 KTMP/rfprop.o
+ .data          0x0000000000000000        0x0 KTMP/rfprop.o
+ .bss           0x0000000000000000        0x0 KTMP/rfprop.o
+ .text          0x0000000000000000        0x0 KTMP/plug_null.o
+ .data          0x0000000000000000        0x0 KTMP/plug_null.o
+ .bss           0x0000000000000000        0x0 KTMP/plug_null.o
+ .text          0x0000000000000000        0x0 KTMP/__outserial.o
+ .data          0x0000000000000000        0x0 KTMP/__outserial.o
+ .bss           0x0000000000000000        0x0 KTMP/__outserial.o
+ .text          0x0000000000000000        0x0 KTMP/__inserial.o
+ .data          0x0000000000000000        0x0 KTMP/__inserial.o
+ .bss           0x0000000000000000        0x0 KTMP/__inserial.o
+ .text          0x0000000000000000        0x0 KTMP/vform.o
+ .data          0x0000000000000000        0x0 KTMP/vform.o
+ .bss           0x0000000000000000        0x0 KTMP/vform.o
+ .text          0x0000000000000000        0x0 KTMP/vscan.o
+ .data          0x0000000000000000        0x0 KTMP/vscan.o
+ .bss           0x0000000000000000        0x0 KTMP/vscan.o
+ .text          0x0000000000000000        0x0 KTMP/smartrf_settings_lp_hr.o
+ .data          0x0000000000000000        0x0 KTMP/smartrf_settings_lp_hr.o
+ .bss           0x0000000000000000        0x0 KTMP/smartrf_settings_lp_hr.o
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .text.SafeHapiAuxAdiSelect
+                0x0000000000000000       0x2c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.AuxAdiDdiSafeWrite.constprop.6
+                0x0000000000000000       0x2c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCDisable
+                0x0000000000000000       0x3c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCEnableAsync
+                0x0000000000000000       0x58 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCEnableSync
+                0x0000000000000000       0x68 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCDisableInputScaling
+                0x0000000000000000        0xc /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCFlushFifo
+                0x0000000000000000       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCReadFifo
+                0x0000000000000000       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCPopFifo
+                0x0000000000000000        0xc /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCGetAdjustmentGain
+                0x0000000000000000       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCGetAdjustmentOffset
+                0x0000000000000000       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCValueToMicrovolts
+                0x0000000000000000       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCMicrovoltsToValue
+                0x0000000000000000       0x16 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCAdjustValueForGainAndOffset
+                0x0000000000000000       0x16 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text.NOROM_AUXADCUnadjustValueForGainAndOffset
+                0x0000000000000000       0x16 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_info    0x0000000000000000      0x954 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_abbrev  0x0000000000000000      0x23b /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_loc     0x0000000000000000      0x3d3 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_aranges
+                0x0000000000000000       0x88 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_ranges  0x0000000000000000       0x90 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_line    0x0000000000000000      0x30e /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_str     0x0000000000000000      0x467 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .comment       0x0000000000000000       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .debug_frame   0x0000000000000000      0x130 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .ARM.attributes
+                0x0000000000000000       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aux_adc.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .text.NOROM_CPUprimask
+                0x0000000000000000        0x6 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .text.NOROM_CPUbasepriGet
+                0x0000000000000000        0x6 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .text.NOROM_CPUdelay
+                0x0000000000000000        0x8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text.NOROM_OSCHF_GetStartupTime
+                0x0000000000000000       0x90 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text.NOROM_OSC_HPOSCRelativeFrequencyOffsetGet
+                0x0000000000000000       0x38 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text.NOROM_OSC_HPOSCRelativeFrequencyOffsetToRFCoreFormatConvert
+                0x0000000000000000        0xc /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text.NOROM_OSCHF_DebugGetCrystalAmplitude
+                0x0000000000000000       0x34 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text.NOROM_OSCHF_DebugGetExpectedAverageCrystalAmplitude
+                0x0000000000000000       0x1c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .text.NOROM_RFCCpeIntGetAndClear
+                0x0000000000000000       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .text.NOROM_RFCCPEPatchReset
+                0x0000000000000000       0x60 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .text.NOROM_SetupGetTrimForXoscHfIbiastherm
+                0x0000000000000000       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .text.NOROM_SysCtrlPowerEverything
+                0x0000000000000000       0xf4 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .text.NOROM_SysCtrl_DCDC_VoltageConditionalControl
+                0x0000000000000000       0x78 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .rodata.g_pui32ModuleCG
+                0x0000000000000000       0x34 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .text.NOROM_ChipInfo_GetSupportedProtocol_BV
+                0x0000000000000000       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .text.NOROM_ChipInfo_GetPackageType
+                0x0000000000000000       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .text.NOROM_ChipInfo_GetChipType
+                0x0000000000000000       0x30 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .text          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .data          0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .bss           0x0000000000000000        0x0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .text.NOROM_DDI16BitWrite
+                0x0000000000000000       0x22 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .text.NOROM_DDI16BitfieldWrite
+                0x0000000000000000       0x2e /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .text.NOROM_DDI16BitRead
+                0x0000000000000000       0x34 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .text.NOROM_DDI16BitfieldRead
+                0x0000000000000000       0x40 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .text          0x0000000000000000       0xb0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_info    0x0000000000000000      0xf21 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_abbrev  0x0000000000000000      0x217 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_loc     0x0000000000000000      0x2df /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_line    0x0000000000000000      0x27b /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_str     0x0000000000000000      0x8cb /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .comment       0x0000000000000000       0x4f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000000       0x30 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000000000000000       0x2a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .rodata        0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x000000000001ffa8 xr
+FLASH_CCFG       0x000000000001ffa8 0x0000000000000058 xr
+SRAM             0x0000000020000000 0x0000000000005000 xrw
+GPRAM            0x0000000011000000 0x0000000000002000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000020005000                _estack = (ORIGIN (SRAM) + LENGTH (SRAM))
+                0x0000000000000000                _Min_Heap_Size = 0x0
+                0x0000000000000100                _Min_Stack_Size = 0x100
+
+.text           0x0000000000000000     0x5918
+                0x0000000000000000                _text = .
+ *(.vectors)
+ .vectors       0x0000000000000000       0xc8 KTMP/startup_gcc.o
+                0x0000000000000000                g_pfnVectors
+ *(.text*)
+ .text.sender   0x00000000000000c8       0xa4 KTMP/app.o
+                0x00000000000000c8                sender
+ .text.init_node
+                0x000000000000016c       0x20 KTMP/app.o
+                0x000000000000016c                init_node
+ .text.generate_request_num
+                0x000000000000018c       0x12 KTMP/app.o
+                0x000000000000018c                generate_request_num
+ .text.clear_node_neighbour_array
+                0x000000000000019e       0x16 KTMP/app.o
+                0x000000000000019e                clear_node_neighbour_array
+ .text.delete_record
+                0x00000000000001b4       0x1c KTMP/app.o
+                0x00000000000001b4                delete_record
+ .text.receiver
+                0x00000000000001d0      0x32c KTMP/app.o
+                0x00000000000001d0                receiver
+ .text.delete_all
+                0x00000000000004fc       0x26 KTMP/app.o
+                0x00000000000004fc                delete_all
+ *fill*         0x0000000000000522        0x2 00000000
+ .text.root     0x0000000000000524      0x50c KTMP/app.o
+                0x0000000000000524                root
+ .text.devinit_uart
+                0x0000000000000a30        0xc KTMP/main.o
+ .text.udelay   0x0000000000000a3c       0x2c KTMP/main.o
+                0x0000000000000a3c                udelay
+ .text.mdelay   0x0000000000000a68       0x2a KTMP/main.o
+                0x0000000000000a68                mdelay
+ *fill*         0x0000000000000a92        0x2 00000000
+ .text.__pi_ondomain
+                0x0000000000000a94       0x3c KTMP/main.o
+                0x0000000000000a94                __pi_ondomain
+ .text.__pi_offdomain
+                0x0000000000000ad0       0x40 KTMP/main.o
+                0x0000000000000ad0                __pi_offdomain
+ .text.__pi_syserror
+                0x0000000000000b10       0x54 KTMP/main.o
+                0x0000000000000b10                __pi_syserror
+ .text.tci_run_delay_timer
+                0x0000000000000b64       0x40 KTMP/main.o
+                0x0000000000000b64                tci_run_delay_timer
+ .text.tci_run_auxiliary_timer
+                0x0000000000000ba4       0x28 KTMP/main.o
+                0x0000000000000ba4                tci_run_auxiliary_timer
+ .text.AONRTCIntHandler
+                0x0000000000000bcc      0x114 KTMP/main.o
+                0x0000000000000bcc                AONRTCIntHandler
+ .text.tci_update_delay_ticks
+                0x0000000000000ce0       0x50 KTMP/main.o
+                0x0000000000000ce0                tci_update_delay_ticks
+ .text.__pi_uart_setrate
+                0x0000000000000d30       0x54 KTMP/main.o
+                0x0000000000000d30                __pi_uart_setrate
+ .text.reinit_uart
+                0x0000000000000d84       0x38 KTMP/main.o
+ .text.ioreq_uart_a
+                0x0000000000000dbc      0x110 KTMP/main.o
+ .text.UART0IntHandler
+                0x0000000000000ecc       0xc0 KTMP/main.o
+                0x0000000000000ecc                UART0IntHandler
+ .text.__buttons_setirq
+                0x0000000000000f8c       0x44 KTMP/main.o
+                0x0000000000000f8c                __buttons_setirq
+ .text.__pinlist_setirq
+                0x0000000000000fd0       0x3c KTMP/main.o
+                0x0000000000000fd0                __pinlist_setirq
+ .text.GPIOIntHandler
+                0x000000000000100c       0xa4 KTMP/main.o
+                0x000000000000100c                GPIOIntHandler
+ .text.system_init
+                0x00000000000010b0      0x1b8 KTMP/main.o
+                0x00000000000010b0                system_init
+ .text.setpowermode
+                0x0000000000001268       0x24 KTMP/main.o
+                0x0000000000001268                setpowermode
+ .text.__pi_release
+                0x000000000000128c      0x258 KTMP/main.o
+                0x000000000000128c                __pi_release
+ .text.halt     0x00000000000014e4       0x30 KTMP/main.o
+                0x00000000000014e4                halt
+ .text.startup.main
+                0x0000000000001514       0x60 KTMP/main.o
+                0x0000000000001514                main
+ .text.killev   0x0000000000001574       0x3c KTMP/kernel.o
+ .text.qfree    0x00000000000015b0       0x80 KTMP/kernel.o
+ .text.dgout    0x0000000000001630       0x18 KTMP/kernel.o
+ .text.__pi_badstate
+                0x0000000000001648       0x10 KTMP/kernel.o
+                0x0000000000001648                __pi_badstate
+ .text.utimer_add
+                0x0000000000001658       0x2c KTMP/kernel.o
+                0x0000000000001658                utimer_add
+ .text.__pi_utimer_set
+                0x0000000000001684        0x6 KTMP/kernel.o
+                0x0000000000001684                __pi_utimer_set
+ *fill*         0x000000000000168a        0x2 00000000
+ .text.update_n_wake
+                0x000000000000168c       0xcc KTMP/kernel.o
+                0x000000000000168c                update_n_wake
+ .text.proceed  0x0000000000001758       0x14 KTMP/kernel.o
+                0x0000000000001758                proceed
+ .text.__pi_wait
+                0x000000000000176c       0x34 KTMP/kernel.o
+                0x000000000000176c                __pi_wait
+ .text.__pi_trigger
+                0x00000000000017a0       0x34 KTMP/kernel.o
+                0x00000000000017a0                __pi_trigger
+ .text.__pi_join
+                0x00000000000017d4       0x24 KTMP/kernel.o
+                0x00000000000017d4                __pi_join
+ .text.delay    0x00000000000017f8       0x38 KTMP/kernel.o
+                0x00000000000017f8                delay
+ .text.running  0x0000000000001830       0x24 KTMP/kernel.o
+                0x0000000000001830                running
+ .text.__pi_strlen
+                0x0000000000001854        0xe KTMP/kernel.o
+                0x0000000000001854                __pi_strlen
+ .text.__pi_strcpy
+                0x0000000000001862       0x10 KTMP/kernel.o
+                0x0000000000001862                __pi_strcpy
+ .text.__pi_strncpy
+                0x0000000000001872       0x1c KTMP/kernel.o
+                0x0000000000001872                __pi_strncpy
+ .text.__pi_memcpy
+                0x000000000000188e       0x14 KTMP/kernel.o
+                0x000000000000188e                __pi_memcpy
+ .text.__pi_memset
+                0x00000000000018a2        0xe KTMP/kernel.o
+                0x00000000000018a2                __pi_memset
+ .text.adddevfunc
+                0x00000000000018b0       0x24 KTMP/kernel.o
+                0x00000000000018b0                adddevfunc
+ .text.io       0x00000000000018d4       0x9c KTMP/kernel.o
+                0x00000000000018d4                io
+ .text.__pi_malloc_init
+                0x0000000000001970       0x50 KTMP/kernel.o
+                0x0000000000001970                __pi_malloc_init
+ .text.__pi_free
+                0x00000000000019c0       0x48 KTMP/kernel.o
+                0x00000000000019c0                __pi_free
+ .text.kill     0x0000000000001a08       0x50 KTMP/kernel.o
+                0x0000000000001a08                kill
+ .text.__pi_malloc
+                0x0000000000001a58       0xa8 KTMP/kernel.o
+                0x0000000000001a58                __pi_malloc
+ .text.__pi_fork
+                0x0000000000001b00       0x34 KTMP/kernel.o
+                0x0000000000001b00                __pi_fork
+ .text.__pi_waitmem
+                0x0000000000001b34       0x18 KTMP/kernel.o
+                0x0000000000001b34                __pi_waitmem
+ .text.diag     0x0000000000001b4c      0x13c KTMP/kernel.o
+                0x0000000000001b4c                diag
+ .text.lrnd     0x0000000000001c88       0x24 KTMP/kernel.o
+                0x0000000000001c88                lrnd
+ .text.apb      0x0000000000001cac       0x16 KTMP/tcv.o
+ .text.deq      0x0000000000001cc2       0x1a KTMP/tcv.o
+ .text.rlp      0x0000000000001cdc        0xe KTMP/tcv.o
+ *fill*         0x0000000000001cea        0x2 00000000
+ .text.enq      0x0000000000001cec       0x4c KTMP/tcv.o
+ .text.dispose  0x0000000000001d38       0x8c KTMP/tcv.o
+ .text.tcv_endp
+                0x0000000000001dc4       0x70 KTMP/tcv.o
+                0x0000000000001dc4                tcv_endp
+ .text.tcv_open
+                0x0000000000001e34       0xc0 KTMP/tcv.o
+                0x0000000000001e34                tcv_open
+ .text.tcv_plug
+                0x0000000000001ef4       0x24 KTMP/tcv.o
+                0x0000000000001ef4                tcv_plug
+ .text.tcv_rnp  0x0000000000001f18       0x80 KTMP/tcv.o
+                0x0000000000001f18                tcv_rnp
+ .text.tcv_wnps
+                0x0000000000001f98       0xbc KTMP/tcv.o
+                0x0000000000001f98                tcv_wnps
+ .text.tcv_read
+                0x0000000000002054       0x3a KTMP/tcv.o
+                0x0000000000002054                tcv_read
+ *fill*         0x000000000000208e        0x2 00000000
+ .text.tcvp_control
+                0x0000000000002090       0x2c KTMP/tcv.o
+                0x0000000000002090                tcvp_control
+ .text.tcv_control
+                0x00000000000020bc       0x60 KTMP/tcv.o
+                0x00000000000020bc                tcv_control
+ .text.tcvp_new
+                0x000000000000211c       0x68 KTMP/tcv.o
+                0x000000000000211c                tcvp_new
+ .text.tcvphy_reg
+                0x0000000000002184       0x50 KTMP/tcv.o
+                0x0000000000002184                tcvphy_reg
+ .text.tcvphy_rcv
+                0x00000000000021d4       0x9c KTMP/tcv.o
+                0x00000000000021d4                tcvphy_rcv
+ .text.tcvphy_get
+                0x0000000000002270       0x40 KTMP/tcv.o
+                0x0000000000002270                tcvphy_get
+ .text.tcvphy_top
+                0x00000000000022b0       0x34 KTMP/tcv.o
+                0x00000000000022b0                tcvphy_top
+ .text.tcvphy_end
+                0x00000000000022e4       0x3c KTMP/tcv.o
+                0x00000000000022e4                tcvphy_end
+ .text.tcv_init
+                0x0000000000002320        0x2 KTMP/tcv.o
+                0x0000000000002320                tcv_init
+ .text.NmiSRHandler
+                0x0000000000002322        0x2 KTMP/startup_gcc.o
+                0x0000000000002322                NmiSR
+ .text.FaultISRHandler
+                0x0000000000002324        0x2 KTMP/startup_gcc.o
+                0x0000000000002324                FaultISR
+ .text.IntDefaultHandler
+                0x0000000000002326        0x2 KTMP/startup_gcc.o
+                0x0000000000002326                TRNGIntHandler
+                0x0000000000002326                SSI0IntHandler
+                0x0000000000002326                SWEvent0IntHandler
+                0x0000000000002326                uDMAIntHandler
+                0x0000000000002326                WatchdogIntHandler
+                0x0000000000002326                RFCHardwareIntHandler
+                0x0000000000002326                Timer1BIntHandler
+                0x0000000000002326                I2SIntHandler
+                0x0000000000002326                Timer2BIntHandler
+                0x0000000000002326                Timer2AIntHandler
+                0x0000000000002326                Timer1AIntHandler
+                0x0000000000002326                AONIntHandler
+                0x0000000000002326                AUXSWEvent0IntHandler
+                0x0000000000002326                AUXADCIntHandler
+                0x0000000000002326                PendSVIntHandler
+                0x0000000000002326                RFCCPE1IntHandler
+                0x0000000000002326                AUXSWEvent1IntHandler
+                0x0000000000002326                SVCallIntHandler
+                0x0000000000002326                MPUFaultIntHandler
+                0x0000000000002326                SysTickIntHandler
+                0x0000000000002326                BusFaultIntHandler
+                0x0000000000002326                AONProgIntHandler
+                0x0000000000002326                AUXCompAIntHandler
+                0x0000000000002326                SSI1IntHandler
+                0x0000000000002326                FlashIntHandler
+                0x0000000000002326                uDMAErrIntHandler
+                0x0000000000002326                UsageFaultIntHandler
+                0x0000000000002326                RFCCmdAckIntHandler
+                0x0000000000002326                CryptoIntHandler
+                0x0000000000002326                Timer0AIntHandler
+                0x0000000000002326                I2CIntHandler
+                0x0000000000002326                DebugMonIntHandler
+                0x0000000000002326                Timer0BIntHandler
+                0x0000000000002326                AUXCombEventIntHandler
+                0x0000000000002326                Timer3AIntHandler
+                0x0000000000002326                DynProgIntHandler
+                0x0000000000002326                Timer3BIntHandler
+ .text.ResetISR
+                0x0000000000002328       0x4c KTMP/startup_gcc.o
+                0x0000000000002328                ResetISR
+ .text.get_byte
+                0x0000000000002374       0x34 KTMP/storage_mx25r8035.o
+ .text.put_byte
+                0x00000000000023a8       0x30 KTMP/storage_mx25r8035.o
+ .text.cmd_0    0x00000000000023d8       0x18 KTMP/storage_mx25r8035.o
+ .text.wwait    0x00000000000023f0       0x54 KTMP/storage_mx25r8035.o
+ .text.ready    0x0000000000002444       0x40 KTMP/storage_mx25r8035.o
+ .text.cclose   0x0000000000002484       0x24 KTMP/storage_mx25r8035.o
+ .text.ee_open  0x00000000000024a8       0x14 KTMP/storage_mx25r8035.o
+                0x00000000000024a8                ee_open
+ .text.ee_close
+                0x00000000000024bc       0x14 KTMP/storage_mx25r8035.o
+                0x00000000000024bc                ee_close
+ .text.ser_out  0x00000000000024d0       0x6c KTMP/ser_out.o
+                0x00000000000024d0                ser_out
+ .text.ser_in   0x000000000000253c       0x78 KTMP/ser_in.o
+                0x000000000000253c                ser_in
+ .text.ser_outf
+                0x00000000000025b4       0x54 KTMP/ser_outf.o
+                0x00000000000025b4                ser_outf
+ .text.ser_inf  0x0000000000002608       0x60 KTMP/ser_inf.o
+                0x0000000000002608                ser_inf
+ .text.plugch   0x0000000000002668       0x20 KTMP/rfprop.o
+ .text.option   0x0000000000002688      0x190 KTMP/rfprop.o
+ .text.issue_cmd
+                0x0000000000002818       0x48 KTMP/rfprop.o
+ .text.rx_de    0x0000000000002860       0x24 KTMP/rfprop.o
+ .text.rf_off   0x0000000000002884       0x5c KTMP/rfprop.o
+ .text.wait_cmd.constprop.0
+                0x00000000000028e0       0x38 KTMP/rfprop.o
+ .text.rf_on.part.0
+                0x0000000000002918      0x180 KTMP/rfprop.o
+ .text.rx_int_enable
+                0x0000000000002a98       0xd0 KTMP/rfprop.o
+ .text.cc1350_driver
+                0x0000000000002b68      0x1f0 KTMP/rfprop.o
+                0x0000000000002b68                cc1350_driver
+ .text.RFCCPE0IntHandler
+                0x0000000000002d58       0x70 KTMP/rfprop.o
+                0x0000000000002d58                RFCCPE0IntHandler
+ .text.phys_cc1350
+                0x0000000000002dc8      0x174 KTMP/rfprop.o
+                0x0000000000002dc8                phys_cc1350
+ .text.tcv_clo_null
+                0x0000000000002f3c       0x24 KTMP/plug_null.o
+ .text.tcv_rcv_null
+                0x0000000000002f60       0x24 KTMP/plug_null.o
+ .text.tcv_frm_null
+                0x0000000000002f84        0x8 KTMP/plug_null.o
+ .text.tcv_out_null
+                0x0000000000002f8c        0x4 KTMP/plug_null.o
+ .text.tcv_xmt_null
+                0x0000000000002f90        0x4 KTMP/plug_null.o
+ .text.tcv_ope_null
+                0x0000000000002f94       0x48 KTMP/plug_null.o
+ .text.__outserial
+                0x0000000000002fdc       0x70 KTMP/__outserial.o
+                0x0000000000002fdc                __outserial
+ .text.__inserial
+                0x000000000000304c      0x11c KTMP/__inserial.o
+                0x000000000000304c                __inserial
+ .text.outc.5724
+                0x0000000000003168       0x20 KTMP/vform.o
+ .text.__pi_vfparse
+                0x0000000000003188      0x230 KTMP/vform.o
+                0x0000000000003188                __pi_vfparse
+ .text.vform    0x00000000000033b8       0x50 KTMP/vform.o
+                0x00000000000033b8                vform
+ .text.vscan    0x0000000000003408      0x390 KTMP/vscan.o
+                0x0000000000003408                vscan
+ .text.SafeHapiVoid
+                0x0000000000003798       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+                0x0000000000003798                SafeHapiVoid
+ .text.NOROM_AONBatMonTemperatureGetDegC
+                0x00000000000037c0       0x30 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+                0x00000000000037c0                NOROM_AONBatMonTemperatureGetDegC
+ .text.NOROM_AONRTCCurrentCompareValueGet
+                0x00000000000037f0       0x20 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+                0x00000000000037f0                NOROM_AONRTCCurrentCompareValueGet
+ .text.NOROM_AONRTCCurrent64BitValueGet
+                0x0000000000003810       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+                0x0000000000003810                NOROM_AONRTCCurrent64BitValueGet
+ .text.NOROM_CPUcpsid
+                0x0000000000003828        0x8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+                0x0000000000003828                NOROM_CPUcpsid
+ .text.NOROM_CPUcpsie
+                0x0000000000003830        0x8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+                0x0000000000003830                NOROM_CPUcpsie
+ .text.NOROM_OSCClockSourceSet
+                0x0000000000003838       0x5c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                0x0000000000003838                NOROM_OSCClockSourceSet
+ .text.NOROM_OSCClockSourceGet
+                0x0000000000003894       0x2c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                0x0000000000003894                NOROM_OSCClockSourceGet
+ .text.NOROM_OSCHF_TurnOnXosc
+                0x00000000000038c0       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                0x00000000000038c0                NOROM_OSCHF_TurnOnXosc
+ .text.NOROM_OSCHF_AttemptToSwitchToXosc
+                0x00000000000038d8       0x60 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                0x00000000000038d8                NOROM_OSCHF_AttemptToSwitchToXosc
+ .text.NOROM_OSCHF_SwitchToRcOscTurnOffXosc
+                0x0000000000003938       0x34 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                0x0000000000003938                NOROM_OSCHF_SwitchToRcOscTurnOffXosc
+ .text.NOROM_RFCDoorbellSendTo
+                0x000000000000396c       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x000000000000396c                NOROM_RFCDoorbellSendTo
+ .text.NOROM_RFCSynthPowerDown
+                0x0000000000003994       0x4c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x0000000000003994                NOROM_RFCSynthPowerDown
+ .text.NOROM_RFCRfTrimRead
+                0x00000000000039e0      0x150 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x00000000000039e0                NOROM_RFCRfTrimRead
+ .text.NOROM_RFCRTrim
+                0x0000000000003b30      0x118 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x0000000000003b30                NOROM_RFCRTrim
+ .text.NOROM_RFCRfTrimSet
+                0x0000000000003c48       0x20 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x0000000000003c48                NOROM_RFCRfTrimSet
+ .text.NOROM_RFCAdi3VcoLdoVoltageMode
+                0x0000000000003c68       0x1c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                0x0000000000003c68                NOROM_RFCAdi3VcoLdoVoltageMode
+ .text.TrimAfterColdResetWakeupFromShutDown
+                0x0000000000003c84       0xd4 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .text.NOROM_SetupTrimDevice
+                0x0000000000003d58       0xa4 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+                0x0000000000003d58                NOROM_SetupTrimDevice
+ .text.NOROM_SetupSetVddrLevel
+                0x0000000000003dfc       0x7c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003dfc                NOROM_SetupSetVddrLevel
+ .text.NOROM_SetupAfterColdResetWakeupFromShutDownCfg1
+                0x0000000000003e78       0xac /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003e78                NOROM_SetupAfterColdResetWakeupFromShutDownCfg1
+ .text.NOROM_SetupGetTrimForAnabypassValue1
+                0x0000000000003f24       0x5c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003f24                NOROM_SetupGetTrimForAnabypassValue1
+ .text.NOROM_SetupGetTrimForRcOscLfRtuneCtuneTrim
+                0x0000000000003f80       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003f80                NOROM_SetupGetTrimForRcOscLfRtuneCtuneTrim
+ .text.NOROM_SetupGetTrimForAmpcompTh2
+                0x0000000000003f98       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003f98                NOROM_SetupGetTrimForAmpcompTh2
+ .text.NOROM_SetupGetTrimForAmpcompTh1
+                0x0000000000003fa8       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003fa8                NOROM_SetupGetTrimForAmpcompTh1
+ .text.NOROM_SetupGetTrimForAmpcompCtrl
+                0x0000000000003fbc       0x64 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000003fbc                NOROM_SetupGetTrimForAmpcompCtrl
+ .text.NOROM_SetupGetTrimForDblrLoopFilterResetVoltage
+                0x0000000000004020       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004020                NOROM_SetupGetTrimForDblrLoopFilterResetVoltage
+ .text.NOROM_SetupGetTrimForAdcShModeEn
+                0x0000000000004034       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004034                NOROM_SetupGetTrimForAdcShModeEn
+ .text.NOROM_SetupGetTrimForAdcShVbufEn
+                0x0000000000004048       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004048                NOROM_SetupGetTrimForAdcShVbufEn
+ .text.NOROM_SetupGetTrimForXoscHfCtl
+                0x000000000000405c       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x000000000000405c                NOROM_SetupGetTrimForXoscHfCtl
+ .text.NOROM_SetupGetTrimForXoscHfFastStart
+                0x0000000000004084       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004084                NOROM_SetupGetTrimForXoscHfFastStart
+ .text.NOROM_SetupGetTrimForRadcExtCfg
+                0x0000000000004094       0x2c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004094                NOROM_SetupGetTrimForRadcExtCfg
+ .text.NOROM_SetupGetTrimForRcOscLfIBiasTrim
+                0x00000000000040c0       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x00000000000040c0                NOROM_SetupGetTrimForRcOscLfIBiasTrim
+ .text.NOROM_SetupGetTrimForXoscLfRegulatorAndCmirrwrRatio
+                0x00000000000040d4       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x00000000000040d4                NOROM_SetupGetTrimForXoscLfRegulatorAndCmirrwrRatio
+ .text.NOROM_SetupAfterColdResetWakeupFromShutDownCfg2
+                0x00000000000040e8      0x110 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x00000000000040e8                NOROM_SetupAfterColdResetWakeupFromShutDownCfg2
+ .text.NOROM_SetupSetCacheModeAccordingToCcfgSetting
+                0x00000000000041f8       0x64 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x00000000000041f8                NOROM_SetupSetCacheModeAccordingToCcfgSetting
+ .text.NOROM_SetupSetAonRtcSubSecInc
+                0x000000000000425c       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x000000000000425c                NOROM_SetupSetAonRtcSubSecInc
+ .text.NOROM_SetupAfterColdResetWakeupFromShutDownCfg3
+                0x0000000000004284      0x150 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                0x0000000000004284                NOROM_SetupAfterColdResetWakeupFromShutDownCfg3
+ .text.NOROM_SysCtrlSetRechargeBeforePowerDown
+                0x00000000000043d4      0x220 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+                0x00000000000043d4                NOROM_SysCtrlSetRechargeBeforePowerDown
+ .text.NOROM_SysCtrlAdjustRechargeAfterPowerDown
+                0x00000000000045f4       0x60 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+                0x00000000000045f4                NOROM_SysCtrlAdjustRechargeAfterPowerDown
+ .text.NOROM_SysCtrlResetSourceGet
+                0x0000000000004654       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+                0x0000000000004654                NOROM_SysCtrlResetSourceGet
+ .text.NOROM_ChipInfo_GetChipFamily
+                0x000000000000466c       0x4c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+                0x000000000000466c                NOROM_ChipInfo_GetChipFamily
+ .text.NOROM_ChipInfo_GetHwRevision
+                0x00000000000046b8       0x6c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+                0x00000000000046b8                NOROM_ChipInfo_GetHwRevision
+ .text.NOROM_ThisCodeIsBuiltForCC13xxHwRev20AndLater_HaltIfViolated
+                0x0000000000004724       0x16 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+                0x0000000000004724                NOROM_ThisCodeIsBuiltForCC13xxHwRev20AndLater_HaltIfViolated
+ *fill*         0x000000000000473a        0x2 00000000
+ .text.AuxAdiDdiSafeWrite.constprop.1
+                0x000000000000473c       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .text.NOROM_DDI32RegWrite
+                0x0000000000004764        0x8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+                0x0000000000004764                NOROM_DDI32RegWrite
+ .text          0x000000000000476c       0xac /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+                0x000000000000476c                memcpy
+ .text          0x0000000000004818       0x4c /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+                0x0000000000004818                srand
+                0x000000000000482c                rand
+ .text          0x0000000000004864       0x54 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+                0x0000000000004864                __aeabi_lmul
+                0x0000000000004864                __muldi3
+ *(.rodata*)
+ .rodata.sender.str1.1
+                0x00000000000048b8        0xf KTMP/app.o
+ .rodata.init_node.str1.1
+                0x00000000000048c7       0x1c KTMP/app.o
+ .rodata.receiver.str1.1
+                0x00000000000048e3      0x194 KTMP/app.o
+ .rodata.root.str1.1
+                0x0000000000004a77      0x2f9 KTMP/app.o
+                                        0x2ff (size before relaxing)
+ .rodata.__pi_syserror.str1.1
+                0x0000000000004d70        0xf KTMP/main.o
+ .rodata.ioreq_uart_a.str1.1
+                0x0000000000004d7f        0x8 KTMP/main.o
+ .rodata.system_init.str1.1
+                0x0000000000004d87       0x63 KTMP/main.o
+                                         0x64 (size before relaxing)
+ .rodata.__pi_release.str1.1
+                0x0000000000004dea        0x3 KTMP/main.o
+ .rodata.halt.str1.1
+                0x0000000000004ded        0xd KTMP/main.o
+ *fill*         0x0000000000004dfa        0x2 00000000
+ .rodata.port_confs
+                0x0000000000004dfc       0x44 KTMP/main.o
+                0x0000000000004dfc                port_confs
+ .rodata.__pi_badstate.str1.1
+                0x0000000000004e40        0x6 KTMP/kernel.o
+ .rodata.utimer_add.str1.1
+                0x0000000000004e46        0x5 KTMP/kernel.o
+ .rodata.__pi_wait.str1.1
+                0x0000000000004e4b        0x3 KTMP/kernel.o
+ .rodata.adddevfunc.str1.1
+                0x0000000000004e4e        0x5 KTMP/kernel.o
+ .rodata.io.str1.1
+                0x0000000000004e53        0x3 KTMP/kernel.o
+ .rodata.__pi_malloc_init.str1.1
+                0x0000000000004e56        0x5 KTMP/kernel.o
+ .rodata.__pi_free.str1.1
+                0x0000000000004e5b        0x5 KTMP/kernel.o
+ .rodata.kill.str1.1
+                0x0000000000004e60        0x4 KTMP/kernel.o
+ .rodata.__pi_malloc.str1.1
+                0x0000000000004e64        0x5 KTMP/kernel.o
+ .rodata.__pi_hex_enc_table
+                0x0000000000004e69       0x10 KTMP/kernel.o
+                0x0000000000004e69                __pi_hex_enc_table
+ .rodata.enq.str1.1
+                0x0000000000004e79        0x6 KTMP/tcv.o
+ .rodata.dispose.str1.1
+                0x0000000000004e7f       0x18 KTMP/tcv.o
+ .rodata.tcv_endp.str1.1
+                0x0000000000004e97        0xc KTMP/tcv.o
+ .rodata.tcv_open.str1.1
+                0x0000000000004ea3       0x12 KTMP/tcv.o
+ .rodata.tcv_rnp.str1.1
+                0x0000000000004eb5        0xc KTMP/tcv.o
+ .rodata.tcv_wnps.str1.1
+                0x0000000000004ec1       0x12 KTMP/tcv.o
+ .rodata.tcvp_control.str1.1
+                0x0000000000004ed3        0x6 KTMP/tcv.o
+ .rodata.tcv_control.str1.1
+                0x0000000000004ed9        0x6 KTMP/tcv.o
+ .rodata.tcvp_new.str1.1
+                0x0000000000004edf        0xc KTMP/tcv.o
+ .rodata.tcvphy_reg.str1.1
+                0x0000000000004eeb        0xc KTMP/tcv.o
+ .rodata.tcvphy_rcv.str1.1
+                0x0000000000004ef7        0xc KTMP/tcv.o
+ .rodata.tcvphy_get.str1.1
+                0x0000000000004f03        0x6 KTMP/tcv.o
+ .rodata.tcvphy_top.str1.1
+                0x0000000000004f09        0x6 KTMP/tcv.o
+ .rodata.tcvphy_end.str1.1
+                0x0000000000004f0f        0x6 KTMP/tcv.o
+ .rodata.__input_pins
+                0x0000000000004f15        0x4 KTMP/pin_sensor.o
+                0x0000000000004f15                __input_pins
+ *fill*         0x0000000000004f19        0x1 00000000
+ .rodata.__button_list
+                0x0000000000004f1a        0x4 KTMP/buttons.o
+                0x0000000000004f1a                __button_list
+ .rodata.option.str1.1
+                0x0000000000004f1e        0x8 KTMP/rfprop.o
+ .rodata.issue_cmd.str1.1
+                0x0000000000004f26       0x19 KTMP/rfprop.o
+ .rodata.wait_cmd.constprop.0.str1.1
+                0x0000000000004f3f       0x14 KTMP/rfprop.o
+ .rodata.rx_int_enable.str1.1
+                0x0000000000004f53        0x7 KTMP/rfprop.o
+ .rodata.cc1350_driver.str1.1
+                0x0000000000004f5a        0x8 KTMP/rfprop.o
+ .rodata.phys_cc1350.str1.1
+                0x0000000000004f62       0x20 KTMP/rfprop.o
+ .rodata.patable
+                0x0000000000004f82       0x10 KTMP/rfprop.o
+ *fill*         0x0000000000004f92        0x2 00000000
+ .rodata.patchGenfskRfe
+                0x0000000000004f94      0x6b4 KTMP/rfprop.o
+ .rodata.patchImageGenfsk
+                0x0000000000005648      0x28c KTMP/rfprop.o
+ .rodata.ratable
+                0x00000000000058d4        0xc KTMP/rfprop.o
+ .rodata.tcv_ope_null.str1.1
+                0x00000000000058e0       0x17 KTMP/plug_null.o
+ *fill*         0x00000000000058f7        0x1 00000000
+ .rodata.plug_null
+                0x00000000000058f8       0x20 KTMP/plug_null.o
+                0x00000000000058f8                plug_null
+ *(.init)
+ *(.fini*)
+ *(.eh_frame*)
+                0x0000000000005918                _etext = .
+
+.glue_7         0x0000000000005918        0x0
+ .glue_7        0x0000000000005918        0x0 linker stubs
+
+.glue_7t        0x0000000000005918        0x0
+ .glue_7t       0x0000000000005918        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000005918        0x0
+ .vfp11_veneer  0x0000000000005918        0x0 linker stubs
+
+.v4_bx          0x0000000000005918        0x0
+ .v4_bx         0x0000000000005918        0x0 linker stubs
+
+.iplt           0x0000000000005918        0x0
+ .iplt          0x0000000000005918        0x0 KTMP/app.o
+
+.ARM.exidx      0x0000000000005918        0x0
+                0x0000000000005918                __exidx_start = .
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000000005918                __exidx_end = .
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+
+.data           0x0000000020000000      0x540 load address 0x0000000000005918
+                0x0000000020000000                _data = .
+ *(vtable)
+ *(.data*)
+ .data.sfd      0x0000000020000000        0x4 KTMP/app.o
+                0x0000000020000000                sfd
+ .data.__pi_seed
+                0x0000000020000004        0x4 KTMP/kernel.o
+                0x0000000020000004                __pi_seed
+ .data.cmd_cs   0x0000000020000008       0x1c KTMP/rfprop.o
+ .data.cmd_srt  0x0000000020000024       0x14 KTMP/rfprop.o
+ .data.offdelay
+                0x0000000020000038        0x2 KTMP/rfprop.o
+ .data.vrate    0x000000002000003a        0x1 KTMP/rfprop.o
+ *fill*         0x000000002000003b        0x1 
+ .data.RF_cmdFs
+                0x000000002000003c       0x18 KTMP/smartrf_settings_lp_hr.o
+                0x000000002000003c                RF_cmdFs
+ .data.RF_cmdPropRadioDivSetup
+                0x0000000020000054       0x28 KTMP/smartrf_settings_lp_hr.o
+                0x0000000020000054                RF_cmdPropRadioDivSetup
+ .data.RF_cmdPropRx
+                0x000000002000007c       0x24 KTMP/smartrf_settings_lp_hr.o
+                0x000000002000007c                RF_cmdPropRx
+ .data.RF_cmdPropTx
+                0x00000000200000a0       0x18 KTMP/smartrf_settings_lp_hr.o
+                0x00000000200000a0                RF_cmdPropTx
+ .data.pOverrides
+                0x00000000200000b8       0x54 KTMP/smartrf_settings_lp_hr.o
+ *fill*         0x000000002000010c        0x4 
+ .data          0x0000000020000110      0x430 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+                0x0000000020000110                _impure_ptr
+                0x0000000020000540                _edata = .
+
+.igot.plt       0x0000000020000540        0x0 load address 0x0000000000005e58
+ .igot.plt      0x0000000020000540        0x0 KTMP/app.o
+
+.bss            0x0000000020000540      0x190 load address 0x0000000000005e58
+                0x0000000020000540                __bss_start__ = .
+                0x0000000020000540                _bss = .
+ *(.bss*)
+ .bss.array.6534
+                0x0000000020000540       0x14 KTMP/app.o
+ .bss.discovery_wait_flag.6594
+                0x0000000020000554        0x4 KTMP/app.o
+ .bss.incoming_packet.6533
+                0x0000000020000558        0x4 KTMP/app.o
+ .bss.packet.6513
+                0x000000002000055c        0x4 KTMP/app.o
+ .bss.response_flag
+                0x0000000020000560        0x2 KTMP/app.o
+                0x0000000020000560                response_flag
+ *fill*         0x0000000020000562        0x2 
+ .bss.response_message_5.6532
+                0x0000000020000564        0x4 KTMP/app.o
+ .bss.user_provided_record.6595
+                0x0000000020000568       0x14 KTMP/app.o
+ .bss.setdel    0x000000002000057c        0x2 KTMP/main.o
+ .bss.urates    0x000000002000057e        0x2 KTMP/main.o
+ .bss.__PCB     0x0000000020000580        0x4 KTMP/kernel.o
+                0x0000000020000580                __PCB
+ .bss.ioreq     0x0000000020000584        0x4 KTMP/kernel.o
+ .bss.mcfree    0x0000000020000588        0x4 KTMP/kernel.o
+ .bss.mevent    0x000000002000058c        0x2 KTMP/kernel.o
+ *fill*         0x000000002000058e        0x2 
+ .bss.mnfree    0x0000000020000590        0x4 KTMP/kernel.o
+ .bss.mpools    0x0000000020000594        0x4 KTMP/kernel.o
+ .bss.descriptors
+                0x0000000020000598       0x20 KTMP/tcv.o
+ .bss.oqueues   0x00000000200005b8        0xc KTMP/tcv.o
+ .bss.physical  0x00000000200005c4        0xc KTMP/tcv.o
+ .bss.physinfo  0x00000000200005d0        0xc KTMP/tcv.o
+ .bss.plugins   0x00000000200005dc        0xc KTMP/tcv.o
+ .bss.dopen     0x00000000200005e8        0x1 KTMP/storage_mx25r8035.o
+ .bss.dstat     0x00000000200005e9        0x1 KTMP/storage_mx25r8035.o
+ .bss.bckf_timer
+                0x00000000200005ea        0x2 KTMP/rfprop.o
+ .bss.channel   0x00000000200005ec        0x1 KTMP/rfprop.o
+ *fill*         0x00000000200005ed        0x3 
+ .bss.drvprcs   0x00000000200005f0        0x4 KTMP/rfprop.o
+ .bss.dstate    0x00000000200005f4        0x1 KTMP/rfprop.o
+ *fill*         0x00000000200005f5        0x3 
+ .bss.paylen    0x00000000200005f8        0x4 KTMP/rfprop.o
+ .bss.physid    0x00000000200005fc        0x2 KTMP/rfprop.o
+ *fill*         0x00000000200005fe        0x2 
+ .bss.qevent    0x0000000020000600        0x4 KTMP/rfprop.o
+ .bss.rbuffl    0x0000000020000604        0x1 KTMP/rfprop.o
+ *fill*         0x0000000020000605        0x3 
+ .bss.rfTrim    0x0000000020000608       0x10 KTMP/rfprop.o
+ .bss.rxstat    0x0000000020000618        0xc KTMP/rfprop.o
+ .bss.statid    0x0000000020000624        0x2 KTMP/rfprop.o
+ .bss.txtries   0x0000000020000626        0x1 KTMP/rfprop.o
+ *fill*         0x0000000020000627        0x1 
+ .bss.ndsc_null
+                0x0000000020000628        0x4 KTMP/plug_null.o
+ .bss.len.5699  0x000000002000062c        0x4 KTMP/__outserial.o
+ .bss.ptr.5698  0x0000000020000630        0x4 KTMP/__outserial.o
+ .bss.__inpline
+                0x0000000020000634        0x4 KTMP/__inserial.o
+                0x0000000020000634                __inpline
+ .bss.len.5700  0x0000000020000638        0x4 KTMP/__inserial.o
+ .bss.ptr.5699  0x000000002000063c        0x4 KTMP/__inserial.o
+ .bss.oscHfGlobals
+                0x0000000020000640       0x14 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .bss.powerQualGlobals
+                0x0000000020000654        0x8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ *(COMMON)
+ COMMON         0x000000002000065c       0x40 KTMP/app.o
+                0x000000002000065c                response_checker
+                0x0000000020000664                reason
+                0x0000000020000696                CHOICE
+                0x0000000020000698                node_db
+ COMMON         0x000000002000069c        0xc KTMP/main.o
+                0x000000002000069c                __pi_uart
+                0x00000000200006a4                system_event_count
+ COMMON         0x00000000200006a8       0x28 KTMP/kernel.o
+                0x00000000200006a8                entropy
+                0x00000000200006ac                __pi_mintk
+                0x00000000200006ae                __pi_old
+                0x00000000200006b0                __pi_systat
+                0x00000000200006b8                __pi_new
+                0x00000000200006bc                __pi_utims
+                0x00000000200006cc                __pi_curr
+                0x00000000200006d0                . = ALIGN (0x4)
+                0x00000000200006d0                _ebss = .
+                0x00000000200006d0                __bss_end__ = .
+
+.ccfg           0x000000000001ffa8       0x58
+ *(.ccfg)
+ .ccfg          0x000000000001ffa8       0x58 KTMP/ccfg.o
+                0x000000000001ffa8                __ccfg
+
+.rel.dyn        0x0000000000020000        0x0
+ .rel.iplt      0x0000000000020000        0x0 KTMP/app.o
+
+._user_heap_stack
+                0x00000000200006d0      0x100
+                0x00000000200006d0                . = ALIGN (0x4)
+                0x00000000200006d0                . = (. + _Min_Heap_Size)
+                0x00000000200007d0                . = (. + _Min_Stack_Size)
+ *fill*         0x00000000200006d0      0x100 
+                0x00000000200007d0                . = ALIGN (0x4)
+
+.gpram
+LOAD KTMP/app.o
+LOAD KTMP/main.o
+LOAD KTMP/kernel.o
+LOAD KTMP/tcv.o
+LOAD KTMP/startup_gcc.o
+LOAD KTMP/ccfg.o
+LOAD KTMP/sensors.o
+LOAD KTMP/analog_sensor.o
+LOAD KTMP/pin_sensor.o
+LOAD KTMP/pins_sys.o
+LOAD KTMP/buttons.o
+LOAD KTMP/storage_mx25r8035.o
+LOAD KTMP/ser_out.o
+LOAD KTMP/ser_outb.o
+LOAD KTMP/ser_in.o
+LOAD KTMP/ser_select.o
+LOAD KTMP/form.o
+LOAD KTMP/scan.o
+LOAD KTMP/ser_outf.o
+LOAD KTMP/ser_inf.o
+LOAD KTMP/rfprop.o
+LOAD KTMP/plug_null.o
+LOAD KTMP/__outserial.o
+LOAD KTMP/__inserial.o
+LOAD KTMP/vform.o
+LOAD KTMP/vscan.o
+LOAD KTMP/smartrf_settings_lp_hr.o
+LOAD /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libc.a
+END GROUP
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libc.a
+LOAD /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libnosys.a
+END GROUP
+OUTPUT(Image elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x0000000000000000    0x1472d
+ .debug_info    0x0000000000000000     0x1cde KTMP/app.o
+ .debug_info    0x0000000000001cde     0x1490 KTMP/main.o
+ .debug_info    0x000000000000316e     0x1223 KTMP/kernel.o
+ .debug_info    0x0000000000004391     0x1337 KTMP/tcv.o
+ .debug_info    0x00000000000056c8      0x178 KTMP/startup_gcc.o
+ .debug_info    0x0000000000005840      0x53b KTMP/ccfg.o
+ .debug_info    0x0000000000005d7b      0x504 KTMP/pin_sensor.o
+ .debug_info    0x000000000000627f      0x4fa KTMP/buttons.o
+ .debug_info    0x0000000000006779      0xaab KTMP/storage_mx25r8035.o
+ .debug_info    0x0000000000007224      0x422 KTMP/ser_out.o
+ .debug_info    0x0000000000007646      0x416 KTMP/ser_in.o
+ .debug_info    0x0000000000007a5c      0x450 KTMP/ser_outf.o
+ .debug_info    0x0000000000007eac      0x450 KTMP/ser_inf.o
+ .debug_info    0x00000000000082fc     0x2478 KTMP/rfprop.o
+ .debug_info    0x000000000000a774      0x735 KTMP/plug_null.o
+ .debug_info    0x000000000000aea9      0x431 KTMP/__outserial.o
+ .debug_info    0x000000000000b2da      0x444 KTMP/__inserial.o
+ .debug_info    0x000000000000b71e      0x5f4 KTMP/vform.o
+ .debug_info    0x000000000000bd12      0x593 KTMP/vscan.o
+ .debug_info    0x000000000000c2a5     0x1fee KTMP/smartrf_settings_lp_hr.o
+ .debug_info    0x000000000000e293      0x18e /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_info    0x000000000000e421       0xd9 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_info    0x000000000000e4fa      0x147 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_info    0x000000000000e641      0x13a /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_info    0x000000000000e77b      0x8c3 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_info    0x000000000000f03e      0xab8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_info    0x000000000000faf6      0x20b /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_info    0x000000000000fd01      0xb1b /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_info    0x000000000001081c      0x927 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_info    0x0000000000011143      0x3d0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_info    0x0000000000011513      0x5ab /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_info    0x0000000000011abe      0xf35 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_info    0x00000000000129f3      0x97a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_info    0x000000000001336d      0x92a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .debug_info    0x0000000000013c97      0xa96 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_abbrev   0x0000000000000000     0x492d
+ .debug_abbrev  0x0000000000000000      0x497 KTMP/app.o
+ .debug_abbrev  0x0000000000000497      0x56c KTMP/main.o
+ .debug_abbrev  0x0000000000000a03      0x46f KTMP/kernel.o
+ .debug_abbrev  0x0000000000000e72      0x3dc KTMP/tcv.o
+ .debug_abbrev  0x000000000000124e       0xc5 KTMP/startup_gcc.o
+ .debug_abbrev  0x0000000000001313      0x11f KTMP/ccfg.o
+ .debug_abbrev  0x0000000000001432      0x1f1 KTMP/pin_sensor.o
+ .debug_abbrev  0x0000000000001623      0x1cb KTMP/buttons.o
+ .debug_abbrev  0x00000000000017ee      0x3a6 KTMP/storage_mx25r8035.o
+ .debug_abbrev  0x0000000000001b94      0x162 KTMP/ser_out.o
+ .debug_abbrev  0x0000000000001cf6      0x14f KTMP/ser_in.o
+ .debug_abbrev  0x0000000000001e45      0x1ac KTMP/ser_outf.o
+ .debug_abbrev  0x0000000000001ff1      0x19b KTMP/ser_inf.o
+ .debug_abbrev  0x000000000000218c      0x44f KTMP/rfprop.o
+ .debug_abbrev  0x00000000000025db      0x232 KTMP/plug_null.o
+ .debug_abbrev  0x000000000000280d      0x174 KTMP/__outserial.o
+ .debug_abbrev  0x0000000000002981      0x178 KTMP/__inserial.o
+ .debug_abbrev  0x0000000000002af9      0x212 KTMP/vform.o
+ .debug_abbrev  0x0000000000002d0b      0x1bc KTMP/vscan.o
+ .debug_abbrev  0x0000000000002ec7      0x225 KTMP/smartrf_settings_lp_hr.o
+ .debug_abbrev  0x00000000000030ec       0xec /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_abbrev  0x00000000000031d8       0x6f /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_abbrev  0x0000000000003247       0xaa /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_abbrev  0x00000000000032f1       0xb0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_abbrev  0x00000000000033a1      0x25d /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_abbrev  0x00000000000035fe      0x220 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_abbrev  0x000000000000381e      0x142 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_abbrev  0x0000000000003960      0x261 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_abbrev  0x0000000000003bc1      0x2ba /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_abbrev  0x0000000000003e7b      0x1ce /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_abbrev  0x0000000000004049      0x154 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_abbrev  0x000000000000419d      0x223 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_abbrev  0x00000000000043c0      0x212 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_abbrev  0x00000000000045d2      0x1b8 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .debug_abbrev  0x000000000000478a      0x1a3 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_loc      0x0000000000000000     0x5bf8
+ .debug_loc     0x0000000000000000      0x369 KTMP/app.o
+ .debug_loc     0x0000000000000369      0x455 KTMP/main.o
+ .debug_loc     0x00000000000007be      0xb51 KTMP/kernel.o
+ .debug_loc     0x000000000000130f      0xeae KTMP/tcv.o
+ .debug_loc     0x00000000000021bd       0x3c KTMP/startup_gcc.o
+ .debug_loc     0x00000000000021f9       0x80 KTMP/pin_sensor.o
+ .debug_loc     0x0000000000002279       0x70 KTMP/buttons.o
+ .debug_loc     0x00000000000022e9      0x234 KTMP/storage_mx25r8035.o
+ .debug_loc     0x000000000000251d       0xba KTMP/ser_out.o
+ .debug_loc     0x00000000000025d7      0x112 KTMP/ser_in.o
+ .debug_loc     0x00000000000026e9       0x86 KTMP/ser_outf.o
+ .debug_loc     0x000000000000276f       0x68 KTMP/ser_inf.o
+ .debug_loc     0x00000000000027d7      0x4a7 KTMP/rfprop.o
+ .debug_loc     0x0000000000002c7e      0x108 KTMP/plug_null.o
+ .debug_loc     0x0000000000002d86       0x66 KTMP/__outserial.o
+ .debug_loc     0x0000000000002dec       0x92 KTMP/__inserial.o
+ .debug_loc     0x0000000000002e7e      0x3ac KTMP/vform.o
+ .debug_loc     0x000000000000322a      0x3ee KTMP/vscan.o
+ .debug_loc     0x0000000000003618      0x115 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_loc     0x000000000000372d       0x4e /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_loc     0x000000000000377b       0x26 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_loc     0x00000000000037a1      0x3b9 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_loc     0x0000000000003b5a      0x29c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_loc     0x0000000000003df6       0xbc /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_loc     0x0000000000003eb2      0x9e8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_loc     0x000000000000489a      0x44d /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_loc     0x0000000000004ce7      0x11f /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_loc     0x0000000000004e06      0x79c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_loc     0x00000000000055a2      0x481 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_loc     0x0000000000005a23       0x56 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_loc     0x0000000000005a79      0x17f /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_aranges  0x0000000000000000      0xa88
+ .debug_aranges
+                0x0000000000000000       0x98 KTMP/app.o
+ .debug_aranges
+                0x0000000000000098       0xe8 KTMP/main.o
+ .debug_aranges
+                0x0000000000000180      0x158 KTMP/kernel.o
+ .debug_aranges
+                0x00000000000002d8      0x108 KTMP/tcv.o
+ .debug_aranges
+                0x00000000000003e0       0x38 KTMP/startup_gcc.o
+ .debug_aranges
+                0x0000000000000418       0x18 KTMP/ccfg.o
+ .debug_aranges
+                0x0000000000000430       0x28 KTMP/pin_sensor.o
+ .debug_aranges
+                0x0000000000000458       0x28 KTMP/buttons.o
+ .debug_aranges
+                0x0000000000000480       0x90 KTMP/storage_mx25r8035.o
+ .debug_aranges
+                0x0000000000000510       0x20 KTMP/ser_out.o
+ .debug_aranges
+                0x0000000000000530       0x20 KTMP/ser_in.o
+ .debug_aranges
+                0x0000000000000550       0x20 KTMP/ser_outf.o
+ .debug_aranges
+                0x0000000000000570       0x20 KTMP/ser_inf.o
+ .debug_aranges
+                0x0000000000000590       0x70 KTMP/rfprop.o
+ .debug_aranges
+                0x0000000000000600       0x48 KTMP/plug_null.o
+ .debug_aranges
+                0x0000000000000648       0x20 KTMP/__outserial.o
+ .debug_aranges
+                0x0000000000000668       0x20 KTMP/__inserial.o
+ .debug_aranges
+                0x0000000000000688       0x30 KTMP/vform.o
+ .debug_aranges
+                0x00000000000006b8       0x20 KTMP/vscan.o
+ .debug_aranges
+                0x00000000000006d8       0x18 KTMP/smartrf_settings_lp_hr.o
+ .debug_aranges
+                0x00000000000006f0       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_aranges
+                0x0000000000000718       0x20 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_aranges
+                0x0000000000000738       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_aranges
+                0x0000000000000760       0x40 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_aranges
+                0x00000000000007a0       0x68 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_aranges
+                0x0000000000000808       0x58 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_aranges
+                0x0000000000000860       0x28 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_aranges
+                0x0000000000000888       0xb8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_aranges
+                0x0000000000000940       0x40 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_aranges
+                0x0000000000000980       0x48 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_aranges
+                0x00000000000009c8       0x48 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_aranges
+                0x0000000000000a10       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_aranges
+                0x0000000000000a30       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_aranges
+                0x0000000000000a50       0x18 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .debug_aranges
+                0x0000000000000a68       0x20 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_ranges   0x0000000000000000     0x1450
+ .debug_ranges  0x0000000000000000      0x1e8 KTMP/app.o
+ .debug_ranges  0x00000000000001e8      0x540 KTMP/main.o
+ .debug_ranges  0x0000000000000728      0x1e8 KTMP/kernel.o
+ .debug_ranges  0x0000000000000910      0x130 KTMP/tcv.o
+ .debug_ranges  0x0000000000000a40       0x28 KTMP/startup_gcc.o
+ .debug_ranges  0x0000000000000a68       0x40 KTMP/pin_sensor.o
+ .debug_ranges  0x0000000000000aa8       0x78 KTMP/buttons.o
+ .debug_ranges  0x0000000000000b20      0x208 KTMP/storage_mx25r8035.o
+ .debug_ranges  0x0000000000000d28       0x10 KTMP/ser_out.o
+ .debug_ranges  0x0000000000000d38       0x10 KTMP/ser_in.o
+ .debug_ranges  0x0000000000000d48       0x10 KTMP/ser_outf.o
+ .debug_ranges  0x0000000000000d58       0x10 KTMP/ser_inf.o
+ .debug_ranges  0x0000000000000d68      0x1d8 KTMP/rfprop.o
+ .debug_ranges  0x0000000000000f40       0x38 KTMP/plug_null.o
+ .debug_ranges  0x0000000000000f78       0x28 KTMP/__outserial.o
+ .debug_ranges  0x0000000000000fa0       0x30 KTMP/__inserial.o
+ .debug_ranges  0x0000000000000fd0       0x98 KTMP/vform.o
+ .debug_ranges  0x0000000000001068       0x98 KTMP/vscan.o
+ .debug_ranges  0x0000000000001100       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_ranges  0x0000000000001118       0x10 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_ranges  0x0000000000001128       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_ranges  0x0000000000001140       0x30 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_ranges  0x0000000000001170       0x70 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_ranges  0x00000000000011e0       0x48 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_ranges  0x0000000000001228       0x18 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_ranges  0x0000000000001240       0xd8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_ranges  0x0000000000001318       0x60 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_ranges  0x0000000000001378       0x68 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_ranges  0x00000000000013e0       0x38 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_ranges  0x0000000000001418       0x38 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_line     0x0000000000000000     0x940b
+ .debug_line    0x0000000000000000      0xcb9 KTMP/app.o
+ .debug_line    0x0000000000000cb9     0x1566 KTMP/main.o
+ .debug_line    0x000000000000221f      0xee8 KTMP/kernel.o
+ .debug_line    0x0000000000003107      0xcbf KTMP/tcv.o
+ .debug_line    0x0000000000003dc6      0x128 KTMP/startup_gcc.o
+ .debug_line    0x0000000000003eee      0x18d KTMP/ccfg.o
+ .debug_line    0x000000000000407b      0x2a2 KTMP/pin_sensor.o
+ .debug_line    0x000000000000431d      0x345 KTMP/buttons.o
+ .debug_line    0x0000000000004662      0x93a KTMP/storage_mx25r8035.o
+ .debug_line    0x0000000000004f9c      0x1b4 KTMP/ser_out.o
+ .debug_line    0x0000000000005150      0x1c8 KTMP/ser_in.o
+ .debug_line    0x0000000000005318      0x1a5 KTMP/ser_outf.o
+ .debug_line    0x00000000000054bd      0x1b6 KTMP/ser_inf.o
+ .debug_line    0x0000000000005673      0xcb2 KTMP/rfprop.o
+ .debug_line    0x0000000000006325      0x2af KTMP/plug_null.o
+ .debug_line    0x00000000000065d4      0x1a8 KTMP/__outserial.o
+ .debug_line    0x000000000000677c      0x252 KTMP/__inserial.o
+ .debug_line    0x00000000000069ce      0x3c4 KTMP/vform.o
+ .debug_line    0x0000000000006d92      0x2cd KTMP/vscan.o
+ .debug_line    0x000000000000705f      0x292 KTMP/smartrf_settings_lp_hr.o
+ .debug_line    0x00000000000072f1      0x1a0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_line    0x0000000000007491      0x16b /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_line    0x00000000000075fc      0x1ad /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_line    0x00000000000077a9      0x1a0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_line    0x0000000000007949      0x2da /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_line    0x0000000000007c23      0x3ab /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_line    0x0000000000007fce      0x1ed /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_line    0x00000000000081bb      0x45b /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_line    0x0000000000008616      0x369 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_line    0x000000000000897f      0x22f /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_line    0x0000000000008bae      0x222 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_line    0x0000000000008dd0      0x247 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_line    0x0000000000009017      0x175 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_line    0x000000000000918c       0xe0 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .debug_line    0x000000000000926c      0x19f /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_str      0x0000000000000000     0x58c4
+ .debug_str     0x0000000000000000      0xf48 KTMP/app.o
+                                       0x10d9 (size before relaxing)
+ .debug_str     0x0000000000000f48      0x559 KTMP/main.o
+                                        0x8ea (size before relaxing)
+ .debug_str     0x00000000000014a1      0x240 KTMP/kernel.o
+                                        0x643 (size before relaxing)
+ .debug_str     0x00000000000016e1      0x263 KTMP/tcv.o
+                                        0x680 (size before relaxing)
+ .debug_str     0x0000000000001944       0xb8 KTMP/startup_gcc.o
+                                        0x27e (size before relaxing)
+ .debug_str     0x00000000000019fc      0x1d7 KTMP/ccfg.o
+                                        0x53d (size before relaxing)
+ .debug_str     0x0000000000001bd3       0x77 KTMP/pin_sensor.o
+                                        0x40a (size before relaxing)
+ .debug_str     0x0000000000001c4a       0x77 KTMP/buttons.o
+                                        0x401 (size before relaxing)
+ .debug_str     0x0000000000001cc1      0x10d KTMP/storage_mx25r8035.o
+                                        0x4e5 (size before relaxing)
+ .debug_str     0x0000000000001dce       0x49 KTMP/ser_out.o
+                                        0x399 (size before relaxing)
+ .debug_str     0x0000000000001e17       0x51 KTMP/ser_in.o
+                                        0x399 (size before relaxing)
+ .debug_str     0x0000000000001e68       0x4b KTMP/ser_outf.o
+                                        0x3b9 (size before relaxing)
+ .debug_str     0x0000000000001eb3       0x49 KTMP/ser_inf.o
+                                        0x3c1 (size before relaxing)
+ .debug_str     0x0000000000001efc      0x877 KTMP/rfprop.o
+                                       0x1032 (size before relaxing)
+ .debug_str     0x0000000000002773       0x70 KTMP/plug_null.o
+                                        0x44e (size before relaxing)
+ .debug_str     0x00000000000027e3       0x62 KTMP/__outserial.o
+                                        0x3ad (size before relaxing)
+ .debug_str     0x0000000000002845       0x4f KTMP/__inserial.o
+                                        0x3b2 (size before relaxing)
+ .debug_str     0x0000000000002894       0x5d KTMP/vform.o
+                                        0x3ce (size before relaxing)
+ .debug_str     0x00000000000028f1       0x60 KTMP/vscan.o
+                                        0x3d1 (size before relaxing)
+ .debug_str     0x0000000000002951       0x5f KTMP/smartrf_settings_lp_hr.o
+                                        0xbc2 (size before relaxing)
+ .debug_str     0x00000000000029b0      0x1be /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+                                        0x259 (size before relaxing)
+ .debug_str     0x0000000000002b6e       0x7e /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+                                        0x221 (size before relaxing)
+ .debug_str     0x0000000000002bec       0xce /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+                                        0x27f (size before relaxing)
+ .debug_str     0x0000000000002cba       0x61 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+                                        0x227 (size before relaxing)
+ .debug_str     0x0000000000002d1b      0x5d2 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+                                        0x822 (size before relaxing)
+ .debug_str     0x00000000000032ed      0x1c9 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+                                        0x603 (size before relaxing)
+ .debug_str     0x00000000000034b6      0x203 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+                                        0x3ab (size before relaxing)
+ .debug_str     0x00000000000036b9      0x4b8 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+                                        0x792 (size before relaxing)
+ .debug_str     0x0000000000003b71      0x26f /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+                                        0x7e2 (size before relaxing)
+ .debug_str     0x0000000000003de0      0x3c3 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+                                        0x5ae (size before relaxing)
+ .debug_str     0x00000000000041a3       0xf2 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+                                        0x316 (size before relaxing)
+ .debug_str     0x0000000000004295      0x3da /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+                                        0x8f0 (size before relaxing)
+ .debug_str     0x000000000000466f       0x89 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+                                        0x5b2 (size before relaxing)
+ .debug_str     0x00000000000046f8       0x8f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+                                        0x59e (size before relaxing)
+ .debug_str     0x0000000000004787     0x113d /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+                                       0x11d0 (size before relaxing)
+
+.comment        0x0000000000000000      0x117
+ .comment       0x0000000000000000       0x59 KTMP/app.o
+                                         0x5a (size before relaxing)
+ .comment       0x0000000000000059       0x5a KTMP/main.o
+ .comment       0x0000000000000059       0x5a KTMP/kernel.o
+ .comment       0x0000000000000059       0x5a KTMP/tcv.o
+ .comment       0x0000000000000059       0x5a KTMP/startup_gcc.o
+ .comment       0x0000000000000059       0x5a KTMP/ccfg.o
+ .comment       0x0000000000000059       0x5a KTMP/pin_sensor.o
+ .comment       0x0000000000000059       0x5a KTMP/buttons.o
+ .comment       0x0000000000000059       0x5a KTMP/storage_mx25r8035.o
+ .comment       0x0000000000000059       0x5a KTMP/ser_out.o
+ .comment       0x0000000000000059       0x5a KTMP/ser_in.o
+ .comment       0x0000000000000059       0x5a KTMP/ser_outf.o
+ .comment       0x0000000000000059       0x5a KTMP/ser_inf.o
+ .comment       0x0000000000000059       0x5a KTMP/rfprop.o
+ .comment       0x0000000000000059       0x5a KTMP/plug_null.o
+ .comment       0x0000000000000059       0x5a KTMP/__outserial.o
+ .comment       0x0000000000000059       0x5a KTMP/__inserial.o
+ .comment       0x0000000000000059       0x5a KTMP/vform.o
+ .comment       0x0000000000000059       0x5a KTMP/vscan.o
+ .comment       0x0000000000000059       0x5a KTMP/smartrf_settings_lp_hr.o
+ .comment       0x0000000000000059       0x70 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+                                         0x71 (size before relaxing)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .comment       0x00000000000000c9       0x71 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .comment       0x00000000000000c9       0x4e /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+                                         0x4f (size before relaxing)
+ .comment       0x0000000000000117       0x4f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .comment       0x0000000000000117       0x4f /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .comment       0x0000000000000117       0x5a /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.ARM.attributes
+                0x0000000000000000       0x2f
+ .ARM.attributes
+                0x0000000000000000       0x2d KTMP/app.o
+ .ARM.attributes
+                0x000000000000002d       0x2d KTMP/main.o
+ .ARM.attributes
+                0x000000000000005a       0x2d KTMP/kernel.o
+ .ARM.attributes
+                0x0000000000000087       0x2d KTMP/tcv.o
+ .ARM.attributes
+                0x00000000000000b4       0x2d KTMP/startup_gcc.o
+ .ARM.attributes
+                0x00000000000000e1       0x33 KTMP/ccfg.o
+ .ARM.attributes
+                0x0000000000000114       0x2d KTMP/pin_sensor.o
+ .ARM.attributes
+                0x0000000000000141       0x2d KTMP/buttons.o
+ .ARM.attributes
+                0x000000000000016e       0x2d KTMP/storage_mx25r8035.o
+ .ARM.attributes
+                0x000000000000019b       0x2d KTMP/ser_out.o
+ .ARM.attributes
+                0x00000000000001c8       0x2d KTMP/ser_in.o
+ .ARM.attributes
+                0x00000000000001f5       0x2d KTMP/ser_outf.o
+ .ARM.attributes
+                0x0000000000000222       0x2d KTMP/ser_inf.o
+ .ARM.attributes
+                0x000000000000024f       0x2d KTMP/rfprop.o
+ .ARM.attributes
+                0x000000000000027c       0x2d KTMP/plug_null.o
+ .ARM.attributes
+                0x00000000000002a9       0x2d KTMP/__outserial.o
+ .ARM.attributes
+                0x00000000000002d6       0x2d KTMP/__inserial.o
+ .ARM.attributes
+                0x0000000000000303       0x2d KTMP/vform.o
+ .ARM.attributes
+                0x0000000000000330       0x2d KTMP/vscan.o
+ .ARM.attributes
+                0x000000000000035d       0x33 KTMP/smartrf_settings_lp_hr.o
+ .ARM.attributes
+                0x0000000000000390       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .ARM.attributes
+                0x00000000000003c3       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .ARM.attributes
+                0x00000000000003f6       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .ARM.attributes
+                0x0000000000000429       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .ARM.attributes
+                0x000000000000045c       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .ARM.attributes
+                0x000000000000048f       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .ARM.attributes
+                0x00000000000004c2       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .ARM.attributes
+                0x00000000000004f5       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .ARM.attributes
+                0x0000000000000528       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .ARM.attributes
+                0x000000000000055b       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .ARM.attributes
+                0x000000000000058e       0x33 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .ARM.attributes
+                0x00000000000005c1       0x2a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000000000005eb       0x2a /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .ARM.attributes
+                0x0000000000000615       0x30 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000645       0x2a /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
+
+.debug_frame    0x0000000000000000     0x1914
+ .debug_frame   0x0000000000000000      0x18c KTMP/app.o
+ .debug_frame   0x000000000000018c      0x2bc KTMP/main.o
+ .debug_frame   0x0000000000000448      0x3d4 KTMP/kernel.o
+ .debug_frame   0x000000000000081c      0x360 KTMP/tcv.o
+ .debug_frame   0x0000000000000b7c       0x58 KTMP/startup_gcc.o
+ .debug_frame   0x0000000000000bd4       0x3c KTMP/pin_sensor.o
+ .debug_frame   0x0000000000000c10       0x68 KTMP/buttons.o
+ .debug_frame   0x0000000000000c78      0x194 KTMP/storage_mx25r8035.o
+ .debug_frame   0x0000000000000e0c       0x30 KTMP/ser_out.o
+ .debug_frame   0x0000000000000e3c       0x30 KTMP/ser_in.o
+ .debug_frame   0x0000000000000e6c       0x44 KTMP/ser_outf.o
+ .debug_frame   0x0000000000000eb0       0x44 KTMP/ser_inf.o
+ .debug_frame   0x0000000000000ef4      0x170 KTMP/rfprop.o
+ .debug_frame   0x0000000000001064       0x84 KTMP/plug_null.o
+ .debug_frame   0x00000000000010e8       0x3c KTMP/__outserial.o
+ .debug_frame   0x0000000000001124       0x3c KTMP/__inserial.o
+ .debug_frame   0x0000000000001160       0x6c KTMP/vform.o
+ .debug_frame   0x00000000000011cc       0x34 KTMP/vscan.o
+ .debug_frame   0x0000000000001200       0x64 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(adi.o)
+ .debug_frame   0x0000000000001264       0x20 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_batmon.o)
+ .debug_frame   0x0000000000001284       0x30 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(aon_rtc.o)
+ .debug_frame   0x00000000000012b4       0x60 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(cpu.o)
+ .debug_frame   0x0000000000001314      0x104 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(osc.o)
+ .debug_frame   0x0000000000001418       0xb0 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(rfc.o)
+ .debug_frame   0x00000000000014c8       0x44 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup.o)
+ .debug_frame   0x000000000000150c      0x194 /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(setup_rom.o)
+ .debug_frame   0x00000000000016a0       0x9c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(sys_ctrl.o)
+ .debug_frame   0x000000000000173c       0x8c /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(chipinfo.o)
+ .debug_frame   0x00000000000017c8       0xac /home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/bin/gcc/driverlib.lib(ddi.o)
+ .debug_frame   0x0000000000001874       0x34 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00000000000018a8       0x38 /usr/lib/gcc/arm-none-eabi/9.2.1/../../../arm-none-eabi/lib/thumb/nofp/libg.a(lib_a-rand.o)
+ .debug_frame   0x00000000000018e0       0x34 /usr/lib/gcc/arm-none-eabi/9.2.1/thumb/nofp/libgcc.a(_muldi3.o)
