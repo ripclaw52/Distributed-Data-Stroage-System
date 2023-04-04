@@ -1,4 +1,4 @@
-#include<header.hpp>
+#include "header.hpp"
 
 char CHOICE;
 char reason[50];
@@ -11,6 +11,150 @@ word response_flag=0;
 
 struct Node *node_db; // globally defined struct, represents the node.
 
+/*
+This function will initialize an empty node strucutre, provided a pointer to that strucutre
+*/
+bool init_node(struct Node* node){
+    node->id  = 0;                  // default id value 0
+    node->gid = 0;                  // default gid value 0
+    node->index = 0;                // default entry count 0
+    node->data_base;                // default empty array THIS WILL LIKELY NEED TO BE AMENDED
+    node->data_base.item_count = 0; // default no items in array
+    
+    /* check that each item is set to what we want it intialized to e.g., !node->id, we set it to 0, so this should 
+       evaluate to 1.
+    */
+    if ((!node->id) && (!node->gid) && (!node->index) && (sizeof(node->data_base) == 0)){
+        return true;
+    } 
+    DEBUG_PRINT("Error initializing node...\n");
+    return false;
+};
+
+bool set_node_id(struct Node* node, uint8_t id){
+    node->id = id; 
+    return node->id == id;
+};
+
+bool set_node_gid(struct Node* node, uint16_t gid){
+    node->gid = gid; 
+    return node->gid == gid;
+};
+
+// NOTE: count can be a uint8_t because it goes to 255 and the count will never exceed 40
+bool set_node_db_entry_count(struct Node* node, uint8_t count){
+    node->index = count; 
+    return node->index == count;
+};
+
+
+// reset neighbouring node array
+void reset_array(struct Node *node) {
+	for (int i=0; i<NNODE_GROUP_SIZE; i++) {
+		node->nnodes[i] = 0;
+	}
+}
+
+// Generate random value between 0-255
+uint8_t generate_request_num(void){
+    return (uint8_t) (rand() % 255);
+}
+
+// returns false when full, true when it succesfully inserts record...
+bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
+
+    // Variable to keep the index so we can check after the for loop to see if it worked
+    int num;
+
+    // if the item count is 40, our database for this node is full...
+    if (node->data_base.item_count == NUMB_OF_ENT){
+        return false;
+    } else {
+        // the item count is not 40, and since other user can randomly delete entries, we will just iterate from
+        // 0 till we find the first null entry.
+        for (int i = 0; i < NUMB_OF_ENT; i++){
+            if (node->data_base.item_array[i].data_entry == NULL){
+            	num = i;
+                strncpy(node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry)); 
+                node->data_base.item_array[i].owner_id = owner_id;
+                // TODO: get time stamp... Have to ask what kind of time stamp he is looking for.
+                node->data_base.item_array[i].timestamp = seconds();
+                node->data_base.item_count += 1;
+                break; // NOTE: This may be required so we do not fill the entries with one insert.
+            };
+        };
+    };
+    
+    //TODO: add check that the operation was succesful DONE
+    if(node->data_base.item_array[num].data_entry == NULL){
+    	return false;    
+    }
+    return true;   
+};
+
+
+bool clear_node_neighbour_array(struct Node *node){
+
+    if (!sizeof(node->nnodes)){
+        return true;
+    } else{
+        for (int i = 0; i < NNODE_GROUP_SIZE; i++){
+            node->nnodes[i] = '\0'; // set to null byte
+        };
+        return true;
+    };
+
+    return false;
+
+};
+
+// returns false when 0 items in db or the index is already null, otherwise true after deletion
+bool delete_record(struct Node *node, uint8_t index){
+    
+    // empty database, or empty index, can't delete record
+    if (node->data_base.item_count == 0 || node->data_base.item_array[index].data_entry == NULL){
+        return false;
+    } else{
+        // NOTE: This may complain NOTE: it shouldn't now missing index for the timestamp.
+        node->data_base.item_array[index].data_entry[0] = '\0';
+        node->data_base.item_array[index].timestamp = 0;
+        node->data_base.item_count -= 1;
+    };
+    
+    //TODO: add check that the operation was succesful DONE
+    if(node->data_base.item_array[index].data_entry != NULL){
+    	return false;
+    } 
+    return true;
+};
+
+// Get record
+struct record retrieve_record(struct Node *node, uint8_t index){
+
+    // Did the check to see if index was valid in main.cc file
+    return node->data_base.item_array[index];
+
+};
+
+// Delete all records on the node
+bool delete_all(struct Node *node){
+    
+    // empty database, or empty index, can't delete record
+    if (node->data_base.item_count == 0 || node->data_base.item_array[0].data_entry == NULL){
+        return true;
+    } else{
+        for(int i = 0; i <= node->data_base.item_count; i++){
+            node->data_base.item_array[i].data_entry[0] = '\0';
+            node->data_base.item_array[i].timestamp = 0;
+        }
+    };
+    node->data_base.item_count = 0;
+    // Check to see that it worked
+    if(node->data_base.item_array[0].data_entry != NULL){
+    	return false;
+    }
+    return true;
+}
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
 	struct ResponseMessage *response_message;
@@ -515,8 +659,8 @@ fsm root {
 
 	/*NOTE: Do we need to add new checks here? what are the limitations on group IDs*/
 	state new_group_id:
-		uint16_t NEW_NODE_GID;
-		ser_inf(new_group_id, "%d", NEW_NODE_GID); // NOTE: is this syntax correct?
+		word NEW_NODE_GID;
+		ser_inf(new_group_id, "%s", NEW_NODE_GID); // NOTE: is this syntax correct?
 		
 		DEBUG_PRINT("setting node group ID");
 
@@ -533,7 +677,7 @@ fsm root {
 
 	state new_node_id:
 		uint8_t NEW_NODE_ID;
-		ser_inf(new_node_id, "%d", NEW_NODE_ID);
+		ser_inf(new_node_id, "%u", (unsigned int) NEW_NODE_ID);
 		
 		// Check to see if the number given is within range.
 		if(node_db->id < 1 || node_db->id > 25){
@@ -560,7 +704,7 @@ fsm root {
 	// NOTE: to prevent unwanted behaviour, we will likely want to clear the array in here
 	state invalid_node_id:
 		// NOTE: node_db->id will not be set if they provide an invalid reason, so we can't do this like this
-		ser_outf(invalid_node_id, "\r\nID#: %d, is an invalid choice. Reason: %s.", node_db->id, reason);
+		ser_outf(invalid_node_id, "\r\nID#: %u, is an invalid choice. Reason: %s.", node_db->id, reason);
 		proceed get_new_node_id;
 
 
@@ -575,7 +719,7 @@ fsm root {
 	
 	*/
 	state clear_neighbour_array:
-		if (!clear_node_neighbour_array(&node_db)){
+		if (!clear_node_neighbour_array(node_db)){
 			strncpy(reason, "Error Clearing Node Array", 50);
 			proceed error;
 		};
@@ -614,7 +758,7 @@ fsm root {
 		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
 		for (int i=0; i<=NNODE_GROUP_SIZE; i++){
 			if (node_db->nnodes[i]=='\0') break;
-			ser_outf(display_neighbour_nodes, "%d, ", node_db->nnodes[i]);
+			ser_outf(display_neighbour_nodes, "%u, ", (unsigned int) node_db->nnodes[i]);
 		}
 		proceed menu;
 
@@ -765,8 +909,10 @@ fsm root {
 		ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
 		
 	state loop_through_data:
-		for(int i = 0; i <= node_db->data_base.item_count; i++){
-			ser_outf(loop_through_data, "\r\n%d\t\t%d\t%d%t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+		if(node_db->data_base.item_count != 0){
+			for(int i = 0; i <= node_db->data_base.item_count; i++){
+				ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+			}
 		}
 		proceed menu;
 

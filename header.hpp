@@ -1,5 +1,3 @@
-#ifndef DISCOVERY_REQUESTS_H_
-#define DISCOVERY_REQUESTS_H_
 #include <stdlib.h>
 #include <string.h>
 #include "sysio.h"
@@ -134,13 +132,10 @@ bool init_node(struct Node *node);
 bool set_node_id(struct Node *node, uint8_t id);
 bool set_node_gid(struct Node *node, uint16_t gid);
 bool set_node_db_entry_count(struct Node *node, uint8_t count);
-
+bool clear_node_neighbour_array(struct Node *node);
 bool insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
 bool delete_record(struct Node *node, uint8_t index);
+bool delete_all(struct Node *node);
 struct record retrieve_record(struct Node *node, uint8_t index);
-
 void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
-bool delete_all(struct Node *node);
-
-#endif
