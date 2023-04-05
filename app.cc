@@ -214,6 +214,7 @@ int get_message_size(struct ResponseMessage *message) {
 
 // sends packet information to other nodes
 fsm sender(struct ResponseMessage *message) {
+	DEBUG_PRINT("\r\nIn sender");
 	address packet;
 
 	int packet_size = sizeof(struct ResponseMessage); //get_message_size(message);
@@ -322,7 +323,7 @@ fsm receiver(struct Node* node_db) {
 					response_message_0->request_number = discovery_request_message->request_number;
 					response_message_0->sender_id = node_db->id;
 					response_message_0->receiver_id = discovery_request_message->sender_id;
-					diag("\r\ngid:%u, tpe:%d, sen:%u, rec:%u", response_message_0->gid, response_message_0->tpe, response_message_0->sender_id, response_message_0->receiver_id);
+					//diag("\r\ngid:%u, tpe:%d, sen:%u, rec:%u", response_message_0->gid, response_message_0->tpe, response_message_0->sender_id, response_message_0->receiver_id);
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
 					call sender(response_message_0, done_case);
 				} 
