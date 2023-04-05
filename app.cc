@@ -729,8 +729,8 @@ fsm root {
 
 	state find_proto_start:
 
-		struct DiscoveryRequestMessage *request_packet;
-		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
+		struct ResponseMessage *request_packet;
+		request_packet = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 
 		request_packet->gid = node_db->gid;
 		request_packet->tpe = DISCOVERY_REQUEST;
@@ -796,8 +796,8 @@ fsm root {
 
 	state init_create_record_message:
 
-		struct CreateRecordMessage *create_message;
-		create_message = (struct CreateRecordMessage*)umalloc(sizeof(struct CreateRecordMessage));
+		struct ResponseMessage *create_message;
+		create_message = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 		create_message->gid = node_db->gid;
 		create_message->tpe = CREATE_RECORD;
 		create_message->request_number = generate_request_num();
@@ -844,8 +844,8 @@ fsm root {
 
 	state init_delete_record_message:
 
-		struct DeleteRecordMessage *delete_record;
-		delete_record = (struct DeleteRecordMessage *)umalloc(sizeof(struct DeleteRecordMessage));
+		struct ResponseMessage *delete_record;
+		delete_record = (struct ResponseMessage *)umalloc(sizeof(struct ResponseMessage));
 		delete_record->gid = node_db->gid;
 		delete_record->tpe = DELETE_RECORD;
 		delete_record->request_number = generate_request_num();
@@ -893,8 +893,8 @@ fsm root {
 
 	state retrieve_proto:
 
-		struct RetrieveRecordMessage *retrieve_record;
-		retrieve_record = (struct RetrieveRecordMessage *)umalloc(sizeof(struct RetrieveRecordMessage));
+		struct ResponseMessage *retrieve_record;
+		retrieve_record = (struct ResponseMessage *)umalloc(sizeof(struct ResponseMessage));
 		retrieve_record->gid = node_db->gid;
 		retrieve_record->tpe = RETRIEVE_RECORD;
 		retrieve_record->request_number = generate_request_num();
