@@ -7326,7 +7326,6 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 # 240 "app.cc"
 
  static struct ResponseMessage *response_message_5;
- static struct ResponseMessage *payload;
 
  static address incoming_packet;
  static char array[20];
@@ -7335,14 +7334,8 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
   incoming_packet = tcv_rnp(receiving, sfd);
  } case ok : __stlab_ok: {
-  payload = (struct ResponseMessage*)(incoming_packet+1);
   uint8_t tpe;
   uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1);
-
-  diag("\r\nRECEIVED TYPE: %d", payload->tpe);
-  diag("\r\nRECEIVED group id: %d", payload->gid);
-  diag("\r\nRECEIVED sender id: %d", payload->sender_id);
-  diag("\r\nRECEIVED rec id: %d", payload->receiver_id);
 
   if (bytes_read != 1){
 
@@ -7410,8 +7403,6 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
 
     node_db->nnodes[node_db->index] = node_db->gid == response_message_1->gid && response_message_1->sender_id < 25 && response_message_1->sender_id > 0 ? response_message_1->sender_id : node_db->nnodes[node_db->index];
 
-
-
     if (node_db->nnodes[node_db->index] == response_message_1->sender_id){
      node_db->index+=1;
     };
@@ -7425,11 +7416,11 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     struct ResponseMessage *response_message_2;
     struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
    _Bool 
-# 340 "app.cc"
+# 331 "app.cc"
         neighbour_check = 
-# 340 "app.cc"
+# 331 "app.cc"
                           0
-# 340 "app.cc"
+# 331 "app.cc"
                                ;
     uint8_t status;
 
@@ -7503,9 +7494,9 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
      retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
      if (retrieved_record.data_entry == 
-# 412 "app.cc"
+# 403 "app.cc"
                                        ((void *)0)
-# 412 "app.cc"
+# 403 "app.cc"
                                            ){
       status = (uint8_t) RETRIEVE_ERROR;
       response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
@@ -7620,7 +7611,7 @@ break; } default: __pi_badstate (); } }
 #undef response_3
 #undef response_4
 #undef error
-# 515 "app.cc"
+# 506 "app.cc"
 
 
 
@@ -7657,9 +7648,9 @@ break; } default: __pi_badstate (); } }
 #define wait 30
 #define timeout 31
 #define error 32
-# 517 "app.cc"
+# 508 "app.cc"
 void root (word __pi_st) { switch (__pi_st) { 
-# 517 "app.cc"
+# 508 "app.cc"
 
 
 
@@ -7727,9 +7718,9 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 583 "app.cc"
+# 574 "app.cc"
                               ((void *)0)
-# 583 "app.cc"
+# 574 "app.cc"
                                   );
 
   __pi_fork (receiver, (aword)(node_db ));
@@ -7859,10 +7850,6 @@ void root (word __pi_st) { switch (__pi_st) {
   request_packet->sender_id = node_db->id;
   request_packet->receiver_id=0;
 
-
-
-
-
   do { if (__pi_join (__pi_fork (sender, (aword)(request_packet )), wait_discovery )) __pi_release (); } while (0);
 
  } case wait_discovery : __stlab_wait_discovery: {
@@ -7879,12 +7866,10 @@ void root (word __pi_st) { switch (__pi_st) {
 
  } case display_neighbour_nodes : __stlab_display_neighbour_nodes: {
   ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
-
   for (int i=0; i<25; i++) {
    if (node_db->nnodes[i] == 0) break;
-   ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
+   ser_outf(display_neighbour_nodes, "%u, ", node_db->nnodes[i]);
   }
-  ser_out(display_neighbour_nodes, "\r\n");
   proceed (menu);
 
 
@@ -7913,7 +7898,6 @@ void root (word __pi_st) { switch (__pi_st) {
 
  } case get_record_to_create : __stlab_get_record_to_create: {
   ser_in(get_record_to_create, user_provided_record, 20);
-
 
  } case init_create_record_message : __stlab_init_create_record_message: {
 
@@ -8093,5 +8077,5 @@ break; } default: __pi_badstate (); } }
 #undef wait
 #undef timeout
 #undef error
-# 912 "app.cc"
+# 896 "app.cc"
 
