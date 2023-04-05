@@ -186,10 +186,11 @@ fsm sender(struct ResponseMessage *message) {
 	
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
-		packet[0] = NETWORK_ID;
+		packet[0] = 0;
 		char * p = (char *)(packet+1);
 		// Base packet information
-		*p = message->gid;p++;
+		*p = message->gid;
+		p += 2;
 		*p = message->tpe;p++;
 		*p = message->request_number;p++;
 		*p = message->sender_id;p++;
@@ -246,7 +247,6 @@ fsm receiver(struct Node* node_db) {
 		// Get the next packet queued for input at the session (sfd)
 		incoming_packet = tcv_rnp(receiving, sfd);
 	state ok:
-		
 		uint8_t tpe;
 		uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1); // NOTE: might still be broked'd
 
@@ -275,11 +275,11 @@ fsm receiver(struct Node* node_db) {
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
 				/*DEBUGGING*/
-				DEBUG_PRINT("\r\nRECEIVED GID: %d", discovery_request_message->gid);
-				DEBUG_PRINT("\rRECEIVED TYPE: %d", discovery_request_message->tpe);
-				DEBUG_PRINT("\r\nRECEIVED REQ NUM: %d", discovery_request_message->request_number);
-				DEBUG_PRINT("\r\nRECEIVED SID: %d", discovery_request_message->sender_id);
-				DEBUG_PRINT("\r\nRECEIVED RID: %d", discovery_request_message->receiver_id);
+				DEBUG_PRINT("\r\nRECEIVED GID: %u", discovery_request_message->gid);
+				DEBUG_PRINT("\rRECEIVED TYPE: %u", discovery_request_message->tpe);
+				DEBUG_PRINT("\r\nRECEIVED REQ NUM: %u", discovery_request_message->request_number);
+				DEBUG_PRINT("\r\nRECEIVED SID: %u", discovery_request_message->sender_id);
+				DEBUG_PRINT("\r\nRECEIVED RID: %u", discovery_request_message->receiver_id);
 
 				// if the group_ids match
 				if (discovery_request_message->gid == node_db->gid){
@@ -288,7 +288,7 @@ fsm receiver(struct Node* node_db) {
 					response_message_0->request_number = discovery_request_message->request_number;
 					response_message_0->sender_id = node_db->id;
 					response_message_0->receiver_id = discovery_request_message->sender_id;
-					//diag("\r\ngid:%u, tpe:%d, sen:%u, rec:%u", response_message_0->gid, response_message_0->tpe, response_message_0->sender_id, response_message_0->receiver_id);
+
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
 					call sender(response_message_0, done_case);
 				} 
@@ -315,8 +315,6 @@ fsm receiver(struct Node* node_db) {
 				DEBUG_PRINT("RECEIVED RID: %d\n", response_message_1->receiver_id);
 
 				node_db->nnodes[node_db->index] = node_db->gid == response_message_1->gid && response_message_1->sender_id < NNODE_GROUP_SIZE && response_message_1->sender_id > 0 ? response_message_1->sender_id : node_db->nnodes[node_db->index];
-				
-				//node_db->index = node_db->nnodes[node_db->index] == discovery_response_message->sender_id ? node_db->index+1 : node_db->index;
 				// increment the index if the insertion succeeded.
 				if (node_db->nnodes[node_db->index] == response_message_1->sender_id){
 					node_db->index+=1;
@@ -659,8 +657,7 @@ fsm root {
 		};
 		
 		// Check to see if the number give is unique
-		for(int i = 0; i < 25; i++){
-			ser_outf(new_node_id, "\r\n%u ", node_db->nnodes[i]);
+		for(int i = 0; i < node_db->index; i++){
 			if(node_db->id == node_db->nnodes[i]){
 				strncpy(reason, "ID is already in use", 50);
 				proceed invalid_node_id;
@@ -703,10 +700,6 @@ fsm root {
 		request_packet->sender_id = node_db->id;
 		request_packet->receiver_id=0;
 
-		// call sender?
-		// delay() ?
-		// what should the trigger listen for?
-		//trigger(&fin);
 		call sender(request_packet, wait_discovery);
 	
 	state wait_discovery:
@@ -723,12 +716,10 @@ fsm root {
 	
 	state display_neighbour_nodes:
 		ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
-		//ser_outf(display_neighbour_nodes, "\r\n Neighbors: %s", node_db->nnodes);
 		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
 			if (node_db->nnodes[i] == 0) break;
-			ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
+			ser_outf(display_neighbour_nodes, "%u, ", node_db->nnodes[i]);
 		}
-		ser_out(display_neighbour_nodes, "\r\n");
 		proceed menu;
 
 	/*
@@ -757,14 +748,13 @@ fsm root {
 
 	state get_record_to_create:
 		ser_in(get_record_to_create, user_provided_record, 20);
-		// NOTE: im not sure if we need to add checks here, this should stop them from entering anymore than 20 characters?
 
 	state init_create_record_message:
 
 		struct ResponseMessage *create_message;
 		create_message = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 		create_message->gid = node_db->gid;
-		create_message->tpe = CREATE_RECORD;
+		create_message->tpe = 2;
 		create_message->request_number = generate_request_num();
 		create_message->sender_id = node_db->id;
 		create_message->receiver_id = user_provided_receiver_id;
@@ -774,7 +764,7 @@ fsm root {
 		response_checker[0] = create_message->request_number;
 		response_checker[1] = create_message->tpe;
 
-		call sender(&create_message, wait);
+		call sender(create_message, wait);
 		// trigger?
 
 	/*
