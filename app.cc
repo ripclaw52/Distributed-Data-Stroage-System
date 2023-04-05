@@ -13,6 +13,9 @@ uint8_t us_pr_in;
 uint8_t get_id;
 uint8_t beg_for_index;
 uint8_t user_provided_receiver_id;
+address incoming_packet;
+char array[20];
+struct ResponseMessage* response_message_5;
 word response_flag=0;
 
 struct Node *node_db; // globally defined struct, represents the node.
@@ -247,20 +250,23 @@ fsm sender(struct ResponseMessage *message) {
 
 // receives packet information from wireless connected nodes
 fsm receiver(struct Node* node_db) {
-	struct ResponseMessage* response_message_5;
+	//struct ResponseMessage* response_message_5;
 	
-	address incoming_packet;
-	char array[20];
+	//address incoming_packet;
+	//char array[20];
 
 	state receiving:
+		DEBUG_PRINT("\r\nreceiving 0");
 		// Get the next packet queued for input at the session (sfd)
 		incoming_packet = tcv_rnp(receiving, sfd);
+		DEBUG_PRINT("\r\nreceiving 1");
 	state ok:
 		//uint8_t tpe;
 		//uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1); // NOTE: might still be broked'd
+		DEBUG_PRINT("\r\nreceiving 2");
 		response_message_5 = (struct ResponseMessage *)(incoming_packet+1);
 		DEBUG_PRINT("\r\nTPE: %d", response_message_5->tpe);
-
+		DEBUG_PRINT("\r\nreceiving 3");
 		//if (bytes_read != 1){
 			//proceed error; //NOTE: NO ERROR STATE
 		//};
@@ -510,7 +516,9 @@ fsm receiver(struct Node* node_db) {
 
 		};
 	state done_case:
+		DEBUG_PRINT("\r\nIn done_case");
 		tcv_endp(incoming_packet);
+		DEBUG_PRINT("\r\nIn done_case");
 		proceed receiving;
 	
 	// Succeeded in performing requested action
