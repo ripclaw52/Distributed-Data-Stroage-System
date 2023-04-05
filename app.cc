@@ -159,7 +159,7 @@ bool delete_all(struct Node *node){
 }
 
 struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_number, uint8_t sender_id, uint8_t receiver_id, uint8_t status, uint8_t padding, char rec[20]){
-	struct ResponseMessage *response_message;
+	struct ResponseMessage *response_message = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 
 	response_message->gid = gid;
 	response_message->tpe = RESPONSE;
@@ -187,10 +187,13 @@ fsm sender(struct ResponseMessage *message) {
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
 		packet[0] = 0;
-		char * p = (char *)(packet+1);
+		packet[1] = message->gid;
+		char * p = (char *)(packet+2);
 		// Base packet information
-		*p = message->gid;
-		p += 2;
+		DEBUG_PRINT("SENDING PROCEDURE");
+		DEBUG_PRINT("I am th message GID %d", message->gid);
+		//*p = message->gid;
+		// p += 2;
 		*p = message->tpe;p++;
 		*p = message->request_number;p++;
 		*p = message->sender_id;p++;
@@ -247,14 +250,16 @@ fsm receiver(struct Node* node_db) {
 		// Get the next packet queued for input at the session (sfd)
 		incoming_packet = tcv_rnp(receiving, sfd);
 	state ok:
-		uint8_t tpe;
-		uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1); // NOTE: might still be broked'd
+		//uint8_t tpe;
+		//uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1); // NOTE: might still be broked'd
+		response_message_5 = (struct ResponseMessage *)(incoming_packet+1);
+		DEBUG_PRINT("\r\nTPE: %d", response_message_5->tpe);
 
-		if (bytes_read != 1){
+		//if (bytes_read != 1){
 			//proceed error; //NOTE: NO ERROR STATE
-		};
+		//};
 		// in each switch case where we send a response using call (), we may be able to remove the return state...
-		switch (tpe){
+		switch (response_message_5->tpe){
 			
 			/*
 			Our node has received a discovery request, we need to send back to the sending node
@@ -270,19 +275,22 @@ fsm receiver(struct Node* node_db) {
 			*/
 			case DISCOVERY_REQUEST: ;
 				// respondng with this
-				struct ResponseMessage *response_message_0;
+				struct ResponseMessage *response_message_0 = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 				// receiving this
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
-				/*DEBUGGING*/
+				/*DEBUGGING
+				DEBUG_PRINT("\r\nDiscovery req");
+				
 				DEBUG_PRINT("\r\nRECEIVED GID: %u", discovery_request_message->gid);
 				DEBUG_PRINT("\rRECEIVED TYPE: %u", discovery_request_message->tpe);
 				DEBUG_PRINT("\r\nRECEIVED REQ NUM: %u", discovery_request_message->request_number);
 				DEBUG_PRINT("\r\nRECEIVED SID: %u", discovery_request_message->sender_id);
 				DEBUG_PRINT("\r\nRECEIVED RID: %u", discovery_request_message->receiver_id);
-
+				DEBUG_PRINT("\r\ndiscover gid: %u\r\nNode gid:%u", discovery_request_message->gid, node_db->gid);*/
 				// if the group_ids match
 				if (discovery_request_message->gid == node_db->gid){
+					DEBUG_PRINT("\r\nSending to sender");
 					response_message_0->gid = discovery_request_message->gid;
 					response_message_0->tpe = DISCOVERY_RESPONSE;
 					response_message_0->request_number = discovery_request_message->request_number;
@@ -290,6 +298,7 @@ fsm receiver(struct Node* node_db) {
 					response_message_0->receiver_id = discovery_request_message->sender_id;
 
 					// NOTE: return_from_sender might be optional, in which case it should just return to here and then break
+					DEBUG_PRINT("\r\nSending to sender");
 					call sender(response_message_0, done_case);
 				} 
 
@@ -307,13 +316,14 @@ fsm receiver(struct Node* node_db) {
 				// receiving this, no response.
 				struct DiscoveryResponseMessage* response_message_1 = (struct DiscoveryResponseMessage*)(incoming_packet+1);
 
-				/*DEBUGGING*/
+				/*DEBUGGING
+				DEBUG_PRINT("\r\nDiscovery response");
 				DEBUG_PRINT("RECEIVED GID: %d\n", response_message_1->gid);
 				DEBUG_PRINT("RECEIVED TYPE: %d\n", response_message_1->tpe);
 				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", response_message_1->request_number);
 				DEBUG_PRINT("RECEIVED SID: %d\n", response_message_1->sender_id);
 				DEBUG_PRINT("RECEIVED RID: %d\n", response_message_1->receiver_id);
-
+*/
 				node_db->nnodes[node_db->index] = node_db->gid == response_message_1->gid && response_message_1->sender_id < NNODE_GROUP_SIZE && response_message_1->sender_id > 0 ? response_message_1->sender_id : node_db->nnodes[node_db->index];
 				// increment the index if the insertion succeeded.
 				if (node_db->nnodes[node_db->index] == response_message_1->sender_id){
@@ -326,34 +336,41 @@ fsm receiver(struct Node* node_db) {
 			a record in our node (the receiver).
 			*/
 			case CREATE_RECORD: ;
-				struct ResponseMessage *response_message_2;
+				struct ResponseMessage *response_message_2 = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 				struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
 				bool neighbour_check = false;
 				uint8_t status;
 
-				/*DEBUGGING*/
+				/*DEBUGGING
+				DEBUG_PRINT("\r\nCreate rec");
 				DEBUG_PRINT("RECEIVED GID: %d\n", create_record_message->gid);
 				DEBUG_PRINT("RECEIVED TYPE: %d\n", create_record_message->tpe);
 				DEBUG_PRINT("RECEIVED REQ NUM: %d\n", create_record_message->request_number);
 				DEBUG_PRINT("RECEIVED SID: %d\n", create_record_message->sender_id);
 				DEBUG_PRINT("RECEIVED RID: %d\n", create_record_message->receiver_id);
-				DEBUG_PRINT("RECEIVED RECORD: %s\n", create_record_message->record);
-
+				DEBUG_PRINT("RECEIVED RECORD: %s\n", create_record_message->record);*/
+				//DEBUG_PRINT("rec id: %d\nnode id: %d\nnode gid: %d\n rec gid = %d\n", create_record_message->receiver_id, node_db->id);
 				// if the message is not for this node, it is ignored.
-				if (create_record_message->receiver_id != node_db->id || create_record_message->gid != node_db->id){
+				if (create_record_message->receiver_id != node_db->id || create_record_message->gid != node_db->gid){
+					DEBUG_PRINT("\r\nCreate rec we broke");
 					break;
 				};
 
 				// check the record size, attempt to insert it...if the user send something invalid, we will just ignore this message and break
+				DEBUG_PRINT("\r\nCreate rec inbetween if: Size of rec = %d", sizeof(create_record_message->record));
 				if (sizeof(create_record_message->record) <= MAX_DB_ENT_LEN && sizeof(create_record_message->record) > 0) {
 					// pointer to node, the record to be inserted, the owner of the record (the sender)
+					DEBUG_PRINT("\r\nCreate rec second if");
 					if (insert_record(node_db, create_record_message->record, create_record_message->sender_id)){
+						DEBUG_PRINT("\r\nCreate rec third if");
 						status = (uint8_t) SUCCESS;
 					} else{
+						DEBUG_PRINT("\r\nCreate rec third else");
 						status = (uint8_t) DB_FULL;
 					};
-
+					DEBUG_PRINT("\r\nCreate rec out if");
 					response_message_2 = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, array);
+					DEBUG_PRINT("\r\nCreate rec sending to sender");
 					call sender(response_message_2, done_case);
 
 				};
@@ -361,24 +378,31 @@ fsm receiver(struct Node* node_db) {
 				break;
 
 			case DELETE_RECORD: ;
-				struct ResponseMessage *response_message_3;
+				struct ResponseMessage *response_message_3 = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 				struct DeleteRecordMessage *delete_record_message = (struct DeleteRecordMessage*)(incoming_packet+1);
 
+				DEBUG_PRINT("\r\nDelete rec");
+
 				// if the message is not intended for this node, ignore it.
+				DEBUG_PRINT("delete record gid %d\nnode_db gid %d\n delete record receiver id %d\n, node db id %d", delete_record_message->gid, node_db->gid, delete_record_message->receiver_id, node_db->id);
 				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db->id){
+					DEBUG_PRINT("\r\nDelete rec first if");
 					break;
 				};
 
 				// if a valid index is provided
 				if (delete_record_message->record_index >=0 && delete_record_message->record_index <= 40){
-					
+					DEBUG_PRINT("\r\nDelete rec second if");
 					// attempt to delete the record at the provided, valid, index.
 					if (delete_record(node_db, delete_record_message->record_index)){
 						status = (uint8_t) SUCCESS;
+						DEBUG_PRINT("\r\nDelete rec third if");
 					} else{
 						status = (uint8_t) DELETE_ERROR;
+						DEBUG_PRINT("\r\nDelete rec fourth if");
 					};
-
+					
+					DEBUG_PRINT("\r\nDelete assemble le response");
 					response_message_3 = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, array);
 					call sender(response_message_3, done_case);
 
@@ -388,9 +412,11 @@ fsm receiver(struct Node* node_db) {
 
 			// NOTE: this case will likely still require work
 			case RETRIEVE_RECORD: ;
-				struct ResponseMessage *response_message_4;
+				struct ResponseMessage *response_message_4 = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 				struct RetrieveRecordMessage *retreive_record_message = (struct RetrieveRecordMessage*)(incoming_packet+1);
 				struct record retrieved_record;
+
+				DEBUG_PRINT("\r\nretrieve rec");
 
 				// if the message is not intended for this node, ignore it.
 				if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db->id){
@@ -417,6 +443,7 @@ fsm receiver(struct Node* node_db) {
 			case RESPONSE: ;
 				response_message_5 = (struct ResponseMessage*)(incoming_packet+1);
 
+				DEBUG_PRINT("\r\nResponse");
 				// if the message is not intended for this node, ignore it.
 				if (response_message_5->gid != node_db->gid || response_message_5->receiver_id != node_db->id){
 					break;
@@ -466,7 +493,7 @@ fsm receiver(struct Node* node_db) {
 
 			// if the type provided is > 5 || < 0
 			default:
-				DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", tpe);
+				DEBUG_PRINT("ERROR: received type [%d] is not legal packet type", response_message_5->tpe);
 				break;
 
 		};
@@ -715,6 +742,9 @@ fsm root {
 		}
 	
 	state display_neighbour_nodes:
+		if(node_db->index == 0){
+			proceed menu;
+		}
 		ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
 		for (int i=0; i<NNODE_GROUP_SIZE; i++) {
 			if (node_db->nnodes[i] == 0) break;
@@ -736,7 +766,7 @@ fsm root {
 		ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
 	state get_id_for_create:
-		ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
+		ser_inf(get_id_for_create, "%u", &user_provided_receiver_id);
 
 		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper ID", 50);
@@ -754,7 +784,7 @@ fsm root {
 		struct ResponseMessage *create_message;
 		create_message = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
 		create_message->gid = node_db->gid;
-		create_message->tpe = 2;
+		create_message->tpe = CREATE_RECORD;
 		create_message->request_number = generate_request_num();
 		create_message->sender_id = node_db->id;
 		create_message->receiver_id = user_provided_receiver_id;
@@ -779,7 +809,7 @@ fsm root {
 		ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_delete:
-		ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
+		ser_inf(get_id_for_delete, "%u", &user_provided_receiver_id);
 
 		if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
 			strncpy(reason, "Error: improper node ID", 50);
@@ -790,7 +820,7 @@ fsm root {
 		ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_delete:
-		ser_inf(get_index_for_delete, "%d", &user_provided_index);
+		ser_inf(get_index_for_delete, "%u", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -813,7 +843,7 @@ fsm root {
 		response_checker[0] = delete_record->request_number;
 		response_checker[1] = delete_record->tpe;
 
-		call sender(&delete_record, wait);
+		call sender(delete_record, wait);
 		// NOTE: trigger not added, not sure where it is explcitly needed
 
 	/*
@@ -828,7 +858,7 @@ fsm root {
 		ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
 	state get_id_for_retrieve:
-		ser_inf(get_id_for_retrieve, "%d", &user_provided_receiver_id);
+		ser_inf(get_id_for_retrieve, "%u", &user_provided_receiver_id);
 
 		if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
 			strncpy(reason, "Error: improper node ID", 50);
@@ -839,7 +869,7 @@ fsm root {
 		ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
 	state get_index_for_retrieve:
-		ser_inf(get_index_for_retrieve, "%d", &user_provided_index);
+		ser_inf(get_index_for_retrieve, "%u", &user_provided_index);
 
 		if (user_provided_index < 0 || user_provided_index > 40){
 			strncpy(reason, "Error: invalid index", 50);
@@ -870,7 +900,7 @@ fsm root {
 	state loop_through_data:
 		if(node_db->data_base.item_count != 0){
 			for(int i = 0; i <= node_db->data_base.item_count; i++){
-				ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
+				ser_outf(loop_through_data, "\r\n%d\t%u\t\t\t%u\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
 			}
 		}
 		ser_out(loop_through_data, "\r\n");
