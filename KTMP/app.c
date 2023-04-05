@@ -6973,7 +6973,13 @@ int sfd = -1;
 
 
 int response_checker[2];
-
+int discovery_wait_flag = 0;
+char user_provided_record[20];
+uint8_t user_provided_index;
+uint8_t us_pr_in;
+uint8_t get_id;
+uint8_t beg_for_index;
+uint8_t user_provided_receiver_id;
 word response_flag=0;
 
 struct Node *node_db;
@@ -6982,7 +6988,7 @@ struct Node *node_db;
 
 
 _Bool 
-# 17 "app.cc"
+# 23 "app.cc"
     init_node(struct Node* node){
     node->id = 0;
     node->gid = 0;
@@ -6997,28 +7003,28 @@ _Bool
 
     if ((!node->id) && (!node->gid) && (!node->index) && (sizeof(node->data_base) == 0)){
         return 
-# 30 "app.cc"
+# 36 "app.cc"
               1
-# 30 "app.cc"
+# 36 "app.cc"
                   ;
     }
     diag("Error initializing node...\n");
     return 
-# 33 "app.cc"
+# 39 "app.cc"
           0
-# 33 "app.cc"
+# 39 "app.cc"
                ;
 };
 
 _Bool 
-# 36 "app.cc"
+# 42 "app.cc"
     set_node_id(struct Node* node, uint8_t id){
     node->id = id;
     return node->id == id;
 };
 
 _Bool 
-# 41 "app.cc"
+# 47 "app.cc"
     set_node_gid(struct Node* node, uint16_t gid){
     node->gid = gid;
     return node->gid == gid;
@@ -7026,7 +7032,7 @@ _Bool
 
 
 _Bool 
-# 47 "app.cc"
+# 53 "app.cc"
     set_node_db_entry_count(struct Node* node, uint8_t count){
     node->index = count;
     return node->index == count;
@@ -7047,7 +7053,7 @@ uint8_t generate_request_num(void){
 
 
 _Bool 
-# 66 "app.cc"
+# 72 "app.cc"
     insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
 
 
@@ -7056,18 +7062,18 @@ _Bool
 
     if (node->data_base.item_count == 40){
         return 
-# 73 "app.cc"
+# 79 "app.cc"
               0
-# 73 "app.cc"
+# 79 "app.cc"
                    ;
     } else {
 
 
         for (int i = 0; i < 40; i++){
             if (node->data_base.item_array[i].data_entry == 
-# 78 "app.cc"
+# 84 "app.cc"
                                                            ((void *)0)
-# 78 "app.cc"
+# 84 "app.cc"
                                                                ){
              num = i;
                 __pi_strncpy (node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry));
@@ -7082,68 +7088,68 @@ _Bool
 
 
     if(node->data_base.item_array[num].data_entry == 
-# 91 "app.cc"
+# 97 "app.cc"
                                                     ((void *)0)
-# 91 "app.cc"
+# 97 "app.cc"
                                                         ){
      return 
-# 92 "app.cc"
+# 98 "app.cc"
            0
-# 92 "app.cc"
+# 98 "app.cc"
                 ;
     }
     return 
-# 94 "app.cc"
+# 100 "app.cc"
           1
-# 94 "app.cc"
+# 100 "app.cc"
               ;
 };
 
 
 _Bool 
-# 98 "app.cc"
+# 104 "app.cc"
     clear_node_neighbour_array(struct Node *node){
 
     if (!sizeof(node->nnodes)){
         return 
-# 101 "app.cc"
+# 107 "app.cc"
               1
-# 101 "app.cc"
+# 107 "app.cc"
                   ;
     } else{
         for (int i = 0; i < 25; i++){
             node->nnodes[i] = 0;
         };
         return 
-# 106 "app.cc"
+# 112 "app.cc"
               1
-# 106 "app.cc"
+# 112 "app.cc"
                   ;
     };
 
     return 
-# 109 "app.cc"
+# 115 "app.cc"
           0
-# 109 "app.cc"
+# 115 "app.cc"
                ;
 
 };
 
 
 _Bool 
-# 114 "app.cc"
+# 120 "app.cc"
     delete_record(struct Node *node, uint8_t index){
 
 
     if (node->data_base.item_count == 0 || node->data_base.item_array[index].data_entry == 
-# 117 "app.cc"
+# 123 "app.cc"
                                                                                           ((void *)0)
-# 117 "app.cc"
+# 123 "app.cc"
                                                                                               ){
         return 
-# 118 "app.cc"
+# 124 "app.cc"
               0
-# 118 "app.cc"
+# 124 "app.cc"
                    ;
     } else{
 
@@ -7154,20 +7160,20 @@ _Bool
 
 
     if(node->data_base.item_array[index].data_entry != 
-# 127 "app.cc"
+# 133 "app.cc"
                                                       ((void *)0)
-# 127 "app.cc"
+# 133 "app.cc"
                                                           ){
      return 
-# 128 "app.cc"
+# 134 "app.cc"
            0
-# 128 "app.cc"
+# 134 "app.cc"
                 ;
     }
     return 
-# 130 "app.cc"
+# 136 "app.cc"
           1
-# 130 "app.cc"
+# 136 "app.cc"
               ;
 };
 
@@ -7181,19 +7187,19 @@ struct record retrieve_record(struct Node *node, uint8_t index){
 
 
 _Bool 
-# 142 "app.cc"
+# 148 "app.cc"
     delete_all(struct Node *node){
 
 
     if (node->data_base.item_count == 0 || node->data_base.item_array[0].data_entry == 
-# 145 "app.cc"
+# 151 "app.cc"
                                                                                       ((void *)0)
-# 145 "app.cc"
+# 151 "app.cc"
                                                                                           ){
         return 
-# 146 "app.cc"
+# 152 "app.cc"
               1
-# 146 "app.cc"
+# 152 "app.cc"
                   ;
     } else{
         for(int i = 0; i <= node->data_base.item_count; i++){
@@ -7204,20 +7210,20 @@ _Bool
     node->data_base.item_count = 0;
 
     if(node->data_base.item_array[0].data_entry != 
-# 155 "app.cc"
+# 161 "app.cc"
                                                   ((void *)0)
-# 155 "app.cc"
+# 161 "app.cc"
                                                       ){
      return 
-# 156 "app.cc"
+# 162 "app.cc"
            0
-# 156 "app.cc"
+# 162 "app.cc"
                 ;
     }
     return 
-# 158 "app.cc"
+# 164 "app.cc"
           1
-# 158 "app.cc"
+# 164 "app.cc"
               ;
 }
 
@@ -7234,9 +7240,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
   response_message->padding = padding;
  };
  if (rec != 
-# 173 "app.cc"
+# 179 "app.cc"
            ((void *)0)
-# 173 "app.cc"
+# 179 "app.cc"
                ){
   __pi_strncpy (response_message->record, rec, 20);
  };
@@ -7249,9 +7255,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 
 #define sending 0
 #define CONFIRM_message 1
-# 182 "app.cc"
+# 188 "app.cc"
 void sender (word __pi_st) { struct ResponseMessage * message = (struct ResponseMessage *)(__pi_curr->data); switch (__pi_st) { 
-# 182 "app.cc"
+# 188 "app.cc"
 
  static address packet;
 
@@ -7264,7 +7270,7 @@ void sender (word __pi_st) { struct ResponseMessage * message = (struct Response
   char * p = (char *)(packet+2);
 
   diag("SENDING PROCEDURE");
-  diag("I am th message GID %d", message->gid);
+  diag("I am th message GID %d", message->receiver_id);
 
 
   *p = message->tpe;p++;
@@ -7324,9 +7330,9 @@ break; } default: __pi_badstate (); } }
 #define response_3 7
 #define response_4 8
 #define error 9
-# 243 "app.cc"
+# 249 "app.cc"
 void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr->data); switch (__pi_st) { 
-# 243 "app.cc"
+# 249 "app.cc"
 
  static struct ResponseMessage *response_message_5;
 
@@ -7426,11 +7432,11 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     struct ResponseMessage *response_message_2 = (struct ResponseMessage*)((address)__pi_malloc (sizeof(struct ResponseMessage)));
     struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
    _Bool 
-# 341 "app.cc"
+# 347 "app.cc"
         neighbour_check = 
-# 341 "app.cc"
+# 347 "app.cc"
                           0
-# 341 "app.cc"
+# 347 "app.cc"
                                ;
     uint8_t status;
 
@@ -7477,6 +7483,12 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     diag("\r\nDelete rec");
 
 
+
+
+
+
+
+
     diag("delete record gid %d\nnode_db gid %d\n delete record receiver id %d\n, node db id %d", delete_record_message->gid, node_db->gid, delete_record_message->receiver_id, node_db->id);
     if (delete_record_message->gid != node_db->gid || delete_record_message->receiver_id != node_db->id){
      diag("\r\nDelete rec first if");
@@ -7520,9 +7532,9 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
      retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
      if (retrieved_record.data_entry == 
-# 429 "app.cc"
+# 441 "app.cc"
                                        ((void *)0)
-# 429 "app.cc"
+# 441 "app.cc"
                                            ){
       status = (uint8_t) RETRIEVE_ERROR;
       response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
@@ -7638,7 +7650,7 @@ break; } default: __pi_badstate (); } }
 #undef response_3
 #undef response_4
 #undef error
-# 533 "app.cc"
+# 545 "app.cc"
 
 
 
@@ -7675,19 +7687,14 @@ break; } default: __pi_badstate (); } }
 #define wait 30
 #define timeout 31
 #define error 32
-# 535 "app.cc"
+# 547 "app.cc"
 void root (word __pi_st) { switch (__pi_st) { 
-# 535 "app.cc"
+# 547 "app.cc"
 
 
 
 
 
-
- static int discovery_wait_flag=0 ;
- static char user_provided_record[20];
- static uint8_t user_provided_index;
- static uint8_t user_provided_receiver_id;
 
 
 
@@ -7745,9 +7752,9 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 601 "app.cc"
+# 608 "app.cc"
                               ((void *)0)
-# 601 "app.cc"
+# 608 "app.cc"
                                   );
 
   __pi_fork (receiver, (aword)(node_db ));
@@ -7781,7 +7788,7 @@ void root (word __pi_st) { switch (__pi_st) {
     break;
    case 'r':
    case 'R':
-    proceed (retrieve_proto);
+    proceed (start_retrieve_proto);
     break;
    case 's':
    case 'S':
@@ -7895,9 +7902,10 @@ void root (word __pi_st) { switch (__pi_st) {
   if(node_db->index == 0){
    proceed (menu);
   }
-  ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
-  for (int i=0; i<25; i++) {
-   if (node_db->nnodes[i] == 0) break;
+  for (int i=0; i<node_db->index; i++) {
+   if(i == 0){
+    ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
+   }
    ser_outf(display_neighbour_nodes, "%u, ", node_db->nnodes[i]);
   }
   proceed (menu);
@@ -7916,7 +7924,7 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
  } case get_id_for_create : __stlab_get_id_for_create: {
-  ser_inf(get_id_for_create, "%u", &user_provided_receiver_id);
+  ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
 
   if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
    __pi_strncpy (reason, "Error: improper ID", 50);
@@ -7959,7 +7967,7 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
  } case get_id_for_delete : __stlab_get_id_for_delete: {
-  ser_inf(get_id_for_delete, "%u", &user_provided_receiver_id);
+  ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
 
   if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
    __pi_strncpy (reason, "Error: improper node ID", 50);
@@ -7970,9 +7978,9 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
  } case get_index_for_delete : __stlab_get_index_for_delete: {
-  ser_inf(get_index_for_delete, "%u", &user_provided_index);
+  ser_inf(get_index_for_delete, "%d", &us_pr_in);
 
-  if (user_provided_index < 0 || user_provided_index > 40){
+  if (us_pr_in < 0 || us_pr_in > 40){
    __pi_strncpy (reason, "Error: invalid index", 50);
    proceed (error);
   };
@@ -7986,7 +7994,7 @@ void root (word __pi_st) { switch (__pi_st) {
   delete_record->request_number = generate_request_num();
   delete_record->sender_id = node_db->id;
   delete_record->receiver_id = user_provided_receiver_id;
-  delete_record->record_index = user_provided_index;
+  delete_record->record_index = us_pr_in;
 
 
 
@@ -8008,9 +8016,9 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
  } case get_id_for_retrieve : __stlab_get_id_for_retrieve: {
-  ser_inf(get_id_for_retrieve, "%u", &user_provided_receiver_id);
+  ser_inf(get_id_for_retrieve, "%d", &get_id);
 
-  if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
+  if (get_id < 1 || get_id > 25){
    __pi_strncpy (reason, "Error: improper node ID", 50);
    proceed (error);
   };
@@ -8019,14 +8027,16 @@ void root (word __pi_st) { switch (__pi_st) {
   ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
  } case get_index_for_retrieve : __stlab_get_index_for_retrieve: {
-  ser_inf(get_index_for_retrieve, "%u", &user_provided_index);
+  ser_inf(get_index_for_retrieve, "%u", &beg_for_index);
 
-  if (user_provided_index < 0 || user_provided_index > 40){
+  if (beg_for_index < 0 || beg_for_index > 40){
    __pi_strncpy (reason, "Error: invalid index", 50);
    proceed (error);
   };
 
  } case retrieve_proto : __stlab_retrieve_proto: {
+
+  diag("\r\nret ID: %d", get_id);
 
   struct ResponseMessage *retrieve_record;
   retrieve_record = (struct ResponseMessage *)((address)__pi_malloc (sizeof(struct ResponseMessage)));
@@ -8034,15 +8044,16 @@ void root (word __pi_st) { switch (__pi_st) {
   retrieve_record->tpe = RETRIEVE_RECORD;
   retrieve_record->request_number = generate_request_num();
   retrieve_record->sender_id = node_db->id;
-  retrieve_record->receiver_id = user_provided_receiver_id;
-  retrieve_record->record_index = user_provided_index;
+  retrieve_record->receiver_id = get_id;
+  retrieve_record->record_index = beg_for_index;
 
-
+  diag("\r\nret ID: %d", get_id);
 
   response_checker[0] = retrieve_record->request_number;
   response_checker[1] = retrieve_record->tpe;
+  diag("\r\nret ID: %d", retrieve_record->receiver_id);
 
-  do { if (__pi_join (__pi_fork (sender, (aword)(& retrieve_record )), wait )) __pi_release (); } while (0);
+  do { if (__pi_join (__pi_fork (sender, (aword)(retrieve_record )), wait )) __pi_release (); } while (0);
 
  } case display_db : __stlab_display_db: {
   ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
@@ -8107,5 +8118,5 @@ break; } default: __pi_badstate (); } }
 #undef wait
 #undef timeout
 #undef error
-# 926 "app.cc"
+# 937 "app.cc"
 
