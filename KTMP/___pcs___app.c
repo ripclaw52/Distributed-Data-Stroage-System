@@ -178,11 +178,47 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 
 };
 
+// Gets the message size
+int get_message_size(struct ResponseMessage *message) {
+	int packet_size;
+	/*
+	 * Calculate needed size of sending packet
+	 */
+	switch(message->tpe) {
+		// Discovery Request
+		case DISCOVERY_REQUEST: packet_size = sizeof(struct DiscoveryRequestMessage); break;
+
+		// Discovery Response
+		case DISCOVERY_RESPONSE: packet_size = sizeof(struct DiscoveryResponseMessage); break;
+		
+		// Create Record
+		case CREATE_RECORD: packet_size = sizeof(struct CreateRecordMessage); break;
+		
+		// Delete Record
+		case DELETE_RECORD: packet_size = sizeof(struct DeleteRecordMessage); break;
+
+		// Retrieve Record
+		case RETRIEVE_RECORD: packet_size = sizeof(struct RetrieveRecordMessage); break;
+		
+		// Response
+		case RESPONSE: packet_size = sizeof(struct ResponseMessage); break;
+
+		// Type is not valid. exit from loop
+		default:
+			packet_size = 0;
+			// EXIT SENDER FSM
+			break;
+	}
+	return packet_size;
+}
+
 // sends packet information to other nodes
 fsm sender(struct ResponseMessage *message) {
 	address packet;
 
-	int packet_size = sizeof(struct ResponseMessage);
+	int packet_size = sizeof(struct ResponseMessage); //get_message_size(message);
+
+	DEBUG_PRINT("\r\nIn Sending");
 	
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
@@ -270,7 +306,7 @@ fsm receiver(struct Node* node_db) {
 			*/
 			case DISCOVERY_REQUEST: ;
 				// respondng with this
-				struct ResponseMessage *response_message_0;
+				struct DiscoveryResponseMessage *response_message_0;
 				// receiving this
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
@@ -694,8 +730,8 @@ fsm root {
 
 	state find_proto_start:
 
-		struct ResponseMessage *request_packet;
-		request_packet = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
+		struct DiscoveryRequestMessage *request_packet;
+		request_packet = (struct DiscoveryRequestMessage*)umalloc(sizeof(struct DiscoveryRequestMessage));
 
 		request_packet->gid = node_db->gid;
 		request_packet->tpe = DISCOVERY_REQUEST;
@@ -761,8 +797,8 @@ fsm root {
 
 	state init_create_record_message:
 
-		struct ResponseMessage *create_message;
-		create_message = (struct ResponseMessage*)umalloc(sizeof(struct ResponseMessage));
+		struct CreateRecordMessage *create_message;
+		create_message = (struct CreateRecordMessage*)umalloc(sizeof(struct CreateRecordMessage));
 		create_message->gid = node_db->gid;
 		create_message->tpe = CREATE_RECORD;
 		create_message->request_number = generate_request_num();
@@ -809,8 +845,8 @@ fsm root {
 
 	state init_delete_record_message:
 
-		struct ResponseMessage *delete_record;
-		delete_record = (struct ResponseMessage *)umalloc(sizeof(struct ResponseMessage));
+		struct DeleteRecordMessage *delete_record;
+		delete_record = (struct DeleteRecordMessage *)umalloc(sizeof(struct DeleteRecordMessage));
 		delete_record->gid = node_db->gid;
 		delete_record->tpe = DELETE_RECORD;
 		delete_record->request_number = generate_request_num();
@@ -858,8 +894,8 @@ fsm root {
 
 	state retrieve_proto:
 
-		struct ResponseMessage *retrieve_record;
-		retrieve_record = (struct ResponseMessage *)umalloc(sizeof(struct ResponseMessage));
+		struct RetrieveRecordMessage *retrieve_record;
+		retrieve_record = (struct RetrieveRecordMessage *)umalloc(sizeof(struct RetrieveRecordMessage));
 		retrieve_record->gid = node_db->gid;
 		retrieve_record->tpe = RETRIEVE_RECORD;
 		retrieve_record->request_number = generate_request_num();

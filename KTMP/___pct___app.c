@@ -1,99 +1,100 @@
-# 1 "/usr/include/newlib/sys/config.h"
+# 1 "KTMP/___pcs___app.c"
+# 1 "/home/stephen/Documents/GitHub/Distributed-Data-Stroage-System//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "KTMP/___pcs___app.c"
+# 1 "./header.hpp" 1
+# 1 "/usr/include/newlib/stdlib.h" 1 3
+# 10 "/usr/include/newlib/stdlib.h" 3
+# 1 "/usr/include/newlib/machine/ieeefp.h" 1 3
+# 11 "/usr/include/newlib/stdlib.h" 2 3
+# 1 "/usr/include/newlib/_ansi.h" 1 3
+# 10 "/usr/include/newlib/_ansi.h" 3
+# 1 "/usr/include/newlib/newlib.h" 1 3
+# 14 "/usr/include/newlib/newlib.h" 3
+# 1 "/usr/include/newlib/_newlib_version.h" 1 3
+# 15 "/usr/include/newlib/newlib.h" 2 3
+# 11 "/usr/include/newlib/_ansi.h" 2 3
+# 1 "/usr/include/newlib/sys/config.h" 1 3
 
 
 
-# 12 "/usr/include/newlib/stdlib.h"
+# 1 "/usr/include/newlib/machine/ieeefp.h" 1 3
+# 5 "/usr/include/newlib/sys/config.h" 2 3
+# 1 "/usr/include/newlib/sys/features.h" 1 3
+# 6 "/usr/include/newlib/sys/config.h" 2 3
+# 12 "/usr/include/newlib/_ansi.h" 2 3
+# 12 "/usr/include/newlib/stdlib.h" 2 3
 
 
 
 
-# 209 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 1 3 4
+# 209 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 3 4
+
+# 209 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 3 4
 typedef unsigned int size_t;
-# 321 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+# 321 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 3 4
 typedef unsigned int wchar_t;
-# 17 "/usr/include/newlib/stdlib.h"
+# 17 "/usr/include/newlib/stdlib.h" 2 3
 
-# 143 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+# 1 "/usr/include/newlib/sys/reent.h" 1 3
+# 13 "/usr/include/newlib/sys/reent.h" 3
+# 1 "/usr/include/newlib/_ansi.h" 1 3
+# 14 "/usr/include/newlib/sys/reent.h" 2 3
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 1 3 4
+# 143 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 3 4
 typedef int ptrdiff_t;
-# 350 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h"
+# 15 "/usr/include/newlib/sys/reent.h" 2 3
+# 1 "/usr/include/newlib/sys/_types.h" 1 3
+# 24 "/usr/include/newlib/sys/_types.h" 3
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 1 3 4
+# 350 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 3 4
 typedef unsigned int wint_t;
-# 25 "/usr/include/newlib/sys/_types.h"
+# 25 "/usr/include/newlib/sys/_types.h" 2 3
 
 
-# 1 "/usr/include/newlib/machine/_types.h"
-
-
-
+# 1 "/usr/include/newlib/machine/_types.h" 1 3
 
 
 
-# 41 "/usr/include/newlib/machine/_default_types.h"
+
+
+
+# 1 "/usr/include/newlib/machine/_default_types.h" 1 3
+# 41 "/usr/include/newlib/machine/_default_types.h" 3
 typedef signed char __int8_t;
 
 typedef unsigned char __uint8_t;
-
-
-
-
-
-
-
-
-
-
-
+# 55 "/usr/include/newlib/machine/_default_types.h" 3
 typedef short int __int16_t;
 
 typedef short unsigned int __uint16_t;
-# 77 "/usr/include/newlib/machine/_default_types.h"
+# 77 "/usr/include/newlib/machine/_default_types.h" 3
 typedef long int __int32_t;
 
 typedef long unsigned int __uint32_t;
-# 103 "/usr/include/newlib/machine/_default_types.h"
+# 103 "/usr/include/newlib/machine/_default_types.h" 3
 typedef long long int __int64_t;
 
 typedef long long unsigned int __uint64_t;
-# 134 "/usr/include/newlib/machine/_default_types.h"
+# 134 "/usr/include/newlib/machine/_default_types.h" 3
 typedef signed char __int_least8_t;
 
 typedef unsigned char __uint_least8_t;
-# 160 "/usr/include/newlib/machine/_default_types.h"
+# 160 "/usr/include/newlib/machine/_default_types.h" 3
 typedef short int __int_least16_t;
 
 typedef short unsigned int __uint_least16_t;
-# 182 "/usr/include/newlib/machine/_default_types.h"
+# 182 "/usr/include/newlib/machine/_default_types.h" 3
 typedef long int __int_least32_t;
 
 typedef long unsigned int __uint_least32_t;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 200 "/usr/include/newlib/machine/_default_types.h" 3
 typedef long long int __int_least64_t;
 
 typedef long long unsigned int __uint_least64_t;
-
-
-
-
-
-
-
-
-
-
-
+# 214 "/usr/include/newlib/machine/_default_types.h" 3
 typedef long long int __intmax_t;
 
 
@@ -113,7 +114,8 @@ typedef long long unsigned int __uintmax_t;
 typedef int __intptr_t;
 
 typedef unsigned int __uintptr_t;
-# 28 "/usr/include/newlib/sys/_types.h"
+# 8 "/usr/include/newlib/machine/_types.h" 2 3
+# 28 "/usr/include/newlib/sys/_types.h" 2 3
 
 
 typedef long __blkcnt_t;
@@ -162,20 +164,7 @@ typedef __uint32_t __id_t;
 
 
 typedef unsigned short __ino_t;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 90 "/usr/include/newlib/sys/_types.h" 3
 typedef __uint32_t __mode_t;
 
 
@@ -203,47 +192,11 @@ typedef long __key_t;
 
 
 typedef long _fpos_t;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 131 "/usr/include/newlib/sys/_types.h" 3
 typedef unsigned int __size_t;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 147 "/usr/include/newlib/sys/_types.h" 3
 typedef signed int _ssize_t;
-
-
-
-
-
-
-
-
-
-
+# 158 "/usr/include/newlib/sys/_types.h" 3
 typedef _ssize_t __ssize_t;
 
 
@@ -306,7 +259,7 @@ typedef unsigned long __useconds_t;
 
 
 typedef __builtin_va_list __va_list;
-# 16 "/usr/include/newlib/sys/reent.h"
+# 16 "/usr/include/newlib/sys/reent.h" 2 3
 
 
 
@@ -314,10 +267,12 @@ typedef __builtin_va_list __va_list;
 
 
 typedef unsigned long __ULong;
-# 11 "/usr/include/newlib/sys/lock.h"
+# 34 "/usr/include/newlib/sys/reent.h" 3
+# 1 "/usr/include/newlib/sys/lock.h" 1 3
+# 11 "/usr/include/newlib/sys/lock.h" 3
 typedef int _LOCK_T;
 typedef int _LOCK_RECURSIVE_T;
-# 35 "/usr/include/newlib/sys/reent.h"
+# 35 "/usr/include/newlib/sys/reent.h" 2 3
 typedef _LOCK_RECURSIVE_T _flock_t;
 
 
@@ -371,16 +326,7 @@ struct _on_exit_args {
 
  __ULong _is_cxa;
 };
-
-
-
-
-
-
-
-
-
-
+# 98 "/usr/include/newlib/sys/reent.h" 3
 struct _atexit {
  struct _atexit *_next;
  int _ind;
@@ -388,12 +334,12 @@ struct _atexit {
  void (*_fns[32])(void);
         struct _on_exit_args _on_exit_args;
 };
-# 122 "/usr/include/newlib/sys/reent.h"
+# 122 "/usr/include/newlib/sys/reent.h" 3
 struct __sbuf {
  unsigned char *_base;
  int _size;
 };
-# 186 "/usr/include/newlib/sys/reent.h"
+# 186 "/usr/include/newlib/sys/reent.h" 3
 struct __sFILE {
   unsigned char *_p;
   int _r;
@@ -444,7 +390,7 @@ struct __sFILE {
   _mbstate_t _mbstate;
   int _flags2;
 };
-# 292 "/usr/include/newlib/sys/reent.h"
+# 292 "/usr/include/newlib/sys/reent.h" 3
 typedef struct __sFILE __FILE;
 
 
@@ -455,7 +401,7 @@ struct _glue
   int _niobs;
   __FILE *_iobs;
 };
-# 324 "/usr/include/newlib/sys/reent.h"
+# 324 "/usr/include/newlib/sys/reent.h" 3
 struct _rand48 {
   unsigned short _seed[3];
   unsigned short _mult[3];
@@ -465,7 +411,7 @@ struct _rand48 {
 
 
 };
-# 613 "/usr/include/newlib/sys/reent.h"
+# 613 "/usr/include/newlib/sys/reent.h" 3
 struct _reent
 {
   int _errno;
@@ -548,12 +494,20 @@ struct _reent
   __FILE __sf[3];
 
 };
-# 819 "/usr/include/newlib/sys/reent.h"
+# 819 "/usr/include/newlib/sys/reent.h" 3
 extern struct _reent *_impure_ptr ;
 extern struct _reent *const _global_impure_ptr ;
 
 void _reclaim_reent (struct _reent *);
-# 33 "/usr/include/newlib/stdlib.h"
+# 19 "/usr/include/newlib/stdlib.h" 2 3
+# 1 "/usr/include/newlib/sys/cdefs.h" 1 3
+# 47 "/usr/include/newlib/sys/cdefs.h" 3
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 1 3 4
+# 48 "/usr/include/newlib/sys/cdefs.h" 2 3
+# 20 "/usr/include/newlib/stdlib.h" 2 3
+# 1 "/usr/include/newlib/machine/stdlib.h" 1 3
+# 21 "/usr/include/newlib/stdlib.h" 2 3
+# 33 "/usr/include/newlib/stdlib.h" 3
 
 
 typedef struct
@@ -640,7 +594,7 @@ size_t mbstowcs (wchar_t *restrict, const char *restrict, size_t);
 size_t _mbstowcs_r (struct _reent *, wchar_t *restrict, const char *restrict, size_t, _mbstate_t *);
 size_t wcstombs (char *restrict, const wchar_t *restrict, size_t);
 size_t _wcstombs_r (struct _reent *, char *restrict, const wchar_t *restrict, size_t, _mbstate_t *);
-# 137 "/usr/include/newlib/stdlib.h"
+# 137 "/usr/include/newlib/stdlib.h" 3
 char * _mkdtemp_r (struct _reent *, char *);
 int _mkostemp_r (struct _reent *, char *, int);
 int _mkostemps_r (struct _reent *, char *, int, int);
@@ -650,19 +604,7 @@ char * _mktemp_r (struct _reent *, char *) __attribute__ ((__deprecated__("the u
 void qsort (void *__base, size_t __nmemb, size_t __size, __compar_fn_t _compar);
 int rand (void);
 void *realloc(void *, size_t) __attribute__((__warn_unused_result__)) __attribute__((__alloc_size__(2))) ;
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 159 "/usr/include/newlib/stdlib.h" 3
 void srand (unsigned __seed);
 double strtod (const char *restrict __n, char **restrict __end_PTR);
 double _strtod_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR);
@@ -679,33 +621,9 @@ long strtol (const char *restrict __n, char **restrict __end_PTR, int __base);
 long _strtol_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long strtoul (const char *restrict __n, char **restrict __end_PTR, int __base);
 unsigned long _strtoul_r (struct _reent *,const char *restrict __n, char **restrict __end_PTR, int __base);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 191 "/usr/include/newlib/stdlib.h" 3
 int system (const char *__string);
-
-
-
-
-
-
-
-
-
-
+# 202 "/usr/include/newlib/stdlib.h" 3
 void _Exit (int __status) __attribute__ ((__noreturn__));
 
 
@@ -717,20 +635,10 @@ void * _reallocf_r (struct _reent *, void *, size_t);
 
 
 int _setenv_r (struct _reent *, const char *__string, const char *__value, int __overwrite);
-
-
-
-
-
-
-
-
-
-
-
+# 224 "/usr/include/newlib/stdlib.h" 3
 char * __itoa (int, char *, int);
 char * __utoa (unsigned, char *, int);
-# 263 "/usr/include/newlib/stdlib.h"
+# 263 "/usr/include/newlib/stdlib.h" 3
 long long atoll (const char *__nptr);
 
 long long _atoll_r (struct _reent *, const char *__nptr);
@@ -744,14 +652,7 @@ long long _strtoll_r (struct _reent *, const char *restrict __n, char **restrict
 unsigned long long strtoull (const char *restrict __n, char **restrict __end_PTR, int __base);
 
 unsigned long long _strtoull_r (struct _reent *, const char *restrict __n, char **restrict __end_PTR, int __base);
-
-
-
-
-
-
-
-
+# 284 "/usr/include/newlib/stdlib.h" 3
 int _unsetenv_r (struct _reent *, const char *__string);
 
 
@@ -771,26 +672,18 @@ void _mstats_r (struct _reent *, char *);
 int _system_r (struct _reent *, const char *);
 
 void __eprintf (const char *, const char *, unsigned int, const char *);
-# 322 "/usr/include/newlib/stdlib.h"
+# 322 "/usr/include/newlib/stdlib.h" 3
 extern long double _strtold_r (struct _reent *, const char *restrict, char **restrict);
 
 extern long double strtold (const char *restrict, char **restrict);
+# 339 "/usr/include/newlib/stdlib.h" 3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 27 "/usr/include/newlib/string.h"
+# 2 "./header.hpp" 2
+# 1 "/usr/include/newlib/string.h" 1 3
+# 17 "/usr/include/newlib/string.h" 3
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stddef.h" 1 3 4
+# 18 "/usr/include/newlib/string.h" 2 3
+# 27 "/usr/include/newlib/string.h" 3
 
 
 void * memchr (const void *, int, size_t);
@@ -817,20 +710,30 @@ char *strstr (const char *, const char *);
 char *strtok (char *restrict, const char *restrict);
 
 size_t strxfrm (char *restrict, const char *restrict, size_t);
-# 86 "/usr/include/newlib/string.h"
+# 86 "/usr/include/newlib/string.h" 3
 char *_strdup_r (struct _reent *, const char *);
 
 
 
 char *_strndup_r (struct _reent *, const char *, size_t);
-# 112 "/usr/include/newlib/string.h"
+# 112 "/usr/include/newlib/string.h" 3
 char * _strerror_r (struct _reent *, int, int, int *);
-# 134 "/usr/include/newlib/string.h"
+# 134 "/usr/include/newlib/string.h" 3
 char *strsignal (int __signo);
-# 176 "/usr/include/newlib/string.h"
+# 175 "/usr/include/newlib/string.h" 3
+# 1 "/usr/include/newlib/sys/string.h" 1 3
+# 176 "/usr/include/newlib/string.h" 2 3
 
 
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
+# 3 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 1
+# 39 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_options.sys" 1
+# 40 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
+# 50 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/modsyms.h" 1
+# 51 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 1
 
 
 
@@ -838,7 +741,13 @@ char *strsignal (int __signo);
 
 
 
-# 34 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/portnames.h" 1
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 2
+# 33 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 1
+# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h"
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h" 1 3 4
+# 34 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdint.h" 3 4
 typedef signed char int8_t;
 
 
@@ -898,69 +807,62 @@ typedef unsigned int uintptr_t;
 
 typedef long long int intmax_t;
 typedef long long unsigned int uintmax_t;
-# 40 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h"
+# 13 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h" 1 3 4
+# 40 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h" 3 4
 typedef __builtin_va_list __gnuc_va_list;
-# 99 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h"
+# 99 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdarg.h" 3 4
 typedef __gnuc_va_list va_list;
-# 63 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 14 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_cpu_scs.h" 1
+# 15 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_uart.h" 1
+# 16 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_rtc.h" 1
+# 17 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 1
+# 62 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 1 "/usr/lib/gcc/arm-none-eabi/9.2.1/include/stdbool.h" 1 3 4
+# 63 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
 
-# 45 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h" 1
+# 44 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_chip_def.h" 1
+# 45 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h" 2
 
 
 
 
 
 
+
+# 51 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h"
 typedef void (* FPTR_VOID_VOID_T) (void);
 typedef void (* FPTR_VOID_UINT8_T) (uint8_t);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_types.h"
 typedef unsigned int __UINT32;
-# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 65 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_memmap.h" 1
+# 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_ints.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_prcm.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_nvic.h" 1
+# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/debug.h" 1
 # 57 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/debug.h"
 extern void __error__(char *pcFilename, uint32_t ui32Line);
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h" 1
 # 106 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 extern uint32_t NOROM_CPUcpsid(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 120 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 extern uint32_t NOROM_CPUprimask(void);
-
-
-
-
-
-
-
-
-
-
-
+# 132 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 extern uint32_t NOROM_CPUcpsie(void);
 # 173 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 static inline void __attribute__((always_inline))
@@ -989,9 +891,9 @@ CPUsev(void)
 
     __asm("    sev\n");
 }
+# 323 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wattributes"
-# 325 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 static inline void __attribute__ ((naked))
 CPUbasepriSet(uint32_t ui32NewBasepri)
 {
@@ -1002,35 +904,9 @@ CPUbasepriSet(uint32_t ui32NewBasepri)
          "    bx      lr\n");
 }
 #pragma GCC diagnostic pop
-
-
-
-
-
-
-
-
-
-
-
-
+# 347 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 extern uint32_t NOROM_CPUbasepriGet(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 364 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 extern void NOROM_CPUdelay(uint32_t ui32Count);
 # 382 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 static inline void
@@ -1038,24 +914,14 @@ CPU_WriteBufferDisable( void )
 {
     (*((volatile unsigned long *)(((unsigned long)(0xE000E000 + 0x00000008) & 0xF0000000) | 0x02000000 | (((unsigned long)(0xE000E000 + 0x00000008) & 0x000FFFFF) << 5) | ((1) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 400 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
 static inline void
 CPU_WriteBufferEnable( void )
 {
     (*((volatile unsigned long *)(((unsigned long)(0xE000E000 + 0x00000008) & 0xF0000000) | 0x02000000 | (((unsigned long)(0xE000E000 + 0x00000008) & 0x000FFFFF) << 5) | ((1) << 2)))) = 0;
 }
+# 413 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/rom.h" 1
 # 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/rom.h"
 typedef uint32_t (* FPTR_CRC32_T) ( uint8_t* ,
                                                      uint32_t ,
@@ -1135,21 +1001,17 @@ typedef struct
     FPTR_ADCCOMPBIN_T SelectADCCompBInput;
     FPTR_COMPBREF_T SelectCompBRef;
 } HARD_API_T;
-
-
-
-
-
-
-
-
-
+# 153 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/rom.h"
 extern void SafeHapiVoid( FPTR_VOID_VOID_T fPtr );
 extern void SafeHapiAuxAdiSelect( FPTR_VOID_UINT8_T fPtr, uint8_t ut8Signal );
+# 414 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/cpu.h" 2
+# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 2
 # 136 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 static inline 
-# 136 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
+# 136 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 3 4
                _Bool
+
+# 137 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 IntMasterEnable(void)
 {
 
@@ -1157,23 +1019,12 @@ IntMasterEnable(void)
 
     return(NOROM_CPUcpsie());
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 158 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
+static inline 
+# 158 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 3 4
                _Bool
+
+# 159 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 IntMasterDisable(void)
 {
 
@@ -1187,75 +1038,25 @@ extern void NOROM_IntRegister(uint32_t ui32Interrupt, void (*pfnHandler)(void));
 extern void NOROM_IntUnregister(uint32_t ui32Interrupt);
 # 228 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntPriorityGroupingSet(uint32_t ui32Bits);
-
-
-
-
-
-
-
-
-
-
-
+# 240 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern uint32_t NOROM_IntPriorityGroupingGet(void);
 # 274 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntPrioritySet(uint32_t ui32Interrupt, uint8_t ui8Priority);
 # 296 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern int32_t NOROM_IntPriorityGet(uint32_t ui32Interrupt);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 311 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntEnable(uint32_t ui32Interrupt);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 326 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntDisable(uint32_t ui32Interrupt);
 # 345 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntPendSet(uint32_t ui32Interrupt);
 # 366 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern 
-# 366 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
+# 366 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h" 3 4
       _Bool 
 # 366 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
            NOROM_IntPendGet(uint32_t ui32Interrupt);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 382 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 extern void NOROM_IntPendClear(uint32_t ui32Interrupt);
 # 407 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/interrupt.h"
 static inline void
@@ -1269,24 +1070,13 @@ IntPriorityMaskGet(void)
 {
     return(NOROM_CPUbasepriGet());
 }
+# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 2
 # 267 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 extern void NOROM_PRCMInfClockConfigureSet(uint32_t ui32ClkDiv,
                                      uint32_t ui32PowerMode);
 # 291 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 extern uint32_t NOROM_PRCMInfClockConfigureGet(uint32_t ui32PowerMode);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 305 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMMcuPowerOff(void)
 {
@@ -1295,20 +1085,7 @@ PRCMMcuPowerOff(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40082000 + 0x0000000C) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40082000 + 0x0000000C) & 0x000FFFFF) << 5) | ((2) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 327 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMMcuPowerOffCancel(void)
 {
@@ -1338,33 +1115,14 @@ PRCMGPTimerClockDivisionGet( void )
 {
     return ( (*((volatile unsigned long *)(0x40082000 + 0x000000CC))));
 }
-
-
-
-
-
-
-
-
-
-
-
+# 441 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMAudioClockEnable(void)
 {
 
     (*((volatile unsigned long *)(((unsigned long)(0x40082000 + 0x000000D0) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40082000 + 0x000000D0) & 0x000FFFFF) << 5) | ((0) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
+# 457 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMAudioClockDisable(void)
 {
@@ -1386,31 +1144,24 @@ PRCMLoadSet(void)
 
     (*((volatile unsigned long *)(0x60082000 + 0x00000028))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 573 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+static inline 
+# 573 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
                _Bool
+
+# 574 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 PRCMLoadGet(void)
 {
 
 
 
     return (((*((volatile unsigned long *)(0x40082000 + 0x00000028))) & 0x00000002) ?
+            
+# 580 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
            1 
 # 580 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
                 : 
-# 580 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 580 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
                   0
 # 580 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
                        );
@@ -1463,18 +1214,7 @@ PRCMDomainDisable(uint32_t ui32Domains)
 extern void NOROM_PRCMPowerDomainOn(uint32_t ui32Domains);
 # 743 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 extern void NOROM_PRCMPowerDomainOff(uint32_t ui32Domains);
-
-
-
-
-
-
-
-
-
-
-
-
+# 756 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMRfPowerDownWhenIdle(void)
 {
@@ -1495,23 +1235,12 @@ extern void NOROM_PRCMPeripheralDeepSleepEnable(uint32_t ui32Peripheral);
 extern void NOROM_PRCMPeripheralDeepSleepDisable(uint32_t ui32Peripheral);
 # 1033 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 extern uint32_t NOROM_PRCMPowerDomainStatus(uint32_t ui32Domains);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 1048 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+static inline 
+# 1048 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
                _Bool
+
+# 1049 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 PRCMRfReady(void)
 {
 
@@ -1519,31 +1248,16 @@ PRCMRfReady(void)
 
     return (((*((volatile unsigned long *)(0x40082000 + 0x0000019C))) &
              0x00000001) ? 
-# 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
                                   1 
 # 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
                                        : 
-# 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
+# 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h" 3 4
                                          0
 # 1055 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
                                               );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 1073 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMSleep(void)
 {
@@ -1552,52 +1266,25 @@ PRCMSleep(void)
 
     CPUwfi();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 1096 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 extern void NOROM_PRCMDeepSleep(void);
-
-
-
-
-
-
-
-
-
-
+# 1107 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMCacheRetentionEnable( void )
 {
    (*((volatile unsigned long *)(0x40082000 + 0x00000224))) |= 0x00000003;
 }
-
-
-
-
-
-
-
-
-
-
+# 1122 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/prcm.h"
 static inline void
 PRCMCacheRetentionDisable( void )
 {
    (*((volatile unsigned long *)(0x40082000 + 0x00000224))) &= ~0x00000003;
 }
+# 18 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h" 1
+# 65 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_gpio.h" 1
+# 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h" 2
 # 163 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline uint32_t
 GPIO_readDio( uint32_t dioNumber )
@@ -1626,21 +1313,7 @@ GPIO_readMultiDio( uint32_t dioMask )
 
     return ( (*((volatile unsigned long *)(0x40022000 + 0x000000C0))) & dioMask );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 225 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_writeDio( uint32_t dioNumber, uint32_t value )
 {
@@ -1668,18 +1341,7 @@ GPIO_writeMultiDio( uint32_t dioMask, uint32_t bitVectoredValue )
         ( (*((volatile unsigned long *)(0x40022000 + 0x00000080))) & ~dioMask ) |
         ( bitVectoredValue & dioMask );
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 285 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_setDio( uint32_t dioNumber )
 {
@@ -1693,22 +1355,7 @@ GPIO_setDio( uint32_t dioNumber )
 
     (*((volatile unsigned long *)(0x40022000 + 0x00000090))) = ( 1 << dioNumber );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 314 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_setMultiDio( uint32_t dioMask )
 {
@@ -1722,18 +1369,7 @@ GPIO_setMultiDio( uint32_t dioMask )
 
     (*((volatile unsigned long *)(0x40022000 + 0x00000090))) = dioMask;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 339 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_clearDio( uint32_t dioNumber )
 {
@@ -1747,22 +1383,7 @@ GPIO_clearDio( uint32_t dioNumber )
 
     (*((volatile unsigned long *)(0x40022000 + 0x000000A0))) = ( 1 << dioNumber );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 368 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_clearMultiDio( uint32_t dioMask )
 {
@@ -1776,18 +1397,7 @@ GPIO_clearMultiDio( uint32_t dioMask )
 
     (*((volatile unsigned long *)(0x40022000 + 0x000000A0))) = dioMask;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 393 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_toggleDio( uint32_t dioNumber )
 {
@@ -1801,22 +1411,7 @@ GPIO_toggleDio( uint32_t dioNumber )
 
     (*((volatile unsigned long *)(0x40022000 + 0x000000B0))) = ( 1 << dioNumber );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 422 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_toggleMultiDio( uint32_t dioMask )
 {
@@ -1887,20 +1482,7 @@ GPIO_setOutputEnableMultiDio( uint32_t dioMask, uint32_t bitVectoredOutputEnable
         ( (*((volatile unsigned long *)(0x40022000 + 0x000000D0))) & ~dioMask ) |
         ( bitVectoredOutputEnable & dioMask );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 583 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline uint32_t
 GPIO_getEventDio( uint32_t dioNumber )
 {
@@ -1928,18 +1510,7 @@ GPIO_getEventMultiDio( uint32_t dioMask )
 
     return ( (*((volatile unsigned long *)(0x40022000 + 0x000000E0))) & dioMask );
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 643 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/gpio.h"
 static inline void
 GPIO_clearEventDio( uint32_t dioNumber )
 {
@@ -1967,6 +1538,8 @@ GPIO_clearEventMultiDio( uint32_t dioMask )
 
     (*((volatile unsigned long *)(0x40022000 + 0x000000E0))) = dioMask;
 }
+# 19 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 1
 # 235 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTParityModeSet(uint32_t ui32Base, uint32_t ui32Parity)
@@ -2037,19 +1610,7 @@ extern void NOROM_UARTConfigSetExpClk(uint32_t ui32Base, uint32_t ui32UARTClk,
 # 426 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern void NOROM_UARTConfigGetExpClk(uint32_t ui32Base, uint32_t ui32UARTClk,
                                 uint32_t *pui32Baud, uint32_t *pui32Config);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 441 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTEnable(uint32_t ui32Base)
 {
@@ -2069,32 +1630,9 @@ UARTEnable(uint32_t ui32Base)
     (*((volatile unsigned long *)(ui32Base + 0x00000030))) |= (0x00000001 | 0x00000100 |
                                      0x00000200);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 473 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern void NOROM_UARTDisable(uint32_t ui32Base);
-
-
-
-
-
-
-
-
-
-
-
-
+# 486 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTFIFOEnable(uint32_t ui32Base)
 {
@@ -2108,18 +1646,7 @@ UARTFIFOEnable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(ui32Base + 0x0000002C))) |= 0x00000010;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 511 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTFIFODisable(uint32_t ui32Base)
 {
@@ -2133,24 +1660,12 @@ UARTFIFODisable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(ui32Base + 0x0000002C))) &= ~(0x00000010);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 539 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+static inline 
+# 539 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                _Bool
+
+# 540 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 UARTCharsAvail(uint32_t ui32Base)
 {
 
@@ -2162,33 +1677,21 @@ UARTCharsAvail(uint32_t ui32Base)
 
 
     return(((*((volatile unsigned long *)(ui32Base + 0x00000018))) & 0x00000010) ? 
-# 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                                          0 
 # 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                                                : 
-# 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                                                  1
 # 550 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                                                      );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 567 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+static inline 
+# 567 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                _Bool
+
+# 568 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 UARTSpaceAvail(uint32_t ui32Base)
 {
 
@@ -2200,59 +1703,33 @@ UARTSpaceAvail(uint32_t ui32Base)
 
 
     return(((*((volatile unsigned long *)(ui32Base + 0x00000018))) & 0x00000020) ? 
-# 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                                          0 
 # 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                                                : 
-# 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                                                  1
 # 578 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                                                      );
 }
 # 600 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern int32_t NOROM_UARTCharGetNonBlocking(uint32_t ui32Base);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 616 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern int32_t NOROM_UARTCharGet(uint32_t ui32Base);
 # 635 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern 
-# 635 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 635 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
       _Bool 
 # 635 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
            NOROM_UARTCharPutNonBlocking(uint32_t ui32Base, uint8_t ui8Data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 651 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 extern void NOROM_UARTCharPut(uint32_t ui32Base, uint8_t ui8Data);
 # 669 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline 
-# 669 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 669 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                _Bool
+
+# 670 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 UARTBusy(uint32_t ui32Base)
 {
 
@@ -2266,25 +1743,10 @@ UARTBusy(uint32_t ui32Base)
     return(((*((volatile unsigned long *)(ui32Base + 0x00000018))) & 0x00000008) ?
            0x00000001 : 0x00000000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 699 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTBreakCtl(uint32_t ui32Base, 
-# 700 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 700 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                _Bool 
 # 700 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                     bBreakState)
@@ -2337,7 +1799,7 @@ UARTIntDisable(uint32_t ui32Base, uint32_t ui32IntFlags)
 # 853 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline uint32_t
 UARTIntStatus(uint32_t ui32Base, 
-# 854 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
+# 854 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h" 3 4
                                 _Bool 
 # 854 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
                                      bMasked)
@@ -2416,21 +1878,7 @@ UARTRxErrorGet(uint32_t ui32Base)
 
     return((*((volatile unsigned long *)(ui32Base + 0x00000004))) & 0x0000000F);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 1039 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTRxErrorClear(uint32_t ui32Base)
 {
@@ -2445,18 +1893,7 @@ UARTRxErrorClear(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(ui32Base + 0x00000004))) = 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 1065 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTHwFlowControlEnable( uint32_t ui32Base )
 {
@@ -2467,18 +1904,7 @@ UARTHwFlowControlEnable( uint32_t ui32Base )
 
     (*((volatile unsigned long *)(ui32Base + 0x00000030))) |= ( 0x00008000 | 0x00004000 );
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 1087 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/uart.h"
 static inline void
 UARTHwFlowControlDisable( uint32_t ui32Base )
 {
@@ -2489,8 +1915,17 @@ UARTHwFlowControlDisable( uint32_t ui32Base )
 
     (*((volatile unsigned long *)(ui32Base + 0x00000030))) &= ~( 0x00008000 | 0x00004000 );
 }
+# 20 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_i2c.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_sysctl.h" 1
+# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 2
 # 196 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 extern void NOROM_I2CMasterInitExpClk(uint32_t ui32Base, uint32_t ui32I2CClk,
+                                
+# 197 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                _Bool 
 # 197 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                     bFast);
@@ -2503,14 +1938,7 @@ I2CMasterControl(uint32_t ui32Base, uint32_t ui32Cmd)
 
     ;
    
-
-
-
-
-
-
-
-
+# 239 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                                                 ;
 
 
@@ -2527,6 +1955,8 @@ I2CMasterControl(uint32_t ui32Base, uint32_t ui32Cmd)
 # 272 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterSlaveAddrSet(uint32_t ui32Base, uint8_t ui8SlaveAddr,
+                      
+# 274 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                      _Bool 
 # 274 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                           bReceive)
@@ -2542,18 +1972,7 @@ I2CMasterSlaveAddrSet(uint32_t ui32Base, uint8_t ui8SlaveAddr,
 
     (*((volatile unsigned long *)(0x40002000 + 0x00000800))) = (ui8SlaveAddr << 1) | bReceive;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 299 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterEnable(uint32_t ui32Base)
 {
@@ -2566,18 +1985,7 @@ I2CMasterEnable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(0x40002000 + 0x00000804))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 323 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterDisable(uint32_t ui32Base)
 {
@@ -2590,24 +1998,12 @@ I2CMasterDisable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40002000 + 0x00000820) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40002000 + 0x00000820) & 0x000FFFFF) << 5) | ((4) << 2)))) = 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 350 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+static inline 
+# 350 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                _Bool
+
+# 351 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 I2CMasterBusy(uint32_t ui32Base)
 {
 
@@ -2621,7 +2017,7 @@ I2CMasterBusy(uint32_t ui32Base)
     if((*((volatile unsigned long *)(0x40002000 + 0x00000804))) & 0x00000001)
     {
         return(
-# 363 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 363 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
               1
 # 363 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                   );
@@ -2629,31 +2025,18 @@ I2CMasterBusy(uint32_t ui32Base)
     else
     {
         return(
-# 367 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 367 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
               0
 # 367 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                    );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 386 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+static inline 
+# 386 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                _Bool
+
+# 387 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 I2CMasterBusBusy(uint32_t ui32Base)
 {
 
@@ -2667,7 +2050,7 @@ I2CMasterBusBusy(uint32_t ui32Base)
     if((*((volatile unsigned long *)(0x40002000 + 0x00000804))) & 0x00000040)
     {
         return(
-# 399 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 399 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
               1
 # 399 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                   );
@@ -2675,25 +2058,13 @@ I2CMasterBusBusy(uint32_t ui32Base)
     else
     {
         return(
-# 403 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 403 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
               0
 # 403 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                    );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 419 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline uint32_t
 I2CMasterDataGet(uint32_t ui32Base)
 {
@@ -2707,19 +2078,7 @@ I2CMasterDataGet(uint32_t ui32Base)
 
     return((*((volatile unsigned long *)(0x40002000 + 0x00000808))));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 445 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterDataPut(uint32_t ui32Base, uint8_t ui8Data)
 {
@@ -2735,18 +2094,7 @@ I2CMasterDataPut(uint32_t ui32Base, uint8_t ui8Data)
 }
 # 475 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 extern uint32_t NOROM_I2CMasterErr(uint32_t ui32Base);
-
-
-
-
-
-
-
-
-
-
-
-
+# 488 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterIntEnable(uint32_t ui32Base)
 {
@@ -2760,18 +2108,7 @@ I2CMasterIntEnable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(0x40002000 + 0x00000810))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 513 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CMasterIntDisable(uint32_t ui32Base)
 {
@@ -2801,10 +2138,12 @@ I2CMasterIntClear(uint32_t ui32Base)
 }
 # 587 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline 
-# 587 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 587 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                _Bool
-I2CMasterIntStatus(uint32_t ui32Base, 
+
 # 588 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+I2CMasterIntStatus(uint32_t ui32Base, 
+# 588 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                      _Bool 
 # 588 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                           bMasked)
@@ -2821,11 +2160,11 @@ I2CMasterIntStatus(uint32_t ui32Base,
     if(bMasked)
     {
         return(((*((volatile unsigned long *)(0x40002000 + 0x00000818)))) ? 
-# 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                                 1 
 # 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                                      : 
-# 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                                        0
 # 601 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                                             );
@@ -2833,28 +2172,17 @@ I2CMasterIntStatus(uint32_t ui32Base,
     else
     {
         return(((*((volatile unsigned long *)(0x40002000 + 0x00000814)))) ? 
-# 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                                 1 
 # 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                                      : 
-# 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                                        0
 # 605 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                                             );
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 620 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CSlaveEnable(uint32_t ui32Base)
 {
@@ -2887,19 +2215,7 @@ I2CSlaveInit(uint32_t ui32Base, uint8_t ui8SlaveAddr)
 
     (*((volatile unsigned long *)(0x40002000 + 0x00000000))) = ui8SlaveAddr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 682 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CSlaveAddressSet(uint32_t ui32Base, uint8_t ui8SlaveAddr)
 {
@@ -2914,18 +2230,7 @@ I2CSlaveAddressSet(uint32_t ui32Base, uint8_t ui8SlaveAddr)
 
     (*((volatile unsigned long *)(0x40002000 + 0x00000000))) = ui8SlaveAddr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 708 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CSlaveDisable(uint32_t ui32Base)
 {
@@ -2952,19 +2257,7 @@ I2CSlaveStatus(uint32_t ui32Base)
 
     return((*((volatile unsigned long *)(0x40002000 + 0x00000004))));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 763 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline uint32_t
 I2CSlaveDataGet(uint32_t ui32Base)
 {
@@ -2978,19 +2271,7 @@ I2CSlaveDataGet(uint32_t ui32Base)
 
     return((*((volatile unsigned long *)(0x40002000 + 0x00000008))));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 789 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline void
 I2CSlaveDataPut(uint32_t ui32Base, uint8_t ui8Data)
 {
@@ -3061,7 +2342,7 @@ I2CSlaveIntClear(uint32_t ui32Base, uint32_t ui32IntFlags)
 # 946 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 static inline uint32_t
 I2CSlaveIntStatus(uint32_t ui32Base, 
-# 947 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
+# 947 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h" 3 4
                                     _Bool 
 # 947 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
                                          bMasked)
@@ -3088,23 +2369,16 @@ I2CSlaveIntStatus(uint32_t ui32Base,
 extern void NOROM_I2CIntRegister(uint32_t ui32Base, void (*pfnHandler)(void));
 # 1007 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/i2c.h"
 extern void NOROM_I2CIntUnregister(uint32_t ui32Base);
+# 21 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_ssi.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 2
 # 225 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 extern void NOROM_SSIConfigSetExpClk(uint32_t ui32Base, uint32_t ui32SSIClk,
                                uint32_t ui32Protocol, uint32_t ui32Mode,
                                uint32_t ui32BitRate, uint32_t ui32DataWidth);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 241 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 static inline void
 SSIEnable(uint32_t ui32Base)
 {
@@ -3118,18 +2392,7 @@ SSIEnable(uint32_t ui32Base)
 
     (*((volatile unsigned long *)(ui32Base + 0x00000004))) |= 0x00000002;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 266 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 static inline void
 SSIDisable(uint32_t ui32Base)
 {
@@ -3153,8 +2416,10 @@ extern void NOROM_SSIDataGet(uint32_t ui32Base, uint32_t *pui32Data);
 extern int32_t NOROM_SSIDataGetNonBlocking(uint32_t ui32Base, uint32_t *pui32Data);
 # 384 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 static inline 
-# 384 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
+# 384 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 3 4
                _Bool
+
+# 385 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 SSIBusy(uint32_t ui32Base)
 {
 
@@ -3166,11 +2431,11 @@ SSIBusy(uint32_t ui32Base)
 
 
     return(((*((volatile unsigned long *)(ui32Base + 0x0000000C))) & 0x00000010) ? 
-# 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
+# 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 3 4
                                                       1 
 # 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
                                                            : 
-# 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
+# 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 3 4
                                                              0
 # 395 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
                                                                   );
@@ -3238,7 +2503,7 @@ SSIIntClear(uint32_t ui32Base, uint32_t ui32IntFlags)
 # 597 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
 static inline uint32_t
 SSIIntStatus(uint32_t ui32Base, 
-# 598 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
+# 598 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h" 3 4
                                _Bool 
 # 598 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ssi.h"
                                     bMasked)
@@ -3289,6 +2554,11 @@ SSIDMADisable(uint32_t ui32Base, uint32_t ui32DMAFlags)
 
     (*((volatile unsigned long *)(ui32Base + 0x00000024))) &= ~ui32DMAFlags;
 }
+# 22 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h" 1
+# 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_ioc.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h" 2
 # 419 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 extern void NOROM_IOCPortConfigureSet(uint32_t ui32IOId, uint32_t ui32PortId,
                                 uint32_t ui32IOConfig);
@@ -3328,20 +2598,7 @@ IOCIntRegister(void (*pfnHandler)(void))
 
     ((void (*)(uint32_t ui32Interrupt)) ((uint32_t*) (((uint32_t *) 0x10000180)[12]))[4])(16);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 728 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 static inline void
 IOCIntUnregister(void)
 {
@@ -3355,20 +2612,7 @@ IOCIntUnregister(void)
 
     NOROM_IntUnregister(16);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 755 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 extern void NOROM_IOCIntEnable(uint32_t ui32IOId);
 # 773 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 extern void NOROM_IOCIntDisable(uint32_t ui32IOId);
@@ -3386,19 +2630,7 @@ IOCIntClear(uint32_t ui32IOId)
 
     GPIO_clearEventDio(ui32IOId);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 832 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 static inline uint32_t
 IOCIntStatus(uint32_t ui32IOId)
 {
@@ -3433,25 +2665,52 @@ extern void NOROM_IOCPinTypeI2c(uint32_t ui32Base, uint32_t ui32Data,
                           uint32_t ui32Clk);
 # 1051 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ioc.h"
 extern void NOROM_IOCPinTypeAux(uint32_t ui32IOId);
-# 75 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
+# 23 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 1
+# 70 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_wuc.h" 1
+# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aux_wuc.h" 1
+# 72 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_ioc.h" 1
+# 73 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_ddi_0_osc.h" 1
+# 74 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_rfc_pwr.h" 1
+# 75 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_adi_3_refsys.h" 1
+# 77 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_sysctl.h" 1
+# 78 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_fcfg1.h" 1
+# 80 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h" 1
+# 70 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_adi_2_refsys.h" 1
+# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h" 2
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_ddi.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 2
 
 
-
-# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
-
-
-# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
-
-
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aux_smph.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h" 2
 # 136 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
 static inline void
 AuxAdiDdiSafeWrite(uint32_t nAddr, uint32_t nData, uint32_t nSize)
 {
 
+    
+# 140 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h" 3 4
    _Bool 
 # 140 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
         bIrqEnabled = !NOROM_CPUcpsid();
@@ -3468,25 +2727,14 @@ AuxAdiDdiSafeWrite(uint32_t nAddr, uint32_t nData, uint32_t nSize)
         NOROM_CPUcpsie();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 168 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
 static inline uint32_t
 AuxAdiDdiSafeRead(uint32_t nAddr, uint32_t nSize)
 {
     uint32_t nRet;
 
+    
+# 173 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h" 3 4
    _Bool 
 # 173 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
         bIrqEnabled = !NOROM_CPUcpsid();
@@ -3595,7 +2843,7 @@ DDI8SetValBit(uint32_t ui32Base, uint32_t ui32Reg, uint32_t ui32Byte,
 # 411 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
 static inline void
 DDI16SetValBit(uint32_t ui32Base, uint32_t ui32Reg, 
-# 412 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
+# 412 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h" 3 4
                                                    _Bool 
 # 412 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
                                                         bWriteHigh,
@@ -3631,26 +2879,13 @@ extern void NOROM_DDI16BitWrite(uint32_t ui32Base, uint32_t ui32Reg,
 extern void NOROM_DDI16BitfieldWrite(uint32_t ui32Base, uint32_t ui32Reg,
                                uint32_t ui32Mask, uint32_t ui32Shift,
                                uint16_t ui32Data);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 520 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
 extern uint16_t NOROM_DDI16BitRead(uint32_t ui32Base, uint32_t ui32Reg,
                              uint32_t ui32Mask);
 # 541 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/ddi.h"
 extern uint16_t NOROM_DDI16BitfieldRead(uint32_t ui32Base, uint32_t ui32Reg,
                                   uint32_t ui32Mask, uint32_t ui32Shift);
+# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 2
 # 149 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 static inline void
 OSCXHfPowerModeSet(uint32_t ui32Mode)
@@ -3667,22 +2902,7 @@ OSCXHfPowerModeSet(uint32_t ui32Mode)
     ((void (*)(uint32_t ui32Base, uint32_t ui32Reg, uint32_t ui32Mask, uint32_t ui32WrData)) ((uint32_t*) (((uint32_t *) 0x10000180)[9]))[0])(0x400CA000, 0x00000000, 0x00000800,
                   ui32Mode);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 180 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 static inline void
 OSCClockLossEventEnable( void )
 {
@@ -3690,22 +2910,7 @@ OSCClockLossEventEnable( void )
         0x00000200,
         9, 1 );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 203 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 static inline void
 OSCClockLossEventDisable( void )
 {
@@ -3717,25 +2922,12 @@ OSCClockLossEventDisable( void )
 extern void NOROM_OSCClockSourceSet(uint32_t ui32SrcClk, uint32_t ui32Osc);
 # 272 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern uint32_t NOROM_OSCClockSourceGet(uint32_t ui32SrcClk);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 289 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
+static inline 
+# 289 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 3 4
                _Bool
+
+# 290 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 OSCHfSourceReady(void)
 {
 
@@ -3744,10 +2936,12 @@ OSCHfSourceReady(void)
     return (((uint16_t (*)(uint32_t ui32Base, uint32_t ui32Reg, uint32_t ui32Mask, uint32_t ui32Shift)) ((uint32_t*) (((uint32_t *) 0x10000180)[9]))[3])(0x400CA000, 0x00000034,
                               0x00000001,
                               0)) ?
+        
+# 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 3 4
        1 
 # 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
             : 
-# 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
+# 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 3 4
               0
 # 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
                    ;
@@ -3771,93 +2965,30 @@ static inline void
 OSCInterfaceDisable(void)
 {
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 388 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern uint32_t NOROM_OSCHF_GetStartupTime( uint32_t timeUntilWakeupInMs );
-
-
-
-
-
-
-
-
-
-
-
-
+# 401 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern void NOROM_OSCHF_TurnOnXosc( void );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-extern 
 # 417 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
+extern 
+# 417 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h" 3 4
       _Bool 
 # 417 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
            NOROM_OSCHF_AttemptToSwitchToXosc( void );
-
-
-
-
-
-
-
-
-
-
-
-
+# 430 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern void NOROM_OSCHF_SwitchToRcOscTurnOffXosc( void );
 # 450 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern uint32_t NOROM_OSCHF_DebugGetCrystalAmplitude( void );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 467 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern uint32_t NOROM_OSCHF_DebugGetExpectedAverageCrystalAmplitude( void );
 # 498 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern int32_t NOROM_OSC_HPOSCRelativeFrequencyOffsetGet( int32_t tempDegC );
 # 526 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/osc.h"
 extern int16_t NOROM_OSC_HPOSCRelativeFrequencyOffsetToRFCoreFormatConvert( int32_t HPOSC_RelFreqOffset );
-# 74 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
+# 74 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h" 2
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h" 1
 # 133 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h"
 static inline void
 AONIOCDriveStrengthSet(uint32_t ui32DriveLevel, uint32_t ui32DriveStrength)
@@ -3895,22 +3026,7 @@ AONIOCDriveStrengthGet(uint32_t ui32DriveLevel)
 
     return( (*((volatile unsigned long *)(0x40094000 + ui32DriveLevel))) );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 213 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h"
 static inline void
 AONIOCFreezeEnable(void)
 {
@@ -3919,21 +3035,7 @@ AONIOCFreezeEnable(void)
 
     (*((volatile unsigned long *)(0x40094000 + 0x0000000C))) = 0x0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 236 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h"
 static inline void
 AONIOCFreezeDisable(void)
 {
@@ -3942,20 +3044,7 @@ AONIOCFreezeDisable(void)
 
     (*((volatile unsigned long *)(0x40094000 + 0x0000000C))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 258 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h"
 static inline void
 AONIOC32kHzOutputDisable(void)
 {
@@ -3964,20 +3053,7 @@ AONIOC32kHzOutputDisable(void)
 
     (*((volatile unsigned long *)(0x40094000 + 0x00000010))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 280 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_ioc.h"
 static inline void
 AONIOC32kHzOutputEnable(void)
 {
@@ -3986,6 +3062,11 @@ AONIOC32kHzOutputEnable(void)
 
     (*((volatile unsigned long *)(0x40094000 + 0x00000010))) = 0x0;
 }
+# 77 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_adi.h" 1
+# 69 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h" 2
 # 148 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h"
 static inline void
 ADI8RegWrite(uint32_t ui32Base, uint32_t ui32Reg, uint8_t ui8Val)
@@ -4266,7 +3347,7 @@ ADI32BitsClear(uint32_t ui32Base, uint32_t ui32Reg, uint32_t ui32Val)
 # 765 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h"
 static inline void
 ADI4SetValBit(uint32_t ui32Base, uint32_t ui32Reg, 
-# 766 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h"
+# 766 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h" 3 4
                                                   _Bool 
 # 766 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/adi.h"
                                                        bWriteHigh,
@@ -4357,6 +3438,7 @@ ADI16SetValBit(uint32_t ui32Base, uint32_t ui32Reg, uint32_t ui32Mask,
         (*((volatile unsigned long *)(ui32Base + ui32RegOffset))) = (ui32Mask << 16) | ui32Val;
     }
 }
+# 78 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h" 2
 # 161 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
 extern void NOROM_PowerCtrlSourceSet(uint32_t ui32PowerConfig);
 # 179 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
@@ -4389,20 +3471,7 @@ PowerCtrlResetSourceGet(void)
         0x0000000E ) >>
         1 ) ;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 245 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
 static inline void
 PowerCtrlIOFreezeEnable(void)
 {
@@ -4413,21 +3482,7 @@ PowerCtrlIOFreezeEnable(void)
     (*((volatile unsigned long *)(0x40090000 + 0x00000008))) = 0;
     (*((volatile unsigned long *)(0x40092000 + 0x0000002C)));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 270 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/pwr_ctrl.h"
 static inline void
 PowerCtrlIOFreezeDisable(void)
 {
@@ -4438,9 +3493,10 @@ PowerCtrlIOFreezeDisable(void)
     (*((volatile unsigned long *)(0x40090000 + 0x00000008))) = 1;
     (*((volatile unsigned long *)(0x40092000 + 0x0000002C)));
 }
-# 83 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
+# 83 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_wuc.h" 1
 # 155 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_wuc.h"
 extern void NOROM_AUXWUCClockEnable(uint32_t ui32Clocks);
 # 182 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_wuc.h"
@@ -4462,39 +3518,9 @@ AUXWUCClockFreqReq(uint32_t ui32ClockFreq)
 
     (*((volatile unsigned long *)(0x400C6000 + 0x00000010))) = ui32ClockFreq;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 261 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_wuc.h"
 extern void NOROM_AUXWUCPowerCtrl(uint32_t ui32PowerMode);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 278 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_wuc.h"
 static inline void
 AUXWUCFreezeEnable(void)
 {
@@ -4512,6 +3538,8 @@ AUXWUCFreezeDisable(void)
 
     (*((volatile unsigned long *)(0x400C6000 + 0x00000054))) = 0x00000001;
 }
+# 86 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h" 1
 # 225 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCMcuPowerDownConfig(uint32_t ui32ClkSrc)
@@ -4624,51 +3652,16 @@ AONWUCAuxWakeupEvent(uint32_t ui32Mode)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40091000 + 0x00000010) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40091000 + 0x00000010) & 0x000FFFFF) << 5) | ((0) << 2)))) = ui32Mode;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 501 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 extern void NOROM_AONWUCAuxReset(void);
-
-
-
-
-
-
-
-
-
-
-
+# 513 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCAuxImageValid(void)
 {
 
     (*((volatile unsigned long *)(((unsigned long)(0x40091000 + 0x00000010) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40091000 + 0x00000010) & 0x000FFFFF) << 5) | ((2) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
+# 530 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCAuxImageInvalid(void)
 {
@@ -4696,19 +3689,7 @@ AONWUCShutDownEnable(void)
     (*((volatile unsigned long *)(((unsigned long)(0x40091000 + 0x00000020) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40091000 + 0x00000020) & 0x000FFFFF) << 5) | ((8) << 2)))) = 0;
     (*((volatile unsigned long *)(0x40091000 + 0x00000018))) = 0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 604 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCDomainPowerDownEnable(void)
 {
@@ -4719,18 +3700,7 @@ AONWUCDomainPowerDownEnable(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40091000 + 0x00000020) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40091000 + 0x00000020) & 0x000FFFFF) << 5) | ((8) << 2)))) = 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+# 626 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCDomainPowerDownDisable(void)
 {
@@ -4752,16 +3722,7 @@ AONWUCMcuResetClear(uint32_t ui32Status)
 
     (*((volatile unsigned long *)(0x40091000 + 0x00000024))) = ui32Status;
 }
-
-
-
-
-
-
-
-
-
-
+# 679 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline uint32_t
 AONWUCMcuResetStatusGet(void)
 {
@@ -4772,23 +3733,14 @@ AONWUCMcuResetStatusGet(void)
 }
 # 741 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 extern void NOROM_AONWUCRechargeCtrlConfigSet(
-# 741 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
+# 741 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h" 3 4
                                        _Bool 
 # 741 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
                                             bAdaptEnable,
                                         uint32_t ui32AdaptRate,
                                         uint32_t ui32Period,
                                         uint32_t ui32MaxPeriod);
-
-
-
-
-
-
-
-
-
-
+# 755 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline uint32_t
 AONWUCRechargeCtrlConfigGet(void)
 {
@@ -4799,22 +3751,7 @@ AONWUCRechargeCtrlConfigGet(void)
 }
 # 798 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 extern void NOROM_AONWUCOscConfig(uint32_t ui32Period);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 815 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_wuc.h"
 static inline void
 AONWUCJtagPowerOff(void)
 {
@@ -4823,16 +3760,22 @@ AONWUCJtagPowerOff(void)
 
     (*((volatile unsigned long *)(0x40091000 + 0x00000040))) = 0;
 }
-# 87 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
+# 87 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
 
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h" 1
+# 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_vims.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h" 2
 # 150 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
 extern void NOROM_VIMSConfigure(uint32_t ui32Base, 
-# 150 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
+# 150 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h" 3 4
                                             _Bool 
 # 150 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
                                                  bRoundRobin,
+                          
+# 151 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h" 3 4
                          _Bool 
 # 151 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
                               bPrefetch);
@@ -4843,24 +3786,12 @@ extern uint32_t NOROM_VIMSModeGet(uint32_t ui32Base);
 # 280 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
 extern void NOROM_VIMSModeSafeSet( uint32_t ui32Base ,
                              uint32_t ui32NewMode ,
+                             
+# 282 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h" 3 4
                             _Bool 
 # 282 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
                                      blocking );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 298 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
 static inline void
 VIMSLineBufDisable(uint32_t ui32Base)
 {
@@ -4870,21 +3801,7 @@ VIMSLineBufDisable(uint32_t ui32Base)
     (*((volatile unsigned long *)(ui32Base + 0x00000004))) |= 0x00000020 |
                                         0x00000010;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 322 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/vims.h"
 static inline void
 VIMSLineBufEnable(uint32_t ui32Base)
 {
@@ -4894,21 +3811,10 @@ VIMSLineBufEnable(uint32_t ui32Base)
     (*((volatile unsigned long *)(ui32Base + 0x00000004))) &= ~(0x00000020 |
                                           0x00000010);
 }
+# 91 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h" 2
 # 158 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 extern void NOROM_SysCtrlPowerEverything(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 172 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 static inline uint32_t
 SysCtrlClockGet( void )
 {
@@ -4917,21 +3823,7 @@ SysCtrlClockGet( void )
 
     return( 48000000 );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 195 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 static inline void
 SysCtrlAonSync(void)
 {
@@ -4959,14 +3851,7 @@ extern void NOROM_SysCtrlAdjustRechargeAfterPowerDown( void );
 extern void NOROM_SysCtrl_DCDC_VoltageConditionalControl( void );
 # 322 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 extern uint32_t NOROM_SysCtrlResetSourceGet( void );
-
-
-
-
-
-
-
-
+# 331 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 static inline void
 SysCtrlSystemReset( void )
 {
@@ -4988,20 +3873,7 @@ SysCtrlClockLossResetEnable(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40090000 + 0x00000004) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40090000 + 0x00000004) & 0x000FFFFF) << 5) | ((4) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 383 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/sys_ctrl.h"
 static inline void
 SysCtrlClockLossResetDisable(void)
 {
@@ -5010,6 +3882,8 @@ SysCtrlClockLossResetDisable(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40090000 + 0x00000004) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40090000 + 0x00000004) & 0x000FFFFF) << 5) | ((4) << 2)))) = 0;
 }
+# 24 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h" 1
 # 173 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline void
 AONRTCEnable(void)
@@ -5019,21 +3893,7 @@ AONRTCEnable(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40092000 + 0x00000000) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40092000 + 0x00000000) & 0x000FFFFF) << 5) | ((0) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 196 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline void
 AONRTCDisable(void)
 {
@@ -5042,16 +3902,7 @@ AONRTCDisable(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40092000 + 0x00000000) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40092000 + 0x00000000) & 0x000FFFFF) << 5) | ((0) << 2)))) = 0;
 }
-
-
-
-
-
-
-
-
-
-
+# 214 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline void
 AONRTCReset(void)
 {
@@ -5060,43 +3911,23 @@ AONRTCReset(void)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40092000 + 0x00000000) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40092000 + 0x00000000) & 0x000FFFFF) << 5) | ((7) << 2)))) = 1;
 }
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
+static inline 
+# 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h" 3 4
                _Bool
+
+# 233 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 AONRTCActive(void)
 {
 
     return((*((volatile unsigned long *)(((unsigned long)(0x40092000 + 0x00000000) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40092000 + 0x00000000) & 0x000FFFFF) << 5) | ((0) << 2)))));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static inline 
 # 254 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
+static inline 
+# 254 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h" 3 4
                _Bool
+
+# 255 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 AONRTCChannelActive(uint32_t ui32Channel)
 {
     uint32_t uint32Status = 0;
@@ -5154,22 +3985,7 @@ AONRTCCombinedEventConfig(uint32_t ui32Channels)
 
     (*((volatile unsigned long *)(0x40092000 + 0x00000000))) = ui32Cfg;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 377 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline void
 AONRTCEventClear(uint32_t ui32Channel)
 {
@@ -5195,8 +4011,10 @@ AONRTCEventClear(uint32_t ui32Channel)
 }
 # 418 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline 
-# 418 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
+# 418 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h" 3 4
                _Bool
+
+# 419 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 AONRTCEventGet(uint32_t ui32Channel)
 {
     uint32_t uint32Event = 0;
@@ -5237,14 +4055,7 @@ AONRTCSecGet(void)
 static inline uint32_t
 AONRTCFractionGet(void)
 {
-
-
-
-
-
-
-
-
+# 507 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
     return((*((volatile unsigned long *)(0x40092000 + 0x0000000C))));
 }
 # 528 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
@@ -5263,22 +4074,7 @@ AONRTCModeCh1Set(uint32_t ui32Mode)
 
     (*((volatile unsigned long *)(((unsigned long)(0x40092000 + 0x00000014) & 0xF0000000) | 0x02000000 | (((unsigned long)(0x40092000 + 0x00000014) & 0x000FFFFF) << 5) | ((9) << 2)))) = ui32Mode;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 579 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline uint32_t
 AONRTCModeCh1Get(void)
 {
@@ -5372,22 +4168,7 @@ AONRTCCompareValueSet(uint32_t ui32Channel, uint32_t ui32CompValue)
         (*((volatile unsigned long *)(0x40092000 + 0x00000020))) = ui32CompValue;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 790 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline uint32_t
 AONRTCCompareValueGet(uint32_t ui32Channel)
 {
@@ -5417,19 +4198,7 @@ AONRTCCompareValueGet(uint32_t ui32Channel)
 }
 # 837 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 extern uint32_t NOROM_AONRTCCurrentCompareValueGet(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 851 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 extern uint64_t NOROM_AONRTCCurrent64BitValueGet(void);
 # 869 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline void
@@ -5443,24 +4212,19 @@ AONRTCIncValueCh2Get(void)
 {
     return((*((volatile unsigned long *)(0x40092000 + 0x00000024))));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 909 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_rtc.h"
 static inline uint32_t
 AONRTCCaptureValueCh1Get(void)
 {
     return((*((volatile unsigned long *)(0x40092000 + 0x00000028))));
 }
+# 25 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_event.h" 1
+# 66 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_event.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_device.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_event.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_event.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_event.h" 2
 # 218 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_event.h"
 extern void NOROM_AONEventMcuWakeUpSet(uint32_t ui32MCUWUEvent,
                                  uint32_t ui32EventSrc);
@@ -5506,6 +4270,11 @@ AONEventRtcGet(void)
     return ((ui32EventSrc & 0x0000003F) >>
             0);
 }
+# 26 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aon_batmon.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 2
 # 122 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 static inline void
 AONBatMonEnable(void)
@@ -5517,17 +4286,7 @@ AONBatMonEnable(void)
         0x00000002 |
         0x00000001;
 }
-
-
-
-
-
-
-
-
-
-
-
+# 143 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 static inline void
 AONBatMonDisable(void)
 {
@@ -5553,10 +4312,14 @@ AONBatMonBatteryVoltageGet(void)
 }
 # 223 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 static inline 
-# 223 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 223 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                _Bool
+
+# 224 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 AONBatMonNewBatteryMeasureReady(void)
 {
+    
+# 226 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
    _Bool 
 # 226 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
         bStatus;
@@ -5566,11 +4329,11 @@ AONBatMonNewBatteryMeasureReady(void)
 
     bStatus = (*((volatile unsigned long *)(0x40095000 + 0x0000002C))) &
               0x00000001 ? 
-# 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                                       1 
 # 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
                                            : 
-# 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                                              0
 # 232 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
                                                   ;
@@ -5590,10 +4353,14 @@ AONBatMonNewBatteryMeasureReady(void)
 }
 # 268 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 static inline 
-# 268 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 268 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                _Bool
+
+# 269 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
 AONBatMonNewTempMeasureReady(void)
 {
+    
+# 271 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
    _Bool 
 # 271 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
         bStatus;
@@ -5603,11 +4370,11 @@ AONBatMonNewTempMeasureReady(void)
 
     bStatus = (*((volatile unsigned long *)(0x40095000 + 0x00000034))) &
               0x00000001 ? 
-# 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                                        1 
 # 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
                                             : 
-# 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
+# 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h" 3 4
                                               0
 # 277 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aon_batmon.h"
                                                    ;
@@ -5625,51 +4392,27 @@ AONBatMonNewTempMeasureReady(void)
 
     return (bStatus);
 }
-# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
+# 27 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h" 1
+# 67 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_event.h" 1
+# 68 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h" 2
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_adi_4_aux.h" 1
+# 70 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/inc/hw_aux_anaif.h" 1
+# 71 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h" 2
 # 181 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern void NOROM_AUXADCDisable(void);
 # 214 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern void NOROM_AUXADCEnableAsync(uint32_t refSource, uint32_t trigger);
 # 263 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern void NOROM_AUXADCEnableSync(uint32_t refSource, uint32_t sampleTime, uint32_t trigger);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 280 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern void NOROM_AUXADCDisableInputScaling(void);
-
-
-
-
-
-
-
-
-
-
+# 291 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern void NOROM_AUXADCFlushFifo(void);
-
-
-
-
-
-
-
-
-
+# 301 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 static inline void
 AUXADCGenManualTrigger(void)
 {
@@ -5681,35 +4424,9 @@ AUXADCGetFifoStatus(void)
 {
     return (*((volatile unsigned long *)(0x400C9000 + 0x00000014)));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 343 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern uint32_t NOROM_AUXADCReadFifo(void);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 357 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern uint32_t NOROM_AUXADCPopFifo(void);
 # 380 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 static inline void
@@ -5729,18 +4446,20 @@ extern int32_t NOROM_AUXADCMicrovoltsToValue(int32_t fixedRefVoltage, int32_t mi
 extern int32_t NOROM_AUXADCAdjustValueForGainAndOffset(int32_t adcValue, int32_t gain, int32_t offset);
 # 509 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/CC13XXWARE/driverlib/aux_adc.h"
 extern int32_t NOROM_AUXADCUnadjustValueForGainAndOffset(int32_t adcValue, int32_t gain, int32_t offset);
-# 28 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h"
+# 28 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
 
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h" 1
+# 29 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wconversion"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+# 54 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpacked"
 #pragma GCC diagnostic ignored "-Wattributes"
-# 57 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
 #pragma GCC diagnostic pop
 # 80 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
@@ -5945,14 +4664,7 @@ __attribute__((always_inline)) static inline void __DMB(void)
 {
   __asm volatile ("dmb 0xF":::"memory");
 }
-
-
-
-
-
-
-
-
+# 769 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __REV(uint32_t value)
 {
 
@@ -5964,14 +4676,7 @@ __attribute__((always_inline)) static inline uint32_t __REV(uint32_t value)
 
 
 }
-
-
-
-
-
-
-
-
+# 788 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __REV16(uint32_t value)
 {
   uint32_t result;
@@ -5979,14 +4684,7 @@ __attribute__((always_inline)) static inline uint32_t __REV16(uint32_t value)
   __asm volatile ("rev16 %0, %1" : "=r" (result) : "r" (value) );
   return(result);
 }
-
-
-
-
-
-
-
-
+# 803 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline int32_t __REVSH(int32_t value)
 {
 
@@ -5998,15 +4696,7 @@ __attribute__((always_inline)) static inline int32_t __REVSH(int32_t value)
 
 
 }
-
-
-
-
-
-
-
-
-
+# 823 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __ROR(uint32_t op1, uint32_t op2)
 {
   return (op1 >> op2) | (op1 << (32U - op2));
@@ -6020,18 +4710,7 @@ __attribute__((always_inline)) static inline uint32_t __RBIT(uint32_t value)
 
 
    __asm volatile ("rbit %0, %1" : "=r" (result) : "r" (value) );
-
-
-
-
-
-
-
-
-
-
-
-
+# 865 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
   return(result);
 }
 # 888 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
@@ -6049,14 +4728,7 @@ __attribute__((always_inline)) static inline uint8_t __LDREXB(volatile uint8_t *
 
    return ((uint8_t) result);
 }
-
-
-
-
-
-
-
-
+# 910 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint16_t __LDREXH(volatile uint16_t *addr)
 {
     uint32_t result;
@@ -6071,14 +4743,7 @@ __attribute__((always_inline)) static inline uint16_t __LDREXH(volatile uint16_t
 
    return ((uint16_t) result);
 }
-
-
-
-
-
-
-
-
+# 932 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __LDREXW(volatile uint32_t *addr)
 {
     uint32_t result;
@@ -6086,16 +4751,7 @@ __attribute__((always_inline)) static inline uint32_t __LDREXW(volatile uint32_t
    __asm volatile ("ldrex %0, %1" : "=r" (result) : "Q" (*addr) );
    return(result);
 }
-
-
-
-
-
-
-
-
-
-
+# 949 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __STREXB(uint8_t value, volatile uint8_t *addr)
 {
    uint32_t result;
@@ -6103,16 +4759,7 @@ __attribute__((always_inline)) static inline uint32_t __STREXB(uint8_t value, vo
    __asm volatile ("strexb %0, %2, %1" : "=&r" (result), "=Q" (*addr) : "r" ((uint32_t)value) );
    return(result);
 }
-
-
-
-
-
-
-
-
-
-
+# 966 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __STREXH(uint16_t value, volatile uint16_t *addr)
 {
    uint32_t result;
@@ -6120,16 +4767,7 @@ __attribute__((always_inline)) static inline uint32_t __STREXH(uint16_t value, v
    __asm volatile ("strexh %0, %2, %1" : "=&r" (result), "=Q" (*addr) : "r" ((uint32_t)value) );
    return(result);
 }
-
-
-
-
-
-
-
-
-
-
+# 983 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __STREXW(uint32_t value, volatile uint32_t *addr)
 {
    uint32_t result;
@@ -6155,14 +4793,7 @@ __attribute__((always_inline)) static inline uint32_t __RRX(uint32_t value)
   __asm volatile ("rrx %0, %1" : "=r" (result) : "r" (value) );
   return(result);
 }
-
-
-
-
-
-
-
-
+# 1062 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint8_t __LDRBT(volatile uint8_t *ptr)
 {
     uint32_t result;
@@ -6177,14 +4808,7 @@ __attribute__((always_inline)) static inline uint8_t __LDRBT(volatile uint8_t *p
 
    return ((uint8_t) result);
 }
-
-
-
-
-
-
-
-
+# 1084 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint16_t __LDRHT(volatile uint16_t *ptr)
 {
     uint32_t result;
@@ -6199,14 +4823,7 @@ __attribute__((always_inline)) static inline uint16_t __LDRHT(volatile uint16_t 
 
    return ((uint16_t) result);
 }
-
-
-
-
-
-
-
-
+# 1106 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline uint32_t __LDRT(volatile uint32_t *ptr)
 {
     uint32_t result;
@@ -6214,44 +4831,24 @@ __attribute__((always_inline)) static inline uint32_t __LDRT(volatile uint32_t *
    __asm volatile ("ldrt %0, %1" : "=r" (result) : "Q" (*ptr) );
    return(result);
 }
-
-
-
-
-
-
-
-
+# 1121 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline void __STRBT(uint8_t value, volatile uint8_t *ptr)
 {
    __asm volatile ("strbt %1, %0" : "=Q" (*ptr) : "r" ((uint32_t)value) );
 }
-
-
-
-
-
-
-
-
+# 1133 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline void __STRHT(uint16_t value, volatile uint16_t *ptr)
 {
    __asm volatile ("strht %1, %0" : "=Q" (*ptr) : "r" ((uint32_t)value) );
 }
-
-
-
-
-
-
-
-
+# 1145 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 __attribute__((always_inline)) static inline void __STRT(uint32_t value, volatile uint32_t *ptr)
 {
    __asm volatile ("strt %1, %0" : "=Q" (*ptr) : "r" (value) );
 }
+# 1892 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/cmsis_gcc.h"
 #pragma GCC diagnostic pop
-# 32 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h"
+# 32 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h" 2
 
 
 
@@ -6292,11 +4889,13 @@ extern volatile systat_t __pi_systat;
 extern char *__bss_start__, *__bss_end__;
 # 121 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/arch.h"
 void __pi_release () __attribute__ ((noreturn));
+# 34 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 2
 # 116 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
 void tci_run_delay_timer ();
 void tci_run_auxiliary_timer ();
 word tci_update_delay_ticks (Boolean);
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/uart_def.h"
+# 136 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/uart_def.h" 1
 
 
 
@@ -6304,7 +4903,9 @@ word tci_update_delay_ticks (Boolean);
 
 
 
-# 137 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 1
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/uart_def.h" 2
+# 137 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 2
 
 
 
@@ -6332,7 +4933,12 @@ extern uart_t __pi_uart [];
 word __pi_uart_getrate (const uart_t*);
 
 Boolean __pi_uart_setrate (word, uart_t*);
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h"
+# 182 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/leds.h" 1
+# 10 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/leds.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_leds.h" 1
+# 11 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/leds.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h" 1
 
 
 
@@ -6340,7 +4946,7 @@ Boolean __pi_uart_setrate (word, uart_t*);
 
 
 
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h" 1
 
 
 
@@ -6348,19 +4954,26 @@ Boolean __pi_uart_setrate (word, uart_t*);
 
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 1
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/portmap.h" 1
+# 10 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h" 2
+
+
+
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_pins.h" 1
+# 325 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_pins.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/analog_sensor.h" 1
 
 
 
 
 
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/analog_sensor.h"
 
 
-
-
-
-
-
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/sensors.h" 1
+# 11 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/sensors.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/sensors_sys.h" 1
 # 11 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/sensors_sys.h"
 typedef struct {
 
@@ -6386,19 +4999,22 @@ typedef struct {
 } d_sensdesc_t;
 # 74 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/sensors_sys.h"
 void __pi_batmon (word, const byte*, address);
-# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/sensors.h"
+# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/sensors.h" 2
 
 void read_sensor (word, sint, address);
 
 
 
 void wait_sensor (sint, word);
-# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/analog_sensor.h"
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/analog_sensor.h" 2
 
 
 
 void analog_sensor_read (word, const a_sensdesc_t*, address);
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/pin_sensor.h"
+# 326 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_pins.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/sensors.h" 1
+# 327 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_pins.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/pin_sensor.h" 1
 
 
 
@@ -6406,7 +5022,8 @@ void analog_sensor_read (word, const a_sensdesc_t*, address);
 
 
 
-
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h" 1
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Sensors/pin_sensor.h" 2
 
 
 
@@ -6415,6 +5032,8 @@ void analog_sensor_read (word, const a_sensdesc_t*, address);
 
 void pin_sensor_init ();
 void pin_sensor_read (word, const byte*, address);
+# 328 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_pins.h" 2
+# 14 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h" 2
 # 86 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/pins_sys.h"
 Boolean __pi_pin_available (word);
 Boolean __pi_pin_adc_available (word);
@@ -6441,35 +5060,47 @@ typedef struct {
 
 extern const piniod_t __input_pins [];
 void __pinlist_setirq (int);
-# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h"
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h" 2
 
 
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/buttons.h"
-
-
-
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/buttons.h" 1
 
 
 
 
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/buttons_sys.h"
 
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/buttons_sys.h" 1
 
+
+
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h" 1
+# 5 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/buttons_sys.h" 2
 
 extern const word __button_list [];
 # 29 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/buttons_sys.h"
 void __buttons_setirq (int);
-# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/buttons.h"
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/buttons.h" 2
 
 
 
 void buttons_action (void (*action)(word));
+# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/pins.h" 2
+# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/IO/leds.h" 2
+# 183 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h" 2
 # 193 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/mach.h"
 extern void __pi_ondomain (lword), __pi_offdomain (lword);
 
 extern lword system_event_count;
+# 52 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
+# 131 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/diag_sys.h" 1
+# 132 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Misc/dbgtrc.h" 1
+# 133 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/BOARDS/CC1350_LAUNCHXL/board_headers.h" 1
+# 134 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
 # 364 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
 void root (word state);
 
@@ -6526,14 +5157,7 @@ void diag (const char *, ...);
 lword lrnd (void);
 # 575 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
 sint io (word, word, word, char*, word);
-
-
-
-
-
-
-
-
+# 584 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
 void unwait (void);
 
 
@@ -6578,7 +5202,8 @@ void udelay (word);
 void mdelay (word);
 # 667 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
 void __pi_badstate (void);
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h"
+# 715 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h" 1
 
 
 
@@ -6667,34 +5292,14 @@ struct __tcv_hblock_s {
 
 
     } u;
-
-
-
-
-
-
-
-
-
-
+# 99 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h"
  word length;
 
 
 
 
  __tcv_battr_t attributes;
-
-
-
-
-
-
-
-
-
-
-
-
+# 117 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h"
 };
 
 
@@ -6710,20 +5315,7 @@ typedef struct {
 
 
  __tcv_battr_t attpattern;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 146 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h"
 } __tcv_sesdesc_t;
 # 168 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv_defs.h"
 int tcv_plug (int, const tcvplug_t*);
@@ -6738,6 +5330,7 @@ int tcv_write (address, const byte*, int);
 void tcv_endp (address);
 void tcv_drop (address);
 int tcv_control (int, int, address);
+# 716 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h" 2
 # 728 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
 extern lword entropy;
 # 771 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
@@ -6750,14 +5343,7 @@ typedef struct {
 } __pi_event_t;
 
 struct __pi_pcb_s {
-
-
-
-
-
-
-
-
+# 788 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/sysio.h"
  word Status;
  word Timer;
  fsmcode code;
@@ -6769,11 +5355,14 @@ struct __pi_pcb_s {
 typedef struct __pi_pcb_s __pi_pcb_t;
 
 extern __pi_pcb_t *__pi_curr;
+# 4 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/ser.h" 1
 # 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/ser.h"
 int ser_out (word, const char*);
 int ser_in (word, char*, int);
 int ser_outb (word, const char*);
-# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/serf.h"
+# 5 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/serf.h" 1
 
 
 
@@ -6781,6 +5370,7 @@ int ser_outb (word, const char*);
 
 
 
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/form.h" 1
 # 11 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/form.h"
 word __pi_vfparse (char*, word, const char*, va_list);
 char *vform (char*, const char*, va_list);
@@ -6788,13 +5378,22 @@ int vscan (const char*, const char*, va_list);
 char *form (char*, const char*, ...);
 word fsize (const char*, ...);
 int scan (const char*, const char*, ...);
-# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/serf.h"
+# 9 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/serf.h" 2
 
 
 
 int ser_outf (word, const char*, ...);
 int ser_inf (word, const char*, ...);
-# 16 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/kernel/kernel.h"
+# 6 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv.h" 1
+# 61 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/kernel/kernel.h" 1
+# 15 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/kernel/kernel.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/uart.h" 1
+# 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/uart.h"
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/ualeds.h" 1
+# 13 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/Serial/uart.h" 2
+# 16 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/kernel/kernel.h" 2
 
 
 void __pi_set_release (void);
@@ -6827,10 +5426,16 @@ typedef struct {
 } devinit_t;
 
 void adddevfunc (devreqfun_t, int);
+# 62 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/PLibs/VNetI/tcv.h" 2
+# 7 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/phys_cc1350.h" 1
 # 10 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/CC13XX/phys_cc1350.h"
 void phys_cc1350 (int, int);
+# 8 "./header.hpp" 2
+# 1 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/VLibs/PlugNull/plug_null.h" 1
 # 12 "/home/stephen/Desktop/OLSONET/PICOS/PicOS/VLibs/PlugNull/plug_null.h"
 extern const tcvplug_t plug_null;
+# 9 "./header.hpp" 2
 # 25 "./header.hpp"
 enum MessageType {
  DISCOVERY_REQUEST,
@@ -6938,34 +5543,50 @@ struct ResponseMessage{
 };
 
 
+
+# 131 "./header.hpp" 3 4
 _Bool 
 # 131 "./header.hpp"
     init_node(struct Node *node);
+
+# 132 "./header.hpp" 3 4
 _Bool 
 # 132 "./header.hpp"
     set_node_id(struct Node *node, uint8_t id);
+
+# 133 "./header.hpp" 3 4
 _Bool 
 # 133 "./header.hpp"
     set_node_gid(struct Node *node, uint16_t gid);
+
+# 134 "./header.hpp" 3 4
 _Bool 
 # 134 "./header.hpp"
     set_node_db_entry_count(struct Node *node, uint8_t count);
+
+# 135 "./header.hpp" 3 4
 _Bool 
 # 135 "./header.hpp"
     clear_node_neighbour_array(struct Node *node);
+
+# 136 "./header.hpp" 3 4
 _Bool 
 # 136 "./header.hpp"
     insert_record(struct Node *node, char* new_entry, uint8_t owner_id);
+
+# 137 "./header.hpp" 3 4
 _Bool 
 # 137 "./header.hpp"
     delete_record(struct Node *node, uint8_t index);
+
+# 138 "./header.hpp" 3 4
 _Bool 
 # 138 "./header.hpp"
     delete_all(struct Node *node);
 struct record retrieve_record(struct Node *node, uint8_t index);
 void reset_array(struct Node *node);
 uint8_t generate_request_num(void);
-# 2 "app.cc"
+# 2 "KTMP/___pcs___app.c" 2
 
 char CHOICE;
 char reason[50];
@@ -6981,8 +5602,10 @@ struct Node *node_db;
 
 
 
+
+# 17 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 17 "app.cc"
+# 17 "KTMP/___pcs___app.c"
     init_node(struct Node* node){
     node->id = 0;
     node->gid = 0;
@@ -6997,36 +5620,42 @@ _Bool
 
     if ((!node->id) && (!node->gid) && (!node->index) && (sizeof(node->data_base) == 0)){
         return 
-# 30 "app.cc"
+# 30 "KTMP/___pcs___app.c" 3 4
               1
-# 30 "app.cc"
+# 30 "KTMP/___pcs___app.c"
                   ;
     }
     diag("Error initializing node...\n");
     return 
-# 33 "app.cc"
+# 33 "KTMP/___pcs___app.c" 3 4
           0
-# 33 "app.cc"
+# 33 "KTMP/___pcs___app.c"
                ;
 };
 
+
+# 36 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 36 "app.cc"
+# 36 "KTMP/___pcs___app.c"
     set_node_id(struct Node* node, uint8_t id){
     node->id = id;
     return node->id == id;
 };
 
+
+# 41 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 41 "app.cc"
+# 41 "KTMP/___pcs___app.c"
     set_node_gid(struct Node* node, uint16_t gid){
     node->gid = gid;
     return node->gid == gid;
 };
 
 
+
+# 47 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 47 "app.cc"
+# 47 "KTMP/___pcs___app.c"
     set_node_db_entry_count(struct Node* node, uint8_t count){
     node->index = count;
     return node->index == count;
@@ -7046,8 +5675,10 @@ uint8_t generate_request_num(void){
 }
 
 
+
+# 66 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 66 "app.cc"
+# 66 "KTMP/___pcs___app.c"
     insert_record(struct Node *node, char* new_entry, uint8_t owner_id){
 
 
@@ -7056,18 +5687,18 @@ _Bool
 
     if (node->data_base.item_count == 40){
         return 
-# 73 "app.cc"
+# 73 "KTMP/___pcs___app.c" 3 4
               0
-# 73 "app.cc"
+# 73 "KTMP/___pcs___app.c"
                    ;
     } else {
 
 
         for (int i = 0; i < 40; i++){
             if (node->data_base.item_array[i].data_entry == 
-# 78 "app.cc"
+# 78 "KTMP/___pcs___app.c" 3 4
                                                            ((void *)0)
-# 78 "app.cc"
+# 78 "KTMP/___pcs___app.c"
                                                                ){
              num = i;
                 __pi_strncpy (node->data_base.item_array[i].data_entry, new_entry, sizeof(new_entry));
@@ -7082,68 +5713,72 @@ _Bool
 
 
     if(node->data_base.item_array[num].data_entry == 
-# 91 "app.cc"
+# 91 "KTMP/___pcs___app.c" 3 4
                                                     ((void *)0)
-# 91 "app.cc"
+# 91 "KTMP/___pcs___app.c"
                                                         ){
      return 
-# 92 "app.cc"
+# 92 "KTMP/___pcs___app.c" 3 4
            0
-# 92 "app.cc"
+# 92 "KTMP/___pcs___app.c"
                 ;
     }
     return 
-# 94 "app.cc"
+# 94 "KTMP/___pcs___app.c" 3 4
           1
-# 94 "app.cc"
+# 94 "KTMP/___pcs___app.c"
               ;
 };
 
 
+
+# 98 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 98 "app.cc"
+# 98 "KTMP/___pcs___app.c"
     clear_node_neighbour_array(struct Node *node){
 
     if (!sizeof(node->nnodes)){
         return 
-# 101 "app.cc"
+# 101 "KTMP/___pcs___app.c" 3 4
               1
-# 101 "app.cc"
+# 101 "KTMP/___pcs___app.c"
                   ;
     } else{
         for (int i = 0; i < 25; i++){
             node->nnodes[i] = 0;
         };
         return 
-# 106 "app.cc"
+# 106 "KTMP/___pcs___app.c" 3 4
               1
-# 106 "app.cc"
+# 106 "KTMP/___pcs___app.c"
                   ;
     };
 
     return 
-# 109 "app.cc"
+# 109 "KTMP/___pcs___app.c" 3 4
           0
-# 109 "app.cc"
+# 109 "KTMP/___pcs___app.c"
                ;
 
 };
 
 
+
+# 114 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 114 "app.cc"
+# 114 "KTMP/___pcs___app.c"
     delete_record(struct Node *node, uint8_t index){
 
 
     if (node->data_base.item_count == 0 || node->data_base.item_array[index].data_entry == 
-# 117 "app.cc"
+# 117 "KTMP/___pcs___app.c" 3 4
                                                                                           ((void *)0)
-# 117 "app.cc"
+# 117 "KTMP/___pcs___app.c"
                                                                                               ){
         return 
-# 118 "app.cc"
+# 118 "KTMP/___pcs___app.c" 3 4
               0
-# 118 "app.cc"
+# 118 "KTMP/___pcs___app.c"
                    ;
     } else{
 
@@ -7154,20 +5789,20 @@ _Bool
 
 
     if(node->data_base.item_array[index].data_entry != 
-# 127 "app.cc"
+# 127 "KTMP/___pcs___app.c" 3 4
                                                       ((void *)0)
-# 127 "app.cc"
+# 127 "KTMP/___pcs___app.c"
                                                           ){
      return 
-# 128 "app.cc"
+# 128 "KTMP/___pcs___app.c" 3 4
            0
-# 128 "app.cc"
+# 128 "KTMP/___pcs___app.c"
                 ;
     }
     return 
-# 130 "app.cc"
+# 130 "KTMP/___pcs___app.c" 3 4
           1
-# 130 "app.cc"
+# 130 "KTMP/___pcs___app.c"
               ;
 };
 
@@ -7180,20 +5815,22 @@ struct record retrieve_record(struct Node *node, uint8_t index){
 };
 
 
+
+# 142 "KTMP/___pcs___app.c" 3 4
 _Bool 
-# 142 "app.cc"
+# 142 "KTMP/___pcs___app.c"
     delete_all(struct Node *node){
 
 
     if (node->data_base.item_count == 0 || node->data_base.item_array[0].data_entry == 
-# 145 "app.cc"
+# 145 "KTMP/___pcs___app.c" 3 4
                                                                                       ((void *)0)
-# 145 "app.cc"
+# 145 "KTMP/___pcs___app.c"
                                                                                           ){
         return 
-# 146 "app.cc"
+# 146 "KTMP/___pcs___app.c" 3 4
               1
-# 146 "app.cc"
+# 146 "KTMP/___pcs___app.c"
                   ;
     } else{
         for(int i = 0; i <= node->data_base.item_count; i++){
@@ -7204,20 +5841,20 @@ _Bool
     node->data_base.item_count = 0;
 
     if(node->data_base.item_array[0].data_entry != 
-# 155 "app.cc"
+# 155 "KTMP/___pcs___app.c" 3 4
                                                   ((void *)0)
-# 155 "app.cc"
+# 155 "KTMP/___pcs___app.c"
                                                       ){
      return 
-# 156 "app.cc"
+# 156 "KTMP/___pcs___app.c" 3 4
            0
-# 156 "app.cc"
+# 156 "KTMP/___pcs___app.c"
                 ;
     }
     return 
-# 158 "app.cc"
+# 158 "KTMP/___pcs___app.c" 3 4
           1
-# 158 "app.cc"
+# 158 "KTMP/___pcs___app.c"
               ;
 }
 
@@ -7234,9 +5871,9 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
   response_message->padding = padding;
  };
  if (rec != 
-# 173 "app.cc"
+# 173 "KTMP/___pcs___app.c" 3 4
            ((void *)0)
-# 173 "app.cc"
+# 173 "KTMP/___pcs___app.c"
                ){
   __pi_strncpy (response_message->record, rec, 20);
  };
@@ -7280,20 +5917,14 @@ int get_message_size(struct ResponseMessage *message) {
 }
 
 
+fsm sender(struct ResponseMessage *message) {
+ address packet;
 
-#define sending 0
-#define CONFIRM_message 1
-# 216 "app.cc"
-void sender (word __pi_st) { struct ResponseMessage * message = (struct ResponseMessage *)(__pi_curr->data); switch (__pi_st) { 
-# 216 "app.cc"
-
- static address packet;
-
- static int packet_size=sizeof (struct ResponseMessage );
+ int packet_size = sizeof(struct ResponseMessage);
 
  diag("\r\nIn Sending");
 
- case sending : __stlab_sending: {
+ state sending:
   packet = tcv_wnps (sending, sfd, 4 + packet_size, 0);
   packet[0] = 0;
   char * p = (char *)(packet+1);
@@ -7337,38 +5968,24 @@ void sender (word __pi_st) { struct ResponseMessage * message = (struct Response
 
   tcv_endp(packet);
 
- } case CONFIRM_message : __stlab_CONFIRM_message: {
+ state CONFIRM_message:
 
   ser_out(CONFIRM_message, "Message sent\r\n");
 
   kill (0);
-break; } default: __pi_badstate (); } }
-#undef sending
-#undef CONFIRM_message
+}
 
-#define receiving 0
-#define ok 1
-#define done_case 2
-#define response_1_create 3
-#define response_1_delete 4
-#define response_1_retrieve 5
-#define response_2 6
-#define response_3 7
-#define response_4 8
-#define error 9
-# 275 "app.cc"
-void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr->data); switch (__pi_st) { 
-# 275 "app.cc"
 
- static struct ResponseMessage *response_message_5;
+fsm receiver(struct Node* node_db) {
+ struct ResponseMessage* response_message_5;
 
- static address incoming_packet;
- static char array[20];
+ address incoming_packet;
+ char array[20];
 
- case receiving : __stlab_receiving: {
+ state receiving:
 
   incoming_packet = tcv_rnp(receiving, sfd);
- } case ok : __stlab_ok: {
+ state ok:
 
   uint8_t tpe;
   uint8_t bytes_read = tcv_read(incoming_packet+3, &tpe, 1);
@@ -7378,19 +5995,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
   };
 
   switch (tpe){
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 307 "KTMP/___pcs___app.c"
    case DISCOVERY_REQUEST: ;
 
     struct DiscoveryResponseMessage *response_message_0;
@@ -7413,19 +6018,11 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
      response_message_0->receiver_id = discovery_request_message->sender_id;
 
 
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_0 )), done_case )) __pi_release (); } while (0);
+     call sender(response_message_0, done_case);
     }
 
     break;
-
-
-
-
-
-
-
-
-
+# 342 "KTMP/___pcs___app.c"
    case DISCOVERY_RESPONSE: ;
 
     struct DiscoveryResponseMessage* response_message_1 = (struct DiscoveryResponseMessage*)(incoming_packet+1);
@@ -7453,12 +6050,14 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
    case CREATE_RECORD: ;
     struct ResponseMessage *response_message_2;
     struct CreateRecordMessage* create_record_message = (struct CreateRecordMessage*)(incoming_packet+1);
+    
+# 369 "KTMP/___pcs___app.c" 3 4
    _Bool 
-# 369 "app.cc"
+# 369 "KTMP/___pcs___app.c"
         neighbour_check = 
-# 369 "app.cc"
+# 369 "KTMP/___pcs___app.c" 3 4
                           0
-# 369 "app.cc"
+# 369 "KTMP/___pcs___app.c"
                                ;
     uint8_t status;
 
@@ -7485,7 +6084,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
      };
 
      response_message_2 = assemble_response_message(node_db->gid, create_record_message->request_number, node_db->id, create_record_message->receiver_id, status, 0, array);
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_2 )), done_case )) __pi_release (); } while (0);
+     call sender(response_message_2, done_case);
 
     };
 
@@ -7511,7 +6110,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
      };
 
      response_message_3 = assemble_response_message(node_db->gid, delete_record_message->request_number, node_db->id, delete_record_message->receiver_id, status, 0, array);
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_3 )), done_case )) __pi_release (); } while (0);
+     call sender(response_message_3, done_case);
 
     };
 
@@ -7532,9 +6131,9 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     if (retreive_record_message->record_index >=0 && retreive_record_message->record_index <= 40){
      retrieved_record = retrieve_record(node_db, retreive_record_message->record_index);
      if (retrieved_record.data_entry == 
-# 441 "app.cc"
+# 441 "KTMP/___pcs___app.c" 3 4
                                        ((void *)0)
-# 441 "app.cc"
+# 441 "KTMP/___pcs___app.c"
                                            ){
       status = (uint8_t) RETRIEVE_ERROR;
       response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
@@ -7544,7 +6143,7 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
       response_message_4 = assemble_response_message(node_db->gid, retreive_record_message->request_number, node_db->id, retreive_record_message->receiver_id, status, 0, retrieved_record.data_entry);
 
      };
-     do { if (__pi_join (__pi_fork (sender, (aword)(response_message_4 )), done_case )) __pi_release (); } while (0);
+     call sender(response_message_4, done_case);
     };
 
     break;
@@ -7570,13 +6169,13 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
       if (response_checker[0] == response_message_5->request_number){
        switch(response_checker[1]){
         case CREATE_RECORD:
-         proceed (response_1_create);
+         proceed response_1_create;
          break;
         case DELETE_RECORD:
-         proceed (response_1_delete);
+         proceed response_1_delete;
          break;
         case RETRIEVE_RECORD:
-         proceed (response_1_retrieve);
+         proceed response_1_retrieve;
          break;
         default:
          break;
@@ -7584,13 +6183,13 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
       }
       break;
      case DB_FULL:
-      proceed (response_2);
+      proceed response_2;
       break;
      case DELETE_ERROR:
-      proceed (response_3);
+      proceed response_3;
       break;
      case RETRIEVE_ERROR:
-      proceed (response_4);
+      proceed response_4;
       break;
      default:
       break;
@@ -7605,105 +6204,56 @@ void receiver (word __pi_st) { struct Node * node_db = (struct Node *)(__pi_curr
     break;
 
   };
- } case done_case : __stlab_done_case: {
+ state done_case:
   tcv_endp(incoming_packet);
-  proceed (receiving);
+  proceed receiving;
 
 
- } case response_1_create : __stlab_response_1_create: {
+ state response_1_create:
   ser_out(response_1_create, "\r\nData Saved");
-  proceed (receiving);
- } case response_1_delete : __stlab_response_1_delete: {
+  proceed receiving;
+ state response_1_delete:
   ser_out(response_1_delete, "\r\nRecord Deleted");
-  proceed (receiving);
- } case response_1_retrieve : __stlab_response_1_retrieve: {
+  proceed receiving;
+ state response_1_retrieve:
   ser_outf(response_1_retrieve, "\r\nRecord Received from %d: %s", response_message_5->sender_id, response_message_5->record);
-  proceed (receiving);
+  proceed receiving;
 
 
- } case response_2 : __stlab_response_2: {
+ state response_2:
   ser_outf(response_2, "\r\nThe record can't be saved on node %d", response_message_5->sender_id);
-  proceed (receiving);
- } case response_3 : __stlab_response_3: {
+  proceed receiving;
+ state response_3:
   ser_outf(response_3, "\r\nThe record does not exists on node %d", response_message_5->sender_id);
-  proceed (receiving);
- } case response_4 : __stlab_response_4: {
+  proceed receiving;
+ state response_4:
   ser_outf(response_4, "\r\nThe record does not exist on node %d", response_message_5->sender_id);
-  proceed (receiving);
+  proceed receiving;
 
 
- } case error : __stlab_error: {
+ state error:
   diag("ERROR: someting went wrong when receiving the packet");
 
 
-  proceed (receiving);
+  proceed receiving;
 
-break; } default: __pi_badstate (); } }
-#undef receiving
-#undef ok
-#undef done_case
-#undef response_1_create
-#undef response_1_delete
-#undef response_1_retrieve
-#undef response_2
-#undef response_3
-#undef response_4
-#undef error
-# 544 "app.cc"
+}
 
-
-
-#define initialize_node 0
-#define menu 1
-#define get_choice 2
-#define get_new_group_id 3
-#define new_group_id 4
-#define get_new_node_id 5
-#define new_node_id 6
-#define invalid_node_id 7
-#define clear_neighbour_array 8
-#define find_proto_start 9
-#define wait_discovery 10
-#define display_neighbour_nodes 11
-#define create_proto_start 12
-#define get_id_for_create 13
-#define ask_for_record_to_create 14
-#define get_record_to_create 15
-#define init_create_record_message 16
-#define start_delete_proto 17
-#define get_id_for_delete 18
-#define ask_for_record_index 19
-#define get_index_for_delete 20
-#define init_delete_record_message 21
-#define start_retrieve_proto 22
-#define get_id_for_retrieve 23
-#define ask_for_record_retrieve_index 24
-#define get_index_for_retrieve 25
-#define retrieve_proto 26
-#define display_db 27
-#define loop_through_data 28
-#define del_local 29
-#define wait 30
-#define timeout 31
-#define error 32
-# 546 "app.cc"
-void root (word __pi_st) { switch (__pi_st) { 
-# 546 "app.cc"
+fsm root {
 
 
 
 
 
-
- static int discovery_wait_flag=0 ;
- static char user_provided_record[20];
- static uint8_t user_provided_index;
- static uint8_t user_provided_receiver_id;
-
+ int discovery_wait_flag = 0;
+ char user_provided_record[20];
+ uint8_t user_provided_index;
+ uint8_t user_provided_receiver_id;
 
 
 
- case initialize_node : __stlab_initialize_node: {
+
+ state initialize_node:
 
 
   node_db = (struct Node *)((address)__pi_malloc (sizeof(struct Node)));
@@ -7712,36 +6262,9 @@ void root (word __pi_st) { switch (__pi_st) {
   init_node(node_db);
 
   phys_cc1350(0, 250);
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 582 "KTMP/___pcs___app.c"
   tcv_plug (0, &plug_null);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 599 "KTMP/___pcs___app.c"
   sfd = tcv_open (((word)(-1)), 0, 0);
 
   if (sfd < 0) {
@@ -7756,62 +6279,62 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
   tcv_control(sfd, 4, 
-# 612 "app.cc"
+# 612 "KTMP/___pcs___app.c" 3 4
                               ((void *)0)
-# 612 "app.cc"
+# 612 "KTMP/___pcs___app.c"
                                   );
 
-  __pi_fork (receiver, (aword)(node_db ));
+  runfsm receiver(node_db);
 
- } case menu : __stlab_menu: {
+ state menu:
   ser_outf(menu, "\r\nGroup %d Device #%d (%d/%d records)\r\n(G)roup ID\r\n(N)ew device ID\r\n(F)ind neighbors\r\n(C)reate record on neighbor\r\n(D)elete record on neighbor\r\n(R)etrieve record from neighbor\r\n(S)how local records\r\nR(e)set local storage\r\n\r\nSelection: ", node_db->gid, node_db->id, node_db->index, 40);
 
- } case get_choice : __stlab_get_choice: {
+ state get_choice:
   ser_inf(get_choice, "%c", &CHOICE);
   switch(CHOICE) {
    case 'g':
    case 'G':
-    proceed (get_new_group_id);
+    proceed get_new_group_id;
     break;
    case 'n':
    case 'N':
-    proceed (get_new_node_id);
+    proceed get_new_node_id;
     break;
    case 'f':
    case 'F':
-    proceed (clear_neighbour_array);
+    proceed clear_neighbour_array;
     break;
    case 'c':
    case 'C':
-    proceed (create_proto_start);
+    proceed create_proto_start;
     break;
 
    case 'd':
    case 'D':
-    proceed (start_delete_proto);
+    proceed start_delete_proto;
     break;
    case 'r':
    case 'R':
-    proceed (retrieve_proto);
+    proceed retrieve_proto;
     break;
    case 's':
    case 'S':
-    proceed (display_db);
+    proceed display_db;
     break;
    case 'e':
    case 'E':
-    proceed (del_local);
+    proceed del_local;
     break;
    default:
-    proceed (menu);
+    proceed menu;
     break;
   }
 
- } case get_new_group_id : __stlab_get_new_group_id: {
+ state get_new_group_id:
   ser_out(get_new_group_id, "Please provide a new group ID#: ");
 
 
- } case new_group_id : __stlab_new_group_id: {
+ state new_group_id:
   uint16_t NEW_NODE_GID;
   ser_inf(new_group_id, "%u", &NEW_NODE_GID);
 
@@ -7820,28 +6343,28 @@ void root (word __pi_st) { switch (__pi_st) {
   if (!set_node_gid(node_db, NEW_NODE_GID)){
    diag("setting node group ID failed");
    __pi_strncpy (reason, "Error setting node ID", 50);
-   proceed (invalid_node_id);
+   proceed invalid_node_id;
   };
 
-  proceed (menu);
+  proceed menu;
 
- } case get_new_node_id : __stlab_get_new_node_id: {
+ state get_new_node_id:
   ser_out(get_new_node_id, "\r\nPlease provide a new node ID# (1-25 inclusive): ");
 
- } case new_node_id : __stlab_new_node_id: {
+ state new_node_id:
   uint8_t NEW_NODE_ID;
   ser_inf(new_node_id, "%u", &NEW_NODE_ID);
 
 
   if (!set_node_id(node_db, NEW_NODE_ID)) {
    __pi_strncpy (reason, "Error setting node ID", 50);
-   proceed (invalid_node_id);
+   proceed invalid_node_id;
   };
 
 
   if((node_db->id < 1) || (node_db->id > 25)){
    __pi_strncpy (reason, "Out of Range", 50);
-   proceed (invalid_node_id);
+   proceed invalid_node_id;
   };
 
 
@@ -7849,36 +6372,25 @@ void root (word __pi_st) { switch (__pi_st) {
    ser_outf(new_node_id, "\r\n%u ", node_db->nnodes[i]);
    if(node_db->id == node_db->nnodes[i]){
     __pi_strncpy (reason, "ID is already in use", 50);
-    proceed (invalid_node_id);
+    proceed invalid_node_id;
    };
   };
 
-  proceed (menu);
+  proceed menu;
 
 
- } case invalid_node_id : __stlab_invalid_node_id: {
+ state invalid_node_id:
 
   ser_outf(invalid_node_id, "\r\nID#: %u, is an invalid choice. Reason: %s.", node_db->id, reason);
-  proceed (get_new_node_id);
-
-
-
-
-
-
-
-
-
-
-
-
- } case clear_neighbour_array : __stlab_clear_neighbour_array: {
+  proceed get_new_node_id;
+# 725 "KTMP/___pcs___app.c"
+ state clear_neighbour_array:
   if (!clear_node_neighbour_array(node_db)){
    __pi_strncpy (reason, "Error Clearing Node Array", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case find_proto_start : __stlab_find_proto_start: {
+ state find_proto_start:
 
   struct DiscoveryRequestMessage *request_packet;
   request_packet = (struct DiscoveryRequestMessage*)((address)__pi_malloc (sizeof(struct DiscoveryRequestMessage)));
@@ -7893,9 +6405,9 @@ void root (word __pi_st) { switch (__pi_st) {
 
 
 
-  do { if (__pi_join (__pi_fork (sender, (aword)(request_packet )), wait_discovery )) __pi_release (); } while (0);
+  call sender(request_packet, wait_discovery);
 
- } case wait_discovery : __stlab_wait_discovery: {
+ state wait_discovery:
   if (discovery_wait_flag == 0){
    discovery_wait_flag=1;
    delay(3000, find_proto_start);
@@ -7907,7 +6419,7 @@ void root (word __pi_st) { switch (__pi_st) {
    __pi_release ();
   }
 
- } case display_neighbour_nodes : __stlab_display_neighbour_nodes: {
+ state display_neighbour_nodes:
   ser_out(display_neighbour_nodes, "\r\nNeighbors: ");
 
   for (int i=0; i<25; i++) {
@@ -7915,37 +6427,27 @@ void root (word __pi_st) { switch (__pi_st) {
    ser_outf(display_neighbour_nodes, "%u, ", &node_db->nnodes[i]);
   }
   ser_out(display_neighbour_nodes, "\r\n");
-  proceed (menu);
-
-
-
-
-
-
-
-
-
-
-
- } case create_proto_start : __stlab_create_proto_start: {
+  proceed menu;
+# 780 "KTMP/___pcs___app.c"
+ state create_proto_start:
   ser_out(create_proto_start, "Please provide a node ID (0-25): ");
 
- } case get_id_for_create : __stlab_get_id_for_create: {
+ state get_id_for_create:
   ser_inf(get_id_for_create, "%d", &user_provided_receiver_id);
 
   if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
    __pi_strncpy (reason, "Error: improper ID", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case ask_for_record_to_create : __stlab_ask_for_record_to_create: {
+ state ask_for_record_to_create:
   ser_out(ask_for_record_to_create, "Please provide a record (length <= 20): ");
 
- } case get_record_to_create : __stlab_get_record_to_create: {
+ state get_record_to_create:
   ser_in(get_record_to_create, user_provided_record, 20);
 
 
- } case init_create_record_message : __stlab_init_create_record_message: {
+ state init_create_record_message:
 
   struct CreateRecordMessage *create_message;
   create_message = (struct CreateRecordMessage*)((address)__pi_malloc (sizeof(struct CreateRecordMessage)));
@@ -7960,40 +6462,31 @@ void root (word __pi_st) { switch (__pi_st) {
   response_checker[0] = create_message->request_number;
   response_checker[1] = create_message->tpe;
 
-  do { if (__pi_join (__pi_fork (sender, (aword)(& create_message )), wait )) __pi_release (); } while (0);
-
-
-
-
-
-
-
-
-
-
- } case start_delete_proto : __stlab_start_delete_proto: {
+  call sender(&create_message, wait);
+# 824 "KTMP/___pcs___app.c"
+ state start_delete_proto:
   ser_out(start_delete_proto, "Please provide a node ID (0-25): ");
 
- } case get_id_for_delete : __stlab_get_id_for_delete: {
+ state get_id_for_delete:
   ser_inf(get_id_for_delete, "%d", &user_provided_receiver_id);
 
   if ((user_provided_receiver_id < 1) || (user_provided_receiver_id > 25)){
    __pi_strncpy (reason, "Error: improper node ID", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case ask_for_record_index : __stlab_ask_for_record_index: {
+ state ask_for_record_index:
   ser_out(ask_for_record_index, "Please provide the record index (0-40): ");
 
- } case get_index_for_delete : __stlab_get_index_for_delete: {
+ state get_index_for_delete:
   ser_inf(get_index_for_delete, "%d", &user_provided_index);
 
   if (user_provided_index < 0 || user_provided_index > 40){
    __pi_strncpy (reason, "Error: invalid index", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case init_delete_record_message : __stlab_init_delete_record_message: {
+ state init_delete_record_message:
 
   struct DeleteRecordMessage *delete_record;
   delete_record = (struct DeleteRecordMessage *)((address)__pi_malloc (sizeof(struct DeleteRecordMessage)));
@@ -8009,40 +6502,31 @@ void root (word __pi_st) { switch (__pi_st) {
   response_checker[0] = delete_record->request_number;
   response_checker[1] = delete_record->tpe;
 
-  do { if (__pi_join (__pi_fork (sender, (aword)(& delete_record )), wait )) __pi_release (); } while (0);
-
-
-
-
-
-
-
-
-
-
- } case start_retrieve_proto : __stlab_start_retrieve_proto: {
+  call sender(&delete_record, wait);
+# 873 "KTMP/___pcs___app.c"
+ state start_retrieve_proto:
   ser_out(start_retrieve_proto, "Please provide a node ID (0-25): ");
 
- } case get_id_for_retrieve : __stlab_get_id_for_retrieve: {
+ state get_id_for_retrieve:
   ser_inf(get_id_for_retrieve, "%d", &user_provided_receiver_id);
 
   if (user_provided_receiver_id < 1 || user_provided_receiver_id > 25){
    __pi_strncpy (reason, "Error: improper node ID", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case ask_for_record_retrieve_index : __stlab_ask_for_record_retrieve_index: {
+ state ask_for_record_retrieve_index:
   ser_out(ask_for_record_retrieve_index, "Please provide the record index (0-40): ");
 
- } case get_index_for_retrieve : __stlab_get_index_for_retrieve: {
+ state get_index_for_retrieve:
   ser_inf(get_index_for_retrieve, "%d", &user_provided_index);
 
   if (user_provided_index < 0 || user_provided_index > 40){
    __pi_strncpy (reason, "Error: invalid index", 50);
-   proceed (error);
+   proceed error;
   };
 
- } case retrieve_proto : __stlab_retrieve_proto: {
+ state retrieve_proto:
 
   struct RetrieveRecordMessage *retrieve_record;
   retrieve_record = (struct RetrieveRecordMessage *)((address)__pi_malloc (sizeof(struct RetrieveRecordMessage)));
@@ -8058,70 +6542,35 @@ void root (word __pi_st) { switch (__pi_st) {
   response_checker[0] = retrieve_record->request_number;
   response_checker[1] = retrieve_record->tpe;
 
-  do { if (__pi_join (__pi_fork (sender, (aword)(& retrieve_record )), wait )) __pi_release (); } while (0);
+  call sender(&retrieve_record, wait);
 
- } case display_db : __stlab_display_db: {
+ state display_db:
   ser_out(display_db, "\r\nIndex\tTime Stamp\t\tOwner ID\tRecord Data");
 
- } case loop_through_data : __stlab_loop_through_data: {
+ state loop_through_data:
   if(node_db->data_base.item_count != 0){
    for(int i = 0; i <= node_db->data_base.item_count; i++){
     ser_outf(loop_through_data, "\r\n%d\t%d\t\t\t%d\t%s", i, node_db->data_base.item_array[i].timestamp, node_db->data_base.item_array[i].owner_id, node_db->data_base.item_array[i].data_entry);
    }
   }
   ser_out(loop_through_data, "\r\n");
-  proceed (menu);
+  proceed menu;
 
- } case del_local : __stlab_del_local: {
+ state del_local:
   delete_all(node_db);
-  proceed (menu);
+  proceed menu;
 
- } case wait : __stlab_wait: {
+ state wait:
   delay(3000, timeout);
   __pi_wait ((aword)(&response_flag),menu);
   __pi_release ();
 
- } case timeout : __stlab_timeout: {
+ state timeout:
   ser_out(timeout, "\r\nFailed to reach the destination");
-  proceed (menu);
+  proceed menu;
 
 
- } case error : __stlab_error: {
+ state error:
   ser_outf(invalid_node_id, "\r\nError: %s", reason);
-  proceed (menu);
-break; } default: __pi_badstate (); } }
-#undef initialize_node
-#undef menu
-#undef get_choice
-#undef get_new_group_id
-#undef new_group_id
-#undef get_new_node_id
-#undef new_node_id
-#undef invalid_node_id
-#undef clear_neighbour_array
-#undef find_proto_start
-#undef wait_discovery
-#undef display_neighbour_nodes
-#undef create_proto_start
-#undef get_id_for_create
-#undef ask_for_record_to_create
-#undef get_record_to_create
-#undef init_create_record_message
-#undef start_delete_proto
-#undef get_id_for_delete
-#undef ask_for_record_index
-#undef get_index_for_delete
-#undef init_delete_record_message
-#undef start_retrieve_proto
-#undef get_id_for_retrieve
-#undef ask_for_record_retrieve_index
-#undef get_index_for_retrieve
-#undef retrieve_proto
-#undef display_db
-#undef loop_through_data
-#undef del_local
-#undef wait
-#undef timeout
-#undef error
-# 942 "app.cc"
-
+  proceed menu;
+}
