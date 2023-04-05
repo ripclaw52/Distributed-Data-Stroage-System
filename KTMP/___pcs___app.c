@@ -178,11 +178,47 @@ struct ResponseMessage *assemble_response_message(uint16_t gid, uint8_t request_
 
 };
 
+// Gets the message size
+int get_message_size(struct ResponseMessage *message) {
+	int packet_size;
+	/*
+	 * Calculate needed size of sending packet
+	 */
+	switch(message->tpe) {
+		// Discovery Request
+		case DISCOVERY_REQUEST: packet_size = sizeof(struct DiscoveryRequestMessage); break;
+
+		// Discovery Response
+		case DISCOVERY_RESPONSE: packet_size = sizeof(struct DiscoveryResponseMessage); break;
+		
+		// Create Record
+		case CREATE_RECORD: packet_size = sizeof(struct CreateRecordMessage); break;
+		
+		// Delete Record
+		case DELETE_RECORD: packet_size = sizeof(struct DeleteRecordMessage); break;
+
+		// Retrieve Record
+		case RETRIEVE_RECORD: packet_size = sizeof(struct RetrieveRecordMessage); break;
+		
+		// Response
+		case RESPONSE: packet_size = sizeof(struct ResponseMessage); break;
+
+		// Type is not valid. exit from loop
+		default:
+			packet_size = 0;
+			// EXIT SENDER FSM
+			break;
+	}
+	return packet_size;
+}
+
 // sends packet information to other nodes
 fsm sender(struct ResponseMessage *message) {
 	address packet;
 
-	int packet_size = sizeof(struct ResponseMessage);
+	int packet_size = sizeof(struct ResponseMessage); //get_message_size(message);
+
+	DEBUG_PRINT("\r\nIn Sending");
 	
 	state sending:
 		packet = tcv_wnp(sending, sfd, 4 + packet_size); //NOTE: PUT SIZE OF MESSAGE + 4
@@ -270,7 +306,7 @@ fsm receiver(struct Node* node_db) {
 			*/
 			case DISCOVERY_REQUEST: ;
 				// respondng with this
-				struct ResponseMessage *response_message_0;
+				struct DiscoveryResponseMessage *response_message_0;
 				// receiving this
 				struct DiscoveryRequestMessage *discovery_request_message = (struct DiscoveryRequestMessage*)(incoming_packet+1);
 
